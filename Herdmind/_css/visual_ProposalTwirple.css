@@ -1,0 +1,68 @@
+@import url("visual_Proposal.css");
+
+HTML,
+BODY {
+	background-color: #FFF;
+	color: #222;
+}
+
+.branding,
+HEADER {
+	background-image:         linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), url("/_img/TS 512.png");
+	background-image:      -o-linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), url("/_img/TS 512.png");
+	background-image:     -ms-linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), url("/_img/TS 512.png");
+	background-image:    -moz-linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), url("/_img/TS 512.png");
+	background-image: -webkit-linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), url("/_img/TS 512.png");
+}
+
+.themeBack,
+HEADER,
+FOOTER,
+.portal LI :link,
+.portal LI :visited,
+.topics>* :link,
+.topics>* :visited,
+#SIDEBAR {
+	background-color: #DCAEEE;
+	color: inherit;
+}
+
+.accentBack,
+SELECT,
+SELECT OPTION,
+BUTTON,
+INPUT[type="button"],
+INPUT[type="submit"],
+INPUT[type="reset"],
+#SIDEBAR UL>LI>:link,
+#SIDEBAR UL>LI>:visited {
+	background-color:#3C4D85 !important;
+	color: #FFF !important;
+}
+.accentBack:nth-of-type(7n+2),
+SELECT:nth-of-type(7n+2),
+SELECT OPTION:nth-of-type(7n+2),
+BUTTON:nth-of-type(7n+2),
+INPUT[type="button"]:nth-of-type(7n+2),
+INPUT[type="submit"]:nth-of-type(7n+2),
+INPUT[type="reset"]:nth-of-type(7n+2),
+#SIDEBAR UL>LI:nth-of-type(7n+2)>:link,
+#SIDEBAR UL>LI:nth-of-type(7n+2)>:visited {
+	background-color:#F0599C !important;
+}
+.accentBack:nth-of-type(7n+3),
+SELECT:nth-of-type(7n+3),
+SELECT OPTION:nth-of-type(7n+3),
+BUTTON:nth-of-type(7n+3),
+INPUT[type="button"]:nth-of-type(7n+3),
+INPUT[type="submit"]:nth-of-type(7n+3),
+INPUT[type="reset"]:nth-of-type(7n+3),
+#SIDEBAR UL>LI:nth-of-type(7n+3)>:link,
+#SIDEBAR UL>LI:nth-of-type(7n+3)>:visited {
+	background-color:#7744A1 !important;
+}
+
+.accentBorder,
+INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]) {
+	border-color: #3C4D85;
+}

@@ -1,0 +1,60 @@
+﻿<!DOCTYPE HTML>
+<!--
+This is a mockup of the Herdmind front page as envisioned by Kyli Rouge|Supuhstar|Digit Shine
+This mockup is copyright Herdmind.net ©2013
+-->
+<?PHP
+include "../_incl/contentBuilder.php";
+include "../_incl/styleSwitch.php";
+?>
+<HTML>
+<HEAD>
+
+<!-- BEGIN Metadata -->
+<TITLE>Herdmind</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=utf-8" />
+<!-- END Metadata -->
+
+<?PHP
+buildStyleSwitcherHead("/_css/visual_Proposal.css");
+?>
+</HEAD>
+
+
+
+<BODY>
+<?PHP
+$simulateLogin = $_GET["login"]; // Allows for testing of different layouts
+buildHeader(isset($simulateLogin) ? $simulateLogin === 'true' : false); // ?login=true styles the page for logged-in users
+?>
+
+
+<SECTION CLASS="wrappingColumns portal">
+	<SECTION>
+		<H2>Featured Content</H2>
+	</SECTION>
+
+	<SECTION>
+		<H2>Look At This!</H2>
+	</SECTION>
+
+	<SECTION>
+		<H2>Oatmeal Muffin</H2>
+	</SECTION>
+
+	<SECTION>
+		<H2>Popular Fanfacts</H2>
+	</SECTION>
+
+	<SECTION>
+		<H2>More Votes Needed</H2>
+	</SECTION>
+</SECTION>
+
+
+
+<?PHP
+buildFooter();
+?>
+</BODY>
+</HTML>

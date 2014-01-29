@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"><!-- viewbox="0 0 16 16" -->
+  <title>Translucent White Stripes</title>
+  <desc>Translucent bottom-left-to-top-right diagonal white stripes</desc>
+
+  <polygon points="00,16 16,00 08,00 00,08" style="fill:#FFFFFF;fill-opacity:0.25"/>
+  <polygon points=" 08,16 16,08 16,16"      style="fill:#FFFFFF;fill-opacity:0.25"/>
+</svg>

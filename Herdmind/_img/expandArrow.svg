@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="8" width="16">
+	<title>Expand Arrow</title>
+	<desc>An expansion indicator arrow by Blue Husky Art for Herdmind.net</desc>
+
+	<path d="M01 01   L15 01   L08 07 Z" id="GRAYFILL" style="fill:#808080;opacity:0.5;"/>
+
+	<path d="M00 00   L16 00   L14 01   L02 01 Z" id="BLACKTOP" style="fill:#000000;opacity:0.25;"/>
+
+	<path d="M00 00   L08 08   L16 00   L14 01   L08 07   L02 01 z" id="WHITEBOTTOM" style="fill:#ffffff;opacity:0.5;"/>
+</svg>

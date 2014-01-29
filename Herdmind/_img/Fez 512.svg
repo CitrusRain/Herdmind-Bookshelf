@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="512" width="512"><!-- make sure you set the proper height and width! -->
+	<title>Fez</title>
+	<desc>Long, wordy description of what this image represents</desc>
+
+	<path d="m 447 383c -58 107 -331.03 111.93 -382.88 -0.15l 32 -286.85c 61 -53 256 -53 320 0l 32 287 z" id="FEZ" style="fill:#7e2729;fill-rule:evenodd"/>
+
+	<path d="m 367 111l -48 0 -64 -15 64 -16 32 0c 16 0 48 3 64 16 21 19 32 141 64 256 7 26 -23 120 -64 160l -64 -48c 39 -29 50 -90 64 -111 -19 -91 -6 -230 -48 -241 z" id="TASSLE" style="fill:#000000;fill-rule:evenodd"/>
+
+</svg>

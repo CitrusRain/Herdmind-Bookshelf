@@ -1,0 +1,2 @@
+[27-Dec-2013 21:12:43] PHP Catchable fatal error:  Object of class mysqli_result could not be converted to string in /home4/citrus/public_html/beta/_incl/startSession.php on line 120
+[27-Dec-2013 21:17:48] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home4/citrus/public_html/beta/_incl/startSession.php on line 120

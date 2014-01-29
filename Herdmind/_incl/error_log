@@ -1,0 +1,328 @@
+[10-Sep-2013 09:27:02] PHP Warning:  getimagesize(/home4/citrus/public_html/beta/_img/branding/ppg4k.png) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 45
+[10-Sep-2013 09:27:02] PHP Warning:  Division by zero in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 54
+[10-Sep-2013 09:27:02] PHP Warning:  imagecreatetruecolor() [<a href='function.imagecreatetruecolor'>function.imagecreatetruecolor</a>]: Invalid image dimensions in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 81
+[10-Sep-2013 09:27:02] PHP Warning:  imagecreatefrompng(/home4/citrus/public_html/beta/_img/branding/ppg4k.png) [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 83
+[10-Sep-2013 09:27:02] PHP Warning:  imagealphablending(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 86
+[10-Sep-2013 09:27:02] PHP Warning:  imagesavealpha(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 87
+[10-Sep-2013 09:27:02] PHP Warning:  imagecopyresampled(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 89
+[10-Sep-2013 09:27:02] PHP Warning:  imagepng(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 96
+[10-Sep-2013 09:27:02] PHP Warning:  getimagesize(/home4/citrus/public_html/beta/_img/branding/ppg4k.png) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 45
+[10-Sep-2013 09:27:02] PHP Warning:  imagecreatefrompng(/home4/citrus/public_html/beta/_img/branding/ppg4k.png) [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 83
+[10-Sep-2013 09:27:02] PHP Warning:  imagecopyresampled(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 89
+[10-Sep-2013 09:27:02] PHP Warning:  getimagesize(/home4/citrus/public_html/beta/_img/branding/ppg4k.png) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 45
+[10-Sep-2013 09:27:02] PHP Warning:  Division by zero in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 54
+[10-Sep-2013 09:27:02] PHP Warning:  imagecreatetruecolor() [<a href='function.imagecreatetruecolor'>function.imagecreatetruecolor</a>]: Invalid image dimensions in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 81
+[10-Sep-2013 09:27:02] PHP Warning:  imagecreatefrompng(/home4/citrus/public_html/beta/_img/branding/ppg4k.png) [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 83
+[10-Sep-2013 09:27:02] PHP Warning:  imagealphablending(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 86
+[10-Sep-2013 09:27:02] PHP Warning:  imagesavealpha(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 87
+[10-Sep-2013 09:27:02] PHP Warning:  imagecopyresampled(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 89
+[10-Sep-2013 09:27:02] PHP Warning:  imagepng(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 96
+[10-Sep-2013 09:27:03] PHP Warning:  getimagesize(/home4/citrus/public_html/beta/_img/branding/ppg4k.png) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 45
+[10-Sep-2013 09:27:03] PHP Warning:  imagecreatefrompng(/home4/citrus/public_html/beta/_img/branding/ppg4k.png) [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 83
+[10-Sep-2013 09:27:03] PHP Warning:  imagecopyresampled(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 89
+[10-Sep-2013 09:27:15] PHP Warning:  getimagesize(/home4/citrus/public_html/beta/beta/_img/branding/ppg4k.png) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 45
+[10-Sep-2013 09:27:15] PHP Warning:  Division by zero in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 54
+[10-Sep-2013 09:27:15] PHP Warning:  imagecreatetruecolor() [<a href='function.imagecreatetruecolor'>function.imagecreatetruecolor</a>]: Invalid image dimensions in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 81
+[10-Sep-2013 09:27:15] PHP Warning:  imagecreatefrompng(/home4/citrus/public_html/beta/beta/_img/branding/ppg4k.png) [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 83
+[10-Sep-2013 09:27:15] PHP Warning:  imagealphablending(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 86
+[10-Sep-2013 09:27:15] PHP Warning:  imagesavealpha(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 87
+[10-Sep-2013 09:27:15] PHP Warning:  imagecopyresampled(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 89
+[10-Sep-2013 09:27:15] PHP Warning:  imagepng(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 96
+[10-Sep-2013 09:27:16] PHP Warning:  getimagesize(/home4/citrus/public_html/beta/beta/_img/branding/ppg4k.png) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 45
+[10-Sep-2013 09:27:16] PHP Warning:  Division by zero in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 54
+[10-Sep-2013 09:27:16] PHP Warning:  imagecreatetruecolor() [<a href='function.imagecreatetruecolor'>function.imagecreatetruecolor</a>]: Invalid image dimensions in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 81
+[10-Sep-2013 09:27:16] PHP Warning:  imagecreatefrompng(/home4/citrus/public_html/beta/beta/_img/branding/ppg4k.png) [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 83
+[10-Sep-2013 09:27:16] PHP Warning:  imagealphablending(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 86
+[10-Sep-2013 09:27:16] PHP Warning:  imagesavealpha(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 87
+[10-Sep-2013 09:27:16] PHP Warning:  imagecopyresampled(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 89
+[10-Sep-2013 09:27:16] PHP Warning:  imagepng(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 96
+[16-Sep-2013 15:01:50] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 29
+[16-Sep-2013 15:01:53] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 29
+[16-Sep-2013 15:02:05] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 29
+[16-Sep-2013 15:06:09] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 29
+[16-Sep-2013 15:06:14] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 29
+[16-Sep-2013 15:06:28] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 29
+[16-Sep-2013 15:06:28] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 29
+[16-Sep-2013 15:06:28] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 29
+[16-Sep-2013 15:06:34] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 29
+[16-Sep-2013 15:06:46] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 29
+[16-Sep-2013 15:06:49] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 29
+[16-Sep-2013 15:06:58] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 29
+[16-Sep-2013 15:07:07] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 29
+[16-Sep-2013 15:08:03] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 29
+[16-Sep-2013 15:08:36] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 29
+[16-Sep-2013 15:08:43] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 29
+[22-Sep-2013 20:29:39] PHP Warning:  getimagesize(/home4/citrus/public_html/betabeta/_img/fandom-logos/PPG.png) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 45
+[22-Sep-2013 20:29:39] PHP Warning:  imagecreatetruecolor() [<a href='function.imagecreatetruecolor'>function.imagecreatetruecolor</a>]: Invalid image dimensions in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 81
+[22-Sep-2013 20:29:39] PHP Warning:  imagecreatefrompng(/home4/citrus/public_html/betabeta/_img/fandom-logos/PPG.png) [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 83
+[22-Sep-2013 20:29:39] PHP Warning:  imagealphablending(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 86
+[22-Sep-2013 20:29:39] PHP Warning:  imagesavealpha(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 87
+[22-Sep-2013 20:29:39] PHP Warning:  imagecopyresampled(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 89
+[22-Sep-2013 20:29:39] PHP Warning:  imagepng(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 96
+[22-Sep-2013 20:29:44] PHP Warning:  getimagesize(/home4/citrus/public_html/beta/beta/_img/fandom-logos/PPG.png) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 45
+[22-Sep-2013 20:29:44] PHP Warning:  imagecreatetruecolor() [<a href='function.imagecreatetruecolor'>function.imagecreatetruecolor</a>]: Invalid image dimensions in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 81
+[22-Sep-2013 20:29:44] PHP Warning:  imagecreatefrompng(/home4/citrus/public_html/beta/beta/_img/fandom-logos/PPG.png) [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 83
+[22-Sep-2013 20:29:44] PHP Warning:  imagealphablending(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 86
+[22-Sep-2013 20:29:44] PHP Warning:  imagesavealpha(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 87
+[22-Sep-2013 20:29:44] PHP Warning:  imagecopyresampled(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 89
+[22-Sep-2013 20:29:44] PHP Warning:  imagepng(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 96
+[22-Sep-2013 20:29:49] PHP Warning:  getimagesize(/home4/citrus/public_html/beta_img/fandom-logos/PPG.png) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 45
+[22-Sep-2013 20:29:49] PHP Warning:  imagecreatetruecolor() [<a href='function.imagecreatetruecolor'>function.imagecreatetruecolor</a>]: Invalid image dimensions in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 81
+[22-Sep-2013 20:29:49] PHP Warning:  imagecreatefrompng(/home4/citrus/public_html/beta_img/fandom-logos/PPG.png) [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 83
+[22-Sep-2013 20:29:49] PHP Warning:  imagealphablending(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 86
+[22-Sep-2013 20:29:49] PHP Warning:  imagesavealpha(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 87
+[22-Sep-2013 20:29:49] PHP Warning:  imagecopyresampled(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 89
+[22-Sep-2013 20:29:49] PHP Warning:  imagepng(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 96
+[22-Sep-2013 21:07:53] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 98
+[23-Sep-2013 14:24:20] PHP Warning:  getimagesize(/home4/citrus/public_html/beta/_img/fandom-logos/MLP_4k.pngg) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 49
+[23-Sep-2013 14:24:20] PHP Warning:  Division by zero in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 58
+[23-Sep-2013 14:24:20] PHP Warning:  imagecreatetruecolor() [<a href='function.imagecreatetruecolor'>function.imagecreatetruecolor</a>]: Invalid image dimensions in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 85
+[23-Sep-2013 14:24:20] PHP Warning:  imagecreatefrompng(/home4/citrus/public_html/beta/_img/fandom-logos/MLP_4k.pngg) [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 87
+[23-Sep-2013 14:24:20] PHP Warning:  imagealphablending(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 90
+[23-Sep-2013 14:24:20] PHP Warning:  imagesavealpha(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 91
+[23-Sep-2013 14:24:20] PHP Warning:  imagecopyresampled(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 93
+[23-Sep-2013 14:24:20] PHP Warning:  imagepng(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 120
+[23-Sep-2013 14:24:20] PHP Warning:  imagedestroy(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 121
+[23-Sep-2013 14:24:35] PHP Warning:  getimagesize(/home4/citrus/public_html/beta/_img/fandom-logos/PPG_4k.pngg) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 49
+[23-Sep-2013 14:24:35] PHP Warning:  Division by zero in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 58
+[23-Sep-2013 14:24:35] PHP Warning:  imagecreatetruecolor() [<a href='function.imagecreatetruecolor'>function.imagecreatetruecolor</a>]: Invalid image dimensions in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 85
+[23-Sep-2013 14:24:35] PHP Warning:  imagecreatefrompng(/home4/citrus/public_html/beta/_img/fandom-logos/PPG_4k.pngg) [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 87
+[23-Sep-2013 14:24:35] PHP Warning:  imagealphablending(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 90
+[23-Sep-2013 14:24:35] PHP Warning:  imagesavealpha(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 91
+[23-Sep-2013 14:24:35] PHP Warning:  imagecopyresampled(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 93
+[23-Sep-2013 14:24:35] PHP Warning:  imagepng(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 120
+[23-Sep-2013 14:24:35] PHP Warning:  imagedestroy(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 121
+[23-Sep-2013 14:24:46] PHP Warning:  getimagesize(/home4/citrus/public_html/beta/_img/fandom-logos/Who_4k.pngg) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 49
+[23-Sep-2013 14:24:46] PHP Warning:  Division by zero in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 58
+[23-Sep-2013 14:24:46] PHP Warning:  imagecreatetruecolor() [<a href='function.imagecreatetruecolor'>function.imagecreatetruecolor</a>]: Invalid image dimensions in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 85
+[23-Sep-2013 14:24:46] PHP Warning:  imagecreatefrompng(/home4/citrus/public_html/beta/_img/fandom-logos/Who_4k.pngg) [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 87
+[23-Sep-2013 14:24:46] PHP Warning:  imagealphablending(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 90
+[23-Sep-2013 14:24:46] PHP Warning:  imagesavealpha(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 91
+[23-Sep-2013 14:24:46] PHP Warning:  imagecopyresampled(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 93
+[23-Sep-2013 14:24:46] PHP Warning:  imagepng(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 120
+[23-Sep-2013 14:24:46] PHP Warning:  imagedestroy(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 121
+[09-Oct-2013 07:59:38] PHP Warning:  getimagesize(/home4/citrus/public_html/beta/_img/fandom-logos/MLP_4k.php) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 49
+[09-Oct-2013 07:59:38] PHP Warning:  Division by zero in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 58
+[09-Oct-2013 07:59:38] PHP Warning:  imagecreatetruecolor() [<a href='function.imagecreatetruecolor'>function.imagecreatetruecolor</a>]: Invalid image dimensions in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 85
+[09-Oct-2013 07:59:38] PHP Warning:  imagecreatefrompng(/home4/citrus/public_html/beta/_img/fandom-logos/MLP_4k.php) [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 87
+[09-Oct-2013 07:59:38] PHP Warning:  imagealphablending(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 90
+[09-Oct-2013 07:59:38] PHP Warning:  imagesavealpha(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 91
+[09-Oct-2013 07:59:38] PHP Warning:  imagecopyresampled(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 93
+[09-Oct-2013 07:59:38] PHP Warning:  imagepng(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 120
+[09-Oct-2013 07:59:38] PHP Warning:  imagedestroy(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 121
+[09-Oct-2013 07:59:39] PHP Warning:  getimagesize(/home4/citrus/public_html/beta/_img/fandom-logos/MLP_4k.php) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 49
+[09-Oct-2013 07:59:39] PHP Warning:  Division by zero in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 58
+[09-Oct-2013 07:59:39] PHP Warning:  imagecreatetruecolor() [<a href='function.imagecreatetruecolor'>function.imagecreatetruecolor</a>]: Invalid image dimensions in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 85
+[09-Oct-2013 07:59:39] PHP Warning:  imagecreatefrompng(/home4/citrus/public_html/beta/_img/fandom-logos/MLP_4k.php) [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: failed to open stream: No such file or directory in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 87
+[09-Oct-2013 07:59:39] PHP Warning:  imagealphablending(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 90
+[09-Oct-2013 07:59:39] PHP Warning:  imagesavealpha(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 91
+[09-Oct-2013 07:59:39] PHP Warning:  imagecopyresampled(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 93
+[09-Oct-2013 07:59:39] PHP Warning:  imagepng(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 120
+[09-Oct-2013 07:59:39] PHP Warning:  imagedestroy(): supplied argument is not a valid Image resource in /home4/citrus/public_html/beta/_incl/resizedImage.php on line 121
+[04-Dec-2013 13:30:40] PHP Warning:  mysql_real_escape_string() [<a href='function.mysql-real-escape-string'>function.mysql-real-escape-string</a>]: Access denied for user 'citrus'@'localhost' (using password: NO) in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 16
+[04-Dec-2013 13:30:40] PHP Warning:  mysql_real_escape_string() [<a href='function.mysql-real-escape-string'>function.mysql-real-escape-string</a>]: A link to the server could not be established in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 16
+[04-Dec-2013 13:32:08] PHP Warning:  mysql_real_escape_string() [<a href='function.mysql-real-escape-string'>function.mysql-real-escape-string</a>]: Access denied for user 'citrus'@'localhost' (using password: NO) in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 16
+[04-Dec-2013 13:32:08] PHP Warning:  mysql_real_escape_string() [<a href='function.mysql-real-escape-string'>function.mysql-real-escape-string</a>]: A link to the server could not be established in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 16
+[04-Dec-2013 13:33:09] PHP Warning:  mysqli_real_escape_string() expects exactly 2 parameters, 1 given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 16
+[04-Dec-2013 13:51:38] PHP Notice:  A session had already been started - ignoring session_start() in /home4/citrus/public_html/beta/_incl/startSession.php on line 10
+[04-Dec-2013 13:51:38] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[04-Dec-2013 13:51:38] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 39
+[04-Dec-2013 13:51:38] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 39
+[04-Dec-2013 13:51:38] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 40
+[04-Dec-2013 13:51:38] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 40
+[04-Dec-2013 13:51:38] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 51
+[04-Dec-2013 13:51:38] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 51
+[04-Dec-2013 13:51:38] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 51
+[04-Dec-2013 13:51:38] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 51
+[04-Dec-2013 13:54:31] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 38
+[04-Dec-2013 13:54:31] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 38
+[04-Dec-2013 13:54:31] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 39
+[04-Dec-2013 13:54:31] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 39
+[04-Dec-2013 13:54:31] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 50
+[04-Dec-2013 13:54:31] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 50
+[04-Dec-2013 13:54:31] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 50
+[04-Dec-2013 13:54:31] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 50
+[04-Dec-2013 14:15:59] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 40
+[04-Dec-2013 14:15:59] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 40
+[04-Dec-2013 14:15:59] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 41
+[04-Dec-2013 14:15:59] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 41
+[04-Dec-2013 14:15:59] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 52
+[04-Dec-2013 14:15:59] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 52
+[04-Dec-2013 14:15:59] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 52
+[04-Dec-2013 14:15:59] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 52
+[04-Dec-2013 14:16:03] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 40
+[04-Dec-2013 14:16:03] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 40
+[04-Dec-2013 14:16:03] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 41
+[04-Dec-2013 14:16:03] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 41
+[04-Dec-2013 14:16:03] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 52
+[04-Dec-2013 14:16:03] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 52
+[04-Dec-2013 14:16:03] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 52
+[04-Dec-2013 14:16:03] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 52
+[04-Dec-2013 14:17:13] PHP Notice:  Undefined variable: posneg in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 54
+[06-Dec-2013 10:05:29] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:05:29] PHP Notice:  Undefined index:  func in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 17
+[06-Dec-2013 10:05:29] PHP Notice:  Undefined index:  func in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 26
+[06-Dec-2013 10:06:55] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:06:55] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 91
+[06-Dec-2013 10:06:55] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 91
+[06-Dec-2013 10:06:55] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 94
+[06-Dec-2013 10:06:55] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 94
+[06-Dec-2013 10:06:55] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 97
+[06-Dec-2013 10:06:55] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 97
+[06-Dec-2013 10:06:55] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 110
+[06-Dec-2013 10:06:55] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 110
+[06-Dec-2013 10:06:55] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 148
+[06-Dec-2013 10:06:55] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 148
+[06-Dec-2013 10:06:55] PHP Notice:  Undefined variable: db_connection in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 148
+[06-Dec-2013 10:06:55] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 148
+[06-Dec-2013 10:07:43] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:08:50] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:09:48] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:11:53] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:13:15] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:13:57] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:14:05] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:14:57] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:16:28] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:20:44] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:20:56] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:23:17] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:24:58] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:27:08] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:28:31] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:38:28] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 10:40:26] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 15:05:44] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 15:06:35] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 18:00:39] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 18:04:14] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 18:04:24] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[06-Dec-2013 18:04:31] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[11-Dec-2013 03:04:48] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[26-Dec-2013 23:19:11] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[09-Jan-2014 13:46:52] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[09-Jan-2014 13:46:52] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[09-Jan-2014 14:02:47] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[09-Jan-2014 14:02:47] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[09-Jan-2014 14:04:06] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[09-Jan-2014 14:04:06] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[09-Jan-2014 14:14:07] PHP Parse error:  syntax error, unexpected $end in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 216
+[09-Jan-2014 14:15:04] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[09-Jan-2014 14:15:04] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[09-Jan-2014 14:16:05] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[09-Jan-2014 14:16:05] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[09-Jan-2014 14:16:10] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[09-Jan-2014 14:16:10] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[09-Jan-2014 14:16:28] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[09-Jan-2014 14:16:28] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[09-Jan-2014 14:16:46] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[09-Jan-2014 14:16:46] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[09-Jan-2014 14:16:46] PHP Notice:  Undefined index:  fanfact in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 51
+[09-Jan-2014 14:23:23] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[09-Jan-2014 14:23:23] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[09-Jan-2014 14:27:07] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[09-Jan-2014 14:27:07] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[09-Jan-2014 14:29:16] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[09-Jan-2014 14:29:16] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 14:40:13] PHP Parse error:  syntax error, unexpected $end in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 479
+[13-Jan-2014 14:41:03] PHP Fatal error:  Cannot redeclare createfanfact() (previously declared in /home4/citrus/public_html/beta/_incl/actionHandler.php:58) in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 335
+[13-Jan-2014 14:41:23] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 14:41:23] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 14:41:23] PHP Notice:  Undefined variable: color in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 80
+[13-Jan-2014 14:41:23] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 95
+[13-Jan-2014 14:41:23] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 96
+[13-Jan-2014 14:41:23] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 153
+[13-Jan-2014 14:41:23] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 153
+[13-Jan-2014 14:42:56] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 14:42:56] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 14:42:56] PHP Notice:  Undefined variable: color in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 80
+[13-Jan-2014 14:42:56] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 95
+[13-Jan-2014 14:42:56] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 96
+[13-Jan-2014 14:42:56] PHP Warning:  mysqli_query() expects at least 2 parameters, 1 given in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 153
+[13-Jan-2014 14:43:32] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 14:43:32] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 14:43:32] PHP Notice:  Undefined variable: color in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 80
+[13-Jan-2014 14:43:32] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 95
+[13-Jan-2014 14:43:32] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 96
+[13-Jan-2014 14:47:31] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 14:47:31] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 14:47:31] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 95
+[13-Jan-2014 14:47:31] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 96
+[13-Jan-2014 14:47:47] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 14:47:47] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 14:47:47] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 95
+[13-Jan-2014 14:47:47] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 96
+[13-Jan-2014 14:54:04] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 14:54:04] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 14:54:04] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 95
+[13-Jan-2014 14:54:04] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 96
+[13-Jan-2014 14:55:29] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 14:55:29] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 14:55:29] PHP Notice:  Array to string conversion in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 93
+[13-Jan-2014 14:55:29] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 96
+[13-Jan-2014 14:55:29] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 97
+[13-Jan-2014 14:55:58] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 14:55:58] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 14:55:58] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 93
+[13-Jan-2014 14:55:58] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 96
+[13-Jan-2014 14:55:58] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 97
+[13-Jan-2014 15:22:07] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 15:22:07] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 15:22:07] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 95
+[13-Jan-2014 15:22:07] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 96
+[13-Jan-2014 15:22:37] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 15:22:37] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 15:22:37] PHP Notice:  Undefined offset:  0 in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 95
+[13-Jan-2014 15:22:37] PHP Notice:  Undefined offset:  0 in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 96
+[13-Jan-2014 15:23:07] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 15:23:07] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 15:23:07] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 94
+[13-Jan-2014 15:23:07] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 95
+[13-Jan-2014 15:23:07] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 96
+[13-Jan-2014 15:32:46] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 15:32:46] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 15:32:46] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 94
+[13-Jan-2014 15:32:46] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 95
+[13-Jan-2014 15:32:46] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 96
+[13-Jan-2014 15:36:35] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 15:36:35] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 15:36:35] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 94
+[13-Jan-2014 15:36:35] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 95
+[13-Jan-2014 15:36:35] PHP Notice:  Undefined index:  file in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 96
+[13-Jan-2014 15:47:36] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 15:47:36] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 15:47:36] PHP Notice:  Undefined index:  title in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 61
+[13-Jan-2014 15:47:36] PHP Notice:  Undefined index:  type in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 63
+[13-Jan-2014 15:47:36] PHP Notice:  Undefined index:  series in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 65
+[13-Jan-2014 15:47:36] PHP Notice:  Undefined index:  reality in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 67
+[13-Jan-2014 15:47:36] PHP Notice:  Undefined index:  summary in /home4/citrus/public_html/beta/_incl/actionHandler.php on line 69
+[13-Jan-2014 15:50:49] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 15:50:49] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 15:52:05] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 15:52:05] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 15:56:44] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 15:56:44] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 15:58:28] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 15:58:28] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[13-Jan-2014 16:30:30] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[13-Jan-2014 16:30:30] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[22-Jan-2014 11:52:03] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[22-Jan-2014 11:52:03] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[22-Jan-2014 11:52:19] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[22-Jan-2014 11:52:19] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[22-Jan-2014 11:52:30] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[22-Jan-2014 11:52:30] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[22-Jan-2014 12:27:23] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[22-Jan-2014 12:27:23] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[22-Jan-2014 12:36:16] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[22-Jan-2014 12:36:16] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[22-Jan-2014 12:37:28] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[22-Jan-2014 12:37:28] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[22-Jan-2014 12:38:50] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[22-Jan-2014 12:38:50] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[23-Jan-2014 21:26:49] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[23-Jan-2014 21:26:49] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[23-Jan-2014 21:27:03] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[23-Jan-2014 21:27:03] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157
+[23-Jan-2014 21:27:08] PHP Notice:  Undefined index:  fandom in /home4/citrus/public_html/beta/_incl/startSession.php on line 30
+[23-Jan-2014 21:27:08] PHP Notice:  Undefined index:  logout in /home4/citrus/public_html/beta/_incl/startSession.php on line 157

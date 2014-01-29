@@ -1,0 +1,160 @@
+
+HR {
+    border: none;
+    border-top: thin solid lightgray;
+    width: 80%;
+}
+.hasNeeds {
+	position: relative;
+}
+.needs {
+	position: absolute;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	left: 11em;
+	top: 0;
+	min-width: 10em;
+	z-index: 0;
+}
+.needs:hover {
+	z-index: 1;
+}
+	.need {
+		background-color: #FFB;
+		border-color: currentColor;
+		border-style: solid;
+		border-width: 0.1em;
+		color: #772;
+		display: none;
+		padding: 0.5em 1em;
+		position: static;
+		margin-top: -0.1em;
+	}
+		/**>:first-child.need {
+			border-top-style: solid;
+			border-top-left-radius: 0.5em;
+			border-top-right-radius: 0.5em;
+		}
+		*:last-child>.need {
+			border-bottom-style: solid;
+			border-bottom-left-radius: 0.5em;
+			border-bottom-right-radius: 0.5em;
+		}*/
+		.need::before,
+		.need::after {
+			content: " ";
+			display: block;
+			width: 0;
+			height: 0;
+			border: 1em solid transparent;
+			border-top-width: 0;
+			border-left-width: 0;
+			position: absolute;
+			left: -1em;
+			top: 1em;
+			z-index: 0;
+		}
+		.need:first-child::before,
+		.need:first-child::after {
+			z-index: 1;
+		}
+		.need::before {
+			border-right-color: currentColor;
+			left: -1em;
+			top: 1em;
+		}
+		.need::after {
+			border-right-color: #FFB;
+			left: -0.75em;
+			top: 1.1em;
+		}
+			.need.bad::after {
+				border-right-color: #FBB;
+			}
+			.need.good::after {
+				border-right-color: #BFB;
+			}
+		.need.bad {
+			display: block;
+		}
+
+.needs.bottom {
+	bottom: -1em;
+	top: auto;
+}
+	.needs.bottom .need {
+	}
+		.needs.bottom .need::after,
+		.needs.bottom .need::before {
+			top: auto;
+		}
+		.needs.bottom .need::after {
+			bottom: 1.5em;
+		}
+		.needs.bottom .need::before {
+			bottom: 1.6em;
+		}
+		.need:first-child::before,
+		.need:first-child::after {
+			z-index: 0;
+		}
+		.need:last-child::before,
+		.need:last-child::after {
+			z-index: 1;
+		}
+
+.bad {
+    background-color: #FBB;
+    border-color: currentColor;
+    color: #700;
+}
+.good {
+    background-color: #BFB;
+    border-color: currentColor;
+    color: #070;
+}
+
+.expanding {
+	max-height: 0em;
+	overflow: hidden;
+	transition-property: max-height;
+}
+.expanding:hover {
+	max-height: 100em;
+}
+
+.explanation {
+	border: 0.1em solid currentcolor;
+	color: #27B;
+	background: #FFF;
+	font-size: 0.8em;
+	padding: 1em 0.5em 0.5em;
+	margin: 0.5em -0.5em 0;
+}
+.explanation::before {
+	content: "Why?";
+	display: block;
+	margin-top: -1.0em;
+	text-align: center;
+}
+
+.explanation.expanding {
+	transition-property: max-height, border-color, background-color;
+}
+.explanation.expanding:not(:hover) {
+	border-color: transparent;
+	background-color: transparent;
+}
+
+INPUT {
+	width: 10em;
+}
+
+METER {
+    display: block;
+    width: 100%;
+}
+METER:not([value]) {
+    display:none;
+}

@@ -1,0 +1,234 @@
+@import url("fonts.css");
+/***** BEGIN Universal Basics *****/
+*|*{
+	/**** BEGIN Unifying Animation Set ****/ 
+	/* The purpose of this is so that when basic CSS animations/transitions occur, they appear in-sync */
+	        animation-timing-function: ease-in-out;
+	     -o-animation-timing-function: ease-in-out;
+	    -ms-animation-timing-function: ease-in-out;
+	   -moz-animation-timing-function: ease-in-out;
+	-webkit-animation-timing-function: ease-in-out;
+	
+	        transition-property: none;
+	     -o-transition-property: none;
+	    -ms-transition-property: none;
+	   -moz-transition-property: none;
+	-webkit-transition-property: none;
+	        transition-duration: 0.5s;
+	     -o-transition-duration: 0.5s;
+	    -ms-transition-duration: 0.5s;
+	   -moz-transition-duration: 0.5s;
+	-webkit-transition-duration: 0.5s;
+	        transition-timing-function: ease-in-out;
+	     -o-transition-timing-function: ease-in-out;
+	    -ms-transition-timing-function: ease-in-out;
+	   -moz-transition-timing-function: ease-in-out;
+	-webkit-transition-timing-function: ease-in-out;
+	/**** END Unifying Animation Set ****/
+}
+	
+HTML,
+BODY {
+	cursor: default;
+	font-family: 'Segoe UI', 'Ubuntu', 'Source Sans Pro', 'Open Sans', 'Droid Sans', sans-serif;
+}
+BODY{
+	margin: 6em 1em 0; /* 6em == maximum header height */
+	padding: 0;
+}
+
+:link IMG,
+:visited IMG {
+	border: none;
+}
+/***** END Universal Basics *****/
+
+
+
+/***** BEGIN Body Layout *****/
+/**** BEGIN Header Layout ****/
+HEADER {
+	display: block;
+	left: 0;
+	min-height: 3em;
+	max-height: 6em;
+	padding: 0;
+	position: fixed;
+	right: 0;
+	text-align: right;
+	top: 0;
+	width: 100%;
+}
+	@media all and (max-width: 40em) {
+		HEADER {
+			font-size: 75%;
+			padding-top: 0.5em;
+			line-height: 0.8em;
+		}
+	}
+	HEADER :link,
+	HEADER :visited {
+		color: inherit !important;
+		text-decoration: none !important;
+	}
+	HEADER>H1 {
+		clear: both;
+		display: inline-block;
+		float: left;
+		font-size: 2em;
+		margin: 0 1em 0 0;
+		padding-left: 1em;
+		font-weight: normal;
+	}
+	HEADER>H1 {
+	}
+	HEADER>H1 .slogan {
+		display: inline-block;
+		font-size: 50%;
+		font-style: italic;
+	}
+	
+	HEADER>NAV {
+		display: block;
+		margin: 0 1em;
+		padding-right: 1em;
+		text-align: right;
+	}
+		HEADER>NAV>UL {
+			display: inline-block;
+			line-height: 3em;
+			margin: 0;
+			padding: 0;
+			vertical-align: text-bottom;
+			white-space: nowrap;
+		}
+			HEADER>NAV>UL>LI {
+				display: inline-block;
+			}
+				HEADER>NAV>UL>LI>:link,
+				HEADER>NAV>UL>LI>:visited{
+					display: block;
+					padding: 0 0.5em;
+				}
+/**** END Header Layout ****/
+
+
+
+/**** BEGIN Portal ****/
+.portal {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+	.portal>* {
+		display: inline-block;
+		max-width: 4in;
+		margin: 1em;
+	}
+		.portal>* :link,
+		.portal>* :visited {
+			display: block;
+			padding: 1em;
+		}
+		.portal>* FIGURE {
+			margin: 0;
+		}
+			.portal>* FIGURE IMG{
+				width: 100%;
+			}
+/**** END Portal ****/
+
+
+
+/**** BEGIN Internal Layout ****/
+BODY>SECTION {
+	max-width: 100em;
+}
+
+.wrappingColumns {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+@media all and (min-width: 40em) {
+	.wrappingColumns {
+		columns: 2;
+		-o-columns: 2;
+		-ms-columns: 2;
+		-moz-columns: 2;
+		-webkit-columns: 2;
+	}
+}
+@media all and (min-width: 60em) {
+	.wrappingColumns {
+		columns: 3;
+		-o-columns: 3;
+		-ms-columns: 3;
+		-moz-columns: 3;
+		-webkit-columns: 3;
+	}
+}
+@media all and (min-width: 80em) {
+	.wrappingColumns {
+		columns: 4;
+		-o-columns: 4;
+		-ms-columns: 4;
+		-moz-columns: 4;
+		-webkit-columns: 4;
+	}
+}
+/**** END Internal Layout ****/
+
+
+
+/**** BEGIN Footer Layout ****/
+FOOTER {
+	margin-left: -1em; /* 1em == body left/right margin */
+	margin-right: -1em;
+	padding: 1em;
+}
+	FOOTER>* {
+		font-size: small;
+	}
+	FOOTER>P:first-child {
+		margin-top: 0;
+	}
+	FOOTER>P:last-child {
+		margin-bottom: 0;
+	}
+/**** END Footer Layout ****/
+/***** END Body Layout *****/
+
+
+
+@media handheld, all and (max-width: 40em) { /* Particularly small screens */
+	HTML,
+	BODY {
+		font-family: 'Droid Sans', 'Source Sans Pro', 'Ubuntu', 'Open Sans', sans-serif;
+	}
+	BODY {
+		margin-left: 0.5em;
+		margin-right: 0.5em;
+		padding: 0;
+	}
+	
+	HEADER {
+		text-align: center;
+	}
+		HEADER>H1,
+		HEADER>NAV {
+			display: inline-block;
+			margin: 0;
+			padding: 0;
+		}
+		HEADER>NAV {
+			max-width: 100%;
+			overflow-x: auto;
+			overflow-y: hidden;
+		}
+	FOOTER {
+		margin-left: -0.5em;
+		margin-right: -0.5em;
+	}
+}

@@ -1,0 +1,42 @@
+[06-Nov-2013 16:23:15] PHP Warning:  mysql_real_escape_string() [<a href='function.mysql-real-escape-string'>function.mysql-real-escape-string</a>]: Access denied for user 'citrus'@'localhost' (using password: NO) in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 6
+[06-Nov-2013 16:23:15] PHP Warning:  mysql_real_escape_string() [<a href='function.mysql-real-escape-string'>function.mysql-real-escape-string</a>]: A link to the server could not be established in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 6
+[06-Nov-2013 16:23:15] PHP Fatal error:  Call to undefined function  createpost() in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 69
+[06-Nov-2013 16:26:13] PHP Fatal error:  Call to undefined function  createpost() in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 69
+[06-Nov-2013 17:02:49] PHP Fatal error:  Call to undefined function  call_integration_hook() in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 73
+[06-Nov-2013 17:17:24] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 12
+[06-Nov-2013 17:17:24] PHP Fatal error:  Function name must be a string in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 170
+[06-Nov-2013 17:18:24] PHP Fatal error:  Function name must be a string in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 171
+[06-Nov-2013 17:38:47] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 194
+[06-Nov-2013 17:39:10] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 194
+[06-Nov-2013 17:41:43] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 200
+[06-Nov-2013 17:42:20] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 13
+[06-Nov-2013 17:42:20] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 200
+[06-Nov-2013 17:44:38] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 200
+[06-Nov-2013 17:44:51] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, string given in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 200
+[06-Nov-2013 17:45:36] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, string given in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 200
+[06-Nov-2013 17:51:19] PHP Fatal error:  Function name must be a string in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 223
+[06-Nov-2013 17:55:45] PHP Fatal error:  Call to undefined function  smf_db_quote() in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 462
+[06-Nov-2013 18:00:09] PHP Fatal error:  Cannot redeclare smf_db_insert() (previously declared in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php:429) in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 641
+[06-Nov-2013 18:01:47] PHP Fatal error:  Call to undefined function  db_fatal_error() in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 103
+[06-Nov-2013 18:09:43] PHP Fatal error:  Unsupported operand types in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 50
+[06-Nov-2013 18:17:55] PHP Fatal error:  Call to undefined function  makesmfstyleconnection() in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 97
+[06-Nov-2013 18:21:54] PHP Fatal error:  Call to undefined function  db_fatal_error() in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 103
+[06-Nov-2013 18:23:07] PHP Fatal error:  Unsupported operand types in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 50
+[06-Nov-2013 18:28:05] PHP Fatal error:  Unsupported operand types in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 50
+[06-Nov-2013 18:29:18] PHP Fatal error:  Unsupported operand types in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 50
+[06-Nov-2013 18:29:34] PHP Fatal error:  Unsupported operand types in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 50
+[06-Nov-2013 18:29:44] PHP Fatal error:  Unsupported operand types in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 50
+[06-Nov-2013 18:29:53] PHP Fatal error:  Unsupported operand types in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 50
+[06-Nov-2013 18:31:13] PHP Fatal error:  Call to undefined function  push() in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 28
+[06-Nov-2013 18:32:45] PHP Parse error:  syntax error, unexpected T_DOUBLE_ARROW in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 29
+[06-Nov-2013 18:33:08] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 50
+[06-Nov-2013 18:33:08] PHP Fatal error:  Call to undefined function  db_fatal_error() in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 103
+[06-Nov-2013 18:34:00] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 50
+[06-Nov-2013 18:34:00] PHP Fatal error:  Call to undefined function  db_fatal_error() in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 103
+[06-Nov-2013 18:34:23] PHP Fatal error:  Call to undefined function  db_fatal_error() in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 103
+[06-Nov-2013 18:36:29] PHP Fatal error:  Call to undefined function  makesmfstyleconnection() in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 97
+[06-Nov-2013 18:37:21] PHP Fatal error:  Call to undefined function  makesmfstyleconnection() in /home4/citrus/public_html/beta/GetPostHandlers/PostComment.php on line 98
+[06-Nov-2013 18:37:40] PHP Fatal error:  Call to undefined function  db_fatal_error() in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 103
+[06-Nov-2013 18:41:24] PHP Fatal error:  Call to undefined function  db_fatal_error() in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 103
+[06-Nov-2013 18:41:42] PHP Fatal error:  The database value you're trying to insert does not exist: id_board<em>(PostComment.php-239)</em> in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 684
+[10-Nov-2013 18:44:24] PHP Fatal error:  The database value you're trying to insert does not exist: id_board<em>(PostComment.php-239)</em> in /home4/citrus/public_html/beta/GetPostHandlers/smf-database-stuff.php on line 684

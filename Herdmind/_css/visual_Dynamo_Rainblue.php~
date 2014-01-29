@@ -1,0 +1,15 @@
+<?PHP
+include "dynamoThemeGenerator.php";
+generateCustomColorCSS("#FFF",                   // Background
+                       "#222",                   // Foreground
+                       "#DCAEEE",                // Theme color
+                       array(                    // Accent colors
+                       	  new Theme("#3C4D85", "white")
+                       	, "#F0599C"
+                       	, "#7744A1"
+                       	, new Theme("#3C4D85", "white")
+                       	, new Theme("#3C4D85", "white")
+                       ),
+                       'url("/_img/TS 512.png")' // Branding
+                       );
+?>

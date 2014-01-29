@@ -1,0 +1,9 @@
+[02-Sep-2013 17:17:10] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home4/citrus/public_html/beta/_incl/contentBuilder.php on line 565
+[02-Sep-2013 17:18:08] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home4/citrus/public_html/beta/_incl/contentBuilder.php on line 565
+[02-Sep-2013 17:18:10] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home4/citrus/public_html/beta/_incl/contentBuilder.php on line 565
+[02-Sep-2013 17:18:43] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home4/citrus/public_html/beta/_incl/contentBuilder.php on line 565
+[03-Sep-2013 13:18:53] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home4/citrus/public_html/beta/_incl/contentBuilder.php on line 574
+[13-Nov-2013 09:12:35] PHP Fatal error:  Cannot redeclare class Topic in /home4/citrus/public_html/beta/search/functions.php on line 157
+[13-Nov-2013 09:12:41] PHP Fatal error:  Cannot redeclare class Topic in /home4/citrus/public_html/beta/search/functions.php on line 157
+[13-Nov-2013 09:12:56] PHP Fatal error:  Cannot redeclare class Topic in /home4/citrus/public_html/beta/search/functions.php on line 157
+[06-Dec-2013 14:56:43] PHP Fatal error:  Cannot redeclare class Topic in /home4/citrus/public_html/beta/search/functions.php on line 157

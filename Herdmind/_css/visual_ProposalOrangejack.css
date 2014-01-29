@@ -1,0 +1,45 @@
+@import url("visual_Proposal.css");
+
+HTML,
+BODY {
+	background-color: #FFF;
+	color: #222;
+}
+
+.branding,
+HEADER {
+	background-image:         linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), url("/_img/AJ 512.png");
+	background-image:      -o-linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), url("/_img/AJ 512.png");
+	background-image:     -ms-linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), url("/_img/AJ 512.png");
+	background-image:    -moz-linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), url("/_img/AJ 512.png");
+	background-image: -webkit-linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), url("/_img/AJ 512.png");
+}
+
+.themeBack,
+HEADER,
+FOOTER,
+.portal LI :link,
+.portal LI :visited,
+.topics>* :link,
+.topics>* :visited,
+#SIDEBAR {
+	background-color: #FFC36B;
+	color: inherit;
+}
+
+.accentBack,
+SELECT,
+SELECT OPTION,
+BUTTON,
+INPUT[type="button"],
+INPUT[type="submit"],
+INPUT[type="reset"],
+#SIDEBAR UL>LI>:link,
+#SIDEBAR UL>LI>:visited {
+	background-color: #FBF9AF !important;
+}
+
+.accentBorder,
+INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]) {
+	border-color: #FBF9AF;
+}

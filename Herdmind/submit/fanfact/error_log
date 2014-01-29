@@ -1,0 +1,5 @@
+[09-Jan-2014 14:53:32] PHP Warning:  mysqli_fetch_array() expects at most 2 parameters, 3 given in /home4/citrus/public_html/beta/_incl/contentBuilder.php on line 1083
+[09-Jan-2014 14:54:00] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, object given in /home4/citrus/public_html/beta/_incl/contentBuilder.php on line 1083
+[09-Jan-2014 14:57:41] PHP Fatal error:  Call to undefined function  builddefaultheadcontent() in /home4/citrus/public_html/beta/submit/fanfact/index.php on line 13
+[13-Jan-2014 12:47:35] PHP Warning:  strpos() [<a href='function.strpos'>function.strpos</a>]: Offset not contained in string in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 359
+[13-Jan-2014 12:50:42] PHP Warning:  Wrong parameter count for explode() in /home4/citrus/public_html/beta/submit/fanfact/index.php on line 66

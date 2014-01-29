@@ -1,0 +1,10 @@
+<?PHP
+include "dynamoThemeGenerator.php";
+generateCustomColorCSS(
+                       , "#FFF"                          // Background
+                       , "#222"                          // Foreground
+                       , "#F1F1F3"                       // Theme color
+                       , new Theme("#6A50A7", "#F1F1F3") // Accent color
+                       , 'url("/_img/Rt 512.png")'       // Branding
+                       );
+?>

@@ -1,0 +1,158 @@
+<?PHP
+function open()
+{
+	//header('Content-Description: File Transfer');
+	header("Content-type: text/css");
+	//header('Content-Disposition: attachment; filename=LOLdunno');
+	header('Content-Transfer-Encoding: binary');
+	header('Expires: 0');
+	header('Cache-Control: max-age=' . 60*60*24); // Cache no longer than one day. This means that the calculations are only performed once a day
+	header('Pragma: public');
+	// header('Content-Length: ' . filesize($this));
+	ob_clean();
+}
+function seal()
+{
+	flush();
+	exit;
+}
+	
+/**
+ * Generates a CSS file for the Dynamo visual style.
+ * 
+ * @param $background   The background color for the general site layout. Must be a string containing a valid CSS color
+ * @param $foreground   The foreground color for the general site layout. Must be a string containing a valid CSS color
+ * @param $themeColor   The background color for the general site layout. Must be a string containing a valid CSS color
+ * @param $accentColors The colors of the theme accents.
+ *                      Valid values:
+ *                      	 - A string containing a valid CSS color for the backgrounds
+ *                      	 - A Theme object
+ *                      	 - A array of strings containing valid CSS colors for the backgrounds
+ *                      	 - An array of Theme objects
+ * @param $brandImage    The image to be placed in branding areas. Must be a string containing a valid CSS background image.
+ */
+function generateCustomColorCSS($background, $foreground, $themeColor, $accentColors, $brandImage = null)
+{
+	open();
+	
+	echo '@import url("visual_Dynamo.css");
+
+HTML,
+BODY {
+	background-color: ' . $background . ';
+	background-size: cover;
+	color: ' . $foreground . ';
+}
+';
+	if ($brandImage)
+		echo '
+.branded,
+HEADER {
+	background-image:         linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), ' . $brandImage . ';
+	background-image:      -o-linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), ' . $brandImage . ';
+	background-image:     -ms-linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), ' . $brandImage . ';
+	background-image:    -moz-linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), ' . $brandImage . ';
+	background-image: -webkit-linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), ' . $brandImage . ';
+}
+';
+	echo '
+.themeBack,
+HEADER,
+FOOTER,
+.portal LI :link,
+.portal LI :visited,
+.topics>* :link,
+.topics>* :visited,
+#SIDEBAR {
+	background-color: ' . $themeColor . ';
+	color: inherit;
+}
+';
+	if (is_array($accentColors))
+	{
+		$len = count($accentColors);
+		for($i = 1; $i <= $len; $i++)
+		{
+			echo '
+         .accentBack:nth-of-type(' . $len . 'n+' . $i . '),
+              SELECT:nth-of-type(' . $len . 'n+' . $i . '),
+       SELECT OPTION:nth-of-type(' . $len . 'n+' . $i . '),
+              BUTTON:nth-of-type(' . $len . 'n+' . $i . '),
+INPUT[type="button"]:nth-of-type(' . $len . 'n+' . $i . '),
+INPUT[type="submit"]:nth-of-type(' . $len . 'n+' . $i . '),
+ INPUT[type="reset"]:nth-of-type(' . $len . 'n+' . $i . '),
+         #SIDEBAR LI:nth-of-type(' . $len . 'n+' . $i . ')>:link,
+         #SIDEBAR LI:nth-of-type(' . $len . 'n+' . $i . ')>:visited {';
+			 
+			 if ($accentColors[$i-1] instanceof Theme)
+				echo'
+	background-color:' . $accentColors[$i-1]->bg . ' !important;
+	color:'            . $accentColors[$i-1]->fg . ' !important;
+}';
+			 else
+				echo '
+	background-color:' . $accentColors[$i-1] . ' !important;
+}';
+		}
+		echo '
+';
+		for($i = 1; $i <= $len; $i++)
+		{
+			echo '
+                                                      .accentBorder:nth-of-type(' . $len . 'n+' . $i . '),
+INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]):nth-of-type(' . $len . 'n+' . $i . ') {';
+			 if ($accentColors[$i-1] instanceof Theme)
+				echo '
+	border-color: ' . $accentColors[$i-1]->bg . ';
+	color: ' . $accentColors[$i-1]->fg . ';
+}';
+			else
+				echo '
+	border-color: ' . $accentColors[$i-1] . ';
+}';
+		}
+	}
+	else
+	{
+		echo '
+.accentBack,
+SELECT,
+SELECT OPTION,
+BUTTON,
+INPUT[type="button"],
+INPUT[type="submit"],
+INPUT[type="reset"],
+#SIDEBAR LI>:link,
+#SIDEBAR LI>:visited {';
+		if ($accentColors instanceof Theme)
+			echo '
+	background-color:' . $accentColors->bg . ' !important;
+	color:' . $accentColors->fg . ' !important;';
+		else
+			echo '
+	background-color:' . $accentColors . ' !important;';
+		echo '
+}
+
+.accentBorder,
+INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]) {
+	border-color:' . ($accentColors instanceof Theme ? $accentColors->bg : $accentColors) . ' !important;';
+		echo '
+}';
+	}
+	
+	seal();
+}
+
+class Theme
+{
+	function __construct($background, $foreground)
+	{
+		$this->bg = $background;
+		$this->fg = $foreground;
+	}
+	
+	function getBackground() { return $this->bg; }
+	function getForeground() { return $this->fg; }
+}
+?>

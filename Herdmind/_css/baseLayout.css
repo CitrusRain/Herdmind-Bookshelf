@@ -1,0 +1,1247 @@
+/**
+ * The base stylesheet, used for the layout of the entire site. Visual stylesheets should use this sheet and NOT implement their
+ * own page layout.
+ * Created by Blue Husky Studios for Herdmind. Copyright ©2013 Creative Commons 3.0 BY-SA
+ * 
+ * @author Kyli Rouge
+ * @author Ryan Young
+ * @since 2013-02-24
+ */
+ 
+ 
+ 
+ /* NOTES:
+ 
+Media queries:
+	- Mobile devices with small screens:
+		@media handheld, screen and (max-device-width: 4in)
+	- Small windows:
+		@media all and (max-width: 40em)
+	- Mobile devices with small screens or small windows:
+		@media handheld, screen and (max-device-width: 4in), all and (max-width: 40em)
+	- Normal or Large windows:
+		@media all and (max-width: 40em)
+
+ */
+
+
+
+@import url("fonts.css");
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+
+
+
+/***** BEGIN Universal Basics *****/
+*|*{
+	/* position: relative; so top, bottom, left, right, and z-index work on ALL items (causes problems with text boxes overlapping controls */
+	
+	/**** BEGIN Unifying Animation Set ****/ 
+	/* The purpose of this is so that when basic CSS animations/transitions occur, they appear in-sync */
+	        animation-timing-function: ease-in-out;
+	     -o-animation-timing-function: ease-in-out;
+	    -ms-animation-timing-function: ease-in-out;
+	   -moz-animation-timing-function: ease-in-out;
+	-webkit-animation-timing-function: ease-in-out;
+	
+	        transition-property: none;
+	     -o-transition-property: none;
+	    -ms-transition-property: none;
+	   -moz-transition-property: none;
+	-webkit-transition-property: none;
+	        transition-duration: 0.5s;
+	     -o-transition-duration: 0.5s;
+	    -ms-transition-duration: 0.5s;
+	   -moz-transition-duration: 0.5s;
+	-webkit-transition-duration: 0.5s;
+	        transition-timing-function: ease-in-out;
+	     -o-transition-timing-function: ease-in-out;
+	    -ms-transition-timing-function: ease-in-out;
+	   -moz-transition-timing-function: ease-in-out;
+	-webkit-transition-timing-function: ease-in-out;
+	/**** END Unifying Animation Set ****/
+}
+
+/**** BEGIN Convenience classes ****/
+.devalert {
+	color: #FF0 !important;
+	background-color: #F00 !important;
+	font-style: oblique !important;
+	font-weight: bold !important;
+	transform: scale(1.1) !important;
+	-o-transform: scale(1.1) !important;
+	-ms-transform: scale(1.1) !important;
+	-moz-transform: scale(1.1) !important;
+	-webkit-transform: scale(1.1) !important;
+}
+	.devalert::before,
+	.devalert::after {
+		content: " !!! ";
+	}
+
+.block {
+	display: block;
+}
+.smallFont {
+	font-size: small;
+}
+.cursorDefault {
+	cursor: default !important;
+}
+/**** END Convenience classes ****/
+	
+:root {
+	cursor: default;
+	font-family: 'Segoe UI', 'Roboto', 'Ubuntu', 'Source Sans Pro', 'Open Sans', 'Droid Sans', sans-serif;
+}
+BODY {
+	margin: 0 1em;
+	padding: 8em 0 0 2em; /* 6em == maximum header height + first sitenav, 2em == sidebar2 width */
+	
+	transition-property: padding-left; /* For Sidebar2 */
+	-o-transition-property: padding-left;
+	-ms-transition-property: padding-left;
+	-moz-transition-property: padding-left;
+	-webkit-transition-property: padding-left;
+}
+@media handheld, screen and (max-device-width: 40em), all and (max-width: 40em) {
+	BODY {
+		padding: 5em 0 0;
+	}
+}
+
+CENTER,
+.centered {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	text-indent: 0;
+	vertical-align: middle;
+}
+
+CODE {
+	font-family: "lucida Console", "Courier New", monospace;
+}
+
+HR {
+	border-color: rgba(128,128,128, 0.5);
+	border-style: solid none none;
+	border-width: thin;
+	max-height: 0;
+	padding: 0;
+}
+
+/**** BEGIN Dialogs ****/
+DIALOG {/* HTML5 compatibility for non-webkit (see http://www.w3.org/html/wg/drafts/html/master/interactive-elements.html#the-dialog-element )*/
+	display: none;
+	position: fixed;
+	top: 50%;
+}
+	DIALOG[OPEN] {
+		display: inline-block;
+	}
+.dialogHolder {
+	display: none;
+	height: 100%;
+	left: 0;
+	position: fixed;
+	text-align: center;
+	top: 0;
+	width: 100%;
+	z-index: 2000000000;
+}
+	.dialogHolder DIALOG {
+		display: inline-block;
+		position: relative;
+		top: auto;
+	}
+BODY.withDialog .dialogHolder {
+	display: block;
+}
+/**** END Dialogs ****/
+
+
+H1, H2, H3, H4, H5, H6 {
+	font-family: "Segoe UI", "Roboto", "Ubuntu", "Source Sans Pro", sans-serif;
+	margin: 1.5em 0;
+}
+H1, H2, H3 {
+	text-align: center;
+}
+H4, H5, H6 {
+	text-align: left;
+}
+H1 {
+	font-family: "Segoe UI Light", "Roboto", "Segoe UI", "Ubuntu Light", "Ubuntu", "Source Sans Pro", sans-serif;
+	font-size: 3em;
+	font-weight: 100;
+}
+	BODY>HEADER+H1:first-of-type,
+	BODY>HEADER+* H1:first-of-type,
+	BODY>HEADER+H2:first-of-type,
+	BODY>HEADER+* H2:first-of-type { /* The page title */
+		margin-top: 0;
+	}
+H2 {
+	font-family: "Segoe UI Semilight", "Roboto", "Segoe UI Light", "Segoe UI", "Ubuntu Light", "Ubuntu", "Source Sans Pro", sans-serif;
+	font-size: 2.5em;
+	font-weight: 200;
+}
+H3 {
+	font-family: "Segoe UI Semilight", "Roboto", "Segoe UI Light", "Segoe UI", "Ubuntu Light", "Ubuntu", "Source Sans Pro", sans-serif;
+	font-size: 2em;
+	font-weight: 300;
+}
+H4 {
+	font-size: 2em;
+	font-weight: normal;
+}
+H5 {
+	font-family: "Segoe UI Semibold", "Roboto", "Segoe UI", "Ubuntu", "Source Sans Pro", sans-serif;
+	font-size: 1.75em;
+	font-weight: 500;
+}
+H6 {
+	font-family: "Segoe UI Bold", "Roboto", "Segoe UI", "Ubuntu", "Source Sans Pro", sans-serif;
+	font-size: 1.25em;
+	font-weight: 600;
+}
+
+IMG {
+	max-width: 100%;
+}
+
+INPUT,
+INPUT[type="text"],
+INPUT[type="password"],
+INPUT[type="search"] {
+	max-width: 100%;
+}
+
+INPUT[type="button"].close,
+INPUT[type="submit"].close,
+INPUT[type="reset"].close {
+	content: "×";
+	float: right;
+	padding: 0 0.25em;
+}
+
+P {
+	margin: 1em 0;
+	text-indent: 2em;
+}
+	P:last-child {
+		margin-bottom: 0;
+	}
+	P:first-child {
+		margin-top: 0;
+	}
+	P.focus {
+		text-align: center;
+	}
+
+TABLE.collapsed {
+	border-collapse: collapse;
+}
+
+/**** BEGIN Lists ****/
+LI.plain,
+OL.plain,
+UL.plain {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+/**** END Lists ****/
+
+:link IMG,
+:visited IMG {
+	border: none;
+}
+
+:link,
+:visited,
+A[ONCLICK] {
+	cursor: pointer;
+}
+
+:target {
+	position: relative;
+	z-index: 2000; /* Header index + 1000 */
+}
+
+
+
+/**** BEGIN table layout ****/
+.table {
+	display: table;
+}
+	.table .caption {
+		display: table-caption;
+	}
+	.thead {
+		display: table-header-group;
+	}
+	.tbody {
+		display: table-row-group;
+	}
+	.tfoot {
+		display: table-BODY>FOOTER-group;
+	}
+		.tr {
+			display: table-row;
+		}
+			.th,
+			.td {
+				display: table-cell;
+			}
+			.th {
+				font-weight: bold;
+			}
+/**** END table layout ****/
+
+
+
+@media handheld, all and (max-device-width: 4in) {
+	BUTTON,
+	INPUT,
+	SELECT,
+	#SIDEBAR :link,
+	#SIDEBAR :visited{
+		padding: 0.5em 1em;
+	}
+}
+
+
+
+/**** BEGIN General Classes ****/
+@media all and (min-width: 0) {
+	.hideWhenMediaQuery,
+	.hideIfMediaQuery {
+		display: none !important;
+		height: 0 !important;
+		line-height: 0 !important;
+		margin: 0 !important;
+		opacity: 0 !important;
+		padding: 0 !important;
+		visibility: hidden !important;
+		width: 0 !important;
+	}
+}
+
+.meta {
+	font-size: smaller;
+}
+
+.alert {
+	background: #FBB;
+	border: thin solid #B22;
+	color: #000;
+	display: block;
+	font-size: 2em;
+	padding: 0.5em;
+	text-align: center;
+	width: 100%;
+}
+.alert.warning {
+	background-color: #FFB;
+	border-color: #BB2;
+}
+/**** END General Classes ****/
+/***** END Universal Basics *****/
+
+
+
+/***** BEGIN Body Layout *****/
+/**** BEGIN Header Layout ****/
+BODY>HEADER {
+	display: block;
+	left: 0;
+	min-height: 3em;
+	max-height: 6em;
+	padding: 0;
+	position: fixed;
+	right: 0;
+	text-align: right;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+}
+	@media all and (max-width: 40em) {
+		BODY>HEADER {
+			font-size: 75%;
+			padding-top: 0.5em;
+			line-height: 0.8em;
+		}
+	}
+	BODY>HEADER :link,
+	BODY>HEADER :visited,
+	BODY>HEADER A[ONCLICK] {
+	}
+	BODY>HEADER>H1 {
+		clear: both;
+		display: inline-block;
+		float: left;
+		font-family: inherit;
+		font-size: 2em;
+		margin: 0 1em 0 0;
+		padding-left: 1em;
+		font-weight: normal;
+	}
+	BODY>HEADER>H1 {
+	}
+	BODY>HEADER>H1 .slogan {
+		display: inline-block;
+		font-size: 50%;
+		font-style: italic;
+		margin-top: 1em;
+	}
+	
+	BODY>HEADER>NAV {
+		display: block;
+		margin: 0 1em;
+		padding-right: 1em;
+		text-align: right;
+	}
+		BODY>HEADER>NAV>UL {
+			display: inline-block;
+			line-height: 3em;
+			margin: 0;
+			padding: 0;
+			vertical-align: text-bottom;
+			white-space: nowrap;
+		}
+			BODY>HEADER>NAV>UL>LI {
+				display: inline-block;
+				margin-left: 1em;
+			}
+				BODY>HEADER>NAV>UL>LI>:link,
+				BODY>HEADER>NAV>UL>LI>:visited,
+				BODY>HEADER>NAV>UL>LI>A[ONCLICK] {
+					display: block;
+					line-height: 1.5em;
+				}
+
+	/*** BEGIN Old Site Navbar *** Old code, archived for reference 2013-03-18
+	BODY>HEADER>NAV#SITENAV>UL {
+		bottom: -2em;
+		height: 2em !important;
+		left: 1em;
+		line-height: 2em;
+		margin: 0 -1em; /* Body left and right margins are 1em *
+		position: absolute;
+		text-align: center;
+		width: 100%;
+		z-index: 0;
+		
+		transition-property: bottom, height, line-height, opacity;
+		-o-transition-property: bottom, height, line-height, opacity;
+		-ms-transition-property: bottom, height, line-height, opacity;
+		-moz-transition-property: bottom, height, line-height, opacity;
+		-webkit-transition-property: bottom, height, line-height, opacity;
+		
+		transition-duration: 0.25s;
+		-o-transition-duration: 0.25s;
+		-ms-transition-duration: 0.25s;
+		-moz-transition-duration: 0.25s;
+		-webkit-transition-duration: 0.25s;
+	}
+	
+		@media screen and (min-device-width: 4in) {
+			/*BODY>HEADER:not(:hover):not(:focus)>NAV#SITENAV>UL { /* Before it's shown, and after the user lets off 
+				bottom: 0;
+				height: 0 !important;
+				line-height: 0;
+				opacity: 0;
+				
+				transition-delay: 0.5s;
+				-o-transition-delay: 0.5s;
+				-ms-transition-delay: 0.5s;
+				-moz-transition-delay: 0.5s;
+				-webkit-transition-delay: 0.5s;
+			}*
+		}
+				BODY>HEADER>NAV#SITENAV>UL>LI {
+					vertical-align: top;
+				}
+				BODY>HEADER>NAV#SITENAV>UL LI {
+					z-index: 0;
+				}
+					BODY>HEADER>NAV#SITENAV>UL LI :link,
+					BODY>HEADER>NAV#SITENAV>UL LI :visited {
+						padding: 0;
+					}
+					BODY>HEADER>NAV#SITENAV>UL>LI UL {
+						bottom: -2em;
+						height: 2em;
+						left: 1em;
+						margin: 0 -1em;
+						overflow: hidden;
+						padding: 0;
+						position: absolute;
+						width: 100%;
+						z-index: 0;
+		
+						transition-property: bottom, height, line-height, opacity;
+						-o-transition-property: bottom, height, line-height, opacity;
+						-ms-transition-property: bottom, height, line-height, opacity;
+						-moz-transition-property: bottom, height, line-height, opacity;
+						-webkit-transition-property: bottom, height, line-height, opacity;
+						
+						transition-duration: 0.25s;
+						-o-transition-duration: 0.25s;
+						-ms-transition-duration: 0.25s;
+						-moz-transition-duration: 0.25s;
+						-webkit-transition-duration: 0.25s;
+					}
+	
+					/*@media screen and (min-device-width: 4in) {*
+						BODY>HEADER>NAV#SITENAV>UL>LI:not(:hover):not(:focus) UL {
+							bottom: 0;
+							height: 0;
+							line-height: 0;
+							opacity: 0;
+							
+							transition-delay: 0.25s;
+							-o-transition-delay: 0.25s;
+							-ms-transition-delay: 0.25s;
+							-moz-transition-delay: 0.25s;
+							-webkit-transition-delay: 0.25s;
+						}
+					/*}*
+						BODY>HEADER>NAV#SITENAV>UL>LI UL>LI {
+							display: inline-block;
+							line-height: 2em;
+						}
+	BODY>HEADER>NAV#SITENAV FORM#SEARCH_FORM INPUT {
+		width: 10em;
+		
+		transition-property: width;
+		-o-transition-property: width;
+		-ms-transition-property: width;
+		-moz-transition-property: width;
+		-webkit-transition-property: width;
+	}
+		BODY>HEADER>NAV#SITENAV FORM#SEARCH_FORM INPUT:not(:focus) {
+			width: 5em;
+		}
+	/*** END Old Site Navbar ***/
+/**** END Header Layout ****/
+
+
+
+/**** BEGIN Sidebar Layout ****/ /* NOTE: The default layout for the sidebar is the "mobile" one, for compatibility reasons */
+#SIDEBAR {
+	height: auto;
+	left: 0;
+	margin: 0;
+	padding: 1em 0;
+	position: relative;
+	text-align: center;
+	top: 0;
+	width: 100%;
+}
+	#SIDEBAR INPUT,
+	#SIDEBAR SELECT {
+		margin: 0.5em 0;
+	}
+	
+	#SIDEBAR :link,
+	#SIDEBAR :visited {
+		display: block;
+		padding: 0.5em 0.25em;
+	}
+	#SIDEBAR #SIDEBAR_PIN {
+		display: none;
+	}
+	#SIDEBAR UL {
+		list-style-type: none;
+		padding: 0;
+	}
+		#SIDEBAR LI>UL {
+			padding: 0 1em 1em;
+		}
+			#SIDEBAR LI>UL :link,
+			#SIDEBAR LI>UL :visited {
+				white-space: nowrap;
+			}
+		
+	#SIDEBAR OL {
+		padding-left: 2em;
+	}
+		#SIDEBAR OL>LI :link,
+		#SIDEBAR OL>LI :visited {
+			margin-left: -2em;
+			text-indent: 2em;
+		}
+@media screen and (min-width: 40em) and (min-device-width: 40em) {
+	#SIDEBAR {
+		height: 100%;
+		left: -10em;
+		overflow: hidden;
+		padding: 0;
+		position: fixed;
+		text-align: center;
+		top: 0;
+		width: 12em !important;
+		z-index: 10;
+		
+		transition-property: left;
+		-o-transition-property: left;
+		-ms-transition-property: left;
+		-moz-transition-property: left;
+		-webkit-transition-property: left;
+	}
+		#SIDEBAR > * {
+			margin: 0.5em 0;
+			opacity: 0;
+		
+			transition-property: opacity;
+			-o-transition-property: opacity;
+			-ms-transition-property: opacity;
+			-moz-transition-property: opacity;
+			-webkit-transition-property: opacity;
+		}
+		
+		#SIDEBAR H2 {
+			font-size: 2em;
+			line-height: 1em;
+			height: 1em;
+			margin: 0;
+			opacity: 1 !important;
+			padding-top: 3em; /* max header height / font size */
+			
+			transform: rotate(90deg) translate(2em, -4em);
+			transform-origin: 50% 50%;
+			-o-transform: rotate(90deg) translate(2em, -4em);
+			-o-transform-origin: 50% 50%;
+			-ms-transform: rotate(90deg) translate(2em, -4em);
+			-ms-transform-origin: 50% 50%;
+			-moz-transform: rotate(90deg) translate(2em, -4em);
+			-moz-transform-origin: 50% 50%;
+			-webkit-transform: rotate(90deg) translate(2em, -4em);
+			-webkit-transform-origin: 50% 50%;
+			
+			-webkit-transition-property: -webkit-transform, -webkit-transform-origin;
+			-moz-transition-property: -moz-transform, -moz-transform-origin;
+			-ms-transition-property: -ms-transform, -ms-transform-origin;
+			-o-transition-property: -o-transform, -o-transform-origin;
+			transition-property: transform, transform-origin;
+		}
+		
+		#SIDEBAR INPUT[type="search"] {
+			margin: 0.5em 1em;
+		}
+		
+		#SIDEBAR LI>UL{
+			left: 0em;
+			margin-top: -2em;
+			max-width: 0 !important;
+			overflow: hidden;
+			padding: 0;
+			position: fixed !important;
+			width: 10em;
+			z-index: 0;
+			
+			transition-property: max-width, left;
+			-o-transition-property: max-width, left;
+			-ms-transition-property: max-width, left;
+			-moz-transition-property: max-width, left;
+			-webkit-transition-property: max-width, left;
+		}
+		#SIDEBAR:hover LI>UL,
+		#SIDEBAR:focus LI>UL,
+		#SIDEBAR:active LI>UL,
+		BODY.withSidebar #SIDEBAR LI>UL{
+			left: 12em;
+		}
+		#SIDEBAR LI:hover>UL,
+		#SIDEBAR LI:focus>UL,
+		#SIDEBAR LI:active>UL {
+			max-width: 10em !important;
+		}
+		
+		#SIDEBAR :link,
+		#SIDEBAR :visited {
+			padding: 0.25em;
+		}
+		#SIDEBAR SELECT {
+			margin: 0.5em 1em;
+		}
+		
+		#SIDEBAR #SIDEBAR_PIN {
+			appearance: none;
+			-o-appearance: none;
+			-ms-appearance: none;
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			display: inline-block;
+			height: 2em;
+			margin: 0 auto;
+			opacity: 1 !important;
+			width: 2em;
+		}
+		
+		#SIDEBAR #SIDEBAR_PIN,
+		#SIDEBAR LABEL {
+			cursor:pointer;
+		}
+
+	BODY.withSidebar {
+		padding-left: 12em !important; /* Width of sidebar plus its horizontal padding */
+	}
+		BODY.withSidebar #SIDEBAR,
+		#SIDEBAR:hover,
+		#SIDEBAR:focus,
+		#SIDEBAR:active {
+			left: 0;
+			overflow-y: auto;
+		}
+		/*@media all and (max-height: 45em) {
+			BODY.withSidebar #SIDEBAR,
+			#SIDEBAR:hover,
+			#SIDEBAR:focus,
+			#SIDEBAR:active {
+				overflow-y: scroll;
+			}
+		}*/
+		BODY.withSidebar #SIDEBAR > *,
+		#SIDEBAR:hover > *,
+		#SIDEBAR:focus > *,
+		#SIDEBAR:active > * {
+			opacity: 1;
+		}
+		BODY.withSidebar #SIDEBAR H2,
+		#SIDEBAR:hover H2,
+		#SIDEBAR:focus H2,
+		#SIDEBAR:active H2 {
+			font-size: 2em;
+			margin: 0;
+			opacity: 1 !important;
+			
+			transform: rotate(0deg) translate(0em, 0em);
+			transform-origin: 0% 50%;
+			-o-transform: rotate(0deg) translate(0em, 0em);
+			-o-transform-origin: 0% 50%;
+			-ms-transform: rotate(0deg) translate(0em, 0em);
+			-ms-transform-origin: 0% 50%;
+			-moz-transform: rotate(0deg) translate(0em, 0em);
+			-moz-transform-origin: 0% 50%;
+			-webkit-transform: rotate(0deg) translate(0em, 0em);
+			-webkit-transform-origin: 0% 50%;
+		}
+		BODY.withSidebar #SIDEBAR #SIDEBAR_PIN {
+			background-image: url("/_img/pinned.svg");
+		}
+}
+/**** END Sidebar Layout ****/
+
+
+
+/**** BEGIN Logger dialog ****/
+#LOGGER {
+	display: inline-block;
+	line-height: 1;
+	max-width: 16em;
+	text-align: center;
+	vertical-align: middle;
+}
+/**** END Logger dialog ****/
+
+
+
+/**** BEGIN Portal ****/
+.portal {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+	.portal>* {
+		display: inline-block;
+		max-width: 4in;
+		margin: 1em;
+	}
+		.portal>* :link,
+		.portal>* :visited {
+			display: block;
+			padding: 1em;
+		}
+		.portal>* FIGURE {
+			margin: 0;
+		}
+			.portal>* FIGURE IMG{
+				width: 100%;
+			}
+/**** END Portal ****/
+
+
+
+/**** BEGIN News section ****/
+.news>* {
+	display: inline-block;
+	border-top-width: 2.5em;
+}
+	.news>*>H2:first-child {
+		text-align: right;
+		line-height: 1;
+		margin: -1.0em -0.1em 0.1em;
+		padding: 0 0.1em;
+	}
+/**** END News section ****/
+
+
+
+/**** BEGIN Topics ****/
+UL.topics,
+OL.topics,
+UL.topics UL,
+OL.topics UL,
+UL.topics OL,
+OL.topics OL {
+	list-style-type: none;
+	padding: 0;
+}
+	UL.topics>LI,
+	OL.topics>LI {
+		display: block;
+		margin: 0.5em;
+	}
+		UL.topics>LI:first-child,
+		OL.topics>LI:first-child {
+			margin-top: 0;
+		}
+		UL.topics>LI>:link,
+		OL.topics>LI>:link,
+		UL.topics>LI>:visited,
+		OL.topics>LI>:visited {
+			display: block;
+		}
+		UL.topics>LI FIGURE,
+		OL.topics>LI FIGURE {
+			display: table;
+			margin: 0.2em;
+			width: 100%
+		}
+			UL.topics>LI FIGURE>*,
+			OL.topics>LI FIGURE>* {
+				display: inline;
+			}
+			UL.topics>LI FIGURE>IMG,
+			OL.topics>LI FIGURE>IMG {
+				border-radius: 0.2em;
+				float: left;
+				margin-right: 0.5em;
+				min-width: 1cm;
+				width: 25%;
+			}
+/**** END Topics ****/
+
+
+
+/**** BEGIN Fanfacts ****/
+/* styled to look like topics */
+.fanfacts {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.fanfact {
+	clear: both;
+	margin: 0.25em;
+	padding: 0.5em 0.5em 0;
+}
+	.fanfact .vote {
+		border-collapse: collapse;
+		float: left;
+		margin: 0 0.5em 0 0;
+		padding: 0.25em;
+		/*position: relative;
+		z-index: 2;*/
+	}
+		.fanfact .vote td {
+			padding: 0;
+		}
+		.fanfact .vote .counter {
+			font-size: 3em;
+			font-style: normal; /* the counter is a VAR element, which defaults to render italic */
+			font-family: "Tulpen One", Impact, thin, sans-serif;
+		}
+		.fanfact .vote .upvote {
+			margin: 0 0 0.25em 0.5em;
+		}
+		.fanfact .vote .downvote {
+			margin: 0.25em 0 0 0.5em;
+		}
+		.fanfact .vote .upvote,
+		.fanfact .vote .downvote {
+			height: 2em;
+			width: 2em;
+		}
+	.fanfact .fact {
+		display: inline;
+		/*margin-top: -0.25em; causes issues on older versions of Chrome (tested 20)*/
+		z-index: 1;
+	}
+	.fanfact .vote,
+	.fanfact .fact {
+		display: block;
+	}
+	.fanfact .meta {
+		clear: both;
+		display: block;
+		float: none;
+		text-align: right;
+		vertical-align: text-bottom;
+	}
+		.fanfact .meta>.factNum {
+		}
+		.fanfact .meta>.fa { /* Star icon */
+			cursor: pointer;
+			margin-right: 1em;
+		}
+
+
+
+/*** BEGIN Title Popup ***/
+.popname {
+	display: inline;
+	position:relative;
+	/*width:500px;
+	height:70px;
+	list-style:none;
+	cursor:pointer;*/
+	z-index: 1;
+}
+	.popname:hover {
+		z-index: 2;
+	}
+	.popname .informinglink {
+		display: none;
+		left: -2em;
+		position: absolute;
+		margin-top: 1em;
+		width: 9em;
+		padding: 1em;
+		z-index:10;
+	}
+	.popname:focus .informinglink:not(:focus):not(:hover),
+	.popname:hover .informinglink:not(:hover) {
+		display: block;
+	}
+	.informinglink:focus,
+	.informinglink *:focus,
+	.informinglink:hover,
+	.informinglink *:hover {
+		display: none !important;
+	}﻿
+	
+	This fixes something {
+	}	
+	.informinglink DL {
+		margin-bottom: 0;
+	}
+	
+	.informinglink DD {
+		font-weight: normal;
+		margin-left: 0;
+	}
+	
+	.informinglink DT {
+		float: left;
+		font-weight: bold;
+	}
+	
+		.informinglink DT::after {
+			content: ":";
+			padding-right: 0.3em;
+		}
+/*** END Topic popup ***/
+/**** END Fanfacts ****/
+
+
+
+/**** BEGIN Navigator ****/
+NAV.pages {
+	
+}
+	NAV.pages H3 {
+		margin-bottom: 0;
+		font-size: 1.5em;
+	}
+/**** END Navigator ****/
+
+
+
+/**** BEGIN Internal Layout ****/
+BODY>SECTION {
+	margin: 0 auto;
+	max-width: 60em;
+}
+	@media all and (min-width:120em) {
+		BODY {
+			text-align: center;
+		}
+		BODY>SECTION {
+			display: inline-block;
+			text-align: left;
+			text-align: initial;
+			vertical-align: top;
+		}
+	}
+
+.wrappingColumns {
+	/*margin-left: auto;
+	margin-right: auto;*/
+	text-align: center;
+}
+	.wrappingColumns>* {
+		text-align: left;
+		text-align: initial;
+	}
+@media all and (min-width: 40em) {
+	.wrappingColumns {
+		columns: 2;
+		-o-columns: 2;
+		-ms-columns: 2;
+		-moz-columns: 2;
+		-webkit-columns: 2;
+	}
+}
+@media all and (min-width: 60em) {
+	.wrappingColumns {
+		columns: 3;
+		-o-columns: 3;
+		-ms-columns: 3;
+		-moz-columns: 3;
+		-webkit-columns: 3;
+	}
+}
+/*@media all and (min-width: 80em) {
+	.wrappingColumns {
+		columns: 4;
+		-o-columns: 4;
+		-ms-columns: 4;
+		-moz-columns: 4;
+		-webkit-columns: 4;
+	}
+}*/
+/**** END Internal Layout ****/
+
+
+
+/**** BEGIN Search page ****/
+/**** END Search page ****/
+
+
+
+/**** BEGIN BODY>FOOTER Layout ****/
+BODY>FOOTER {
+	display: table;
+	margin: 1em -1em 0; /* 1em == body left/right margin */
+	padding: 1em;
+	text-align: center;
+	width: 100%;
+	}@media all and (max-width:40em){ BODY>FOOTER {
+		display: block;
+	}
+}
+	BODY>FOOTER * {
+		font-size: small;
+		max-width: 100%;
+	}
+	BODY>FOOTER>* {
+		display: /*inline-block*/ table-cell;
+		margin: 0.5em 1em;
+		min-width: 10em;
+		vertical-align: middle;
+		text-align: center;
+		}@media all and (max-width:40em){ BODY>FOOTER>* {
+			display: block;
+			width: auto;
+		}
+	}
+	BODY>FOOTER>*:first-child {
+		margin-top: 0;
+	}
+	BODY>FOOTER>*:last-child {
+		margin-bottom: 0;
+	}
+	BODY>FOOTER P {
+		margin: 0.5em 0;
+	}
+	BODY>FOOTER .links {
+		border-width: thin;
+		border-style: none;
+		border-color: currentcolor;
+		font-size: small;
+	}
+		BODY>FOOTER .links.left {
+			border-style: none solid none none;
+			padding: 0 0.5em 0 0;
+			}@media all and (max-width:40em){ BODY>FOOTER .links.left {
+				border-style: none none solid none;
+				padding: 0 0 0.5em 0;
+			}
+		}
+		BODY>FOOTER .links.right {
+			border-style: none none none solid;
+			padding: 0 0 0 0.5em;
+			}@media all and (max-width:40em){ BODY>FOOTER .links.right {
+				border-style: solid none none none;
+				padding: 0.5em 0 0 0;
+			}
+		}
+		BODY>FOOTER .links :link,
+		BODY>FOOTER .links :visited {
+			font-weight: normal;
+		}
+		BODY>FOOTER .links>* {
+			display: block;
+			margin: 0 auto;
+			padding: 0;
+		}
+			BODY>FOOTER .links.left>* {
+				text-align: right;
+				}@media all and (max-width:40em){ BODY>FOOTER .links.left>* {
+					text-align: center;
+				}
+			}
+			BODY>FOOTER .links.right>* {
+				text-align: left;
+				}@media all and (max-width:40em){ BODY>FOOTER .links.right>* {
+					text-align: center;
+				}
+			}
+		BODY>FOOTER H2 {
+		display: block;
+		font-size: 1.5em;
+		font-weight: 300;
+		/*border-bottom: 0.1em solid currentColor;*/
+		font-variant: normal;
+		margin: 0;
+	}
+/**** END BODY>FOOTER Layout ****/
+/***** END Body Layout *****/
+
+
+
+@media handheld, all and (max-width: 40em), all and (max-device-width: 40em) { /* Particularly small screens */
+	HTML,
+	BODY {
+		font-family: 'Droid Sans', 'Source Sans Pro', 'Ubuntu', 'Open Sans', sans-serif;
+	}
+	BODY {
+		margin: 0;
+		padding-left: 0;
+		padding-right: 0;
+	}
+		BODY > SECTION {
+			margin-left: 0.5em;
+			margin-right: 0.5em;
+		}
+	
+	H1, H2, H3, H4, H5, H6 {
+		font-family:"Segoe UI", "Roboto", "Source Sans Pro", "Droid Sans", "Ubuntu", fantasy, sans-serif;
+		margin:0.1in;
+	}
+	
+	BODY>HEADER {
+		text-align: center;
+	}
+		BODY>HEADER>H1,
+		BODY>HEADER>NAV {
+			display: inline-block;
+			margin: 0;
+			padding: 0;
+		}
+		BODY>HEADER>NAV {
+			max-width: 100%;
+			overflow-x: auto;
+			overflow-y: hidden;
+		}
+	BODY>FOOTER {
+		margin: 0;
+	}
+}
+
+
+
+.cssPopup,
+.cssPopupHolder {
+	display: none;
+	position: fixed !important;
+	top:0;
+	z-index: 2000000000;
+}
+	.cssPopupHolder .cssPopup {
+		position: relative !important;
+		display: inline-block;
+		vertical-align: top;
+	}
+.cssPopupHolder,
+.cssPopupHolder:target {
+	border-radius: 0;
+	text-align: center;
+	width: 100%;
+}
+.cssPopup:target,
+.cssPopupHolder:target {
+	background-color: rgba(0,0,0, 0.5);
+	display: block;
+}
+DIALOG {
+	display: inline-block !important;
+}
+.cssPopup:target,
+.cssPopupHolder:target .cssPopup {
+	max-height: 100%;
+}
+#LOGGER {
+	text-align: right;
+	padding-bottom: 1em;
+}
+	#LOGGER>* {
+		text-align: center;
+	}
+	#LOGGER H2 {
+		font-size: 2em;
+	}
+	#LOGGER_CLOSE {
+		font-size: 1.5em;
+		width: 1em;
+		height: 1em;
+		display: inline-block;
+		text-align: center;
+		vertical-align: top;
+		line-height: 0.75em;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		border-top: 0;
+	}
+
+.expandWhenTarget {
+	        transition-property: height, padding, overflow;
+	     -o-transition-property: height, padding, overflow;
+	    -ms-transition-property: height, padding, overflow;
+	   -moz-transition-property: height, padding, overflow;
+	-webkit-transition-property: height, padding, overflow;
+}
+	.expandWhenTarget:not(:target) {
+		height: 0;
+		padding-bottom: 0;
+		padding-top: 0;
+		overflow: hidden;
+	}
+
+.button.close {
+	margin-left: auto;
+	width: 1em;
+}
+
+
+/***** BEGIN FontAwesome Overrides *****/
+.fa-recycle:before {
+	content: \267A;
+	font-family: "Segoe UI Emoji", "Emoji", unicode, emoji, sans-serif;
+}
+/***** END FontAwesome Overrides *****/

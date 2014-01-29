@@ -1,0 +1,78 @@
+@import url("visual_Proposal.css");
+
+HTML,
+BODY {
+	background-color: #FFF;
+	background-size: cover;
+	color: #222;
+}
+
+.branded,
+HEADER {
+	background-image:         linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), url("/_img/RD 512.png");
+	background-image:      -o-linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), url("/_img/RD 512.png");
+	background-image:     -ms-linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), url("/_img/RD 512.png");
+	background-image:    -moz-linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), url("/_img/RD 512.png");
+	background-image: -webkit-linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1)), url("/_img/RD 512.png");
+}
+
+.themeBack,
+HEADER,
+FOOTER,
+.portal LI :link,
+.portal LI :visited,
+.topics>* :link,
+.topics>* :visited,
+#SIDEBAR {
+	background-color: #9FE7FF;
+	color: inherit;
+}
+
+.accentBack:nth-of-type(6n+1),
+#SIDEBAR LI:nth-of-type(6n+1)>:link,
+#SIDEBAR LI:nth-of-type(6n+1)>:visited { /* RED */
+	background-color:#FE585A !important;
+}
+.accentBack:nth-of-type(6n+2),
+#SIDEBAR LI:nth-of-type(6n+2)>:link,
+#SIDEBAR LI:nth-of-type(6n+2)>:visited { /* ORANGE */
+	background-color:#FF7D43 !important;
+}
+.accentBack:nth-of-type(6n+3),
+#SIDEBAR LI:nth-of-type(6n+3)>:link,
+#SIDEBAR LI:nth-of-type(6n+3)>:visited { /* YELLOW */
+	background-color:#F2E576 !important;
+}
+.accentBack:nth-of-type(6n+4),
+#SIDEBAR LI:nth-of-type(6n+4)>:link,
+#SIDEBAR LI:nth-of-type(6n+4)>:visited { /* GREEN */
+	background-color:#6ECF5B !important;
+}
+.accentBack:nth-of-type(6n+5),
+SELECT,
+SELECT OPTION,
+BUTTON,
+INPUT[type="button"],
+INPUT[type="submit"],
+INPUT[type="reset"],
+#SIDEBAR LI:nth-of-type(6n+5)>:link,
+#SIDEBAR LI:nth-of-type(6n+5)>:visited { /* BLUE */
+	background-color:#38ABEE !important;
+}
+.accentBack:nth-of-type(6n+6),
+SELECT:nth-of-type(6n+2),
+SELECT OPTION:nth-of-type(6n+2),
+BUTTON:nth-of-type(6n+2),
+INPUT[type="button"]:nth-of-type(6n+2),
+INPUT[type="submit"]:nth-of-type(6n+2),
+INPUT[type="reset"]:nth-of-type(6n+2),
+#SIDEBAR LI:nth-of-type(6n+6)>:link,
+#SIDEBAR LI:nth-of-type(6n+6)>:visited { /* PURPLE */
+	background-color:#75459B;
+	color: white;
+}
+
+.accentBorder,
+INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]) {
+	border-color: #38ABEE;
+}

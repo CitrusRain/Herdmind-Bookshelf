@@ -1,0 +1,151 @@
+[04-Sep-2013 20:34:22] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[05-Sep-2013 18:31:05] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[09-Sep-2013 20:12:40] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[13-Sep-2013 22:27:39] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[15-Sep-2013 10:15:29] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[15-Sep-2013 10:17:49] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[15-Sep-2013 11:50:27] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[19-Sep-2013 18:51:36] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[19-Sep-2013 18:51:36] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[06-Oct-2013 13:55:41] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[06-Oct-2013 13:58:47] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[06-Oct-2013 13:58:54] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[06-Oct-2013 14:03:01] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[06-Oct-2013 18:56:54] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[06-Oct-2013 19:00:14] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[06-Oct-2013 19:00:38] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[06-Oct-2013 19:00:42] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[06-Oct-2013 19:00:44] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 3
+[06-Oct-2013 19:01:48] PHP Fatal error:  Cannot redeclare class Topic in /home4/citrus/public_html/beta/_incl/classes.php on line 23
+[06-Oct-2013 19:01:51] PHP Fatal error:  Cannot redeclare class Topic in /home4/citrus/public_html/beta/_incl/classes.php on line 23
+[06-Oct-2013 19:03:19] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 4
+[06-Oct-2013 19:05:22] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 4
+[06-Oct-2013 19:05:30] PHP Fatal error:  Cannot redeclare class Stylesheet in /home4/citrus/public_html/beta/_incl/classes.php on line 4
+[14-Nov-2013 09:50:50] PHP Fatal error:  Function name must be a string in /home4/citrus/public_html/beta/forums/APIs/smf_2_api.php on line 1923
+[14-Nov-2013 11:51:24] PHP Fatal error:  Function name must be a string in /home4/citrus/public_html/beta/forums/APIs/smf_2_api.php on line 1761
+[14-Nov-2013 11:58:46] PHP Fatal error:  Function name must be a string in /home4/citrus/public_html/beta/forums/APIs/smf_2_api.php on line 1761
+[14-Nov-2013 09:59:20] PHP Fatal error:  Function name must be a string in /home4/citrus/public_html/beta/forums/APIs/smf_2_api.php on line 1923
+[14-Nov-2013 12:08:18] PHP Fatal error:  Function name must be a string in /home4/citrus/public_html/beta/forums/APIs/smf_2_api.php on line 1761
+[13-Jan-2014 11:09:58] PHP Parse error:  syntax error, unexpected T_STRING in /home4/citrus/public_html/beta/topic/index.php on line 27
+[13-Jan-2014 11:10:44] PHP Parse error:  syntax error, unexpected T_STRING in /home4/citrus/public_html/beta/topic/index.php on line 27
+[13-Jan-2014 11:10:48] PHP Parse error:  syntax error, unexpected T_STRING in /home4/citrus/public_html/beta/topic/index.php on line 27
+[13-Jan-2014 11:10:57] PHP Parse error:  syntax error, unexpected T_STRING in /home4/citrus/public_html/beta/topic/index.php on line 28
+[13-Jan-2014 11:12:09] PHP Parse error:  syntax error, unexpected T_STRING in /home4/citrus/public_html/beta/topic/index.php on line 27
+[13-Jan-2014 11:13:47] PHP Parse error:  syntax error, unexpected T_STRING in /home4/citrus/public_html/beta/topic/index.php on line 98
+[13-Jan-2014 11:13:49] PHP Parse error:  syntax error, unexpected T_STRING in /home4/citrus/public_html/beta/topic/index.php on line 98
+[13-Jan-2014 11:13:56] PHP Warning:  setcookie() expects parameter 2 to be string, object given in /home4/citrus/public_html/beta/topic/index.php on line 98
+[13-Jan-2014 11:27:13] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home4/citrus/public_html/beta/topic/index.php on line 98
+[13-Jan-2014 11:27:29] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting '(' in /home4/citrus/public_html/beta/topic/index.php on line 97
+[13-Jan-2014 11:28:39] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting '(' in /home4/citrus/public_html/beta/topic/index.php on line 97
+[13-Jan-2014 11:28:42] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting '(' in /home4/citrus/public_html/beta/topic/index.php on line 97
+[13-Jan-2014 11:28:49] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home4/citrus/public_html/beta/topic/index.php on line 98
+[13-Jan-2014 11:29:14] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home4/citrus/public_html/beta/topic/index.php on line 98
+[13-Jan-2014 11:30:01] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home4/citrus/public_html/beta/topic/index.php on line 99
+[13-Jan-2014 11:30:06] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home4/citrus/public_html/beta/topic/index.php on line 99
+[13-Jan-2014 11:30:33] PHP Warning:  setcookie() expects parameter 2 to be string, array given in /home4/citrus/public_html/beta/topic/index.php on line 99
+[13-Jan-2014 11:36:35] PHP Warning:  unserialize() expects parameter 1 to be string, array given in /home4/citrus/public_html/beta/topic/index.php on line 104
+[13-Jan-2014 11:36:39] PHP Warning:  unserialize() expects parameter 1 to be string, array given in /home4/citrus/public_html/beta/topic/index.php on line 104
+[13-Jan-2014 11:39:38] PHP Warning:  setcookie() expects parameter 2 to be string, array given in /home4/citrus/public_html/beta/topic/index.php on line 106
+[13-Jan-2014 11:40:32] PHP Warning:  setcookie() expects parameter 2 to be string, array given in /home4/citrus/public_html/beta/topic/index.php on line 106
+[13-Jan-2014 11:40:38] PHP Warning:  setcookie() expects parameter 2 to be string, array given in /home4/citrus/public_html/beta/topic/index.php on line 106
+[13-Jan-2014 11:45:30] PHP Warning:  setcookie() expects parameter 2 to be string, array given in /home4/citrus/public_html/beta/topic/index.php on line 106
+[13-Jan-2014 11:45:43] PHP Warning:  setcookie() expects parameter 2 to be string, array given in /home4/citrus/public_html/beta/topic/index.php on line 106
+[13-Jan-2014 11:46:44] PHP Warning:  setcookie() expects parameter 2 to be string, array given in /home4/citrus/public_html/beta/topic/index.php on line 104
+[13-Jan-2014 11:47:02] PHP Warning:  setcookie() expects parameter 2 to be string, array given in /home4/citrus/public_html/beta/topic/index.php on line 104
+[13-Jan-2014 11:47:11] PHP Warning:  setcookie() expects parameter 2 to be string, array given in /home4/citrus/public_html/beta/topic/index.php on line 104
+[13-Jan-2014 11:47:21] PHP Warning:  setcookie() expects parameter 2 to be string, array given in /home4/citrus/public_html/beta/topic/index.php on line 104
+[13-Jan-2014 11:47:22] PHP Warning:  setcookie() expects parameter 2 to be string, array given in /home4/citrus/public_html/beta/topic/index.php on line 104
+[13-Jan-2014 12:03:33] PHP Parse error:  syntax error, unexpected $end, expecting T_VARIABLE or '$' in /home4/citrus/public_html/beta/topic/index.php on line 467
+[13-Jan-2014 12:37:17] PHP Parse error:  syntax error, unexpected T_STRING in /home4/citrus/public_html/beta/topic/index.php on line 96
+[13-Jan-2014 12:37:30] PHP Fatal error:  Cannot redeclare buildstyleswitcherheadcontent() (previously declared in /home4/citrus/public_html/beta/_incl/styleSwitch.php:22) in /home4/citrus/public_html/beta/_incl/styleSwitch.php on line 38
+[15-Jan-2014 12:11:48] PHP Fatal error:  Call to undefined method SimpleXMLElement::count() in /home4/citrus/public_html/beta/_incl/contentBuilder.php on line 461
+[15-Jan-2014 12:13:00] PHP Fatal error:  Call to undefined method SimpleXMLElement::count() in /home4/citrus/public_html/beta/_incl/contentBuilder.php on line 461
+[15-Jan-2014 12:37:32] PHP Parse error:  syntax error, unexpected '<' in /home4/citrus/public_html/beta/_incl/contentBuilder.php on line 511
+[15-Jan-2014 12:38:13] PHP Parse error:  syntax error, unexpected '<' in /home4/citrus/public_html/beta/_incl/contentBuilder.php on line 511
+[15-Jan-2014 12:38:15] PHP Parse error:  syntax error, unexpected '<' in /home4/citrus/public_html/beta/_incl/contentBuilder.php on line 511
+[15-Jan-2014 13:26:49] PHP Fatal error:  Call to undefined function  is_empty() in /home4/citrus/public_html/beta/topic/index.php on line 107
+[15-Jan-2014 13:26:57] PHP Fatal error:  Call to undefined function  isempty() in /home4/citrus/public_html/beta/topic/index.php on line 107
+[15-Jan-2014 14:16:40] PHP Fatal error:  Call to a member function getText() on a non-object in /home4/citrus/public_html/beta/topic/index.php on line 233
+[15-Jan-2014 14:16:48] PHP Catchable fatal error:  Method Name::__toString() must return a string value in /home4/citrus/public_html/beta/topic/index.php on line 297
+[15-Jan-2014 14:17:24] PHP Fatal error:  Call to a member function getText() on a non-object in /home4/citrus/public_html/beta/topic/index.php on line 233
+[15-Jan-2014 14:19:48] PHP Catchable fatal error:  Method Name::__toString() must return a string value in /home4/citrus/public_html/beta/topic/index.php on line 297
+[22-Jan-2014 14:24:23] PHP Fatal error:  Uncaught exception 'Exception' with message 'String could not be parsed as XML' in /home4/citrus/public_html/beta/_incl/classes.php:98
+Stack trace:
+#0 /home4/citrus/public_html/beta/_incl/classes.php(98): SimpleXMLElement->__construct('')
+#1 /home4/citrus/public_html/beta/topic/index.php(101): Topic->getFacts()
+#2 {main}
+  thrown in /home4/citrus/public_html/beta/_incl/classes.php on line 98
+[22-Jan-2014 14:25:34] PHP Parse error:  syntax error, unexpected $end in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 1162
+[22-Jan-2014 14:26:09] PHP Parse error:  syntax error, unexpected $end in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 1162
+[22-Jan-2014 14:26:20] PHP Parse error:  syntax error, unexpected $end in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 1162
+[22-Jan-2014 14:26:49] PHP Parse error:  syntax error, unexpected T_DNUMBER in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 445
+[22-Jan-2014 14:27:04] PHP Fatal error:  Uncaught exception 'Exception' with message 'String could not be parsed as XML' in /home4/citrus/public_html/beta/_incl/classes.php:98
+Stack trace:
+#0 /home4/citrus/public_html/beta/_incl/classes.php(98): SimpleXMLElement->__construct('')
+#1 /home4/citrus/public_html/beta/topic/index.php(101): Topic->getFacts()
+#2 {main}
+  thrown in /home4/citrus/public_html/beta/_incl/classes.php on line 98
+[22-Jan-2014 14:27:12] PHP Parse error:  syntax error, unexpected $end in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 1163
+[22-Jan-2014 14:27:42] PHP Parse error:  syntax error, unexpected $end in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 1158
+[22-Jan-2014 14:28:52] PHP Parse error:  syntax error, unexpected $end in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 1027
+[22-Jan-2014 14:31:12] PHP Parse error:  syntax error, unexpected $end in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 1188
+[22-Jan-2014 14:50:54] PHP Fatal error:  Cannot redeclare getsubmissionsbymemberid() (previously declared in /home4/citrus/public_html/beta/_incl/RetreiveData.php:353) in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 353
+[22-Jan-2014 14:51:53] PHP Fatal error:  Cannot redeclare getsubmissionsbymemberid() (previously declared in /home4/citrus/public_html/beta/_incl/RetreiveData.php:353) in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 353
+[22-Jan-2014 15:00:23] PHP Fatal error:  Cannot redeclare getsubmissionsbymemberid() (previously declared in /home4/citrus/public_html/beta/_incl/RetreiveData.php:353) in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 353
+[22-Jan-2014 15:03:38] PHP Fatal error:  Cannot redeclare getsubmissionsbymemberid() (previously declared in /home4/citrus/public_html/beta/_incl/RetreiveData.php:353) in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 353
+[22-Jan-2014 15:12:38] PHP Fatal error:  Cannot redeclare getsubmissionlistbymemberid() (previously declared in /home4/citrus/public_html/beta/_incl/RetreiveData.php:353) in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 353
+[22-Jan-2014 15:16:27] PHP Fatal error:  Cannot redeclare getsubmissionlistbymemberid() (previously declared in /home4/citrus/public_html/beta/_incl/RetreiveData.php:353) in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 353
+[22-Jan-2014 15:17:28] PHP Fatal error:  Cannot redeclare getsubmissionlistbymemberid() (previously declared in /home4/citrus/public_html/beta/_incl/RetreiveData.php:353) in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 353
+[22-Jan-2014 15:19:31] PHP Fatal error:  Cannot redeclare getsubmissionlistbymemberid() (previously declared in /home4/citrus/public_html/beta/_incl/RetreiveData.php:353) in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 353
+[22-Jan-2014 15:20:26] PHP Parse error:  syntax error, unexpected '}' in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 444
+[22-Jan-2014 15:21:25] PHP Fatal error:  Cannot redeclare getsubmissionlistbymemberid() (previously declared in /home4/citrus/public_html/beta/_incl/RetreiveData.php:353) in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 353
+[22-Jan-2014 15:25:08] PHP Fatal error:  Cannot redeclare getsubmissionlistbymemberid() (previously declared in /home4/citrus/public_html/beta/_incl/RetreiveData.php:354) in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 354
+[22-Jan-2014 15:30:43] PHP Fatal error:  Cannot redeclare getsubmissionlistbymemberid() (previously declared in /home4/citrus/public_html/beta/_incl/RetreiveData.php:354) in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 354
+[22-Jan-2014 15:31:42] PHP Fatal error:  Cannot redeclare foobarjoe() (previously declared in /home4/citrus/public_html/beta/_incl/RetreiveData.php:355) in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 355
+[22-Jan-2014 15:39:10] PHP Fatal error:  Uncaught exception 'Exception' with message 'String could not be parsed as XML' in /home4/citrus/public_html/beta/_incl/classes.php:98
+Stack trace:
+#0 /home4/citrus/public_html/beta/_incl/classes.php(98): SimpleXMLElement->__construct('')
+#1 /home4/citrus/public_html/beta/topic/index.php(101): Topic->getFacts()
+#2 {main}
+  thrown in /home4/citrus/public_html/beta/_incl/classes.php on line 98
+[22-Jan-2014 15:39:26] PHP Fatal error:  Uncaught exception 'Exception' with message 'String could not be parsed as XML' in /home4/citrus/public_html/beta/_incl/classes.php:98
+Stack trace:
+#0 /home4/citrus/public_html/beta/_incl/classes.php(98): SimpleXMLElement->__construct('')
+#1 /home4/citrus/public_html/beta/topic/index.php(101): Topic->getFacts()
+#2 {main}
+  thrown in /home4/citrus/public_html/beta/_incl/classes.php on line 98
+[22-Jan-2014 15:40:44] PHP Fatal error:  Uncaught exception 'Exception' with message 'String could not be parsed as XML' in /home4/citrus/public_html/beta/_incl/classes.php:98
+Stack trace:
+#0 /home4/citrus/public_html/beta/_incl/classes.php(98): SimpleXMLElement->__construct('')
+#1 /home4/citrus/public_html/beta/topic/index.php(101): Topic->getFacts()
+#2 {main}
+  thrown in /home4/citrus/public_html/beta/_incl/classes.php on line 98
+[22-Jan-2014 15:41:28] PHP Fatal error:  Call to undefined function  gettopicinfo() in /home4/citrus/public_html/beta/topic/index.php on line 38
+[22-Jan-2014 15:43:03] PHP Parse error:  syntax error, unexpected $end in /home4/citrus/public_html/beta/_incl/RetreiveData.php on line 1027
+[22-Jan-2014 15:43:35] PHP Warning:  SimpleXMLElement::__construct() [<a href='simplexmlelement.--construct'>simplexmlelement.--construct</a>]: Entity: line 11: parser error : Extra content at the end of the document in /home4/citrus/public_html/beta/_incl/classes.php on line 98
+[22-Jan-2014 15:43:35] PHP Warning:  SimpleXMLElement::__construct() [<a href='simplexmlelement.--construct'>simplexmlelement.--construct</a>]: 	&lt;fanfact&gt; in /home4/citrus/public_html/beta/_incl/classes.php on line 98
+[22-Jan-2014 15:43:35] PHP Warning:  SimpleXMLElement::__construct() [<a href='simplexmlelement.--construct'>simplexmlelement.--construct</a>]: 	^ in /home4/citrus/public_html/beta/_incl/classes.php on line 98
+[22-Jan-2014 15:43:35] PHP Fatal error:  Uncaught exception 'Exception' with message 'String could not be parsed as XML' in /home4/citrus/public_html/beta/_incl/classes.php:98
+Stack trace:
+#0 /home4/citrus/public_html/beta/_incl/classes.php(98): SimpleXMLElement->__construct('??<fanfact>???<...')
+#1 /home4/citrus/public_html/beta/topic/index.php(101): Topic->getFacts()
+#2 {main}
+  thrown in /home4/citrus/public_html/beta/_incl/classes.php on line 98
+[22-Jan-2014 15:43:38] PHP Warning:  SimpleXMLElement::__construct() [<a href='simplexmlelement.--construct'>simplexmlelement.--construct</a>]: Entity: line 11: parser error : Extra content at the end of the document in /home4/citrus/public_html/beta/_incl/classes.php on line 98
+[22-Jan-2014 15:43:38] PHP Warning:  SimpleXMLElement::__construct() [<a href='simplexmlelement.--construct'>simplexmlelement.--construct</a>]: 	&lt;fanfact&gt; in /home4/citrus/public_html/beta/_incl/classes.php on line 98
+[22-Jan-2014 15:43:38] PHP Warning:  SimpleXMLElement::__construct() [<a href='simplexmlelement.--construct'>simplexmlelement.--construct</a>]: 	^ in /home4/citrus/public_html/beta/_incl/classes.php on line 98
+[22-Jan-2014 15:43:38] PHP Fatal error:  Uncaught exception 'Exception' with message 'String could not be parsed as XML' in /home4/citrus/public_html/beta/_incl/classes.php:98
+Stack trace:
+#0 /home4/citrus/public_html/beta/_incl/classes.php(98): SimpleXMLElement->__construct('??<fanfact>???<...')
+#1 /home4/citrus/public_html/beta/topic/index.php(101): Topic->getFacts()
+#2 {main}
+  thrown in /home4/citrus/public_html/beta/_incl/classes.php on line 98
+[22-Jan-2014 15:44:26] PHP Warning:  SimpleXMLElement::__construct() [<a href='simplexmlelement.--construct'>simplexmlelement.--construct</a>]: Entity: line 11: parser error : Extra content at the end of the document in /home4/citrus/public_html/beta/_incl/classes.php on line 98
+[22-Jan-2014 15:44:26] PHP Warning:  SimpleXMLElement::__construct() [<a href='simplexmlelement.--construct'>simplexmlelement.--construct</a>]: 	&lt;fanfact&gt; in /home4/citrus/public_html/beta/_incl/classes.php on line 98
+[22-Jan-2014 15:44:26] PHP Warning:  SimpleXMLElement::__construct() [<a href='simplexmlelement.--construct'>simplexmlelement.--construct</a>]: 	^ in /home4/citrus/public_html/beta/_incl/classes.php on line 98
+[22-Jan-2014 15:44:26] PHP Fatal error:  Uncaught exception 'Exception' with message 'String could not be parsed as XML' in /home4/citrus/public_html/beta/_incl/classes.php:98
+Stack trace:
+#0 /home4/citrus/public_html/beta/_incl/classes.php(98): SimpleXMLElement->__construct('??<fanfact>???<...')
+#1 /home4/citrus/public_html/beta/topic/index.php(101): Topic->getFacts()
+#2 {main}
+  thrown in /home4/citrus/public_html/beta/_incl/classes.php on line 98

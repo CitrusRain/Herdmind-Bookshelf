@@ -1,0 +1,1 @@
+[01-Dec-2013 15:26:38] PHP Warning:  session_destroy() [<a href='function.session-destroy'>function.session-destroy</a>]: Trying to destroy uninitialized session in /home4/citrus/public_html/beta/_crudeImplementations/logout.php on line 2

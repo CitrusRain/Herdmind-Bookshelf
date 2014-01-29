@@ -1,0 +1,37 @@
+@import url("visual_Proposal.css");
+
+HTML,
+BODY {
+	background-color: black;
+	color: white;
+}
+
+.themeBack,
+HEADER,
+FOOTER,
+.portal LI :link,
+.portal LI :visited,
+.topics>* :link,
+.topics>* :visited,
+#SIDEBAR {
+	background-color: #515151;
+	color: inherit;
+}
+
+.accentBack,
+SELECT,
+SELECT OPTION,
+BUTTON,
+INPUT[type="button"],
+INPUT[type="submit"],
+INPUT[type="reset"],
+#SIDEBAR LI>:link,
+#SIDEBAR LI>:visited {
+	background-color:#000 !important;
+	color: #D31805 !important;
+}
+
+.accentBorder,
+INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]) {
+	border-color: #D31805;
+}
