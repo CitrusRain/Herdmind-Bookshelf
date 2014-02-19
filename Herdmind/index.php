@@ -203,7 +203,7 @@ buildHeader($username, $_GET["mod"]); // Allows for testing of different layouts
 	</SECTION>
 
 	<SECTION CLASS="purple cardIn">
-		<H2>New Fanfacts!</H2>
+		<H2>New Fanfacts</H2>
 		<?php
 
 				$maturefilter = 0;//Use this when we allow the user to show mature fanfacts
@@ -310,6 +310,7 @@ buildFooter(); // Adds the footer
 		<LI><B>Chrome</B> &ndash; latest version (assume autoupdating is enabled)</LI>
 		<LI><B>Opera Mobile</B> &ndash; 12+</LI>
 	</UL>
+	This page auto-updated from github.
 </SECTION>
 </BODY>
 </HTML>
