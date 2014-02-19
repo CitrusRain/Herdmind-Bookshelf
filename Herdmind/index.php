@@ -310,7 +310,9 @@ buildFooter(); // Adds the footer
 		<LI><B>Chrome</B> &ndash; latest version (assume autoupdating is enabled)</LI>
 		<LI><B>Opera Mobile</B> &ndash; 12+</LI>
 	</UL>
-	This page auto-updated from github.
+	<UL>
+	<LI>	This page auto-updated from github.</LI>
+	</UL>
 </SECTION>
 </BODY>
 </HTML>
