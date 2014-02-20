@@ -243,7 +243,7 @@ $query = "";
 
 
 
-$query ="select f.FactID, f.Contents, f.DatePosted, s.SubmissionID, s.SubmissionType, s.TimeSubmitted, s.IsPublic  
+$query ="select f.FactID, f.Contents, f.DatePosted, s.SubmissionID, s.SubmissionType, s.TimeSubmitted, s.IsPublic, s.ID  
 from ((Fact as f join SubmissionData as s on f.FactID = s.SubmissionID) join FactBranch as fb on fb.FactID = f.FactID )join Branch as b on fb.BranchID = b.BranchID 
 where f.Contents like '%[p$pageid]%' and s.IsPublic = '1' and s.SubmissionType = 'Fact' order by s.TimeSubmitted desc $limit";
 
@@ -291,7 +291,7 @@ while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
     }	
 }     
 
-$starred = checkStar("submissionID", $facts[3]);
+$starred = checkStar("submissionID", $facts[7]);
 echo "starred = ".$starred."<br/>";
 $sc = 0 + $cnt[0];
 
@@ -302,7 +302,7 @@ $ReturnString = $ReturnString.'
 		<factid>'.$facts[0].'</factid>
 		<contents>'.$facts[1].'</contents>
 		<dateposted>'.$facts[2].'</dateposted>
-		<submissionid>'.$facts[3].'</submissionid>
+		<submissionid>'.$facts[7].'</submissionid>
 		<isstarred>'.$starred.'</isstarred>
 	</fanfact>';
 
