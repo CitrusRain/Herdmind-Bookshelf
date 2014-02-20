@@ -1186,6 +1186,7 @@ else if ($type == "postID")
 		foreach ($line as $col_value) {
 			$output[$pos] = "$col_value";
 			$pos++;
+			echo $col_value;
 		}	
 		return $output[$pos];
 	}
