@@ -1179,6 +1179,7 @@ if ($type == "submissionID")
 else if ($type == "postID")
 	$query = $query." CommunityPostID = '$id';";
 	 
+	 echo $query."<br/>";
 	 $result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
 
 	while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
