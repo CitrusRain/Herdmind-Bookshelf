@@ -1170,6 +1170,7 @@ $rt = GetFactXML($result, $userid, $db_connection);
  {
  global $db_connection;
  global $userid;
+echo "type=".$type." & id=".$id."</br>"; 
  
 $query = "Select DateSaved, LastViewed from StarList where UserID = '$userid' and ";
 
