@@ -294,7 +294,9 @@ while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
 $starred = checkStar("submissionID", $facts[7]);
 
 if(!(empty($starred))
-	echo "starred on ".$starred[0].", last viewed on ".$starred[1]."<br/>".!(empty($starred);
+{	echo "starred on ".$starred[0].", last viewed on ".$starred[1]."<br/>";
+	$starbool = true;
+}
 
 $sc = 0 + $cnt[0];
 
@@ -306,7 +308,7 @@ $ReturnString = $ReturnString.'
 		<contents>'.$facts[1].'</contents>
 		<dateposted>'.$facts[2].'</dateposted>
 		<submissionid>'.$facts[7].'</submissionid>
-		<isstarred>'.$starred.'</isstarred>
+		<isstarred>'.$starbool.'</isstarred>
 	</fanfact>';
 
 $num = 1;
