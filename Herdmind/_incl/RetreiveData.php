@@ -294,8 +294,9 @@ while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
 $starred = checkStar("submissionID", $facts[7]);
 
 if(!(empty($starred)))
-{	echo "starred on ".$starred[0].", last viewed on ".$starred[1]."<br/>";
-	$starbool = true;
+{	
+	echo "<br/>starred on ".$starred[0].", last viewed on ".$starred[1]."<br/>";
+	$starbool = 1;
 }
 
 $sc = 0 + $cnt[0];
@@ -1193,7 +1194,7 @@ else if ($type == "postID")
 		foreach ($line as $col_value) {
 			$output[$pos] = "$col_value";
 			$pos++;
-			echo $col_value;
+		//	echo $col_value;
 		}	
 		
 	}

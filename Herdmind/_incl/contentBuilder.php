@@ -719,7 +719,7 @@ function buildFactXml($fact, $standalone = true, $moreData = true, $classes = nu
 				 <DIV CLASS=\"fact\">$fact->contents</DIV>
 				 <DIV CLASS=\"meta\">
 					<SPAN CLASS=\"factNum" . ($shortlink ? ' shortlink' : '') . "\">$fact->factid</SPAN>
-					" . ($userName ? '<I CLASS="fa fa-star' . ($fact->isstarred ? '' : '-o') . ($standalone ? ' fa-2x' : '') . '" DATA-FAVORITE="$userName"></I>' : '') .
+					" . ($userName ? '<I CLASS="fa fa-star' . ($fact->isstarred ? '1' : '0') . ($standalone ? ' fa-2x' : '') . '" DATA-FAVORITE="$userName"></I>' : '') .
 					($moreData ? "<A HREF=\"/fanfact?id=$fact->factid\" CLASS=\"callToAction\">More data</A>" : '') . "
 					<!-- This number must be sent to an ajax call to star or unstar: $fact->submissionid
 					<br/><sub>Edit buildFactXML() in _incl/contentBuilder.php</sub> -->
@@ -1132,14 +1132,6 @@ function OldPageCodePicker()
 		<br/></section>";
 
 } 
- 
- function StarButton($type, $id, $fullpage = false)
- {
-	$booStar = checkStar($type, $id, $UserIsViewing = false);
-
-	echo $booStar;	
-	
- }
  
 ?>
 <!-- content builder imported -->
