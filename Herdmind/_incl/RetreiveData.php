@@ -1188,10 +1188,10 @@ else if ($type == "postID")
 			$pos++;
 			echo $col_value;
 		}	
-		return $output[$pos];
+		
 	}
 
-	
+	return $output;
 	 
  } 
  
