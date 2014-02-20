@@ -291,7 +291,7 @@ while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
     }	
 }     
 
-$starred = checkStar("submissionID", $id);
+$starred = checkStar("submissionID", $facts[3]);
 echo "starred = ".$starred."<br/>";
 $sc = 0 + $cnt[0];
 
