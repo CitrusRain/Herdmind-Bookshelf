@@ -718,7 +718,7 @@ function buildFactXml($fact, $standalone = true, $moreData = true, $classes = nu
 				 </TABLE>")."
 				 <DIV CLASS=\"fact\">$fact->contents</DIV>
 				 <DIV CLASS=\"meta\">
-					<SPAN CLASS=\"factNum" . ($shortlink ? ' shortlink' : '') . "\">$fact->factid</SPAN>
+					<SPAN CLASS=\"factNum" . ($shortlink ? ' shortlink' : '') . "\">$fact->factid</SPAN>$fact->isstarred
 					" . ($userName ? '<I CLASS="fa fa-star' . ($fact->isstarred ? '' : '-o') . ($standalone ? ' fa-2x' : '') . '" DATA-FAVORITE="$userName"></I>' : '') .
 					($moreData ? "<A HREF=\"/fanfact?id=$fact->factid\" CLASS=\"callToAction\">More data</A>" : '') . "
 					<!-- This number must be sent to an ajax call to star or unstar: $fact->submissionid
