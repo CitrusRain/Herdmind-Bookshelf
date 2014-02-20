@@ -293,7 +293,7 @@ while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
 
 $starred = checkStar("submissionID", $facts[7]);
 
-if(!(empty($starred))
+if(!(empty($starred)))
 {	echo "starred on ".$starred[0].", last viewed on ".$starred[1]."<br/>";
 	$starbool = true;
 }
