@@ -291,7 +291,8 @@ while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
     }	
 }     
 
-
+$starred = checkStar("submissionID", $id);
+echo "starred = ".$starred."<br/>";
 $sc = 0 + $cnt[0];
 
 $ReturnString = $ReturnString.'
@@ -302,7 +303,7 @@ $ReturnString = $ReturnString.'
 		<contents>'.$facts[1].'</contents>
 		<dateposted>'.$facts[2].'</dateposted>
 		<submissionid>'.$facts[3].'</submissionid>
-		<isstarred>0</isstarred>
+		<isstarred>'.$starred.'</isstarred>
 	</fanfact>';
 
 $num = 1;
@@ -1159,6 +1160,39 @@ $rt = GetFactXML($result, $userid, $db_connection);
 	return $rt;
  }
  
+/*
+ Determine if something has been starred.
+	$type - determines if it is a discussion piece or a submission piece
+	$id - the id of the item
+	$UserIsViewing - optional - updates the "last viewed" if it's actual page is being viewed
+ */
+ function checkStar($type, $id, $UserIsViewing = false)
+ {
+ global $db_connection;
+ global $userid;
+ 
+$query = "Select DateSaved, LastViewed from StarList where UserID = '$userid' and ";
+
+if ($type == "submissionID")
+	$query = $query." SubmissionID = '$id';";
+else if ($type == "postID")
+	$query = $query." CommunityPostID = '$id';";
+	 
+	 $result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
+
+	while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+		$output = array();
+		$pos = 0;
+		foreach ($line as $col_value) {
+			$output[$pos] = "$col_value";
+			$pos++;
+		}	
+		return $output[$pos];
+	}
+
+	
+	 
+ } 
  
  
  

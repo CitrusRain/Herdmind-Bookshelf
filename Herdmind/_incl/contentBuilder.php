@@ -638,6 +638,8 @@ function buildFactsXML($FactQueryResult, $HowMany = 1)
 **/
 function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 {
+	
+//	echo StarButton("submissionID", $fact[5], $standalone);
 	//	TODO: Insert more of the result list here, and make it work for more queries.
 	return
 			'
@@ -668,6 +670,8 @@ function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 					<!-- This number must be sent to an ajax call to star or unstar: $fact[5] -->
 				 </DIV>
 			</" . ($standalone ? "DIV" : "LI") . ">";
+			
+					
 }
 /**
  * Builds a fact display from XML data.
@@ -1128,6 +1132,14 @@ function OldPageCodePicker()
 		<br/></section>";
 
 } 
+ 
+ function StarButton($type, $id, $fullpage = false)
+ {
+	$booStar = checkStar($type, $id, $UserIsViewing = false);
+
+	echo $booStar;	
+	
+ }
  
 ?>
 <!-- content builder imported -->
