@@ -296,7 +296,7 @@ $starred = checkStar("submissionID", $facts[7]);
 if(!(empty($starred)))
 {	
 	echo "<br/>starred on ".$starred[0].", last viewed on ".$starred[1]."<br/>";
-	$starbool = 1;
+	$starbool = true;
 }
 
 $sc = 0 + $cnt[0];
