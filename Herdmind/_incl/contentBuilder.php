@@ -76,6 +76,74 @@ function buildDefaultHeadContent($tabText = null, $longDescription = null, $keyw
 	buildLoginHeadContent();
 }
 
+
+
+/**
+ * Builds the default content to go in test pages' <HEAD> tags.
+ * 
+ * @param $tabText         [OPTIONAL] the text to go in the browser tab. If given, tab text will be "$tabText - Herdmind". Else,
+ *                         		it will simply be "Herdmind"
+ * @param $longDescription [OPTIONAL] the complete description of the page and its purpose
+ * @param $keywords        [OPTIONAL] an array of keywords used by search engines to find this page
+ * 
+ * @author Kyli Rouge
+ * @since 2013-03-14
+ * @version 1.1.0 (2014-02-21)
+ * 		- 1.1.0 (2014-02-21)
+ * 			- Kyli Rouge added Husk to aid layout
+ * 		- 1.0.0 (2013-03-14)
+**/
+function buildDefaultHeadContent($tabText = null, $longDescription = null, $keywords = null) // !!!!!!!!!!!!!!!!!!!! CHANGE TITLE TAG BUILDING BEFORE FINAL IMPLEMENTATION
+{
+	if ($tabText && is_array($tabText)) // change an array of items into a dashed list
+	{
+		$temp = $tabText;
+		$tabText = $temp[0];
+		for($i = 1; $i < count($temp); $i++)
+			$tabText .=  " &ndash; $temp[$i]";
+	}
+	echo "<TITLE>" . ($tabText ? $tabText . " &ndash; " : "") . "Herdmind&nbsp;&beta;</TITLE>
+
+<!-- BEGIN Meta data -->
+<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html;charset=utf-8\" />
+<META NAME=\"viewport\"    CONTENT=\"target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no\" /> <!-- If user is on mobile, suggest to not allow pinch-zoom -->
+<META NAME=\"description\" CONTENT=\"";
+	if ($longDescription)
+		echo $longDescription;
+	else
+		echo "Herdmind, the headcanon database";
+	echo "\"/>
+<META NAME=\"keywords\"    CONTENT=\"Herdmind,Headcanon,Database";
+	if ($keywords)
+		if(is_array($keywords))
+			foreach ($keywords as $keyword)
+				echo "," . $keyword;
+		else
+			echo $keywords;
+	else
+		echo "webpage,generic";
+	echo "\"/>
+<META HTTP-EQUIV=\"X-UA-Compatible\" CONTENT=\"chrome=IE8\" /> <!-- INVALID: Consider altermatives. - If user is using IE 8 or older and has Chrome Frame, use Chrome Frame -->
+<!-- END Meta data -->
+
+<!-- BEGIN Representative images -->
+<LINK REL=\"shortcut icon\"                TYPE=\"image/x-icon\"    HREF=\"/favicon.ico\" />
+<!--LINK REL=\"apple-touch-icon\"             TYPE=\"image/png\"       HREF=\"/touchIcon.png\" /-->
+<!--LINK REL=\"apple-touch-icon-precomposed\" TYPE=\"image/png\"       HREF=\"/touchIcon.png\" /-->
+<!-- END Representative images -->
+
+<SCRIPT TYPE=\"text/javascript\" SRC=\"//code.jquery.com/jquery.min.js\">/* jQuery */</SCRIPT>
+<SCRIPT TYPE=\"text/javascript\" SRC=\"/_js/general.js\">/* General Herdmind Javascript */</SCRIPT>
+<SCRIPT TYPE=\"text/javascript\" SRC=\"/_js/ajax.js\">/* Herdmind Javascript for AJAX calls */</SCRIPT>
+
+<LINK REL=\"stylesheet\" TYPE=\"text/css\" HREF=\"//prog.BHStudios.org/Husk/_css/Husk.css\" /-->
+";
+	
+	buildStyleSwitcherHeadContent("/_css/visual_Dynamo.css");
+	buildSidebarHeadContent();
+	buildLoginHeadContent();
+}
+
 /**
  * Builds the <HEAD> content necessary for the sidebar to properly function.
  * 
