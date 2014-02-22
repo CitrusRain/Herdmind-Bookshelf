@@ -56,9 +56,9 @@ buildHeader($username, $_GET["mod"]); // Allows for testing of different layouts
 
 	if(!$fandom or $fandom == '')
 	{
-		echo "
-<P CLASS=\"focus\">Herdmind is a non-profit, fan-made database of non-canon <Q>fanfacts</Q>, which can be submitted and voted upon by any user.</P>
-<SECTION>";
+		echo '
+<P CLASS="focus">Herdmind is a non-profit, fan-made database of non-canon <Q>fanfacts</Q>, which can be submitted and voted upon by any user.</P>
+<SECTION>';
 
 		$PortalList = GetFandoms($db_connection);
 		
