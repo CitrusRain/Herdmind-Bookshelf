@@ -27,7 +27,7 @@ include $_SERVER['DOCUMENT_ROOT']."/_incl/styleSwitch.php";
  * @since 2013-03-14
  * @version 1.0.0 (2013-03-14)
 **/
-function buildDefaultHeadContentOld($tabText = null, $longDescription = null, $keywords = null) // !!!!!!!!!!!!!!!!!!!! CHANGE TITLE TAG BUILDING BEFORE FINAL IMPLEMENTATION
+function buildDefaultHeadContent($tabText = null, $longDescription = null, $keywords = null) // !!!!!!!!!!!!!!!!!!!! CHANGE TITLE TAG BUILDING BEFORE FINAL IMPLEMENTATION
 {
 	if ($tabText && is_array($tabText)) // change an array of items into a dashed list
 	{
