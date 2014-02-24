@@ -93,7 +93,7 @@ function buildDefaultHeadContent($tabText = null, $longDescription = null, $keyw
  * 			- Kyli Rouge added Husk to aid layout
  * 		- 1.0.0 (2013-03-14)
 **/
-function buildDefaultHeadContent($tabText = null, $longDescription = null, $keywords = null) // !!!!!!!!!!!!!!!!!!!! CHANGE TITLE TAG BUILDING BEFORE FINAL IMPLEMENTATION
+function buildNewDefaultHeadContent($tabText = null, $longDescription = null, $keywords = null) // !!!!!!!!!!!!!!!!!!!! CHANGE TITLE TAG BUILDING BEFORE FINAL IMPLEMENTATION
 {
 	if ($tabText && is_array($tabText)) // change an array of items into a dashed list
 	{
@@ -136,7 +136,7 @@ function buildDefaultHeadContent($tabText = null, $longDescription = null, $keyw
 <SCRIPT TYPE=\"text/javascript\" SRC=\"/_js/general.js\">/* General Herdmind Javascript */</SCRIPT>
 <SCRIPT TYPE=\"text/javascript\" SRC=\"/_js/ajax.js\">/* Herdmind Javascript for AJAX calls */</SCRIPT>
 
-<LINK REL=\"stylesheet\" TYPE=\"text/css\" HREF=\"//prog.BHStudios.org/Husk/_css/Husk.css\" /-->
+<LINK REL=\"stylesheet\" TYPE=\"text/css\" HREF=\"//prog.BHStudios.org/Husk/_css/Husk.css\" />
 ";
 	
 	buildStyleSwitcherHeadContent("/_css/visual_Dynamo.css");
