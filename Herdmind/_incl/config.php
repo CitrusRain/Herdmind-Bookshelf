@@ -1,5 +1,4 @@
 <?php
-
 include $_SERVER['DOCUMENT_ROOT']."/_incl/.gitignore/mysqlconnect.php";
 
 //Set other global parameters 

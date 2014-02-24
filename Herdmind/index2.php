@@ -4,6 +4,7 @@
 <!--
 This is a mockup of the Herdmind front page as envisioned by Kyli Rouge|Supuhstar|Digit Shine
 This mockup is copyright Herdmind.net ©2013
+
 -->
 <?PHP
 include $_SERVER['DOCUMENT_ROOT']."/_incl/startSession.php";        // Start session and determine subdomain
