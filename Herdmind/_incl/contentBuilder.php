@@ -137,7 +137,6 @@ function buildNewDefaultHeadContent($tabText = null, $longDescription = null, $k
 <SCRIPT TYPE=\"text/javascript\" SRC=\"/_js/ajax.js\">/* Herdmind Javascript for AJAX calls */</SCRIPT>
 
 <LINK REL=\"stylesheet\" TYPE=\"text/css\" HREF=\"//prog.BHStudios.org/Husk/_css/Husk.css\" />
-<LINK REL=\"stylesheet\" TYPE=\"text/css\" HREF=\"//prog.BHStudios.org/Husk/_css/Type.css\" />
 <LINK REL=\"stylesheet\" TYPE=\"text/css\" HREF=\"//prog.BHStudios.org/Husk/_css/Flex.css\" />
 ";
 	
