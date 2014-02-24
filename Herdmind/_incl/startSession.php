@@ -31,8 +31,8 @@ if($fandom == 'beta')
 	// echo "
 	// \$fandom is now $fandom";
 }
-// echo "
-// Parsing fandom name...";
+ echo "
+ Parsing fandom name...";
 switch(strtolower($fandom)) // Support for synonymous subdomains
 {
 	case null:
@@ -64,14 +64,14 @@ switch(strtolower($fandom)) // Support for synonymous subdomains
 		$parsedFandom = 'Star Trek';
 		break;
 	default:
-		// echo '
-		// Fandom not registered. Nullifying...';
+		 echo '
+		 Fandom not registered. Nullifying...';
 		$parsedFandom = $fandom;
 		$fandom = null;
 }
 
-// echo "
-// Fandom is $fandom ($parsedFandom)";
+ echo "
+ Fandom is $fandom ($parsedFandom)";
 
 include $_SERVER['DOCUMENT_ROOT'] . '/_incl/config.php';
 
@@ -90,8 +90,8 @@ $login = true;
 }
 */
 
-// echo '
-// checking login...';
+ echo '
+ checking login...';
 echo '
 <!--';
 if (isset($_POST['user']) && !$login)
@@ -188,9 +188,10 @@ echo '-->';
 
 			$findip = "select id from IPaddresses where IP = '".$ipaddress."'";
 			$ipid = '';
-
+			
 			$run = mysqli_query($db_connection, $findip) or die('Query failed');
 
+echo "<br/>1 ".$findip."<br/>";
 			while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
 				$opta = array();
 				$pos = 0;
