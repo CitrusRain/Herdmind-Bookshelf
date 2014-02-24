@@ -1,7 +1,7 @@
 <?php
-echo $_SERVER['DOCUMENT_ROOT']."/_incl/.gitignore/mysqlconnect.php";
+//echo $_SERVER['DOCUMENT_ROOT']."/_incl/.gitignore/mysqlconnect.php";
 include $_SERVER['DOCUMENT_ROOT']."/_incl/.gitignore/mysqlconnect.php";
-echo "<hr>";
+//echo "<hr>";
 //Set other global parameters 
 
 //These make sure comments are sorted.

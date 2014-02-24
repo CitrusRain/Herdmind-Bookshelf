@@ -31,8 +31,8 @@ if($fandom == 'beta')
 	// echo "
 	// \$fandom is now $fandom";
 }
- echo "
- Parsing fandom name...";
+// echo "
+// Parsing fandom name...";
 switch(strtolower($fandom)) // Support for synonymous subdomains
 {
 	case null:
@@ -70,8 +70,8 @@ switch(strtolower($fandom)) // Support for synonymous subdomains
 		$fandom = null;
 }
 
- echo "
- Fandom is $fandom ($parsedFandom)";
+// echo "
+// Fandom is $fandom ($parsedFandom)";
 
 include $_SERVER['DOCUMENT_ROOT'] . '/_incl/config.php';
 
@@ -191,7 +191,7 @@ echo '-->';
 			
 			$run = mysqli_query($db_connection, $findip) or die('Query failed');
 
-echo "<br/>1 ".$findip."<br/>";
+//echo "<br/>1 ".$findip."<br/>";
 			while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
 				$opta = array();
 				$pos = 0;
