@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /* 
  * A stylesheet switcher
  * 
@@ -7,7 +7,10 @@
  */
 
 $backupSheet;
-$cookie = $_COOKIE["herdmindLastSetStyle"];
+
+if( isset($_COOKIE['herdmindLastSetStyle'])) $cookie = $_COOKIE['herdmindLastSetStyle'];
+else $cookie = "";
+
 require $_SERVER['DOCUMENT_ROOT']."/_incl/classes.php";
 
 /**

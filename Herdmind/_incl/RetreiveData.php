@@ -56,7 +56,6 @@ XML;
 
 }
 
-
 /**
  * adds xml information around a string
  *
@@ -90,7 +89,7 @@ XML;
 function GetFactXML($QueryResults, $userid, $dbc = null)
 {
 global $db_connection;
-
+$ReturnString = "";
 while ($line = mysqli_fetch_array($QueryResults, MYSQL_ASSOC)) {
 
     $facts = array();
@@ -495,7 +494,7 @@ $pageids = '';
 while($pos1 != false && $pos2 != -1 && $pos2 != "" && $cou < 150)
 {
 
-echo "<!--(Insert fact ".$factid."; code found at: $pos1 , $pos2 )-->";
+echo "<!--(Insert fact code found at: $pos1 , $pos2 )-->";
 $pageid = substr($string,$pos1,$pos2-$pos1);
 if(is_numeric($pageid))
 {
@@ -955,6 +954,8 @@ function GetComments($threadid, $TopicType)
  	$ThreadCount = 0;
  	
  	$xmlthread = '<thread>';
+
+ 	$Comments = NULL;
  	
  	$query =  "SELECT id_msg, id_topic, id_topic_type, id_member, poster_name, poster_time, poster_email,
  					poster_ip, subject, body, icon, approved FROM CommunityPosts as posts

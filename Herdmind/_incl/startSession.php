@@ -90,8 +90,8 @@ $login = true;
 }
 */
 
- echo '
- checking login...';
+// echo '
+// checking login...';
 echo '
 <!--';
 if (isset($_POST['user']) && !$login)

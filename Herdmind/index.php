@@ -5,7 +5,7 @@
 This is a mockup of the Herdmind front page as envisioned by Kyli Rouge|Supuhstar|Digit Shine
 This mockup is copyright Herdmind.net ©2013
 -->
-<?PHP
+<?php
 include $_SERVER['DOCUMENT_ROOT']."/_incl/startSession.php";        // Start session and determine subdomain
 include $_SERVER['DOCUMENT_ROOT']."/_incl/contentBuilder.php";      // Also includes config.php (must be done first) and styleSwitch.php
 include $_SERVER['DOCUMENT_ROOT']."/_incl/contentBuilderIndex.php"; // Builds body content for index
@@ -14,11 +14,11 @@ include $_SERVER['DOCUMENT_ROOT']."/_incl/RetreiveData.php";   		// Any function
 include $_SERVER['DOCUMENT_ROOT']."/_incl/convenience.php";
 ?>
 
-<?PHP
+<?php
 buildDefaultHeadContent($fandom ? $parsedFandom : null);
 ?>
 
-<?PHP
+<?php
 //Testing smf connectivity. Will be stored in different file after it works.
 
 
@@ -32,14 +32,20 @@ buildDefaultHeadContent($fandom ? $parsedFandom : null);
 
 
 
-<?PHP
+<?php
+
 buildBodyTagWithAttributes(); // <BODY ...>
-buildHeader($username, $_GET["mod"]); // Allows for testing of different layouts
+
+if( isset($_GET['mod'])) $mod = $_GET['mod'];
+else $mod = "";
+
+buildHeader($mod); // Allows for testing of different layouts
+
 ?>
 
 
 
-<?PHP
+<?php
 	//$fandom = $_GET["fandom"];//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! REMOVE BEFORE FINAL IMPLEMENTATION
 		echo "
 	<H1>";
@@ -111,7 +117,7 @@ buildHeader($username, $_GET["mod"]); // Allows for testing of different layouts
 
 	<SECTION CLASS="magenta cardIn">
 		<H2>Random Topics</H2>
-		<?PHP echo buildTopicLinkListFromXML(GrabRandomTopics(5, $db_connection)); ?>
+		<?php echo buildTopicLinkListFromXML(GrabRandomTopics(5, $db_connection)); ?>
 		<SPAN CLASS="devalert">[needs to be fandom sensitive]</SPAN>
 	</SECTION>
 
@@ -124,7 +130,7 @@ buildHeader($username, $_GET["mod"]); // Allows for testing of different layouts
 
 	<SECTION CLASS="green cardIn">
 		<H2>Trending Fanfacts</H2>
-		<?PHP
+		<?php
 			$maturefilter = 0;
 			//$subdomfilter = " b.subdomain = '".$cookie_params['path']."' and ";
 
@@ -194,9 +200,9 @@ buildHeader($username, $_GET["mod"]); // Allows for testing of different layouts
 				?><DIV CLASS="devalert">
 					An error ocurred during creation of the trending fanfacts:<BR/>
 					<CODE>
-						<?PHP echo $e->getMessage(); ?>
+						<?php echo $e->getMessage(); ?>
 					</CODE>
-				</DIV><?PHP
+				</DIV><?php
 			}
 
 		?>
@@ -239,13 +245,13 @@ buildHeader($username, $_GET["mod"]); // Allows for testing of different layouts
 				echo TitleFiller(buildFacts(mysqli_query($db_connection, $query), 5),$db_connection);
 		?>
 	</SECTION>
-	<?PHP
+	<?php
 	} // END Create Fandom Homepage
 	?>
 </SECTION>
 
 
-<?PHP
+<?php
 buildFooter(); // Adds the footer
 ?>
 

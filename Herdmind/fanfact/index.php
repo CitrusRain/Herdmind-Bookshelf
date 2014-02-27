@@ -4,7 +4,7 @@ The page for general fanfacts
 
 This page is copyright Herdmind.net ©2013
 -->
-<?PHP
+<?php
 include $_SERVER['DOCUMENT_ROOT']."/_incl/startSession.php";        // Start session and determine subdomain
 include $_SERVER['DOCUMENT_ROOT']."/_incl/contentBuilder.php";      // Also includes config.php (must be done first) and styleSwitch.php
 include $_SERVER['DOCUMENT_ROOT']."/_incl/RetreiveData.php";   // Any function that returns XML
@@ -13,7 +13,7 @@ include $_SERVER['DOCUMENT_ROOT']."/_incl/convenience.php";
 <HTML>
 <HEAD>
 <script src="../_js/jquery.js"></script>
-<?PHP
+<?php
 $factNum = $_GET["id"]; //Determine what fanfact to load
 
 $FactXML = new SimpleXMLElement(GetFanfactByID($factNum, $subdomfilter, $userid, $db_connection)); //Get the fanfact in XML format
@@ -297,13 +297,13 @@ $xml = '';
 
 
 
-<?PHP
+<?php
 buildBodyTagWithAttributes(); // <BODY ...>
 buildHeader(); // Don't pass variables to this; it will automatically detect login cookies
 ?>
 
 <SECTION STYLE="font-size: larger;">
-	<?PHP
+	<?php
 	
 		//Do an unneccicary loop to get the fact
 		foreach($FactXML->children() as $fact)
@@ -374,12 +374,12 @@ echo CommentBox($factNum, "fanfact");
 
 <SECTION>
 Related topics:
-<?PHP
+<?php
 //echo buildTopicLinkListFromXML($rawxml, "wrappingColumns");
 ?>
 </SECTION>
 
-<?PHP
+<?php
 buildFooter();
 ?>
 </BODY>

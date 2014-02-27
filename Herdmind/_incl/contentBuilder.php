@@ -1,5 +1,5 @@
 <!-- importing content builder... -->
-<?PHP
+<?php
 /* 
  * A general-use file for building common page elements on Herdmind, such as the header and footer, or links to topics.
  * 
@@ -221,14 +221,15 @@ function buildBodyTagWithAttributes()
  * 		- 1.2.0 (2013-12-27) - Kyli Rouge added $userid override to $userName
  * 		- 1.1.0 (2013-12-01)
 **/
-function buildHeader($userNameLocal = false, $mod = false)
+function buildHeader($mod = false)
 {
     global $parsedFandom; echo "<!-- fandom is $parsedFandom -->";
 	global $userName;
+	global $userid;
 	if (!$userName)
 		$userName = $userid;
 	//$userName = $_GET["login"]; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! REMOVE WHEN IMPLEMENTING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	$mod = $_GET["mod"] == "true"; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! REMOVE WHEN IMPLEMENTING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//	$mod = $_GET["mod"] == "true"; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! REMOVE WHEN IMPLEMENTING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	echo "
 <HEADER>
 	<H1>
@@ -274,7 +275,11 @@ function buildSidebar($userName = false, $mod = false)
 	global $userName;
 	if (!$userName)
 		$userName = $userid;
-	$pinned = $_COOKIE["pinSidebar"] != "false";
+		
+	$pinned = "true";
+	if (isset($_COOKIE["pinSidebar"]))
+		$pinned = $_COOKIE["pinSidebar"] != "false";
+	
 	echo "
 <NAV ID=\"SIDEBAR\">
 	<H2><LABEL FOR=\"SIDEBAR_PIN\">Navigation</LABEL></H2>
@@ -371,14 +376,15 @@ function buildSidebar($userName = false, $mod = false)
  * @since 2013-03-01
  * @version 1.0.0 (2013-03-13)
 **/
-function buildFooter($userName = false, $mod = false)
+function buildFooter($mod = false)
 {
 	global $userName;
+	global $userid;
 	if (!$userName)
 		$userName = $userid;
 	//echo "Username is $userName";
 	//if(!$userName)$userName=$_GET["login"]; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! REMOVE WHEN IMPLEMENTING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	$mod = $_GET["mod"] == "true";
+	//$mod = $_GET["mod"] == "true";
 	echo buildSidebar($userName, $mod);
 	echo buildLogger($userName, $mod);
 	echo "
@@ -707,7 +713,7 @@ function buildFactsXML($FactQueryResult, $HowMany = 1)
 **/
 function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 {
-	
+	global $userid;
 //	echo StarButton("submissionID", $fact[5], $standalone);
 	//	TODO: Insert more of the result list here, and make it work for more queries.
 	return
@@ -734,7 +740,7 @@ function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 				 <DIV CLASS=\"fact\">$fact[2]</DIV>
 				 <DIV CLASS=\"meta\">
 					<SPAN CLASS=\"factNum\">$fact[0]</SPAN>
-					" . ($userName ? '<I CLASS="fa fa-star' . ($fact[6] ? '' : '-o') . ($standalone ? ' fa-2x' : '') . '" DATA-FAVORITE="$userName"></I>' : '') . 
+					" . ($userid ? '<I CLASS="fa fa-star' . ($fact[6] ? '' : '-o') . ($standalone ? ' fa-2x' : '') . '" DATA-FAVORITE="$userName"></I>' : '') . 
 					($moreData ? "<A HREF=\"/fanfact?id=$fact[0]\" CLASS=\"callToAction\">More data</A>" : "") . "
 					<!-- This number must be sent to an ajax call to star or unstar: $fact[5] -->
 				 </DIV>
@@ -763,6 +769,7 @@ function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 **/
 function buildFactXml($fact, $standalone = true, $moreData = true, $classes = null, $shortlink = false)
 {
+	global $userid;
 	//	TODO: Insert more of the result list here, and make it work for more queries.
 	$factstring =
 			'
@@ -788,7 +795,7 @@ function buildFactXml($fact, $standalone = true, $moreData = true, $classes = nu
 				 <DIV CLASS=\"fact\">$fact->contents</DIV>
 				 <DIV CLASS=\"meta\">
 					<SPAN CLASS=\"factNum" . ($shortlink ? ' shortlink' : '') . "\">$fact->factid</SPAN>$fact->isstarred
-					" . ($userName ? '<I CLASS="fa fa-star' . ($fact->isstarred ? '' : '-o') . ($standalone ? ' fa-2x' : '') . '" DATA-FAVORITE="$userName"></I>' : '') .
+					" . ($userid ? '<I CLASS="fa fa-star' . ($fact->isstarred ? '' : '-o') . ($standalone ? ' fa-2x' : '') . '" DATA-FAVORITE="$userName"></I>' : '') .
 					($moreData ? "<A HREF=\"/fanfact?id=$fact->factid\" CLASS=\"callToAction\">More data</A>" : '') . "
 					<!-- This number must be sent to an ajax call to star or unstar: $fact->submissionid
 					<br/><sub>Edit buildFactXML() in _incl/contentBuilder.php</sub> -->
@@ -913,7 +920,9 @@ foreach($xml->children() as $child)
 		// <picture>
 	// </topicinfo>
 	
-$Title = htmlentities($rs[0],ENT_QUOTES);
+
+//Not sure what this is, probably safe to delete $Title
+//$Title = htmlentities($rs[0],ENT_QUOTES);
 		
 		$string = str_replace("[p" . $child->pageid . "]","<div class=\"popname\">
 			<a href=\"/topic?t=" . $child->pageid . "\" class=\"apagetitle\">" . $child->pagename . "</a><!-- These comments are here because there must be NO whitespace before, within, or after this fanfact, or else things like punctuation marks will not properly be placed flush with the fact

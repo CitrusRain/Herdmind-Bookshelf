@@ -4,7 +4,7 @@ A description of a Herdmind topic
 
 This page is copyright Herdmind.net ©2013
 -->
-<?PHP
+<?php
 /*
 
 	A NOTE TO ANYONE READING THE PHP: I'm trying a new way of doing it, hoping that putting small PHP calls in the HTML will lead to faster processing than multiple echoes
@@ -103,7 +103,7 @@ $pages = $numFacts / $factsPerPage;
 ?>
 <HTML>
 <HEAD>
-<?PHP
+<?php
 if(empty($topic->index))
 	buildDefaultHeadContent("Topic Viewer", "A listing of Herdmind topics", array("Descriptive", "Keywords"));
 else
@@ -181,7 +181,7 @@ FIGURE.topic {
 
 
 
-<?PHP
+<?php
 buildBodyTagWithAttributes(); // <BODY ...>
 buildHeader(); // Don't pass variables to this; it will automatically detect login cookies
 ?>
@@ -222,44 +222,44 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 
 
 
-<?PHP
+<?php
 if (isset($_GET['t']))
 {//BEGIN Individual topic page
 ?>
 <SECTION>
-	<H1>Herdmind Topic <VAR CLASS="topicNum"><?PHP echo $topic->index; ?></VAR></H1>
+	<H1>Herdmind Topic <VAR CLASS="topicNum"><?php echo $topic->index; ?></VAR></H1>
 	
 	<FIGURE CLASS="topic cardIn">
-		<IMG SRC="http://pony.herdmind.net/<? echo $topic->picture; ?>" ALT="<?PHP $textName = $topic->getPrimaryName()->getText(); echo $textName; ?>"/>
+		<IMG SRC="http://pony.herdmind.net/<? echo $topic->picture; ?>" ALT="<?php $textName = $topic->getPrimaryName()->getText(); echo $textName; ?>"/>
 		<FIGCAPTION>
 			<DL>
 				<DT CLASS="major noTerm">Name</DT>
-					<DD><?PHP echo $textName; ?> <SMALL CLASS="block smallFont">(by <?PHP echo $topic->getPrimaryName()->votes; ?> votes)</SMALL></DD>
-				<?PHP
+					<DD><?php echo $textName; ?> <SMALL CLASS="block smallFont">(by <?php echo $topic->getPrimaryName()->votes; ?> votes)</SMALL></DD>
+				<?php
 					$alts = $topic->getAlternateNames();
 					if ($alts)
 					{
 						?><DT>Alternate names</DT>
-					<?PHP
+					<?php
 						foreach($alts as $name)
 						{
-							?><DD><?PHP echo $name->text; ?> <SMALL>(<?PHP echo $name->votes; ?> votes)</SMALL></DD><?PHP
+							?><DD><?php echo $name->text; ?> <SMALL>(<?php echo $name->votes; ?> votes)</SMALL></DD><?php
 						}
 					}
 				?>
 				<DT>Description</DT>
-					<DD><P><?PHP
+					<DD><P><?php
 						echo str_replace("
 ", "</P>
 <P>", $topic->getDescription());
 						
 						?></P></DD>
 				<DT>Type</DT>
-					<DD><?PHP echo $topic->getType(); ?></DD>
+					<DD><?php echo $topic->getType(); ?></DD>
 				<DT>Reality</DT>
-					<DD><?PHP echo $topic->getReality(); ?></DD>
+					<DD><?php echo $topic->getReality(); ?></DD>
 				<DT>Canon</DT>
-					<DD><?PHP echo $topic->getCanon(); ?></DD>
+					<DD><?php echo $topic->getCanon(); ?></DD>
 			</DL>
 		</FIGCAPTION>
 		<!--DIV><!-- will probably put something here eventually -></DIV-->
@@ -267,129 +267,129 @@ if (isset($_GET['t']))
 </SECTION>
 
 <SECTION ID="FACTS" STYLE="">
-<?PHP
+<?php
 // This is here to ensure it's initialized no matter how facts are arranged
 $facts = $topic->getFacts();
 $offset = $page * $factsPerPage;
 ?>
 	<NAV CLASS="centered pages">
 		<H3>
-			<?PHP
+			<?php
 			if ($numFacts)
 			{
-				?>Fact<?PHP
+				?>Fact<?php
 				if($factsPerPage > 1)
 				{
-					?>s<?PHP
+					?>s<?php
 				}
-				?> <?PHP
+				?> <?php
 				echo ($offset) + 1;
 				if($factsPerPage > 1)
 				{
-					?>&ndash;<?PHP
+					?>&ndash;<?php
 					echo min(($offset) + $factsPerPage, $numFacts);
 				}
-				?> of <?PHP
+				?> of <?php
 				echo $numFacts;
 			}
 			else
 			{
-				?>There are no facts about <?PHP echo $topic->getPrimaryName();
+				?>There are no facts about <?php echo $topic->getPrimaryName();
 			}
 			?>
-		</H3><?PHP
+		</H3><?php
 		if ($factsPerPage < $numFacts) // BEGIN Build Navigation Controls
 		{
 		?>
 
-		<LABEL <?PHP
+		<LABEL <?php
 			if ($page > 0)
 			{
-				?>FOR="RB_PAGE<?PHP echo $page - 1; ?>"<?PHP
+				?>FOR="RB_PAGE<?php echo $page - 1; ?>"<?php
 			}
 			else
 			{
-				?>DISABLED="disabled"<?PHP
+				?>DISABLED="disabled"<?php
 			}
-		?>><?PHP
+		?>><?php
 			if ($page > 0)
 			{
-				?><A HREF="/topic?t=<?PHP
+				?><A HREF="/topic?t=<?php
 				echo $topic->index;
-				?>&amp;page=<?PHP
+				?>&amp;page=<?php
 				echo $page - 1;
 				if(isset($_GET["limit"]))
 				{
-					?>&amp;limit=<?PHP
+					?>&amp;limit=<?php
 					echo $_GET["limit"];
 				}
-				?>#FACTS"><?PHP
+				?>#FACTS"><?php
 			}
-			?>&laquo; Prev<?PHP
+			?>&laquo; Prev<?php
 			if ($page > 0)
 			{
-				?></A><?PHP
+				?></A><?php
 			}
 		?></LABEL>
 
-		<?PHP
+		<?php
 		
 			for($i=0; $i < $pages; $i++)
 			{
 				echo "\r\n\t\t";
 				if ($i != $page)
 				{
-					?><A HREF="/topic?t=<?PHP
+					?><A HREF="/topic?t=<?php
 					echo $topic->index;
-					?>&amp;page=<?PHP
+					?>&amp;page=<?php
 					echo $i;
 					if(isset($_GET["limit"]))
 					{
-						?>&amp;limit=<?PHP
+						?>&amp;limit=<?php
 						echo $_GET["limit"];
 					}
-					?>#FACTS" CLASS="cursorDefault"><?PHP
+					?>#FACTS" CLASS="cursorDefault"><?php
 				}
 				?><INPUT
 			TYPE="radio"
 			NAME="page"
-			VALUE="<?PHP echo $i; ?>"
-			ID="RB_PAGE<?PHP echo $i; ?>"
-			<?PHP
+			VALUE="<?php echo $i; ?>"
+			ID="RB_PAGE<?php echo $i; ?>"
+			<?php
 				if ($i == $page)
 				{
 					?>CHECKED="checked"
 			DISABLED="disabled"
-			<?PHP
+			<?php
 				}
-			?>/><?PHP
+			?>/><?php
 				if ($i != $page)
 				{
-					?></A><?PHP
+					?></A><?php
 				}
 			}
 		?>
 
-		<LABEL <?PHP
+		<LABEL <?php
 				if ($page < $pages - 1)
 				{
-					?>FOR="RB_PAGE<?PHP echo $page + 1; ?>"<?PHP
+					?>FOR="RB_PAGE<?php echo $page + 1; ?>"<?php
 				}
 				else
 				{
-					?>DISABLED="disabled"<?PHP
+					?>DISABLED="disabled"<?php
 				}
-		?>><?PHP
+		?>><?php
 			if ($page < $pages - 1)
 			{
-				?><A HREF="/topic?t=<?PHP echo $topic->index; ?>&page=<?PHP echo $page + 1; if(isset($_GET["limit"])) echo "&limit=" . $_GET["limit"]; ?>#FACTS"><?PHP
+				?><A HREF="/topic?t=<?php echo $topic->index; ?>&page=<?php echo $page + 1; if(isset($_GET["limit"])) echo "&limit=" . $_GET["limit"]; ?>#FACTS"><?php
 			}
-			?>Next &raquo;<?PHP
+			?>Next &raquo;<?php
 			if ($page < $pages - 1)
 			{
-				?></A><?PHP
+				?></A><?php
 			}
-		?></LABEL><?PHP
+		?></LABEL><?php
 		} // END Build Navigation Controls
 		?>
 
@@ -398,14 +398,14 @@ $offset = $page * $factsPerPage;
 	
 	
 	<UL CLASS="fanfacts">
-	<?PHP
+	<?php
 		for($i = 0, $limit = min(count($facts) - $offset, $factsPerPage); $i < $limit; $i++)
 			echo TitleFiller($facts[$i + $offset], $db_connection);
 	?>
 	</UL>
 </SECTION>
 
-<?PHP
+<?php
 }//END Individual topic page
 else
 {//BEGIN Topic list page
@@ -487,13 +487,13 @@ echo '</section>';
 		<H2>Places</H2>
 	</SECTION>
 </SECTION>
-<?PHP
+<?php
 }//END Topic list page
 ?>
 
 
 
-<?PHP
+<?php
 buildFooter();
 ?>
 </BODY>
