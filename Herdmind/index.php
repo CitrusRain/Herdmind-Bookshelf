@@ -214,12 +214,11 @@ buildHeader($mod); // Allows for testing of different layouts
 
 				$maturefilter = 0;//Use this when we allow the user to show mature fanfacts
 
-
-				//FactID - DatePosted - Contents - sum(tal.Value)
+				//FactID - Contents - DatePosted - SubmissionID - sum(tal.Value)
 				$query =  "
 				SELECT * FROM
 				(
-					SELECT DISTINCT Fact.FactID, Fact.DatePosted, Fact.Contents, sum(tal.Value) FROM
+					SELECT DISTINCT Fact.FactID, Fact.Contents, Fact.DatePosted, s.SubmissionID, sum(tal.Value) FROM
 					(
 						(
 							(
@@ -242,7 +241,7 @@ buildHeader($mod); // Allows for testing of different layouts
 				)
 				AS RecentFacts order by Rand()"; // TODO: Fix, fetches improper vote count, does not report current user's vote
 
-				echo TitleFiller(buildFacts(mysqli_query($db_connection, $query), 5),$db_connection);
+				echo TitleFiller(buildFactsXML(GetFactXML(mysqli_query($db_connection, $query)), 5),$db_connection);
 		?>
 	</SECTION>
 	<?php

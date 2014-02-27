@@ -4,9 +4,8 @@
 
 /**
  *
- * GetFanfactById
- * XMLWrapping
  * GetFactXML
+ * GetFanfactById
  * GetFanfacts
  * TitleFinder
  *
@@ -21,60 +20,9 @@
  *
  * GetFandoms
  *
+ * XMLWrapping
  *
 **/
-
-/**
- * Returns an XML object of a single fact
- *
- * @param $factid		 		the id of the fanfact needed to be found
- * @param $subdomfilter			[OPTIONAL] helps to filter by fandom - must be formatted properly - goes right into the where clause
- * 
- * @author Ryan Young
- * @since May 31 2013
- * @version 1.0.0
-**/
-function GetFanfactByID($factid, $subdomfilter = "", $removedvar = 0, $removedvar2 = null)
-{
-global $db_connection;
-global $userid;
-
-$query ="select f.FactID, f.Contents, f.DatePosted, s.ID, s.SubmissionType, s.TimeSubmitted, s.IsPublic  
-from ((Fact as f join SubmissionData as s on f.FactID = s.SubmissionID) join FactBranch as fb on fb.FactID = f.FactID )join Branch as b on fb.BranchID = b.BranchID 
-where ".$subdomfilter." f.FactID = '$factid' and s.IsPublic = '1' and s.SubmissionType = 'Fact' order by s.TimeSubmitted desc limit 0, 1";
-
-$run = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error());
-
-$rt = GetFactXML($run, $userid, $db_connection);
-	
-return <<<XML
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<myxml>
-	$rt
-</myxml>
-XML;
-
-}
-
-/**
- * adds xml information around a string
- *
- * @param $StringToMakeXML 		The string to put the xml header and footer around
- * @param $ParentTagName		[OPTIONAL] Names the parent tag. Optional. (defaults to myxml)
- * 
- * @author Ryan Young
- * @since May 31 2013
- * @version 1.0.0
-**/
-function XMLWrapping($StringToMakeXML, $ParentTagName = 'myxml')
-{
-return <<<XML
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<$ParentTagName>
-	$StringToMakeXML
-</$ParentTagName>
-XML;
-}
 
 
 /**
@@ -86,9 +34,11 @@ XML;
  * @since May 31 2013
  * @version 1.0.0
 **/
-function GetFactXML($QueryResults, $userid, $dbc = null)
+function GetFactXML($QueryResults, $userid = null, $dbc = null)
 {
 global $db_connection;
+global $userid;
+
 $ReturnString = "";
 while ($line = mysqli_fetch_array($QueryResults, MYSQL_ASSOC)) {
 
@@ -98,11 +48,11 @@ while ($line = mysqli_fetch_array($QueryResults, MYSQL_ASSOC)) {
     
         $facts[$pos] = "$col_value";
         $pos++;
+        echo $col_value;
     }	 
     
     
-$selected = "select Value from FactScoreByTally where FactID = '".$facts[0]."' and UserPoint = '$userid';";
-
+$selected = "select Value from FactScoreByTally where FactID = '".$facts[0]."' and UserPoint = '".$userid."';";
 	$run = mysqli_query($db_connection, $selected) or die('Query failed: ' . mysqli_error());
 
 while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
@@ -156,6 +106,18 @@ while ($line = mysqli_fetch_array($postcount, MYSQL_ASSOC)) {
 
 $sc = 0 + $cnt[0];
 
+//Todo: make this not always be false. (use the standalone vars)
+$UserIsViewing = false;
+
+$starred = checkStar("submissionID", $facts[3], $UserIsViewing);
+
+$starbool = false;
+if(!(empty($starred)))
+{	
+	echo "<br/>starred on ".$starred[1].", last viewed on ".$starred[2]."<br/>";
+	$starbool = true;
+}
+
 $ReturnString = $ReturnString.'
 	<fanfact>
 		<score>'.$sc.'</score>
@@ -164,7 +126,7 @@ $ReturnString = $ReturnString.'
 		<contents>'.$facts[1].'</contents>
 		<dateposted>'.$facts[2].'</dateposted>
 		<submissionid>'.$facts[3].'</submissionid>
-		<isstarred>0</isstarred>
+		<isstarred>'.$starbool.'</isstarred>
 		<commentcount>'.$count[0].'</commentcount>
 	</fanfact>';
 
@@ -175,6 +137,39 @@ $opt[0] = 0;
 return $ReturnString;
 
 }
+
+
+/**
+ * Returns an XML object of a single fact
+ *
+ * @param $factid		 		the id of the fanfact needed to be found
+ * @param $subdomfilter			[OPTIONAL] helps to filter by fandom - must be formatted properly - goes right into the where clause
+ * 
+ * @author Ryan Young
+ * @since May 31 2013
+ * @version 1.0.0
+**/
+function GetFanfactByID($factid, $subdomfilter = "", $removedvar = 0, $removedvar2 = null)
+{
+global $db_connection;
+global $userid;
+
+$query ="select f.FactID, f.Contents, f.DatePosted, s.ID, s.SubmissionType, s.TimeSubmitted, s.IsPublic  
+from ((Fact as f join SubmissionData as s on f.FactID = s.SubmissionID) join FactBranch as fb on fb.FactID = f.FactID )join Branch as b on fb.BranchID = b.BranchID 
+where ".$subdomfilter." f.FactID = '$factid' and s.IsPublic = '1' and s.SubmissionType = 'Fact' order by s.TimeSubmitted desc limit 0, 1";
+
+$run = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error());
+
+$rt = GetFactXML($run, $userid, $db_connection);
+	
+return XMLWrapping($rt, "myxml");
+
+
+}
+
+
+
+
 
 
 /**
@@ -290,12 +285,16 @@ while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
     }	
 }     
 
-$starred = checkStar("submissionID", $facts[7]);
+
+//Todo: make this not always be false. (use the standalone vars)
+$UserIsViewing = false;
+
+$starred = checkStar("submissionID", $facts[7], $UserIsViewing);
 
 $starbool = false;
 if(!(empty($starred)))
 {	
-	echo "<br/>starred on ".$starred[0].", last viewed on ".$starred[1]."<br/>";
+	echo "<br/>starred on ".$starred[1].", last viewed on ".$starred[2]."<br/>";
 	$starbool = true;
 }
 
@@ -311,7 +310,7 @@ $ReturnString = $ReturnString.'
 		<submissionid>'.$facts[7].'</submissionid>
 		<isstarred>'.$starbool.'</isstarred>
 	</fanfact>';
-
+	
 $num = 1;
 $opt[0] = 0;
 
@@ -1178,6 +1177,8 @@ $rt = GetFactXML($result, $userid, $db_connection);
  {
  global $db_connection;
  global $userid;
+ $output[0] = false;
+ 
 echo "type=".$type." & id=".$id."</br>"; 
  
 $query = "Select DateSaved, LastViewed from StarList where UserID = '$userid' and ";
@@ -1192,7 +1193,8 @@ else if ($type == "postID")
 
 	while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 		$output = array();
-		$pos = 0;
+	 	$output[0] = true;
+		$pos = 1;
 		foreach ($line as $col_value) {
 			$output[$pos] = "$col_value";
 			$pos++;
@@ -1205,6 +1207,24 @@ else if ($type == "postID")
 	 
  } 
  
- 
+ /**
+ * adds xml information around a string
+ *
+ * @param $StringToMakeXML 		The string to put the xml header and footer around
+ * @param $ParentTagName		[OPTIONAL] Names the parent tag. Optional. (defaults to myxml)
+ * 
+ * @author Ryan Young
+ * @since May 31 2013
+ * @version 1.0.0
+**/
+function XMLWrapping($StringToMakeXML, $ParentTagName = 'myxml')
+{
+return <<<XML
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<$ParentTagName>
+	$StringToMakeXML
+</$ParentTagName>
+XML;
+}
  
 ?>

@@ -714,7 +714,6 @@ function buildFactsXML($FactQueryResult, $HowMany = 1)
 function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 {
 	global $userid;
-//	echo StarButton("submissionID", $fact[5], $standalone);
 	//	TODO: Insert more of the result list here, and make it work for more queries.
 	return
 			'
@@ -812,68 +811,14 @@ function buildTrendingFacts($FactQueryResult, $HowMany = 1)
 		<UL CLASS="fanfacts">';
 	
 	for($i = 0; $i < $HowMany; $i++)
-		$ret .= buildTrendingFact(mysqli_fetch_array($FactQueryResult), false);
-	
+		$ret .=  buildFact(mysqli_fetch_array($FactQueryResult), false, true, null);
+
 	$ret .= '
 		</UL>';
 	
 	return $ret;
 }
-/**
- * Builds a fact display for TRENDING fanfacts. WHY DO WE NEED THIS?!
- *
- * @param $fact       the fanfact, as an array.
- * 		Structure:
- * 			 - [0] the number of the fanfact
- * 			 - [1] the post date.
- * 			 - [2] the fact text.
- * 			 - [3] the sum of votes on the fact.
- * 			 - [4] the number of the fanfact
- * 			 - [5] the sum of votes on the fact.
- * @param $standalone [OPTIONAL] if true, this method assumes that this fact will not be part of a list. Defaults to true
- * @param $classes    [OPTIONAL] A string containing any extra classes to apply to the fact element
- * 
- * @author Ryan Young, Kyli Rouge
- * @since 2013-07-22
- * @version 1.0.3
-**/
-function buildTrendingFact($fact, $standalone = true, $moreData = true, $classes = null)
-{
-	return buildFact($fact, $standalone, $moreData, $classes);
-	/*
-	//	TODO: Insert more of the result list here, and make it work for more queries.
-	$factstring =
-			'
-			<' . ($standalone ? 'DIV' : 'LI') .
-				' CLASS="' . ($fact[4] ? ($fact[4] < 0 ? "down" : "up") . "voted " : "") . "fanfact" . ($classes ? " " . $classes : "") . "\" TABINDEX=\"-1\">
-				 <TABLE CLASS=\"vote\">
-					<TBODY>
-						<TR>
-							<TD ROWSPAN=\"2\">
-								<VAR CLASS=\"counter\">$fact[5]</VAR>
-							</TD>
-							<TD>
-								<INPUT TYPE=\"button\" CLASS=\"upvote\" VALUE=\"&#x25B2;\" onClick='".'takeVote("'.$fact[0].'","+1")'."'/>
-							</TD>
-						</TR>
-						<TR>
-							<TD>
-								<INPUT TYPE=\"button\" CLASS=\"downvote\" VALUE=\"&#x25BC;\" onClick='".'takeVote("'.$fact[0].'","-1")'."'/>
-							</TD>
-						</TR>
-					</TBODY>
-				 </TABLE>
-				 <DIV CLASS=\"fact\">$fact[2]</DIV>
-				 <DIV CLASS=\"meta\">
-					<SPAN CLASS=\"factNum\">$fact[0]</SPAN>" . 
-					($moreData ?
-						"<A HREF=\"/fanfact?id=$fact[0]\" CLASS=\"callToAction\">More data</A>" :
-						"") .
-					"
-				 </DIV>
-			</" . ($standalone ? "DIV" : "LI") . ">";
-	return $factstring;*/
-}
+
 
 
 
