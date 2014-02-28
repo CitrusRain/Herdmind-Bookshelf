@@ -218,7 +218,7 @@ buildHeader($mod); // Allows for testing of different layouts
 				$query =  "
 				SELECT * FROM
 				(
-					SELECT DISTINCT Fact.FactID, Fact.Contents, Fact.DatePosted, s.SubmissionID, sum(tal.Value) FROM
+					SELECT DISTINCT Fact.FactID FROM
 					(
 						(
 							(
@@ -241,7 +241,23 @@ buildHeader($mod); // Allows for testing of different layouts
 				)
 				AS RecentFacts order by Rand()"; // TODO: Fix, fetches improper vote count, does not report current user's vote
 
-				echo TitleFiller(buildFactsXML(GetFactXML(mysqli_query($db_connection, $query)), 5),$db_connection);
+$run = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error());
+
+    $cnt = array();
+    $pos = 0;
+while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
+    
+    foreach ($line as $col_value) {
+    
+        $cnt[$pos] = "$col_value";
+        echo $col_value."<br/>";
+        $pos++;
+    }	
+} 
+
+				$Fanfacts = GetFanfactsByIDList($cnt);
+
+			//	echo TitleFiller(buildFactsXML(GetFactXML(mysqli_query($db_connection, $query)), 5),$db_connection);
 		?>
 	</SECTION>
 	<?php
