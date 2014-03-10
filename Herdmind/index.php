@@ -12,13 +12,9 @@ include $_SERVER['DOCUMENT_ROOT']."/_incl/contentBuilderIndex.php"; // Builds bo
 include $_SERVER['DOCUMENT_ROOT']."/_incl/classes2.php";   			// A bunch of classes used for data
 include $_SERVER['DOCUMENT_ROOT']."/_incl/RetreiveData.php";   		// Any function that returns XML
 include $_SERVER['DOCUMENT_ROOT']."/_incl/convenience.php";
-?>
 
-<?php
 buildDefaultHeadContent($fandom ? $parsedFandom : null);
-?>
 
-<?php
 //Testing smf connectivity. Will be stored in different file after it works.
 
 
@@ -41,12 +37,6 @@ else $mod = "";
 
 buildHeader($mod); // Allows for testing of different layouts
 
-?>
-
-
-
-<?php
-	//$fandom = $_GET["fandom"];//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! REMOVE BEFORE FINAL IMPLEMENTATION
 		echo "
 	<H1>";
 		if (!$fandom) // If this is not a homepage for a registered fandom
@@ -240,23 +230,23 @@ buildHeader($mod); // Allows for testing of different layouts
 					DESC LIMIT 10
 				)
 				AS RecentFacts order by Rand()"; // TODO: Fix, fetches improper vote count, does not report current user's vote
+				
+				$run = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error());
 
-$run = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error());
-
-    $cnt = array();
-    $pos = 0;
-while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
-    
-    foreach ($line as $col_value) {
-    
-        $cnt[$pos] = "$col_value";
-        echo $col_value."<br/>";
-        $pos++;
-    }	
-} 
-
+					$cnt = array();
+					$pos = 0;
+				while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
+					
+					foreach ($line as $col_value) {
+					
+						$cnt[$pos] = "$col_value";
+						echo $col_value."<br/>";
+						$pos++;
+					}	
+				} 
+				
 				$Fanfacts = GetFanfactsByIDList($cnt);
-
+				
 			//	echo TitleFiller(buildFactsXML(GetFactXML(mysqli_query($db_connection, $query)), 5),$db_connection);
 		?>
 	</SECTION>

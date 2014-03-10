@@ -181,28 +181,27 @@ return XMLWrapping($rt, "myxml");
 **/
 function GetFanfactsByIDList($factids)
 {
-global $db_connection;
-global $userid;
+	global $db_connection;
+	global $userid;
 
-$query ="select f.FactID, f.Contents, f.DatePosted, s.ID, s.SubmissionType, s.TimeSubmitted, s.IsPublic  
-from ((Fact as f join SubmissionData as s on f.FactID = s.SubmissionID) join FactBranch as fb on fb.FactID = f.FactID )join Branch as b on fb.BranchID = b.BranchID 
-where ";
+	$query ="select f.FactID, f.Contents, f.DatePosted, s.ID, s.SubmissionType, s.TimeSubmitted, s.IsPublic  
+	from ((Fact as f join SubmissionData as s on f.FactID = s.SubmissionID) join FactBranch as fb on fb.FactID = f.FactID )join Branch as b on fb.BranchID = b.BranchID 
+	where ";
 
-$query = $query."( f.FactID = '".$factids[0]."' ";
+	$query = $query."( f.FactID = '".$factids[0]."' ";
 
-foreach ($factids as $factid) {
-$query = $query." or f.FactID = '$factid' ";
-}
+	foreach ($factids as $factid)
+	{
+		$query = $query." or f.FactID = '$factid' ";
+	}
 
-$query = $query.") and s.IsPublic = '1' and s.SubmissionType = 'Fact' order by s.TimeSubmitted desc";
-echo $query;
-$run = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
+	$query = $query.") and s.IsPublic = '1' and s.SubmissionType = 'Fact' order by s.TimeSubmitted desc";
+	echo $query;
+	$run = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
 
-$rt = GetFactXML($run, $userid, $db_connection);
+	$rt = GetFactXML($run, $userid, $db_connection);
 	echo $rt."<br/>";
-return XMLWrapping($rt, "myxml");
-
-
+	return XMLWrapping($rt, "myxml");
 }
 
 
