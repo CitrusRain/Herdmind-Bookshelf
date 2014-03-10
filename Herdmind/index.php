@@ -247,6 +247,30 @@ buildHeader($mod); // Allows for testing of different layouts
 				
 				$Fanfacts = GetFanfactsByIDList($cnt);
 				
+
+
+echo '<section id="RAW_XML_TEST" style="border:thin dashed lightgray;">
+	<BUTTON ONCLICK="document.getElementById(\'RAW_XML_TEST\').remove()">Hide raw XML output</BUTTON><br/>';
+
+echo $Fanfacts->getName() . "<br/>";
+
+//Loop through each xml element and print it.
+  $stack = array();
+foreach($Fanfacts->children() as $child)
+  {
+  echo "-".$child->getName() . ": " . $child . "<br/>";
+	
+		foreach($child->children() as $child2)
+		  {
+		  echo "--".$child2->getName() . ": " . $child2 . "<br/>";
+		}
+  }
+  
+echo '</section>';	
+
+
+				echo TitleFiller(buildFactListXML($Fanfacts),5);
+			//	echo "<b>".$Fanfacts."</b>";
 			//	echo TitleFiller(buildFactsXML(GetFactXML(mysqli_query($db_connection, $query)), 5),$db_connection);
 		?>
 	</SECTION>
