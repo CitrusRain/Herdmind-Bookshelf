@@ -692,6 +692,24 @@ function buildFactsXML($FactQueryResult, $HowMany = 1)
 	return $ret;
 }
 
+function buildFactListXML($FactListInXML, $HowMany = 1)
+{
+	echo "Ontheway";
+	
+	$ret = '
+		<UL CLASS="fanfacts">';
+	foreach($FactListInXML->myxml->fanfact as $listitem)
+	{
+		echo "In";
+		$ret .= buildFactXML($listitem, false);
+	}
+	
+	$ret .= '
+		</UL>';
+	
+	return $ret;
+}
+
 /**
  * Builds a fact display. Assume the same query's column ordering is used for every call.
  * 
@@ -769,6 +787,7 @@ function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 function buildFactXml($fact, $standalone = true, $moreData = true, $classes = null, $shortlink = false)
 {
 	global $userid;
+	echo "okay";
 	//	TODO: Insert more of the result list here, and make it work for more queries.
 	$factstring =
 			'
