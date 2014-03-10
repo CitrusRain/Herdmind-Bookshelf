@@ -235,7 +235,7 @@ function buildHeader($mod = false)
 	<H1>
 		<A HREF=\"/\">
 			Herdmind
-			<SPAN CLASS=\"slogan\">The $parsedFandom Headcanon Database</SPAN>
+			<SMALL CLASS=\"slogan\">The $parsedFandom Headcanon Database</SMALL>
 		</A>
 	</H1>
 	<DIV CLASS=\"warning alert hideIfMediaQuery\">Your browser is unsupported!</DIV>
