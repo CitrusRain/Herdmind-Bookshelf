@@ -48,7 +48,7 @@ while ($line = mysqli_fetch_array($QueryResults, MYSQL_ASSOC)) {
     
         $facts[$pos] = "$col_value";
         $pos++;
-        echo $col_value;
+  //      echo $col_value;
     }	 
     
     
@@ -114,7 +114,7 @@ $starred = checkStar("submissionID", $facts[3], $UserIsViewing);
 $starbool = false;
 if(!(empty($starred)))
 {	
-	echo "<br/>starred on ".$starred[1].", last viewed on ".$starred[2]."<br/>";
+//	echo "<br/>starred on ".$starred[1].", last viewed on ".$starred[2]."<br/>";
 	$starbool = true;
 }
 
@@ -171,12 +171,22 @@ return XMLWrapping($rt, "myxml");
 
 
 /**
- * Returns an XML object of a single fact
+ * Returns an XML object of a list of facts
  *
  * @param $factids		 		an array of the ids of the fanfacts needed to be found
  *
+ *	<fanfact>
+ *		<score>'.$sc.'</score>
+ *		<uservote>'.$opt[0].'</uservote>
+ *		<factid>'.$facts[0].'</factid>
+ *		<contents>'.$facts[1].'</contents>
+ *		<dateposted>'.$facts[2].'</dateposted>
+		<submissionid>'.$facts[3].'</submissionid>
+		<isstarred>0</isstarred>
+ *	</fanfact>
+ *
  * @author Ryan Young
- * @since May 31 2013
+ * @since Feb 2014
  * @version 1.0.0
 **/
 function GetFanfactsByIDList($factids)
@@ -196,12 +206,15 @@ function GetFanfactsByIDList($factids)
 	}
 
 	$query = $query.") and s.IsPublic = '1' and s.SubmissionType = 'Fact' order by s.TimeSubmitted desc";
-	echo $query;
+	//echo $query;
 	$run = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
 
 	$rt = GetFactXML($run, $userid, $db_connection);
-	echo $rt."<br/>";
-	return XMLWrapping($rt, "myxml");
+	//echo $rt."<br/>";
+	$myinfo = XMLWrapping($rt, "myxml");
+
+	
+	return $myinfo;
 }
 
 
@@ -1212,7 +1225,7 @@ $rt = GetFactXML($result, $userid, $db_connection);
  global $userid;
  $output[0] = false;
  
-echo "type=".$type." & id=".$id."</br>"; 
+//echo "type=".$type." & id=".$id."</br>"; 
  
 $query = "Select DateSaved, LastViewed from StarList where UserID = '$userid' and ";
 
@@ -1221,7 +1234,7 @@ if ($type == "submissionID")
 else if ($type == "postID")
 	$query = $query." CommunityPostID = '$id';";
 	 
-	 echo $query."<br/>";
+	// echo $query."<br/>";
 	 $result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
 
 	while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
