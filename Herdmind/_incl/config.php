@@ -1,6 +1,8 @@
 <?php
-//echo $_SERVER['DOCUMENT_ROOT']."/_incl/.gitignore/mysqlconnect.php";
-include $_SERVER['DOCUMENT_ROOT']."/_incl/.gitignore/mysqlconnect.php";
+$str = $_SERVER['DOCUMENT_ROOT']."/_incl/";
+echo "<a href='$str'>$str</a> .gitignore/connectToServer.php";
+//include $_SERVER['DOCUMENT_ROOT']."/_incl/.gitignore/mysqlconnect.php";
+include dirname(__FILE__)."/.gitignore/connectToServer.php";
 //echo "<hr>";
 //Set other global parameters 
 

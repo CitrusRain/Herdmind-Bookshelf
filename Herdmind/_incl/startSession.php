@@ -6,13 +6,13 @@ Starts the session, gets the subdomain
 Initializes stuff.
 
 */
- 
 session_start();
 
 global $forumprefix;
 global $ipid; //for guests
 global $userid;
 global $userName;
+global $db_connection;
 
 
 $fandom = array_shift(explode('.',$_SERVER['HTTP_HOST']));
@@ -189,8 +189,10 @@ echo '-->';
 			$findip = "select id from IPaddresses where IP = '".$ipaddress."'";
 			$ipid = '';
 			
-			$run = mysqli_query($db_connection, $findip) or die('Query failed');
+// echo $findip;
+			$run = mysqli_query($db_connection, $findip) or die(":( ".mysqli_error($db_connection));
 
+ echo "...and here?";
 //echo "<br/>1 ".$findip."<br/>";
 			while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
 				$opta = array();
