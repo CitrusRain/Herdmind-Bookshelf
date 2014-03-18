@@ -192,7 +192,6 @@ echo '-->';
 // echo $findip;
 			$run = mysqli_query($db_connection, $findip) or die(":( ".mysqli_error($db_connection));
 
- echo "...and here?";
 //echo "<br/>1 ".$findip."<br/>";
 			while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
 				$opta = array();
