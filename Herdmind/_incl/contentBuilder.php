@@ -1324,28 +1324,21 @@ if(isset($comments))
 		{
 			$pageEchoes .= '
 				<HEADER CLASS="premium-header">
-					<DIV CLASS="premium-image" STYLE="background-image:url(/user/supuhstar/premium-header.png)">Admin</DIV><!-- In HTML5.1, this should be changed to a <DECORATOR> element -->
-					<UL CLASS="comment-controls">
-						<LI><A CLASS="comment-flag"><I CLASS="icon-flag">Flag</I></A></LI>
-						<LI><A CLASS="comment-reply"><I CLASS="icon-reply">Reply</I></A></LI>
-					</UL>
-				</HEADER>
-								';		
+					<DIV CLASS="premium-image" STYLE="background-image:url(/user/supuhstar/premium-header.png)">Admin</DIV><!-- In HTML5.1, this should be changed to a <DECORATOR> element -->';		
 		}		  
 		else {
 			$pageEchoes .= '
-				<HEADER>
-					<UL CLASS="comment-controls">
-						<LI><A CLASS="comment-flag"><I CLASS="icon-flag">Flag</I></A></LI>
-						<LI><A CLASS="comment-reply"><I CLASS="icon-reply">Reply</I></A></LI>
-					</UL>
-				</HEADER>
-								';		
+				<HEADER>';		
 		}		     
                       		
                                                       
                            
-		$pageEchoes .= '                           
+		$pageEchoes .= '
+					<UL CLASS="comment-controls">
+						<LI><A CLASS="comment-flag"><I CLASS="fa fa-flag">Flag</I></A></LI>
+						<LI><A CLASS="comment-reply"><I CLASS="fa fa-reply">Reply</I></A></LI>
+					</UL>
+				</HEADER>
 				<DIV CLASS="comment-text">	
 					'. $comment->getPostBody() .'
 				</DIV>
