@@ -246,10 +246,10 @@ $ThreadCount = 0;
 	$query ="SELECT id_msg, poster_time, id_member, id_msg_modified, 
 					subject, poster_name, poster_email, poster_ip, 
 					smileys_enabled, modified_time, modified_name,
-					body, icon, approved, id_topic, id_topic_type, MAX(id_msg)
+					body, icon, approved, id_topic, id_topic_type
 			FROM CommunityPosts WHERE
-		 approved='1'  group by id_topic, id_topic_type desc limit 0, 30";
-
+		 approved='1' order by poster_time desc limit 0, 30";
+echo $query;
 	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
 
 	while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
