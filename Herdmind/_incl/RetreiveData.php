@@ -234,8 +234,9 @@ global $db_connection;
 global $userid;
 
 $Thread = array();
+$ThreadCount = 0;
 
-$query ="SELECT id_msg, poster_time, id_member, id_msg_modified, 
+	$query ="SELECT id_msg, poster_time, id_member, id_msg_modified, 
 					subject, poster_name, poster_email, poster_ip, 
 					smileys_enabled, modified_time, modified_name,
 					body, icon, approved 
@@ -243,7 +244,7 @@ $query ="SELECT id_msg, poster_time, id_member, id_msg_modified,
 		 approved='1' limit 0, 30";
 
 	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
-$ThreadCount = 0;
+
 	while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 		$threadpost = array();
 		$pos = 0;
@@ -257,6 +258,30 @@ $Thread[$ThreadCount] = new Thread($threadpost[0], $threadpost[2], $threadpost[5
 							$threadpost[4], $threadpost[11], $threadpost[12] );
 		$ThreadCount++;
 	}
+
+	$query ="SELECT id_msg, poster_time, id_member, id_msg_modified, 
+					subject, poster_name, poster_email, poster_ip, 
+					smileys_enabled, modified_time, modified_name,
+					body, icon, approved 
+			FROM CommunityRegThread WHERE
+		 approved='1' limit 0, 30";
+
+	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
+
+	while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+		$threadpost = array();
+		$pos = 0;
+		foreach ($line as $col_value) {
+			$threadpost[$pos] = "$col_value";
+			$pos++;
+		}	
+	
+$Thread[$ThreadCount] = new Thread($threadpost[0], $threadpost[2], $threadpost[5], 
+							$threadpost[1], $threadpost[6], $threadpost[7], 
+							$threadpost[4], $threadpost[11], $threadpost[12] );
+		$ThreadCount++;
+	}
+
 return $Thread;
 	
 
