@@ -468,7 +468,7 @@ VALUES (
 );";
 echo $CommentingQuery;
 	
-	$result = mysqli_query($db_connection, $CommentingQuery) or die('Query failed: ' . mysqli_error($db_connection));
+//	$result = mysqli_query($db_connection, $CommentingQuery) or die('Query failed: ' . mysqli_error($db_connection));
 
 echo " ...DONE<br/>";
 

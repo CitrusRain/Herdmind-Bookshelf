@@ -81,7 +81,7 @@ xmlhttp.send("id="+ factNum + "&topictype="+ TopicType + "&username=Citrus&usere
  */
 function PostNew()
 {
-	
+	alert("Good");
 var comment = document.getElementById("commentbox").value;
 var url = "../_incl/actionHandler.php?func=NewThread";
 
