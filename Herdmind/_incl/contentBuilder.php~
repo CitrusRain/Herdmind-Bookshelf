@@ -1317,7 +1317,9 @@ if(isset($comments))
 			"<br/><br/>Post Body:<br/>"   . $comment->getPostBody() .
 			"<hr/>";
 			*/
-			
+			if($comment->getTopicType() == "Thread") {
+					$pageEchoes .= 'Thread';	
+			}
 			
 		$pageEchoes .= '
                 <LI>
@@ -1357,8 +1359,10 @@ if(isset($comments))
                            
 		$pageEchoes .= '                           
 									<DIV CLASS="comment-text">	
-	                        	'. $comment->getPostBody() .'
-                        	</DIV		
+	                        	'. $comment->getPostBody().'<br/>
+	                        	<a href="/?fandom='.$fandom.'&id='.$comment->getTopicID().'">
+	                        	'. $comment->getTimePosted().'</a>
+                        	</DIV>
                      </DIV>
                 </LI>
 					';
