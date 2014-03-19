@@ -1188,30 +1188,81 @@ $pageEchoes =
 '
 <style>
 
-.comment-body{
-background: none repeat scroll 0% 0% #EEE;
-margin: 10px;
-border: thin solid rgba(0, 0, 0, 0.25);
-border-radius: 0.2em;
+.comments-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 8em 0 0;
 }
-
-.premium-image {
-background: none repeat scroll 0% 0% #FB7;
+.comments-list>li {
+    display: table;
+    width: 100%;
+    margin-bottom: 1.5em;
 }
-
-.avatar {
-    border-collapse: collapse;
-    float: left;
-    margin: 0px 0.5em 0px 0px;
-    padding: 0.25em;
+.comments-list li>* {
+    display: table-cell;
+    vertical-align: top;
 }
-
-.comment-controls {
-    clear: both;
-    display: block;
-    float: none;
+.comments .avatar {
     text-align: right;
-    vertical-align: text-bottom;
+    padding: 0 1em 0 0;
+    width: 8em;
+}
+.comments .avatar img {
+    border: thin solid rgba(0,0,0, .5);
+    height: 3em;
+    width: 3em;
+}
+.comments .comment-body {
+    border: thin solid rgba(0,0,0, .5);
+    border-radius: .25em;
+    background: #FFF;
+}
+.comments-list>li {
+}
+.comments .comment-input textarea {
+    margin: 0;
+    height: 5em;
+    width: 100%;
+    border-radius: inherit;
+    border: thin solid rgba(0,0,0, .5);
+}
+*|* {
+    box-sizing: border-box;
+}
+.comments .comment-form {}
+.comments .comment-input form {
+    border-radius: inherit;
+    text-align: right;
+}
+.comments .comment-input .comment-body {
+    border-color: transparent;
+}
+.comments .avatar .username {
+    font-size: smaller;
+}
+.comments .premium-header {
+    background: #27B;
+    position: relative;
+    color: #FFF;
+    text-align: center;
+}
+.comments .comment-body .premium-header .premium-image {
+	 background-size: cover;
+}
+.comments .comment-controls {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 .5em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+}
+.comments .comment-body .comment-controls>li {
+    display: inline-block;
+}
+.comments .comment-text {
+    padding: 0 .5em;
 }
 
 </style>
