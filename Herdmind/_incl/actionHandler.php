@@ -59,7 +59,10 @@ function StarClick()
 	if($userid != 0)
 	{
 	
+	$id = mysqli_real_escape_string($db_connection, $_POST['id']);
 	//todo add userid and get[id] to starlist	
+echo "INSERT INTO StarList (`UserID`, `SubmissionID`, `CommunityPostID`) 
+VALUES ('1', '0', '42')";
 	
 	}
 
