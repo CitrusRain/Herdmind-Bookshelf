@@ -104,7 +104,7 @@ xmlhttp.onreadystatechange=function()
   }
 xmlhttp.open("POST",url,true);
 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-xmlhttp.send("id="+ factNum + "&username=Citrus&useremail=email@herdmind.net&comment="+ comment +"");
+xmlhttp.send("username=Citrus&useremail=email@herdmind.net&comment="+ comment +"");
 
 }
 

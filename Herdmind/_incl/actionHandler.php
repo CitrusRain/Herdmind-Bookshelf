@@ -418,19 +418,6 @@ echo "Getting information...";
 $comment = mysqli_real_escape_string($db_connection, htmlentities($_POST['comment']));
 //$comment = str_replace("'","&#39;",str_replace('"',"&#34;",$comment));
 
-$id = mysqli_real_escape_string($db_connection, $_POST['id']);
-//$id = mysqli_real_escape_string($db_connection, htmlentities($_POST['id']));
-//$id = str_replace("'","&#39;",str_replace('"',"&#34;",$id));
-
-
-
-echo " ...DONE<br/>";
-
-echo "Filling arrays...";
-
-$msgOptions = array(); 
-$msgOptions[0] = $comment;
-$msgOptions[1] = $id;
 
 $ip = mysqli_real_escape_string($db_connection, htmlentities($_SERVER['REMOTE_ADDR']));
 //$ip = str_replace("'","&#39;",str_replace('"',"&#34;",$id));
@@ -464,11 +451,11 @@ $CommentingQuery = "INSERT INTO `CommunityRegThread` (
 `approved`
 )
 VALUES (
- NOW(), '".$userid."', '0', '', 'Name', 'Email', '".$ip."', '1', '0', '', '".$msgOptions[0]."', 'xx', '1'
+ NOW(), '".$userid."', '0', '', 'Name', 'Email', '".$ip."', '1', '0', '', '".$comment."', 'xx', '1'
 );";
 echo $CommentingQuery;
 	
-//	$result = mysqli_query($db_connection, $CommentingQuery) or die('Query failed: ' . mysqli_error($db_connection));
+	$result = mysqli_query($db_connection, $CommentingQuery) or die('Query failed: ' . mysqli_error($db_connection));
 
 echo " ...DONE<br/>";
 
