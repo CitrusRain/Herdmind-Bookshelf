@@ -72,6 +72,42 @@ xmlhttp.send("id="+ factNum + "&topictype="+ TopicType + "&username=Citrus&usere
 }
 
 /* 
+ * PostNew
+ * 
+ * Currently submits the comment box data of #commentbox as a new thread
+ * Todo: merge with Fanfact submission
+ * 
+ * 2014-01-22 ~ updated from PostComment to work for more than just a fanfact's comment thread.
+ */
+function PostNew()
+{
+var comment = document.getElementById("commentbox").value;
+var url = "../_incl/actionHandler.php?func=NewThread";
+
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    alert(innerHTML=xmlhttp.responseText);
+    }
+  }
+xmlhttp.open("POST",url,true);
+xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp.send("id="+ factNum + "&username=Citrus&useremail=email@herdmind.net&comment="+ comment +"");
+
+}
+
+
+/* 
  * SubmitFanfact
  * 
  * Submits the textarea data of #fanfact for approval as a new fanfact

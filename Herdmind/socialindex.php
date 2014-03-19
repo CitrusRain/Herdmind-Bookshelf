@@ -109,6 +109,18 @@ etc.
 <?php
 /*
 
+Make a place to make a thread with
+
+*/
+echo "
+<form method='POST'>
+		<textarea id='commentbox'></textarea>
+		<button type='button' onclick='PostNew()'>Submit a Shitpost</button>
+	</form>
+";
+
+/*
+
 Get and Print the comments
 
 */

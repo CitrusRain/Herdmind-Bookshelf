@@ -95,100 +95,17 @@ buildBodyTagWithAttributes(); // <BODY ...>
 buildHeader(); // Don't pass variables to this; it will automatically detect login cookies
 ?>
 
-Todo:
-<br/>
->get profile picture, username, and other details
-
-<?php
-
-
-//Determine what profile to load
-global $userid;
-$ProfileNum = $userid;
-if(isset($_GET["id"])) 
-{	
-	if ($_GET["id"] === 'Me')
-	{
-		$ProfileNum = $userid;
-	}
-	else
-	{
-		$ProfileNum = $_GET["id"];
-	}
-}
-if(isset($ProfileNum) && !(isset($_GET["id"])))
-{
-	echo "Not logged in, but trying to view own profile.";
-}
-
-$xmlstring = GetProfile($db_connection
-					, $ProfileNum
-					, $userid);
-
-$profilexml = new SimpleXMLElement($xmlstring);
-
-
-
-echo '<section id="RAW_XML_TEST" style="border:thin dashed lightgray;">
-	<BUTTON ONCLICK="document.getElementById(\'RAW_XML_TEST\').remove()">Hide raw XML output</BUTTON><br/>';
-
-echo $profilexml->getName() . "<br/>";
-
-//Loop through each xml element and print it.
-  $stack = array();
-foreach($profilexml->children() as $child)
-  {
-  echo "-".$child->getName() . ": " . $child . "<br/>";
-	
-		foreach($child->children() as $child2)
-		  {
-		  echo "--".$child2->getName() . ": " . $child2 . "<br/>";
-		}
-  }
-  
-echo '</section>';
-
-
-?>
-
-
-<?php
-
-//Print personal thread here.
- /*
-$PersonalThread = GetThread($db_connection
-					, $profilexml->personalthreadid
-					, $userid);
-
-
-echo '<section id="ForumThread" style="border:thin solid lightgray;">';
-
-$pageEchoes = "";
-
-foreach ($PersonalThread as $posts)
-{
-$pageEchoes = $pageEchoes."<b>".$posts->getPostSubject()."</b><br/>";
-$pageEchoes = $pageEchoes.$posts->getPostBody();
-$pageEchoes = $pageEchoes."<hr/>";
-}
-
-$pageEchoes = formatReference($pageEchoes,$user, $db_connection);
-//echo TitleFiller($pageEchoes, $db_connection);
-echo TitleFiller($pageEchoes, $db_connection);
-
-*/
-
-  
-  
-//echo '</section>';
-
-
-?>
-
-
 
 <SECTION id='comments'>
-(revised backend to match other areas rather than being as forum based)
+
+Todo:<br/>
+Pull the topic OP/fanfact being commented on.<br/>
+Only pull one item per thread.<br/>
+Allow for more ways of pulling - Popular/Newest/Friend-based<br/>
+Add the ability to have a "post new thread" box<br/>
+Add "cards" from old landing page to the side.<br/>
+etc.
+
 <?php
 /*
 
