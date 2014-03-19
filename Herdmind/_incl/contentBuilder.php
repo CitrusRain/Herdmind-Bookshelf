@@ -1335,8 +1335,8 @@ if(isset($comments))
                            
 		$pageEchoes .= '
 					<UL CLASS="comment-controls">
-						<LI><A CLASS="comment-flag"><I CLASS="fa fa-flag">Flag</I></A></LI>
-						<LI><A CLASS="comment-reply"><I CLASS="fa fa-reply">Reply</I></A></LI>
+						<LI><A CLASS="comment-flag"><I CLASS="fa fa-flag"></I></A></LI>
+						<LI><A CLASS="comment-reply"><I CLASS="fa fa-reply"></I></A></LI>
 					</UL>
 				</HEADER>
 				<DIV CLASS="comment-text">	
