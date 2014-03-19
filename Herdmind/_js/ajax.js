@@ -62,7 +62,7 @@ xmlhttp.onreadystatechange=function()
   }
 xmlhttp.open("POST",url,true);
 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-xmlhttp.send("factID="+ factID + "&fandom="+"pony");
+xmlhttp.send("SubmissionID="+ factID + "&fandom="+"pony");
 
 }
 	

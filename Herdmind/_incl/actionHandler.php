@@ -55,22 +55,20 @@ function StarClick()
 {
 	global $db_connection;
 	global $userid;
-	$id = mysqli_real_escape_string($db_connection, $_POST['id']);
+	$id = mysqli_real_escape_string($db_connection, $_POST['SubmissionID']);
+	
+	//Todo: if SubmissionID is 0 then it should check if a thread was faved and use that instead.
 
 	if($userid != 0 && $id !=0)
 	{
-	
-	//todo add userid and get[id] to starlist	
-try{
-	$query = "INSERT INTO StarList (`UserID`, `SubmissionID`) VALUES ('$userid', '$id')";
-	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
-	
-} catch (Exception $e) {
-	$query = "DELETE FROM StarList where UserID='$userid' and SubmissionID='$id'";
-	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
-		
-	}
-
+		try{
+			$query = "INSERT INTO StarList (`UserID`, `SubmissionID`) VALUES ('$userid', '$id')";
+			$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
+		}
+		catch (Exception $e) {
+			$query = "DELETE FROM StarList where UserID='$userid' and SubmissionID='$id'";
+			$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));	
+		}
 	}
 
 }
