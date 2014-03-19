@@ -1217,8 +1217,6 @@ $pageEchoes =
     border-radius: .25em;
     background: #FFF;
 }
-.comments-list>li {
-}
 .comments .comment-input textarea {
     margin: 0;
     height: 5em;
@@ -1240,14 +1238,16 @@ $pageEchoes =
 .comments .avatar .username {
     font-size: smaller;
 }
+.comments .comment-body header {
+        position: relative;
+}
 .comments .premium-header {
     background: #27B;
-    position: relative;
     color: #FFF;
     text-align: center;
 }
 .comments .comment-body .premium-header .premium-image {
-	 background-size: cover;
+        background-size: cover;
 }
 .comments .comment-controls {
     list-style-type: none;
