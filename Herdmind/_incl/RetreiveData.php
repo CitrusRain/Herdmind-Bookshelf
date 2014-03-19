@@ -240,7 +240,7 @@ $query ="SELECT id_msg, poster_time, id_member, id_msg_modified,
 					smileys_enabled, modified_time, modified_name,
 					body, icon, approved 
 			FROM CommunityPosts WHERE
-		 approved='1' limit 0, 1";
+		 approved='1' limit 0, 30";
 
 	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
 $ThreadCount = 0;
