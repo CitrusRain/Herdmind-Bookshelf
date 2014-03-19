@@ -188,9 +188,9 @@ $Thread;
 $query ="SELECT id_msg, poster_time, id_member, id_msg_modified, 
 					subject, poster_name, poster_email, poster_ip, 
 					smileys_enabled, modified_time, modified_name,
-					body, icon, approved, id_topic, id_topic_type, MAX(id_msg) 
+					body, icon, approved, id_topic, id_topic_type 
 			FROM CommunityPosts WHERE
-		 id_msg = '$threadid' and id_topic_type='Thread' and approved='1' group by id_topic desc limit 0, 1";
+		 id_msg = '$threadid' and id_topic_type='Thread' and approved='1' limit 0, 1";
 
 
 	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
@@ -246,9 +246,9 @@ $ThreadCount = 0;
 	$query ="SELECT id_msg, poster_time, id_member, id_msg_modified, 
 					subject, poster_name, poster_email, poster_ip, 
 					smileys_enabled, modified_time, modified_name,
-					body, icon, approved, id_topic, id_topic_type 
+					body, icon, approved, id_topic, id_topic_type, MAX(id_msg)
 			FROM CommunityPosts WHERE
-		 approved='1' limit 0, 30";
+		 approved='1'  group by id_topic desc limit 0, 30";
 
 	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
 
