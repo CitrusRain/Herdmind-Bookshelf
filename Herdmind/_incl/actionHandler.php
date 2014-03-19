@@ -42,10 +42,29 @@ elseif($func == "NewThread")
 {
 echo CreateThread();
 }
+elseif($func == "StarClick")
+{
+echo StarClick();
+}
 
 /////////////////////
 /////////////////////
 /////////////////////
+
+function StarClick()
+{
+	global $db_connection;
+	global $userid;
+
+	if($userid != 0)
+	{
+	
+	//todo add userid and get[id] to starlist	
+	
+	}
+
+}
+
 
 /**
  * Submits a new topic for approval.

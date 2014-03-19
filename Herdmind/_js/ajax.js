@@ -42,7 +42,7 @@ function starClick(factID)
 {
 alert("You have clicked a star.");
 
-var url = "../_incl/actionHandler.php?func=FanfactVote";
+var url = "../_incl/actionHandler.php?func=StarClick";
 
 var xmlhttp;
 if (window.XMLHttpRequest)
@@ -62,7 +62,7 @@ xmlhttp.onreadystatechange=function()
   }
 xmlhttp.open("POST",url,true);
 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-xmlhttp.send("factID="+ factID + "&usersVote="+ usersVote +"&fandom="+"pony");
+xmlhttp.send("factID="+ factID + "&fandom="+"pony");
 
 }
 	
