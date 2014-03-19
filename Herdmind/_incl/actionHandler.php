@@ -61,9 +61,9 @@ function StarClick()
 	
 	$id = mysqli_real_escape_string($db_connection, $_POST['id']);
 	//todo add userid and get[id] to starlist	
-echo "INSERT INTO StarList (`UserID`, `SubmissionID`, `CommunityPostID`) 
-VALUES ('1', '0', '42')";
-	
+	$query "INSERT INTO StarList (`UserID`, `SubmissionID`) VALUES ('$userid', '$id')";
+	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
+
 	}
 
 }
