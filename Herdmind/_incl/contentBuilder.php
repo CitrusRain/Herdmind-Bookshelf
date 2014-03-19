@@ -1287,7 +1287,7 @@ if($type != "NotAReply")
 $pageEchoes .= '	
 				<LI CLASS="comment-input">
                      <FIGURE CLASS="avatar">
-                             <IMG src="/user/username/avatar64.png" />
+                             <IMG SRC="'.$_SERVER['DOCUMENT_ROOT'].'/_img/uploaded/user/'.$comment->getMemberID().'/avatar64.png" />
                              <FIGCAPTION>Username</FIGCAPTION>
                      </FIGURE>
                      <DIV CLASS="comment-body">
@@ -1323,7 +1323,7 @@ if(isset($comments))
                 <LI>
                 		<FIGURE CLASS="avatar">
                 				<a href="/profile/?fandom='.$fandom.'&id='.$comment->getMemberID().'">
-                     			<IMG SRC="https://avatars2.githubusercontent.com/u/2942262?s=64" a="/user/username/avatar64.png" />
+                     			<IMG SRC="'.$_SERVER['DOCUMENT_ROOT'].'/_img/uploaded/user/'.$comment->getMemberID().'/avatar64.png" />
                         		<FIGCAPTION class="username">'. $comment->getMemberName() .'</FIGCAPTION>
                         	</a>
                      </FIGURE>
