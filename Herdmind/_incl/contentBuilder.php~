@@ -1336,7 +1336,7 @@ if(isset($comments))
 		{
 			$pageEchoes .= '
 									<HEADER CLASS="premium-header">
-										<DIV CLASS="premium-image" STYLE="background-image:url(/user/supuhstar/premium-header.png)">Admin</DIV><!-- In HTML5.1, this should be changed to a <DECORATOR> element -->
+										<DIV CLASS="premium-image" STYLE="background-image:url(../_img/uploaded/user/'.$comment->getMemberID().'/premium-header.png)">Admin</DIV><!-- In HTML5.1, this should be changed to a <DECORATOR> element -->
                      			<UL CLASS="comment-controls">
                               	<LI><A CLASS="comment-flag"><I CLASS="icon-flag"></I></A></LI>
                               	<LI><A CLASS="comment-reply"><I CLASS="icon-reply"></I></A></LI>
