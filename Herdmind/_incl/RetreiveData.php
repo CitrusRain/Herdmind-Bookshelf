@@ -202,7 +202,7 @@ $query ="SELECT id_msg, poster_time, id_member, id_msg_modified,
 			$pos++;
 		}	
 	
-$Thread = new Thread($threadpost[0], $threadpost[2], $threadpost[5], 
+$Thread = new Comments($threadpost[0], $threadpost[2], $threadpost[5], 
 							$threadpost[1], $threadpost[6], $threadpost[7], 
 							$threadpost[4], $threadpost[11], $threadpost[12] );
 
