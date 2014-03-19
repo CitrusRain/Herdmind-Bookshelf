@@ -1287,7 +1287,7 @@ if($type != "NotAReply")
 $pageEchoes .= '	
 				<LI CLASS="comment-input">
                      <FIGURE CLASS="avatar">
-                             <IMG SRC="'.$_SERVER['DOCUMENT_ROOT'].'/_img/uploaded/user/'.$comment->getMemberID().'/avatar64.png" />
+                             <IMG SRC="'.$_SERVER['DOCUMENT_ROOT'].'/_img/uploaded/user/0/avatar64.png" />
                              <FIGCAPTION>Username</FIGCAPTION>
                      </FIGURE>
                      <DIV CLASS="comment-body">
