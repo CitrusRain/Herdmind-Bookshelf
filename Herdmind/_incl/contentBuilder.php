@@ -1330,7 +1330,7 @@ if(isset($comments))
                      <DIV CLASS="comment-body">';
       
       //Check for special banner user
-      if($comment->getMemberID() == "0")
+      if($comment->getMemberID() == "1")
 		{
 			$pageEchoes .= '
 									<HEADER CLASS="premium-header">
