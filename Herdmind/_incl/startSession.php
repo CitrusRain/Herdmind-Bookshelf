@@ -13,7 +13,7 @@ global $ipid; //for guests
 global $userid;
 global $userName;
 global $db_connection;
-
+global $fandom;
 
 $fandom = array_shift(explode('.',$_SERVER['HTTP_HOST']));
 echo"<!--subdomain is $fandom-->\r\n";

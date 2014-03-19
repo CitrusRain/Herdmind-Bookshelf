@@ -1191,6 +1191,7 @@ function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 {
 global $user;
 global $db_connection;
+global $fandom;
 
 $pageEchoes =
 '
@@ -1321,8 +1322,10 @@ if(isset($comments))
 		$pageEchoes .= '
                 <LI>
                 		<FIGURE CLASS="avatar">
-                     		<IMG SRC="https://avatars2.githubusercontent.com/u/2942262?s=64" a="/user/username/avatar64.png" />
-                        	<FIGCAPTION class="username">'. $comment->getMemberName() .'</FIGCAPTION>
+                				<a href="/profile/?fandom='.$fandom.'&id='.$comment->getMemberID().'">
+                     			<IMG SRC="https://avatars2.githubusercontent.com/u/2942262?s=64" a="/user/username/avatar64.png" />
+                        		<FIGCAPTION class="username">'. $comment->getMemberName() .'</FIGCAPTION>
+                        	</a>
                      </FIGURE>
                      <DIV CLASS="comment-body">';
       
