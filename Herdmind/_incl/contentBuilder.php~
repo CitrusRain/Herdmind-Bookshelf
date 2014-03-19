@@ -1355,12 +1355,20 @@ if(isset($comments))
 								';		
 		}		     
                       		
-                                                      
+      $linkedpage = "";
+      if($comment->getTopicType() == "Thread" || $comment->getTopicType() == "threadcomment")
+      {
+			$linkedpage = "thread";      
+      }     
+      elseif($comment->getTopicType() == "fanfact" || $comment->getTopicType() == "profile")
+      {
+			$linkedpage = $comment->getTopicType();      
+      }                                              
                            
 		$pageEchoes .= '                           
 									<DIV CLASS="comment-text">	
 	                        	'. $comment->getPostBody().'<br/>
-	                        	<a href="/thread/?fandom='.$fandom.'&id='.$comment->getTopicID().'">
+	                        	<a href="/'.$linkedpage.'/?fandom='.$fandom.'&id='.$comment->getTopicID().'">
 	                        	'. $comment->getTimePosted().'</a>
                         	</DIV>
                      </DIV>
