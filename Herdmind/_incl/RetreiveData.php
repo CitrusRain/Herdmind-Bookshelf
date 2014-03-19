@@ -227,22 +227,23 @@ return $Thread;
  * @since March 19 2014
  * @version 1.0.0
 **/
+//TODO: Get the newest in a thread as well as what was being commented on. (eg Thread or fanfact)
 function GetCommentsFeed($type)
 {
 global $db_connection;
 global $userid;
 
-$Thread;
+$Thread = array();
 
 $query ="SELECT id_msg, poster_time, id_member, id_msg_modified, 
 					subject, poster_name, poster_email, poster_ip, 
 					smileys_enabled, modified_time, modified_name,
 					body, icon, approved 
-			FROM CommunityRegThread WHERE
+			FROM CommunityPosts WHERE
 		 approved='1' limit 0, 1";
 
 	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
-
+$ThreadCount = 0;
 	while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 		$threadpost = array();
 		$pos = 0;
@@ -251,12 +252,12 @@ $query ="SELECT id_msg, poster_time, id_member, id_msg_modified,
 			$pos++;
 		}	
 	
-$Thread = new Thread($threadpost[0], $threadpost[2], $threadpost[5], 
+$Thread[$ThreadCount] = new Thread($threadpost[0], $threadpost[2], $threadpost[5], 
 							$threadpost[1], $threadpost[6], $threadpost[7], 
 							$threadpost[4], $threadpost[11], $threadpost[12] );
-
-return $Thread;
+		$ThreadCount++;
 	}
+return $Thread;
 	
 
 }
