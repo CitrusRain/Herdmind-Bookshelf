@@ -1260,7 +1260,7 @@ if(isset($comments))
                 <LI>
                 		<FIGURE CLASS="avatar">
                      		<IMG SRC="https://avatars2.githubusercontent.com/u/2942262?s=64" a="/user/username/avatar64.png" />
-                        	<FIGCAPTION>'. $comment->getMemberName() .'</FIGCAPTION>
+                        	<FIGCAPTION class="username">'. $comment->getMemberName() .'</FIGCAPTION>
                      </FIGURE>
                      <DIV CLASS="comment-body">';
       
