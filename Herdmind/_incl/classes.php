@@ -301,6 +301,78 @@ class Comments
 
 }
 
+
+//Todo: make "comments" regard this as a parent class
+class Thread
+{
+	function __construct($messageid, $memberid, $membername, $timeposted, $memberemail, $memberip, $postsubject, $postbody, $posticon)
+	{
+		$this->messageid = $messageid;
+		$this->memberid = $memberid;
+		$this->membername = $membername;
+		$this->timeposted = $timeposted;
+		$this->memberemail = $memberemail;
+		$this->memberip = $memberip;
+		$this->postsubject = $postsubject;
+		$this->postbody = $postbody;
+		$this->posticon = $posticon;
+	}
+
+	function getMessageID()
+	{
+		return $this->messageid;	
+	}
+	
+	function getMemberID()
+	{
+		return $this->memberid;	
+	}
+
+	function getMemberName()
+	{
+		return $this->membername;	
+	}
+
+	function getTimePosted()
+	{
+		return $this->timeposted;	
+	}
+
+	function getMemberEmail()
+	{
+		return $this->memberemail;	
+	}
+
+	function getMemberIP()
+	{
+		return $this->memberip;	
+	}
+
+	function getPostSubject()
+	{
+		return $this->postsubject;	
+	}
+
+	function getPostBody()
+	{
+		return $this->postbody;	
+	}
+
+	function getPostIcon()
+	{
+		return $this->posticon;	
+	}
+
+	function __toString()
+	{
+		return $this->getMessageID();
+	}
+
+
+}
+
+
+
 /**
  * Represents a Herdmind user's profile
  * 

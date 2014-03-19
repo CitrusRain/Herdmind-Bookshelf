@@ -1177,12 +1177,20 @@ function OldPageCodePicker()
  
  
 /*
+BuildComments
+Builds the comments that users have posted.
+
 $comments is the comments object returned by startSession.php->getComments()
 $threadIDnum is just to make "new comment" box work 
 $type is to make sure not to post to the wrong thread type
+
+since Mar 19 2004
+
 */
-function buildComments($comments, $threadIDnum, $type)
+function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 {
+global $user;
+global $db_connection;
 
 $pageEchoes =
 '
@@ -1234,7 +1242,6 @@ $pageEchoes =
 }
 .comments .comment-input .comment-body {
     border-color: transparent;
-    background: none;
 }
 .comments .avatar .username {
     font-size: smaller;
@@ -1270,27 +1277,27 @@ $pageEchoes =
 ';
 
 $pageEchoes .= "
-<SECTION CLASS='comments'>
-	<OL CLASS='comments-list'>
+	<SECTION CLASS='comments'>
+        <OL CLASS='comments-list'>
 	";
 
+if($type != "NotAReply")
+{
 $pageEchoes .= '	
-		<LI CLASS="comment-input">
-			<FIGURE CLASS="avatar">
-				<IMG src="/user/username/avatar64.png" />
-				<FIGCAPTION CLASS="username">Username</FIGCAPTION>
-			</FIGURE>
-			<DIV CLASS="comment-body">
-				<FORM METHOD="post">
-					<TEXTAREA id="commentbox" NAME="newComment" REQUIRED PLACEHOLDER="Type your comment here..."></TEXTAREA>
-					<INPUT TYPE="submit" onclick="PostComment($threadIDnum, $type)"/><!-- Fallback in case no JS to detect enter key -->
-					<SCRIPT TYPE="text/css">
-					$(".comments .comment-input input[type=submit]").remove();
-					</SCRIPT>
-				</FORM>
-			</DIV>
-		</LI>
+				<LI CLASS="comment-input">
+                     <FIGURE CLASS="avatar">
+                             <IMG src="/user/username/avatar64.png" />
+                             <FIGCAPTION>Username</FIGCAPTION>
+                     </FIGURE>
+                     <DIV CLASS="comment-body">
+                             <FORM METHOD="post">
+                                     <TEXTAREA id="commentbox" NAME="newComment" REQUIRED PLACEHOLDER="Type your comment here..."></TEXTAREA>
+                                     '."<button TYPE='button' onclick='PostMessage(\"".$threadIDnum."\", \"".$type."\")'>Submit Comment</button> <!-- this will likely be hidden by CSS -->".'
+                             </FORM>
+                     </DIV>
+             </LI>
                 ';
+}              
 
 if(isset($comments))
 {
@@ -1312,39 +1319,46 @@ if(isset($comments))
 			
 			
 		$pageEchoes .= '
-		<LI>
-			<FIGURE CLASS="avatar">
-				<IMG SRC="https://avatars2.githubusercontent.com/u/2942262?s=64" a="/user/username/avatar64.png" />
-				<FIGCAPTION class="username">'. $comment->getMemberName() .'</FIGCAPTION>
-			</FIGURE>
-			<DIV CLASS="comment-body">';
+                <LI>
+                		<FIGURE CLASS="avatar">
+                     		<IMG SRC="https://avatars2.githubusercontent.com/u/2942262?s=64" a="/user/username/avatar64.png" />
+                        	<FIGCAPTION class="username">'. $comment->getMemberName() .'</FIGCAPTION>
+                     </FIGURE>
+                     <DIV CLASS="comment-body">';
       
       //Check for special banner user
       if($comment->getMemberID() == "0")
 		{
 			$pageEchoes .= '
-				<HEADER CLASS="premium-header">
-					<DIV CLASS="premium-image" STYLE="background-image:url(/user/supuhstar/premium-header.png)">Admin</DIV><!-- In HTML5.1, this should be changed to a <DECORATOR> element -->';		
+									<HEADER CLASS="premium-header">
+										<DIV CLASS="premium-image" STYLE="background-image:url(/user/supuhstar/premium-header.png)">Admin</DIV><!-- In HTML5.1, this should be changed to a <DECORATOR> element -->
+                     			<UL CLASS="comment-controls">
+                              	<LI><A CLASS="comment-flag"><I CLASS="icon-flag"></I></A></LI>
+                              	<LI><A CLASS="comment-reply"><I CLASS="icon-reply"></I></A></LI>
+                              </UL>
+                           </HEADER>
+								';		
 		}		  
 		else {
 			$pageEchoes .= '
-				<HEADER>';		
+									<HEADER>
+                     			<UL CLASS="comment-controls">
+                              	<LI><A CLASS="comment-flag"><I CLASS="icon-flag"></I></A></LI>
+                              	<LI><A CLASS="comment-reply"><I CLASS="icon-reply"></I></A></LI>
+                              </UL>
+                           </HEADER>
+								';		
 		}		     
                       		
                                                       
                            
-		$pageEchoes .= '
-					<UL CLASS="comment-controls">
-						<LI><A CLASS="comment-flag"><I CLASS="fa fa-flag"></I></A></LI>
-						<LI><A CLASS="comment-reply"><I CLASS="fa fa-reply"></I></A></LI>
-					</UL>
-				</HEADER>
-				<DIV CLASS="comment-text">	
-					'. $comment->getPostBody() .'
-				</DIV>
-			</DIV>
-		</LI>
-		';
+		$pageEchoes .= '                           
+									<DIV CLASS="comment-text">	
+	                        	'. $comment->getPostBody() .'
+                        	</DIV		
+                     </DIV>
+                </LI>
+					';
 		
 		
 		
@@ -1353,15 +1367,14 @@ if(isset($comments))
 }
 
 $pageEchoes .= "
-	</OL>
-</SECTION>
-";
+        </OL>
+	</SECTION>
+	";
 $pageEchoes = formatReference($pageEchoes,$user, $db_connection, true);
 
 echo TitleFiller($pageEchoes, $db_connection);
 
 } 
- 
  
 ?>
 <!-- content builder imported -->
