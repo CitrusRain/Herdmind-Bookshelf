@@ -435,8 +435,9 @@ echo " ...DONE<br/>";
 echo " Posting...";
 
 
-$CommentingQuery = "INSERT INTO `CommunityRegThread` (
+$CommentingQuery = "INSERT INTO `CommunityPosts` (
 `poster_time` ,
+`id_topic_type` ,
 `id_member` ,
 `id_msg_modified` ,
 `subject` ,
@@ -451,7 +452,7 @@ $CommentingQuery = "INSERT INTO `CommunityRegThread` (
 `approved`
 )
 VALUES (
- NOW(), '".$userid."', '0', '', 'Name', 'Email', '".$ip."', '1', '0', '', '".$comment."', 'xx', '1'
+ NOW(), 'Thread', '".$userid."', '0', '', 'Name', 'Email', '".$ip."', '1', '0', '', '".$comment."', 'xx', '1'
 );";
 echo $CommentingQuery;
 	
