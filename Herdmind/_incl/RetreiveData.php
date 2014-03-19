@@ -169,7 +169,7 @@ return XMLWrapping($rt, "myxml");
 
 
 /**
- * Returns an XML object of a regular post
+ * Returns an object of a regular post
  *
  * @param $threadid		 		the id of the fanfact needed to be found
  * @param $subdomfilter			[OPTIONAL] helps to filter by fandom - must be formatted properly - goes right into the where clause
@@ -190,7 +190,7 @@ $query ="SELECT id_msg, poster_time, id_member, id_msg_modified,
 					smileys_enabled, modified_time, modified_name,
 					body, icon, approved 
 			FROM CommunityRegThread WHERE
-		 id_msg = '$threadid' limit 0, 1";
+		 id_msg = '$threadid' and approved='1' limit 0, 1";
 
 	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
 
@@ -213,6 +213,53 @@ return $Thread;
 }
 
 
+
+/**
+ * Returns an object of a feed
+ *
+ * @param $type		 		the type of feed.
+ 										 Default is new
+ 										 New is going to be recent discussions and fanfacts.
+ 										 Popular is going to be trending discussions and fanfacts.
+ 										 Social is going to be based on friends and user interactions. 
+ * 
+ * @author Ryan Young
+ * @since March 19 2014
+ * @version 1.0.0
+**/
+function GetCommentsFeed($type)
+{
+global $db_connection;
+global $userid;
+
+$Thread;
+
+$query ="SELECT id_msg, poster_time, id_member, id_msg_modified, 
+					subject, poster_name, poster_email, poster_ip, 
+					smileys_enabled, modified_time, modified_name,
+					body, icon, approved 
+			FROM CommunityRegThread WHERE
+		 approved='1' limit 0, 1";
+
+	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
+
+	while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+		$threadpost = array();
+		$pos = 0;
+		foreach ($line as $col_value) {
+			$threadpost[$pos] = "$col_value";
+			$pos++;
+		}	
+	
+$Thread = new Thread($threadpost[0], $threadpost[2], $threadpost[5], 
+							$threadpost[1], $threadpost[6], $threadpost[7], 
+							$threadpost[4], $threadpost[11], $threadpost[12] );
+
+return $Thread;
+	}
+	
+
+}
 
 /**
  * Returns an XML object of a list of facts
