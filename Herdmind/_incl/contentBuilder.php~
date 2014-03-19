@@ -1360,7 +1360,7 @@ if(isset($comments))
 		$pageEchoes .= '                           
 									<DIV CLASS="comment-text">	
 	                        	'. $comment->getPostBody().'<br/>
-	                        	<a href="/?fandom='.$fandom.'&id='.$comment->getTopicID().'">
+	                        	<a href="/thread/?fandom='.$fandom.'&id='.$comment->getTopicID().'">
 	                        	'. $comment->getTimePosted().'</a>
                         	</DIV>
                      </DIV>
