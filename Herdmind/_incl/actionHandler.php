@@ -63,7 +63,7 @@ function StarClick()
 	{
 		try{
 			$query = "INSERT INTO StarList (`UserID`, `SubmissionID`) VALUES ('$userid', '$id')";
-			$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
+			$result = mysqli_query($db_connection, $query);
 		}
 		catch (Exception $e) {
 			$query = "DELETE FROM StarList where UserID='$userid' and SubmissionID='$id'";
