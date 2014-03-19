@@ -1173,7 +1173,7 @@ function OldPageCodePicker()
 		</div>
 		<br/></section>";
 
-} 
+}
  
  
 /*
@@ -1189,207 +1189,180 @@ since Mar 19 2004
 */
 function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 {
-global $user;
-global $db_connection;
-global $fandom;
+	global $user;
+	global $db_connection;
+	global $fandom;
 
-$pageEchoes =
-'
-<style>
+	$pageEchoes = '
+		<style type="text/css">
 
-.comments-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0 8em 0 0;
-}
-.comments-list>li {
-    display: table;
-    width: 100%;
-    margin-bottom: 1.5em;
-}
-.comments-list li>* {
-    display: table-cell;
-    vertical-align: top;
-}
-.comments .avatar {
-    text-align: right;
-    padding: 0 1em 0 0;
-    width: 8em;
-}
-.comments .avatar img {
-    border: thin solid rgba(0,0,0, .5);
-    height: 3em;
-    width: 3em;
-}
-.comments .comment-body {
-    border: thin solid rgba(0,0,0, .5);
-    border-radius: .25em;
-    background: #FFF;
-}
-.comments .comment-input textarea {
-    margin: 0;
-    height: 5em;
-    width: 100%;
-    border-radius: inherit;
-    border: thin solid rgba(0,0,0, .5);
-}
-*|* {
-    box-sizing: border-box;
-}
-.comments .comment-form {}
-.comments .comment-input form {
-    border-radius: inherit;
-    text-align: right;
-}
-.comments .comment-input .comment-body {
-    border-color: transparent;
-}
-.comments .avatar .username {
-    font-size: smaller;
-}
-.comments .comment-body header {
-        position: relative;
-}
-.comments .premium-header {
-    background: #27B;
-    color: #FFF;
-    text-align: center;
-}
-.comments .comment-body .premium-header .premium-image {
-        background-size: cover;
-}
-.comments .comment-controls {
-    list-style-type: none;
-    padding: 0;
-    margin: 0 .5em;
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-}
-.comments .comment-body .comment-controls>li {
-    display: inline-block;
-}
-.comments .comment-text {
-    padding: 0 .5em;
-}
+		.comments-list {
+			list-style-type: none;
+			margin: 0;
+			padding: 0 8em 0 0;
+		}
+		.comments-list>li {
+			display: table;
+			width: 100%;
+			margin-bottom: 1.5em;
+		}
+		.comments-list li>* {
+			display: table-cell;
+			vertical-align: top;
+		}
+		.comments .avatar {
+			text-align: right;
+			padding: 0 1em 0 0;
+			width: 8em;
+		}
+		.comments .avatar img {
+			border: thin solid rgba(0,0,0, .5);
+			height: 3em;
+			width: 3em;
+		}
+		.comments .comment-body {
+			border: thin solid rgba(0,0,0, .5);
+			border-radius: .25em;
+			background: #FFF;
+		}
+		.comments .comment-input textarea {
+			margin: 0;
+			height: 5em;
+			width: 100%;
+			border-radius: inherit;
+			border: thin solid rgba(0,0,0, .5);
+		}
+		*|* {
+			box-sizing: border-box;
+		}
+		.comments .comment-form {}
+		.comments .comment-input form {
+			border-radius: inherit;
+			text-align: right;
+		}
+		.comments .comment-input .comment-body {
+			border-color: transparent;
+		}
+		.comments .avatar .username {
+			font-size: smaller;
+		}
+		.comments .comment-body header {
+				position: relative;
+		}
+		.comments .premium-header {
+			background: #27B;
+			color: #FFF;
+			text-align: center;
+		}
+		.comments .comment-body .premium-header .premium-image {
+				background-size: cover;
+		}
+		.comments .comment-controls {
+			list-style-type: none;
+			padding: 0;
+			margin: 0 .5em;
+			position: absolute;
+			right: 0;
+			top: 0;
+			height: 100%;
+		}
+		.comments .comment-body .comment-controls>li {
+			display: inline-block;
+		}
+		.comments .comment-text {
+			padding: 0 .5em;
+		}
+		
+		</style>
+		<SECTION ID="comments" CLASS="comments">
+			<OL CLASS="comments-list">';
 
-</style>
-';
-
-$pageEchoes .= "
-	<SECTION CLASS='comments'>
-        <OL CLASS='comments-list'>
-	";
-
-if($type != "NotAReply")
-{
-$pageEchoes .= '	
-				<LI CLASS="comment-input">
-                     <FIGURE CLASS="avatar">
-                             <IMG SRC="../_img/uploaded/user/0/avatar64.png" />
-                             <FIGCAPTION>Username</FIGCAPTION>
-                     </FIGURE>
-                     <DIV CLASS="comment-body">
-                             <FORM METHOD="post">
-                                     <TEXTAREA id="commentbox" NAME="newComment" REQUIRED PLACEHOLDER="Type your comment here..."></TEXTAREA>
-                                     '."<button TYPE='button' onclick='PostMessage(\"".$threadIDnum."\", \"".$type."\")'>Submit Comment</button> <!-- this will likely be hidden by CSS -->".'
-                             </FORM>
-                     </DIV>
-             </LI>
-                ';
-}              
-
-if(isset($comments))
-{
-	foreach($comments as &$comment)
+	if($type != "NotAReply")
 	{
-		/*
-		$pageEchoes .=
-			"Message ID:<br/>"            . $comment->getMessageID() .
-			"<br/><br/>Topic ID:<br/>"    . $comment->getTopicID() .
-			"<br/><br/>Topic Type:<br/>"  . $comment->getTopicType() .
-			"<br/><br/>Member ID:<br/>"   . $comment->getMemberID() .
-			"<br/><br/>Member Name:<br/>" . $comment->getMemberName() .
-			"<br/><br/>Time Posted:<br/>" . $comment->getTimePosted() .
-			"<br/><br/>Email:<br/>"       . $comment->getMemberEmail() .
-			"<br/><br/>Member IP:<br/>"   . $comment->getMemberIP() .
-			"<br/><br/>Post Body:<br/>"   . $comment->getPostBody() .
-			"<hr/>";
-			*/
-			if($comment->getTopicType() == "Thread") {
-					$pageEchoes .= 'Thread';	
-			}
-			
 		$pageEchoes .= '
-                <LI>
-                		<FIGURE CLASS="avatar">
-                				<a href="/profile/?fandom='.$fandom.'&id='.$comment->getMemberID().'">
-                     			<IMG SRC="../_img/uploaded/user/'.$comment->getMemberID().'/avatar64.png" />
-                        		<FIGCAPTION class="username">'. $comment->getMemberName() .'</FIGCAPTION>
-                        	</a>
-                     </FIGURE>
-                     <DIV CLASS="comment-body">';
-      
-      //Check for special banner user
-      if($comment->getMemberID() == "1")
+				<LI CLASS="comment-input">
+					<FIGURE CLASS="avatar">
+						<IMG SRC="../_img/uploaded/user/0/avatar64.png" />
+						<FIGCAPTION CLASS="username">Username</FIGCAPTION>
+					</FIGURE>
+					<DIV CLASS="comment-body">
+						<FORM METHOD="post">
+							<TEXTAREA id="commentbox" NAME="newComment" REQUIRED PLACEHOLDER="Type your comment here..."></TEXTAREA>
+							'."<BUTTON TYPE='button' ONCLICK='PostMessage(\"$threadIDnum\", \"$type\")'>Comment</BUTTON> <!-- this will likely be hidden by CSS -->".'
+						</FORM>
+					</DIV>
+				</LI>';
+	}              
+
+	if(isset($comments))
+	{
+		foreach($comments as &$comment)
 		{
+			/*
+			$pageEchoes .=
+				"Message ID:<br/>"            . $comment->getMessageID() .
+				"<br/><br/>Topic ID:<br/>"    . $comment->getTopicID() .
+				"<br/><br/>Topic Type:<br/>"  . $comment->getTopicType() .
+				"<br/><br/>Member ID:<br/>"   . $comment->getMemberID() .
+				"<br/><br/>Member Name:<br/>" . $comment->getMemberName() .
+				"<br/><br/>Time Posted:<br/>" . $comment->getTimePosted() .
+				"<br/><br/>Email:<br/>"       . $comment->getMemberEmail() .
+				"<br/><br/>Member IP:<br/>"   . $comment->getMemberIP() .
+				"<br/><br/>Post Body:<br/>"   . $comment->getPostBody() .
+				"<hr/>";
+				*/
+			if($comment->getTopicType() == "Thread")
+				$pageEchoes .= 'Thread';
+			
+			$pageEchoes .= "
+				<LI>
+					<FIGURE CLASS=\"avatar\">
+						<A HREF=\"/profile/?fandom=$fandom&id=".$comment->getMemberID().'">
+							<IMG SRC="../_img/uploaded/user/'.$comment->getMemberID().'/avatar64.png" />
+							<FIGCAPTION CLASS="username">'. $comment->getMemberName() .'</FIGCAPTION>
+						</A>
+					</FIGURE>
+					<DIV CLASS="comment-body">';
+			
+			//Check for special banner user
+			if($comment->getMemberID() == "1")
+				$pageEchoes .= '
+						<HEADER CLASS="premium-header">
+							<DIV CLASS="premium-image" STYLE="background-image:url(../_img/uploaded/user/'.$comment->getMemberID().'/premium-header.png)">Admin</DIV><!-- In HTML5.1, this should be changed to a <DECORATOR> element -->';
+			else
+				$pageEchoes .= '
+						<HEADER>';
+			
 			$pageEchoes .= '
-									<HEADER CLASS="premium-header">
-										<DIV CLASS="premium-image" STYLE="background-image:url(../_img/uploaded/user/'.$comment->getMemberID().'/premium-header.png)">Admin</DIV><!-- In HTML5.1, this should be changed to a <DECORATOR> element -->
-                     			<UL CLASS="comment-controls">
-                              	<LI><A CLASS="comment-flag"><I CLASS="icon-flag"></I></A></LI>
-                              	<LI><A CLASS="comment-reply"><I CLASS="icon-reply"></I></A></LI>
-                              </UL>
-                           </HEADER>
-								';		
-		}		  
-		else {
+							<UL CLASS="comment-controls">
+								<LI><A CLASS="comment-flag"><I CLASS="icon-flag"></I></A></LI>
+								<LI><A CLASS="comment-reply"><I CLASS="icon-reply"></I></A></LI>
+							</UL>
+						</HEADER>';
+								
+			$linkedpage = "";
+			if($comment->getTopicType() == "Thread" || $comment->getTopicType() == "threadcomment")
+				$linkedpage = "thread";      
+			elseif($comment->getTopicType() == "fanfact" || $comment->getTopicType() == "profile")
+				$linkedpage = $comment->getTopicType();      
+							   
 			$pageEchoes .= '
-									<HEADER>
-                     			<UL CLASS="comment-controls">
-                              	<LI><A CLASS="comment-flag"><I CLASS="icon-flag"></I></A></LI>
-                              	<LI><A CLASS="comment-reply"><I CLASS="icon-reply"></I></A></LI>
-                              </UL>
-                           </HEADER>
-								';		
-		}		     
-                      		
-      $linkedpage = "";
-      if($comment->getTopicType() == "Thread" || $comment->getTopicType() == "threadcomment")
-      {
-			$linkedpage = "thread";      
-      }     
-      elseif($comment->getTopicType() == "fanfact" || $comment->getTopicType() == "profile")
-      {
-			$linkedpage = $comment->getTopicType();      
-      }                                              
-                           
-		$pageEchoes .= '                           
-									<DIV CLASS="comment-text">	
-	                        	'. $comment->getPostBody().'<br/>
-	                        	<a href="/'.$linkedpage.'/?fandom='.$fandom.'&id='.$comment->getTopicID().'">
-	                        	'. $comment->getTimePosted().'</a>
-                        	</DIV>
-                     </DIV>
-                </LI>
-					';
-		
-		
-		
+						<DIV CLASS="comment-text">	
+							'.$comment->getPostBody()."<br/>
+							<a href=\"/$linkedpage?fandom=$fandom&id=".$comment->getTopicID().'">'.$comment->getTimePosted().'</a>
+						</DIV>
+					</DIV>
+				</LI>';
+		}
 	}
 	
+	$pageEchoes .= '
+			</OL>
+		</SECTION>';
+	$pageEchoes = formatReference($pageEchoes,$user, $db_connection, true);
+	
+	echo TitleFiller($pageEchoes, $db_connection);
 }
-
-$pageEchoes .= "
-        </OL>
-	</SECTION>
-	";
-$pageEchoes = formatReference($pageEchoes,$user, $db_connection, true);
-
-echo TitleFiller($pageEchoes, $db_connection);
-
-} 
  
 ?>
 <!-- content builder imported -->
