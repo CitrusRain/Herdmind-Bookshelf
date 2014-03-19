@@ -248,7 +248,7 @@ $ThreadCount = 0;
 					smileys_enabled, modified_time, modified_name,
 					body, icon, approved, id_topic, id_topic_type, MAX(id_msg)
 			FROM CommunityPosts WHERE
-		 approved='1'  group by id_topic desc limit 0, 30";
+		 approved='1'  group by id_topic, id_topic_type desc limit 0, 30";
 
 	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
 
