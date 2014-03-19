@@ -1317,7 +1317,9 @@ if(isset($comments))
 			"<br/><br/>Post Body:<br/>"   . $comment->getPostBody() .
 			"<hr/>";
 			*/
-			
+			if($comment->getTopicType() == "Thread") {
+					$pageEchoes .= 'Thread';	
+			}
 			
 		$pageEchoes .= '
                 <LI>
