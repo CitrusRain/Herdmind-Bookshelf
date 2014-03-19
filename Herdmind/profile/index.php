@@ -215,33 +215,12 @@ foreach($xml->children() as $child)
 <?php
 /*
 
-TODO: Put this in pagebuilder or something and make it pretty.
+Get and Print the comments
 
 */
-echo $user['member_name'];
+//echo $user['member_name'];
 $comments = GetComments($ProfileNum, "profile");
-
-if(isset($comments))
-{
-	$pageEchoes = "";
-	foreach($comments as &$comment)
-	{
-		$pageEchoes .=
-			"Message ID:<br/>"            . $comment->getMessageID() .
-			"<br/><br/>Topic ID:<br/>"    . $comment->getTopicID() .
-			"<br/><br/>Topic Type:<br/>"  . $comment->getTopicType() .
-			"<br/><br/>Member ID:<br/>"   . $comment->getMemberID() .
-			"<br/><br/>Member Name:<br/>" . $comment->getMemberName() .
-			"<br/><br/>Time Posted:<br/>" . $comment->getTimePosted() .
-			"<br/><br/>Email:<br/>"       . $comment->getMemberEmail() .
-			"<br/><br/>Member IP:<br/>"   . $comment->getMemberIP() .
-			"<br/><br/>Post Body:<br/>"   . $comment->getPostBody() .
-			"<hr/>";
-	}
-	
-	$pageEchoes = formatReference($pageEchoes,$user, $db_connection);
-	echo TitleFiller($pageEchoes, $db_connection);
-}
+echo buildComments($comments, $ProfileNum, "profile");
 
 /*
 Create a form to submit new comment

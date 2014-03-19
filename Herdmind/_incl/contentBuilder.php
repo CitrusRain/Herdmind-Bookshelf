@@ -1006,7 +1006,7 @@ return $PostContents;
 *
 * TODO: Make a better and fancier setup that can be used for other pages.
 */
-function CommentBox($factNum)
+function CommentBox($factNum, $type)
 {
 
 echo "
@@ -1174,6 +1174,146 @@ function OldPageCodePicker()
 		<br/></section>";
 
 } 
+ 
+ 
+/*
+$comments is the comments object returned by startSession.php->getComments()
+$threadIDnum is just to make "new comment" box work 
+$type is to make sure not to post to the wrong thread type
+*/
+function buildComments($comments, $threadIDnum, $type)
+{
+
+$pageEchoes =
+'
+<style>
+
+.comment-body{
+background: none repeat scroll 0% 0% #EEE;
+margin: 10px;
+border: thin solid rgba(0, 0, 0, 0.25);
+border-radius: 0.2em;
+}
+
+.premium-image {
+background: none repeat scroll 0% 0% #FB7;
+}
+
+.avatar {
+    border-collapse: collapse;
+    float: left;
+    margin: 0px 0.5em 0px 0px;
+    padding: 0.25em;
+}
+
+.comment-controls {
+    clear: both;
+    display: block;
+    float: none;
+    text-align: right;
+    vertical-align: text-bottom;
+}
+
+</style>
+';
+
+$pageEchoes .= "
+	<SECTION CLASS='comments'>
+        <OL CLASS='comments-list'>
+	";
+
+$pageEchoes .= '	
+				<LI CLASS="comment-input">
+                     <FIGURE CLASS="avatar">
+                             <IMG src="/user/username/avatar64.png" />
+                             <FIGCAPTION>Username</FIGCAPTION>
+                     </FIGURE>
+                     <DIV CLASS="comment-body">
+                             <FORM METHOD="post">
+                                     <TEXTAREA id="commentbox" NAME="newComment" REQUIRED PLACEHOLDER="Type your comment here..."></TEXTAREA>
+                                     <INPUT TYPE="submit" onclick="PostComment($threadIDnum, $type)"/> <!-- this will likely be hidden by CSS -->
+                             </FORM>
+                     </DIV>
+             </LI>
+                ';
+
+if(isset($comments))
+{
+	foreach($comments as &$comment)
+	{
+		/*
+		$pageEchoes .=
+			"Message ID:<br/>"            . $comment->getMessageID() .
+			"<br/><br/>Topic ID:<br/>"    . $comment->getTopicID() .
+			"<br/><br/>Topic Type:<br/>"  . $comment->getTopicType() .
+			"<br/><br/>Member ID:<br/>"   . $comment->getMemberID() .
+			"<br/><br/>Member Name:<br/>" . $comment->getMemberName() .
+			"<br/><br/>Time Posted:<br/>" . $comment->getTimePosted() .
+			"<br/><br/>Email:<br/>"       . $comment->getMemberEmail() .
+			"<br/><br/>Member IP:<br/>"   . $comment->getMemberIP() .
+			"<br/><br/>Post Body:<br/>"   . $comment->getPostBody() .
+			"<hr/>";
+			*/
+			
+			
+		$pageEchoes .= '
+                <LI>
+                		<FIGURE CLASS="avatar">
+                     		<IMG SRC="https://avatars2.githubusercontent.com/u/2942262?s=64" a="/user/username/avatar64.png" />
+                        	<FIGCAPTION>'. $comment->getMemberName() .'</FIGCAPTION>
+                     </FIGURE>
+                     <DIV CLASS="comment-body">';
+      
+      //Check for special banner user
+      if($comment->getMemberID() == "0")
+		{
+			$pageEchoes .= '
+									<HEADER CLASS="premium-header">
+										<DIV CLASS="premium-image" STYLE="background-image:url(/user/supuhstar/premium-header.png)">Admin</DIV><!-- In HTML5.1, this should be changed to a <DECORATOR> element -->
+                     			<UL CLASS="comment-controls">
+                              	<LI><A CLASS="comment-flag"><I CLASS="icon-flag">Flag</I></A></LI>
+                              	<LI><A CLASS="comment-reply"><I CLASS="icon-reply">Reply</I></A></LI>
+                              </UL>
+                           </HEADER>
+								';		
+		}		  
+		else {
+			$pageEchoes .= '
+									<HEADER>
+                     			<UL CLASS="comment-controls">
+                              	<LI><A CLASS="comment-flag"><I CLASS="icon-flag">Flag</I></A></LI>
+                              	<LI><A CLASS="comment-reply"><I CLASS="icon-reply">Reply</I></A></LI>
+                              </UL>
+                           </HEADER>
+								';		
+		}		     
+                      		
+                                                      
+                           
+		$pageEchoes .= '                           
+									<DIV CLASS="comment-text">	
+	                        	'. $comment->getPostBody() .'
+                        	</DIV		
+                     </DIV>
+                </LI>
+					';
+		
+		
+		
+	}
+	
+}
+
+$pageEchoes .= "
+        </OL>
+	</SECTION>
+	";
+$pageEchoes = formatReference($pageEchoes,$user, $db_connection, true);
+
+echo TitleFiller($pageEchoes, $db_connection);
+
+} 
+ 
  
 ?>
 <!-- content builder imported -->

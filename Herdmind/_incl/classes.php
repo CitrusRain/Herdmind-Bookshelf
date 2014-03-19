@@ -189,7 +189,7 @@ class ForumThread
 
 	function getMemberEmail()
 	{
-		return $this->getMemberEmail;	
+		return $this->memberemail;	
 	}
 
 	function getMemberIP()
@@ -270,7 +270,7 @@ class Comments
 
 	function getMemberEmail()
 	{
-		return $this->getMemberEmail;	
+		return $this->memberemail;	
 	}
 
 	function getMemberIP()

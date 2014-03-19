@@ -337,38 +337,18 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 <?php
 /*
 
-TODO: Put this in pagebuilder or something and make it pretty.
+Get and Print the comments
 
 */
-echo $user['member_name'];
+//echo $user['member_name'];
 $comments = GetComments($factNum, "fanfact");
+echo buildComments($comments, $factNum, "fanfact");
 
-if(isset($comments))
-{
-	$pageEchoes = "";
-	foreach($comments as &$comment)
-	{
-		$pageEchoes .=
-			"Message ID:<br/>"            . $comment->getMessageID() .
-			"<br/><br/>Topic ID:<br/>"    . $comment->getTopicID() .
-			"<br/><br/>Topic Type:<br/>"  . $comment->getTopicType() .
-			"<br/><br/>Member ID:<br/>"   . $comment->getMemberID() .
-			"<br/><br/>Member Name:<br/>" . $comment->getMemberName() .
-			"<br/><br/>Time Posted:<br/>" . $comment->getTimePosted() .
-			"<br/><br/>Email:<br/>"       . $comment->getMemberEmail() .
-			"<br/><br/>Member IP:<br/>"   . $comment->getMemberIP() .
-			"<br/><br/>Post Body:<br/>"   . $comment->getPostBody() .
-			"<hr/>";
-	}
-	
-	$pageEchoes = formatReference($pageEchoes,$user, $db_connection, true);
-	echo TitleFiller($pageEchoes, $db_connection);
-}
 
 /*
 Create a form to submit new comment
 */
-echo CommentBox($factNum, "fanfact");
+//echo CommentBox($factNum, "fanfact");
 ?>
 </SECTION>
 

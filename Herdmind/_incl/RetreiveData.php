@@ -527,6 +527,7 @@ XML;
 **/
 function TitleFinder($originalstring, $dbc = null){
 
+global $db_connection;
 global $userid;	
 	
 $string = $originalstring;
@@ -577,7 +578,7 @@ Group by PageTitles.ID
 ORDER BY COUNT( NSBT.UserPoint ) desc ) as q1 group by q1.PageID LIMIT 0, $cou ;";
 
 //echo "<b>$query</b>";
-$result = mysqli_query($dbc, $query) or die($error.': ' . mysqli_error($dbc));
+$result = mysqli_query($db_connection, $query) or die($error.': ' . mysqli_error($dbc));
 
 
 while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
