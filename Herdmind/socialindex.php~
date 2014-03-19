@@ -195,14 +195,12 @@ echo TitleFiller($pageEchoes, $db_connection);
 Get and Print the comments
 
 */
-//echo $user['member_name'];
-$comments = GetComments($ProfileNum, "profile");
-echo buildComments($comments, $ProfileNum, "profile");
 
-/*
-Create a form to submit new comment
-*/
-echo CommentBox($ProfileNum, "profile");
+$comments = GetCommentsFeed("primary");
+echo buildComments($comments);
+
+
+
 ?>
 </SECTION>
 
