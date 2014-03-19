@@ -422,8 +422,6 @@ $id = mysqli_real_escape_string($db_connection, $_POST['id']);
 //$id = mysqli_real_escape_string($db_connection, htmlentities($_POST['id']));
 //$id = str_replace("'","&#39;",str_replace('"',"&#34;",$id));
 
-$pagetype = mysqli_real_escape_string($db_connection, htmlentities($_POST['topictype']));
-//$pagetype = str_replace("'","&#39;",str_replace('"',"&#34;",$pagetype));
 
 
 echo " ...DONE<br/>";
@@ -433,7 +431,6 @@ echo "Filling arrays...";
 $msgOptions = array(); 
 $msgOptions[0] = $comment;
 $msgOptions[1] = $id;
-$msgOptions[2] = $pagetype;
 
 $ip = mysqli_real_escape_string($db_connection, htmlentities($_SERVER['REMOTE_ADDR']));
 //$ip = str_replace("'","&#39;",str_replace('"',"&#34;",$id));
@@ -467,7 +464,7 @@ $CommentingQuery = "INSERT INTO `CommunityRegThread` (
 `approved`
 )
 VALUES (
-'".$msgOptions[1]."', '".$msgOptions[2]."', NOW(), '".$userid."', '0', '', 'Name', 'Email', '".$ip."', '1', '0', '', '".$msgOptions[0]."', 'xx', '1'
+ NOW(), '".$userid."', '0', '', 'Name', 'Email', '".$ip."', '1', '0', '', '".$msgOptions[0]."', 'xx', '1'
 );";
 echo $CommentingQuery;
 	

@@ -81,6 +81,7 @@ xmlhttp.send("id="+ factNum + "&topictype="+ TopicType + "&username=Citrus&usere
  */
 function PostNew()
 {
+	
 var comment = document.getElementById("commentbox").value;
 var url = "../_incl/actionHandler.php?func=NewThread";
 
@@ -98,6 +99,7 @@ xmlhttp.onreadystatechange=function()
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
     alert(innerHTML=xmlhttp.responseText);
+    alert("Refresh");
     }
   }
 xmlhttp.open("POST",url,true);
