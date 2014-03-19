@@ -1234,6 +1234,7 @@ $pageEchoes =
 }
 .comments .comment-input .comment-body {
     border-color: transparent;
+    background: none;
 }
 .comments .avatar .username {
     font-size: smaller;
@@ -1269,23 +1270,26 @@ $pageEchoes =
 ';
 
 $pageEchoes .= "
-	<SECTION CLASS='comments'>
-        <OL CLASS='comments-list'>
+<SECTION CLASS='comments'>
+	<OL CLASS='comments-list'>
 	";
 
 $pageEchoes .= '	
-				<LI CLASS="comment-input">
-                     <FIGURE CLASS="avatar">
-                             <IMG src="/user/username/avatar64.png" />
-                             <FIGCAPTION>Username</FIGCAPTION>
-                     </FIGURE>
-                     <DIV CLASS="comment-body">
-                             <FORM METHOD="post">
-                                     <TEXTAREA id="commentbox" NAME="newComment" REQUIRED PLACEHOLDER="Type your comment here..."></TEXTAREA>
-                                     <INPUT TYPE="submit" onclick="PostComment($threadIDnum, $type)"/> <!-- this will likely be hidden by CSS -->
-                             </FORM>
-                     </DIV>
-             </LI>
+		<LI CLASS="comment-input">
+			<FIGURE CLASS="avatar">
+				<IMG src="/user/username/avatar64.png" />
+				<FIGCAPTION CLASS="username">Username</FIGCAPTION>
+			</FIGURE>
+			<DIV CLASS="comment-body">
+				<FORM METHOD="post">
+					<TEXTAREA id="commentbox" NAME="newComment" REQUIRED PLACEHOLDER="Type your comment here..."></TEXTAREA>
+					<INPUT TYPE="submit" onclick="PostComment($threadIDnum, $type)"/><!-- Fallback in case no JS to detect enter key -->
+					<SCRIPT TYPE="text/css">
+					$(".comments .comment-input input[type=submit]").remove();
+					</SCRIPT>
+				</FORM>
+			</DIV>
+		</LI>
                 ';
 
 if(isset($comments))
@@ -1308,46 +1312,46 @@ if(isset($comments))
 			
 			
 		$pageEchoes .= '
-                <LI>
-                		<FIGURE CLASS="avatar">
-                     		<IMG SRC="https://avatars2.githubusercontent.com/u/2942262?s=64" a="/user/username/avatar64.png" />
-                        	<FIGCAPTION class="username">'. $comment->getMemberName() .'</FIGCAPTION>
-                     </FIGURE>
-                     <DIV CLASS="comment-body">';
+		<LI>
+			<FIGURE CLASS="avatar">
+				<IMG SRC="https://avatars2.githubusercontent.com/u/2942262?s=64" a="/user/username/avatar64.png" />
+				<FIGCAPTION class="username">'. $comment->getMemberName() .'</FIGCAPTION>
+			</FIGURE>
+			<DIV CLASS="comment-body">';
       
       //Check for special banner user
       if($comment->getMemberID() == "0")
 		{
 			$pageEchoes .= '
-									<HEADER CLASS="premium-header">
-										<DIV CLASS="premium-image" STYLE="background-image:url(/user/supuhstar/premium-header.png)">Admin</DIV><!-- In HTML5.1, this should be changed to a <DECORATOR> element -->
-                     			<UL CLASS="comment-controls">
-                              	<LI><A CLASS="comment-flag"><I CLASS="icon-flag">Flag</I></A></LI>
-                              	<LI><A CLASS="comment-reply"><I CLASS="icon-reply">Reply</I></A></LI>
-                              </UL>
-                           </HEADER>
+				<HEADER CLASS="premium-header">
+					<DIV CLASS="premium-image" STYLE="background-image:url(/user/supuhstar/premium-header.png)">Admin</DIV><!-- In HTML5.1, this should be changed to a <DECORATOR> element -->
+					<UL CLASS="comment-controls">
+						<LI><A CLASS="comment-flag"><I CLASS="icon-flag">Flag</I></A></LI>
+						<LI><A CLASS="comment-reply"><I CLASS="icon-reply">Reply</I></A></LI>
+					</UL>
+				</HEADER>
 								';		
 		}		  
 		else {
 			$pageEchoes .= '
-									<HEADER>
-                     			<UL CLASS="comment-controls">
-                              	<LI><A CLASS="comment-flag"><I CLASS="icon-flag">Flag</I></A></LI>
-                              	<LI><A CLASS="comment-reply"><I CLASS="icon-reply">Reply</I></A></LI>
-                              </UL>
-                           </HEADER>
+				<HEADER>
+					<UL CLASS="comment-controls">
+						<LI><A CLASS="comment-flag"><I CLASS="icon-flag">Flag</I></A></LI>
+						<LI><A CLASS="comment-reply"><I CLASS="icon-reply">Reply</I></A></LI>
+					</UL>
+				</HEADER>
 								';		
 		}		     
                       		
                                                       
                            
 		$pageEchoes .= '                           
-									<DIV CLASS="comment-text">	
-	                        	'. $comment->getPostBody() .'
-                        	</DIV		
-                     </DIV>
-                </LI>
-					';
+				<DIV CLASS="comment-text">	
+					'. $comment->getPostBody() .'
+				</DIV>
+			</DIV>
+		</LI>
+		';
 		
 		
 		
@@ -1356,9 +1360,9 @@ if(isset($comments))
 }
 
 $pageEchoes .= "
-        </OL>
-	</SECTION>
-	";
+	</OL>
+</SECTION>
+";
 $pageEchoes = formatReference($pageEchoes,$user, $db_connection, true);
 
 echo TitleFiller($pageEchoes, $db_connection);
