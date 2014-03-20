@@ -1272,7 +1272,30 @@ function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 		.comments .comment-text {
 			padding: 0 .5em;
 		}
-		
+		.bg-repeat-off {
+			background-repeat: no-repeat !important;
+		}
+		.bg-pos-left {
+			background-position: left !important;
+		}
+		.bg-pos-center {
+			background-position: center !important;
+		}
+		.bg-pos-right {
+			background-position: right !important;
+		}
+		.bg-size-contain {
+			background-size: contain !important;
+		}
+		.bg-size-cover {
+			background-size: contain !important;
+		}
+		.bg-size-original {
+			background-size: auto !important;
+		}
+		.bg-size-stretch {
+			background-size: 100% 100% !important;
+		}
 		</style>
 		<SECTION ID="comments" CLASS="comments">
 			<OL CLASS="comments-list">';
