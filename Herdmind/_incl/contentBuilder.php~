@@ -1351,7 +1351,7 @@ function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 			if($comment->memberid == "1")
 				$pageEchoes .= '
 						<HEADER CLASS="premium-header">
-							<DIV CLASS="premium-image bg-pos-right bg-size-original" STYLE="background-image:url(../_img/uploaded/user/'.$comment->memberid.'/premium-header.png)">Admin</DIV><!-- In HTML5.1, this should be changed to a <DECORATOR> element -->';
+							<DIV CLASS="premium-image bg-pos-right bg-size-original bg-repeat-off" STYLE="background-image:url(../_img/uploaded/user/'.$comment->memberid.'/premium-header.png)">Admin</DIV><!-- In HTML5.1, this should be changed to a <DECORATOR> element -->';
 			else
 				$pageEchoes .= '
 						<HEADER>';

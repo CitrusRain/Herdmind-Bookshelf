@@ -1358,8 +1358,8 @@ function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 			
 			$pageEchoes .= '
 							<UL CLASS="comment-controls">
-								<LI><A CLASS="comment-flag"><I CLASS="icon-flag"></I></A></LI>
-								<LI><A CLASS="comment-reply"><I CLASS="icon-reply"></I></A></LI>
+								<LI><A CLASS="comment-flag"><I CLASS="fa fa-flag"></I></A></LI>
+								<LI><A CLASS="comment-reply"><I CLASS="fa fa-reply"></I></A></LI>
 							</UL>
 						</HEADER>';
 								
