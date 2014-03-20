@@ -1334,24 +1334,24 @@ function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 				"<br/><br/>Post Body:<br/>"   . $comment->getPostBody() .
 				"<hr/>";
 				*/
-			if($comment->getTopicType() == "Thread")
+			if($comment->topictype == "Thread")
 				$pageEchoes .= 'Thread';
 			
 			$pageEchoes .= "
 				<LI>
 					<FIGURE CLASS=\"avatar\">
-						<A HREF=\"/profile/?fandom=$fandom&id=".$comment->getMemberID().'">
-							<IMG SRC="../_img/uploaded/user/'.$comment->getMemberID().'/avatar64.png" />
-							<FIGCAPTION CLASS="username">'. $comment->getMemberName() .'</FIGCAPTION>
+						<A HREF=\"/profile/?fandom=$fandom&id=".$comment->memberid.'">
+							<IMG SRC="../_img/uploaded/user/'.$comment->memberid.'/avatar64.png" />
+							<FIGCAPTION CLASS="username">'. $comment->membername .'</FIGCAPTION>
 						</A>
 					</FIGURE>
 					<DIV CLASS="comment-body">';
 			
 			//Check for special banner user
-			if($comment->getMemberID() == "1")
+			if($comment->memberid == "1")
 				$pageEchoes .= '
 						<HEADER CLASS="premium-header">
-							<DIV CLASS="premium-image" STYLE="background-image:url(../_img/uploaded/user/'.$comment->getMemberID().'/premium-header.png)">Admin</DIV><!-- In HTML5.1, this should be changed to a <DECORATOR> element -->';
+							<DIV CLASS="premium-image bg-pos-right" STYLE="background-image:url(../_img/uploaded/user/'.$comment->memberid.'/premium-header.png)">Admin</DIV><!-- In HTML5.1, this should be changed to a <DECORATOR> element -->';
 			else
 				$pageEchoes .= '
 						<HEADER>';
@@ -1364,15 +1364,15 @@ function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 						</HEADER>';
 								
 			$linkedpage = "";
-			if($comment->getTopicType() == "Thread" || $comment->getTopicType() == "threadcomment")
+			if($comment->topictype == "Thread" || $comment->topictype == "threadcomment")
 				$linkedpage = "thread";      
-			elseif($comment->getTopicType() == "fanfact" || $comment->getTopicType() == "profile")
-				$linkedpage = $comment->getTopicType();      
+			elseif($comment->topictype == "fanfact" || $comment->topictype == "profile")
+				$linkedpage = $comment->topictype;      
 							   
 			$pageEchoes .= '
 						<DIV CLASS="comment-text">	
-							'.$comment->getPostBody()."<br/>
-							<a href=\"/$linkedpage?fandom=$fandom&id=".$comment->getTopicID().'">'.$comment->getTimePosted().'</a>
+							'.$comment->postbody."<br/>
+							<a href=\"/$linkedpage?fandom=$fandom&id=".$comment->topicid.'">'.$comment->timeposted.'</a>
 						</DIV>
 					</DIV>
 				</LI>';
