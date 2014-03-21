@@ -421,36 +421,6 @@ function buildFooter($mod = false)
 </FOOTER>";
 }
 
-
-
-
-/**
- * Depreciated - use buildTopicLinkListFromXML instead
- *
- * Builds a list of links to Herdmind fanfact topics, given an array of topic numbers.
- * 
- * @param $topicIndices an array of numbers, corresponding to Herdmind topics
- * @param $dbc          the connection to a Herdmind database
- * 
- * @author Kyli Rouge
- * @since 2013-03-12
- * @version 1.0.1 (2013-03-13)
-**/
-function buildTopicLinkList($topicIndices = array(), $dbc = null, $listClass = "")
-{
-	if ($dbc === null)
-		$dbc = $db_connection;
-	$ret = "
-	<UL CLASS=\"topics " . $listClass . "\">";
-	foreach($topicIndices as $topicIndex)
-		$ret .= buildTopicLink($topicIndex, false, $dbc);
-	$ret .= "
-	</UL>";
-	
-	return $ret;
-}
-
-
 /**
  * Builds a list of links to Herdmind fanfact topics, given an xml object of topics.
  * 
@@ -469,7 +439,9 @@ $xmltopics = new SimpleXMLElement(XMLWrapping($topics));
 	$ret = "
 	<UL CLASS=\"topics " . $listClass . "\">";
 	foreach($xmltopics->children() as $onetopic)
-		$ret .= buildTopicLinkFromXML($onetopic, false);
+	{	$ret .= buildTopicLinkFromXML($onetopic, false);
+	echo "Please.";
+}
 	$ret .= "
 	</UL>";
 	
@@ -494,6 +466,7 @@ function buildTopicLinkFromXML($topic, $standalone = true)
 	$tagName = ($standalone ? "DIV" : "LI");
 	global $fandom;
 	$imgPath = "http://herdmind.net/" . $topic->picture;
+echo var_dump($topic);
 	/* Doesn't work:
 	if (!file_exists($imgPath))
 		$imgPath = "http://pony.herdmind.net/Images/headshots/" . $topicIndex . ".jpg";
@@ -517,7 +490,7 @@ function buildTopicLinkFromXML($topic, $standalone = true)
 				</FIGURE>
 			</A>
 		</" . $tagName . ">";
-	
+	echo "still here";
 	return $ret;
 }
 
@@ -630,7 +603,6 @@ function buildFactListXML($FactListInXML, $HowMany = 1)
 		<UL CLASS="fanfacts">';
 	foreach($FactListInXML->children() as $listitem)
 	{
-		echo "In";
 		$ret .= buildFactXML($listitem, false);
 	}
 	

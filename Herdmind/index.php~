@@ -131,7 +131,9 @@ buildHeader($mod); // Allows for testing of different layouts
 			//Popular
 			//FactID - DatePosted - Contents - sum(tal.Value)
 			$query = "
-			SELECT * FROM
+						 
+SELECT * FROM
+
 			(
 				SELECT DISTINCT Fact.FactID, Fact.DatePosted, Fact.Contents, sum(tal.Value) as RecentSum FROM
 				(
@@ -145,9 +147,18 @@ buildHeader($mod); // Allows for testing of different layouts
 						JOIN FactBranch AS fb ON Fact.FactID = fb.FactID
 					)
 					JOIN Branch AS b ON fb.BranchID = b.BranchID
-				)
+				) 
+ join (
+  Select FSBT.FactID, FSBT.DatePointScored from (
+FactScoreByTally as FSBT JOIN FactBranch AS fb ON FSBT.FactID = fb.FactID
+					)
+					JOIN Branch AS b ON fb.BranchID = b.BranchID
+WHERE b.branchid = '$fandom[0]'
+order by DatePointScored desc limit 25                              
+                                
+                                ) as mtvs on mtvs.FactID = Fact.FactID
+
 				WHERE b.branchid = '$fandom[0]'
-				AND tal.DatePointScored > DATE_SUB(curdate(), INTERVAL 2 WEEK)
 				AND s.IsPublic='1'
 				AND s.IsMature='$maturefilter'
 				AND s.IsRemoved='0'
@@ -174,9 +185,11 @@ buildHeader($mod); // Allows for testing of different layouts
 				AND s.IsMature='$maturefilter'
 				AND s.IsRemoved='0'
 				GROUP BY Fact.FactID
-			) as AllTimePopularFacts on PopularFacts.FactID = AllTimePopularFacts.FactID			
-			 order by Rand()";
-			// echo $query;
+			) as AllTimePopularFacts on PopularFacts.FactID = AllTimePopularFacts.FactID 			
+			 order by desc 	";		 
+			 
+			 
+			 
 			echo "<!--The reason for this being wrong is the 2 week filter. It is only counting votes made in the past 2 weeks.-->";
 			try
 			{
@@ -240,7 +253,7 @@ buildHeader($mod); // Allows for testing of different layouts
 					foreach ($line as $col_value) {
 					
 						$cnt[$pos] = "$col_value";
-						echo $col_value."<br/>";
+					//	echo $col_value."<br/>";
 						$pos++;
 					}	
 				} 
