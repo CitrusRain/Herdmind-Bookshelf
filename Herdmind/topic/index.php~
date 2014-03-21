@@ -251,15 +251,15 @@ if (isset($_GET['t']))
 					<DD><P><?php
 						echo str_replace("
 ", "</P>
-<P>", $topic->getDescription());
+<P>", $topic->description);
 						
 						?></P></DD>
 				<DT>Type</DT>
-					<DD><?php echo $topic->getType(); ?></DD>
+					<DD><?php echo $topic->type; ?></DD>
 				<DT>Reality</DT>
-					<DD><?php echo $topic->getReality(); ?></DD>
+					<DD><?php echo $topic->reality; ?></DD>
 				<DT>Canon</DT>
-					<DD><?php echo $topic->getCanon(); ?></DD>
+					<DD><?php echo $topic->canon; ?></DD>
 			</DL>
 		</FIGCAPTION>
 		<!--DIV><!-- will probably put something here eventually -></DIV-->

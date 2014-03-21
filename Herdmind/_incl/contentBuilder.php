@@ -270,11 +270,14 @@ function buildHeader($mod = false)
  * @since 2013-03-18
  * @version 1.0.1 (2013-03-20)
 **/
-function buildSidebar($userName = false, $mod = false)
+function buildSidebar($userNameVar = false, $mod = false)
 {
 	global $userName;
-	if (!$userName)
-		$userName = $userid;
+	global $userid;
+	global $fandom;	
+	
+	if (!$userNameVar)
+		$userNameVar = $userid;
 		
 	$pinned = "true";
 	if (isset($_COOKIE["pinSidebar"]))
@@ -435,7 +438,7 @@ function buildTopicLinkListFromXML($topics, $listClass = "")
 {		
 
 $xmltopics = new SimpleXMLElement(XMLWrapping($topics));
-//echo var_dump($xmltopics);
+//var_dump($xmltopics);
 	$ret = "
 	<UL CLASS=\"topics " . $listClass . "\">";
 	foreach($xmltopics->children() as $onetopic)
@@ -662,10 +665,10 @@ function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 					<SPAN CLASS=\"factNum\">$fact[0]</SPAN>
 					" . ($userid ? '<I CLASS="fa fa-star' . ($fact[6] ? '' : '-o') . ($standalone ? ' fa-2x' : '') . '" DATA-FAVORITE="$userName" '."onclick='starClick(\"".$fact[0]."\")'".'></I>' : '') . 
 					($moreData ? "<A HREF=\"/fanfact?fandom=".$fandom[0]."&id=$fact[0]\" CLASS=\"callToAction\">More data</A>" : "") . "
-					<!-- This number must be sent to an ajax call to star or unstar: $fact[5] -->
+					<!-- This number must be sent to an ajax call to star or unstar: $fact[0] -->
 				 </DIV>
 			</" . ($standalone ? "DIV" : "LI") . ">";
-			
+			var_dump($fact);
 					
 }
 /**

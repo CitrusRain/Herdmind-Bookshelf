@@ -466,7 +466,7 @@ $starred = checkStar("submissionID", $facts[7], $UserIsViewing);
 $starbool = false;
 if(!(empty($starred)))
 {	
-	echo "<br/>starred on ".$starred[1].", last viewed on ".$starred[2]."<br/>";
+	echo "<br/>starred on ".$starred[0].", last viewed on ".$starred[1]."<br/>";
 	$starbool = true;
 }
 
@@ -1364,17 +1364,13 @@ else if ($type == "postID")
 	// echo $query."<br/>";
 	 $result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
 
-	while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-		$output = array();
-	 	$output[0] = true;
-		$pos = 1;
-		foreach ($line as $col_value) {
-			$output[$pos] = "$col_value";
-			$pos++;
-		//	echo $col_value;
-		}	
-		
-	}
+$line = mysqli_fetch_array($result, MYSQL_ASSOC);
+
+		if(!is_null($line))
+		{
+			$count = $line['DateSaved'];			
+			}
+
 
 	return $output;
 	 

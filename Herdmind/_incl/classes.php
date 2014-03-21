@@ -93,6 +93,16 @@ class Topic
 	 */
  
 		global $db_connection;
+		global $userid;
+		if (isset($_GET['page']))
+			$page = mysqli_real_escape_string($db_connection, $_GET['page']);
+		else 
+			$page = 0;
+			
+		if (isset($_GET['limit']))
+			$factsperpage = mysqli_real_escape_string($db_connection, $_GET['limit']);
+		else 
+			$factsperpage = 0;
 
 		$xmlstring = GetFanfacts($_GET["t"], ($page * $factsperpage), 500000, $userid, $db_connection);
 		$factxml = new SimpleXMLElement($xmlstring);

@@ -270,11 +270,14 @@ function buildHeader($mod = false)
  * @since 2013-03-18
  * @version 1.0.1 (2013-03-20)
 **/
-function buildSidebar($userName = false, $mod = false)
+function buildSidebar($userNameVar = false, $mod = false)
 {
 	global $userName;
-	if (!$userName)
-		$userName = $userid;
+	global $userid;
+	global $fandom;	
+	
+	if (!$userNameVar)
+		$userNameVar = $userid;
 		
 	$pinned = "true";
 	if (isset($_COOKIE["pinSidebar"]))
@@ -435,7 +438,7 @@ function buildTopicLinkListFromXML($topics, $listClass = "")
 {		
 
 $xmltopics = new SimpleXMLElement(XMLWrapping($topics));
-echo var_dump($xmltopics);
+//var_dump($xmltopics);
 	$ret = "
 	<UL CLASS=\"topics " . $listClass . "\">";
 	foreach($xmltopics->children() as $onetopic)
@@ -665,7 +668,7 @@ function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 					<!-- This number must be sent to an ajax call to star or unstar: $fact[5] -->
 				 </DIV>
 			</" . ($standalone ? "DIV" : "LI") . ">";
-			
+			var_dump($fact);
 					
 }
 /**

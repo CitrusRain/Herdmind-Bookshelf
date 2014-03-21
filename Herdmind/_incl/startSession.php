@@ -21,7 +21,9 @@ global $parsedfandom;
  $parsedfandom = "";
 
 try{
-$fandom = htmlentities($_GET['fandom']);
+
+		if (isset($_GET['fandom']))
+			$fandom = htmlentities($_GET['fandom']);
 
 
 $fandom = mysqli_fetch_array(
@@ -32,12 +34,10 @@ $fandom = mysqli_fetch_array(
 					."'") );
 
 	//Fetch the returned values, if any.
-	echo"
-	Fetching global array \$fandom: ";
-	var_dump($fandom);
-	echo $fandom[0];
+//	echo" Fetching global array \$fandom: "; var_dump($fandom);
+//	echo $fandom[0];
 
-$parsedFandom = $fandom[3];
+$parsedFandom = $fandom[2];
 
 } catch(Exception $e)
 {

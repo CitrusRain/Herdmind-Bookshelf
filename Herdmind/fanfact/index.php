@@ -5,8 +5,9 @@ The page for general fanfacts
 This page is copyright Herdmind.net ©2013
 -->
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/_incl/startSession.php";        // Start session and determine subdomain
+
 include $_SERVER['DOCUMENT_ROOT']."/_incl/contentBuilder.php";      // Also includes config.php (must be done first) and styleSwitch.php
+include $_SERVER['DOCUMENT_ROOT']."/_incl/startSession.php";        // Start session and determine subdomain
 include $_SERVER['DOCUMENT_ROOT']."/_incl/RetreiveData.php";   // Any function that returns XML
 include $_SERVER['DOCUMENT_ROOT']."/_incl/convenience.php";
 ?>
@@ -16,7 +17,7 @@ include $_SERVER['DOCUMENT_ROOT']."/_incl/convenience.php";
 <?php
 $factNum = $_GET["id"]; //Determine what fanfact to load
 
-$FactXML = new SimpleXMLElement(GetFanfactByID($factNum, $subdomfilter, $userid, $db_connection)); //Get the fanfact in XML format
+$FactXML = new SimpleXMLElement(GetFanfactByID($factNum, '', $userid, $db_connection)); //Get the fanfact in XML format
 
 //Initialize variables that get populated in that darn unnessicary loop
 $factText = '';
@@ -32,7 +33,7 @@ $xml = '';
 			{
 				//Store this for the head content, then print it.
 				$factText = $fact->contents;
-				buildDefaultHeadContent("Fanfact $factNum", "$factText", array("$fandom","fanfact","headcanon","opinion"));
+				buildDefaultHeadContent("Fanfact $factNum", "$factText", array("$fandom[0]","fanfact","headcanon","opinion"));
 
 				//Get XML containing the page titles
 				$rawxml = TitleFinder($fact->contents, $db_connection);
