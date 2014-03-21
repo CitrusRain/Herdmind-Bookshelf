@@ -442,6 +442,8 @@ global $userid;
 global $ipid;
 
 echo "Getting information...";
+$fandomid = mysqli_real_escape_string($db_connection, $_POST['fandomid']);
+
 $comment = mysqli_real_escape_string($db_connection, htmlentities($_POST['comment']));
 //$comment = str_replace("'","&#39;",str_replace('"',"&#34;",$comment));
 
@@ -476,14 +478,17 @@ $CommentingQuery = "INSERT INTO `CommunityPosts` (
 `modified_name` ,
 `body` ,
 `icon` ,
-`approved`
+`approved` ,
+`fandom`
 )
 VALUES (
- NOW(), 'Thread', '".$userid."', '0', '', 'Name', 'Email', '".$ip."', '1', '0', '', '".$comment."', 'xx', '1'
+ NOW(), 'Thread', '".$userid."', '0', '', 'Name', 'Email', '".$ip."', '1', '0', '', '".$comment."', 'xx', '1', '$fandomid'
 );";
 echo $CommentingQuery;
 	
 	$result = mysqli_query($db_connection, $CommentingQuery) or die('Query failed: ' . mysqli_error($db_connection));
+
+mysqli_query($db_connection, "UPDATE `CommunityPosts` SET `id_topic` = '".$db_connection->insert_id."' WHERE `CommunityPosts`.`id_msg` = '".$db_connection->insert_id."';");
 
 echo " ...DONE<br/>";
 
@@ -503,12 +508,14 @@ echo (isset($result) ? "Success!" : "Failed.");
 **/
 function saveComment()
 {
-
 global $db_connection;
 global $userid;
 global $ipid;
 
 echo "Getting information...";
+$fandomid = mysqli_real_escape_string($db_connection, $_POST['fandomid']);
+
+
 $comment = mysqli_real_escape_string($db_connection, htmlentities($_POST['comment']));
 //$comment = str_replace("'","&#39;",str_replace('"',"&#34;",$comment));
 
@@ -560,14 +567,17 @@ $CommentingQuery = "INSERT INTO `CommunityPosts` (
 `modified_name` ,
 `body` ,
 `icon` ,
-`approved`
+`approved` ,
+`fandom`
 )
 VALUES (
-'".$msgOptions[1]."', '".$msgOptions[2]."', NOW(), '".$userid."', '0', '', 'Name', 'Email', '".$ip."', '1', '0', '', '".$msgOptions[0]."', 'xx', '1'
+'".$msgOptions[1]."', '".$msgOptions[2]."', NOW(), '".$userid."', '0', '', 'Name', 'Email', '".$ip."', '1', '0', '', '".$msgOptions[0]."', 'xx', '1', '$fandomid'
 );";
 echo $CommentingQuery;
 	
 	$result = mysqli_query($db_connection, $CommentingQuery) or die('Query failed: ' . mysqli_error($db_connection));
+
+
 
 echo " ...DONE<br/>";
 

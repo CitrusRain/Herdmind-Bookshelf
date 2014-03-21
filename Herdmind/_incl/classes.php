@@ -1,4 +1,4 @@
-<?PHP
+<?php
 
 echo "<!--classes.php imported-->";
 

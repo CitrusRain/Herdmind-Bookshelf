@@ -6,9 +6,9 @@ This is a mockup of the Herdmind front page as envisioned by Kyli Rouge|Supuhsta
 This mockup is copyright Herdmind.net ©2013
 -->
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/_incl/startSession.php";        // Start session and determine subdomain
 include $_SERVER['DOCUMENT_ROOT']."/_incl/contentBuilder.php";      // Also includes config.php (must be done first) and styleSwitch.php
 include $_SERVER['DOCUMENT_ROOT']."/_incl/contentBuilderIndex.php"; // Builds body content for index
+include $_SERVER['DOCUMENT_ROOT']."/_incl/startSession.php";        // Start session and determine subdomain
 include $_SERVER['DOCUMENT_ROOT']."/_incl/classes2.php";   			// A bunch of classes used for data
 include $_SERVER['DOCUMENT_ROOT']."/_incl/RetreiveData.php";   		// Any function that returns XML
 include $_SERVER['DOCUMENT_ROOT']."/_incl/convenience.php";
@@ -39,15 +39,15 @@ buildHeader($mod); // Allows for testing of different layouts
 
 		echo "
 	<H1>";
-		if (!$fandom) // If this is not a homepage for a registered fandom
+		if (is_null($fandom)) // If this is not a homepage for a registered fandom
 		{
-			if ($parsedFandom) // $parsedFandom is set to null only if we are on the main portal page (no domain)
-				echo "Sorry!</H1><P>We don't cover the " . $parsedFandom . " fandom</P>";
+			if ($parsedfandom) // $parsedFandom is set to null only if we are on the main portal page (no domain)
+				echo "Sorry!</H1><P>The Community you are looking for does not exist.</P>";
 			else
 				echo "Welcome!</H1>";
 		}
 		else
-			echo $parsedFandom . "</H1>";
+			echo $parsedfandom . "</H1>";
 
 
 	if(!$fandom or $fandom == '')
@@ -72,12 +72,12 @@ buildHeader($mod); // Allows for testing of different layouts
 		
 		$fandomPortals = // TODO: Change to database retrieval
 			array(
-				  new PortalItem( $tardis->getTitle(),
-				                 "?fandom=tardis", //  "//tardis.herdmind.net"                 USE THIS IN FINAL IMPLEMENTATION
+				  new PortalItem( $tardis->title,
+				                 "?fandom=9", //  "//tardis.herdmind.net"                 USE THIS IN FINAL IMPLEMENTATION
 				                 "//beta.herdmind.net/_incl/resizedImage.php?w=512&i=/_img/fandom-logos/Who_4k.png")
 				                 //$tardis->getLogo())                 USE THIS IN FINAL IMPLEMENTATION
 				, new PortalItem("My Little Pony: Friendship is Magic",
-				                 "?fandom=pony", // "//pony.herdmind.net"                     USE THIS IN FINAL IMPLEMENTATION
+				                 "?fandom=1", // "//pony.herdmind.net"                     USE THIS IN FINAL IMPLEMENTATION
 				                 "//beta.herdmind.net/_incl/resizedImage.php?w=512&i=/_img/fandom-logos/MLP_4k.png") //////////////////////////// TODO: CHANGE BEFORE GOING LIVE
                                  //"//herdmind.net/CSS/herdmind/SubsiteButtons/button_pony.png")
 				, new PortalItem("Powerpuff Girls",
@@ -146,7 +146,7 @@ buildHeader($mod); // Allows for testing of different layouts
 					)
 					JOIN Branch AS b ON fb.BranchID = b.BranchID
 				)
-				WHERE b.subdomain = '$fandom'
+				WHERE b.branchid = '$fandom[0]'
 				AND tal.DatePointScored > DATE_SUB(curdate(), INTERVAL 2 WEEK)
 				AND s.IsPublic='1'
 				AND s.IsMature='$maturefilter'
@@ -169,7 +169,7 @@ buildHeader($mod); // Allows for testing of different layouts
 					)
 					JOIN Branch AS b ON fb.BranchID = b.BranchID
 				)
-				WHERE b.subdomain = '$fandom'
+				WHERE b.branchid = '$fandom[0]'
 				AND s.IsPublic='1'
 				AND s.IsMature='$maturefilter'
 				AND s.IsRemoved='0'
@@ -221,7 +221,7 @@ buildHeader($mod); // Allows for testing of different layouts
 						)
 						JOIN Branch AS b ON fb.BranchID = b.BranchID
 					)
-					WHERE b.subdomain = '$fandom'
+					WHERE b.branchid = '$fandom[0]'
 					AND s.IsPublic='1'
 					AND s.IsMature='$maturefilter'
 					AND s.IsRemoved='0'

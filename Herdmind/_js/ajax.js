@@ -108,7 +108,7 @@ xmlhttp.send("id="+ factNum + "&topictype="+ TopicType + "&username=Citrus&usere
  * 
  * 2014-01-22 ~ updated from PostComment to work for more than just a fanfact's comment thread.
  */
-function PostNew()
+function PostNew(fandomid)
 {
 	alert("Good");
 var comment = document.getElementById("commentbox").value;
@@ -133,7 +133,7 @@ xmlhttp.onreadystatechange=function()
   }
 xmlhttp.open("POST",url,true);
 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-xmlhttp.send("username=Citrus&useremail=email@herdmind.net&comment="+ comment +"");
+xmlhttp.send("username=Citrus&useremail=email@herdmind.net&comment="+ comment +"&fandomid="+fandomid);
 
 }
 

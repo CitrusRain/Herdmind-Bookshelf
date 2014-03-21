@@ -115,7 +115,7 @@ Make a place to make a thread with
 echo "
 <form method='POST'>
 		<textarea id='commentbox'></textarea>
-		<button type='button' onclick='PostNew()'>Submit a Shitpost</button>
+		<button type='button' onclick='PostNew(\"".$fandom[0]."\")'>Submit a Shitpost</button>
 	</form>
 ";
 

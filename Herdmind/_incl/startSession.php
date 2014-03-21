@@ -6,6 +6,7 @@ Starts the session, gets the subdomain
 Initializes stuff.
 
 */
+
 session_start();
 
 global $forumprefix;
@@ -14,12 +15,36 @@ global $userid;
 global $userName;
 global $db_connection;
 global $fandom;
+global $parsedfandom;
 
-$fandom = array_shift(explode('.',$_SERVER['HTTP_HOST']));
-echo"<!--subdomain is $fandom-->\r\n";
-$fandom = 'beta';
-$parsedFandom = $fandom;
+ $fandom = "";
+ $parsedfandom = "";
 
+try{
+$fandom = htmlentities($_GET['fandom']);
+
+
+$fandom = mysqli_fetch_array(
+			mysqli_query($db_connection,
+				"SELECT `BranchID`, `ParentBranchID`, `BranchName` 
+					FROM `Branch` WHERE BranchID='".
+					mysqli_real_escape_string($db_connection, $fandom)
+					."'") );
+
+	//Fetch the returned values, if any.
+	echo"
+	Fetching array:";
+	var_dump($fandom);
+	echo $fandom[0];
+
+$parsedFandom = $fandom[3];
+
+} catch(Exception $e)
+{
+$fandom = $parsedFandom = "";
+}
+
+/*
 // echo "
 // \$fandom == $fandom";
 
@@ -68,7 +93,7 @@ switch(strtolower($fandom)) // Support for synonymous subdomains
 		 Fandom not registered. Nullifying...';
 		$parsedFandom = $fandom;
 		$fandom = null;
-}
+}*/
 
 // echo "
 // Fandom is $fandom ($parsedFandom)";

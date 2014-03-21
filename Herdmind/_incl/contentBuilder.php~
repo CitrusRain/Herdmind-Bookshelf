@@ -223,7 +223,7 @@ function buildBodyTagWithAttributes()
 **/
 function buildHeader($mod = false)
 {
-    global $parsedFandom; echo "<!-- fandom is $parsedFandom -->";
+   global $fandom; echo "<!-- fandom is ".$fandom[3]." -->";
 	global $userName;
 	global $userid;
 	if (!$userName)
@@ -235,7 +235,7 @@ function buildHeader($mod = false)
 	<H1>
 		<A HREF=\"/\">
 			Herdmind
-			<SMALL CLASS=\"slogan\">The $parsedFandom Headcanon Database</SMALL>
+			<SMALL CLASS=\"slogan\">The ".$fandom[3]." Headcanon Database</SMALL>
 		</A>
 	</H1>
 	<DIV CLASS=\"warning alert hideIfMediaQuery\">Your browser is unsupported!</DIV>
@@ -243,8 +243,8 @@ function buildHeader($mod = false)
 	if ($userName)
 		echo "
 		<UL ID=\"LOGGED_IN_USERNAV\">
-			<LI><A HREF=\"/submit/fanfact/?fandom=$parsedFandom\" CLASS=\"button\">New Fanfact</A></LI>
-			<LI><A HREF=\"/profile/?id=$userName\" CLASS=\"button\">" . $userName . "</A></LI>
+			<LI><A HREF=\"/submit/fanfact/?fandom=".$fandom[0]."\" CLASS=\"button\">New Fanfact</A></LI>
+			<LI><A HREF=\"/profile/?fandom=".$fandom[0]."&id=$userName\" CLASS=\"button\">" . $userName . "</A></LI>
 			<LI><A ONCLICK=\"$('BODY').addClass('withDialog'); return true;\" HREF=\"#LOGGER_HOLDER\">Log Out</A></LI>
 		</UL>";
 	else
@@ -323,12 +323,12 @@ function buildSidebar($userName = false, $mod = false)
 	echo "
 		<LI CLASS=\"expandable\"><A HREF=\"/browse/\">Browse</A>
 			<UL>
-				<LI><A HREF=\"/browse/index.php?type=Character\"> Characters </A></LI>
-				<LI><A HREF=\"/browse/index.php?type=Species\">   Species    </A></LI>
-				<LI><A HREF=\"/browse/index.php?type=Place\">     Places     </A></LI>
-				<LI><A HREF=\"/browse/index.php?type=Event\">     Events     </A></LI>
-				<LI><A HREF=\"/browse/index.php?type=Object\">    Objects    </A></LI>
-				<LI><A HREF=\"/browse/index.php?type=Other\">     Other      </A></LI>
+				<LI><A HREF=\"/browse/index.php?fandom=".$fandom[0]."&type=Character\"> Characters </A></LI>
+				<LI><A HREF=\"/browse/index.php?fandom=".$fandom[0]."&type=Species\">   Species    </A></LI>
+				<LI><A HREF=\"/browse/index.php?fandom=".$fandom[0]."&type=Place\">     Places     </A></LI>
+				<LI><A HREF=\"/browse/index.php?fandom=".$fandom[0]."&type=Event\">     Events     </A></LI>
+				<LI><A HREF=\"/browse/index.php?fandom=".$fandom[0]."&type=Object\">    Objects    </A></LI>
+				<LI><A HREF=\"/browse/index.php?fandom=".$fandom[0]."&type=Other\">     Other      </A></LI>
 			</UL>
 		</LI>
 		<LI><A HREF=\"/forum/\">Forums</A></LI>
@@ -450,74 +450,6 @@ function buildTopicLinkList($topicIndices = array(), $dbc = null, $listClass = "
 	return $ret;
 }
 
-/**
- * Depreciated - use buildTopicLinkFromXML instead
- *
- * Builds a single topic link, which contains the topic's thumbnail and all its defined names, with the most voted at the top.
- * You needn't worry about changing this based on where it is placed, as resizing is taken care of in CSS.
- * 
- * @param $topicIndex the index of the topic that this link showcases
- * @param $listItem   [OPTIONAL] defines whether this is a part of a list or a standalone. If it is in a list, then set this to
- *                    	true. If it is not in a list, you may omit this argument or set it to false.
- * @param $dbc        the connection to a Herdmind database
- * 
- * @author Kyli Rouge
- * @since 2013-03-12
- * @version 1.1.0 (2013-03-13)
-**/
-function buildTopicLink($topicIndex, $standalone = true, $dbc = null)
-{
-	if ($dbc === null)
-	{
-		global $db_connection;
-		$dbc = $db_connection;
-	}
-	
-	$names = mysqli_fetch_array(
-				mysqli_query($dbc,
-				"SELECT PageTitles.Title
-				AS Title, PageTitles.ID, COUNT( NSBT.UserPoint ) 
-				FROM NameScoreByTally
-				AS NSBT
-				RIGHT OUTER JOIN PageTitles ON PageTitles.ID = NSBT.NameID
-				WHERE PageTitles.PageID = '$topicIndex'
-				GROUP BY PageTitles.ID
-				ORDER BY COUNT( NSBT.UserPoint )
-				DESC LIMIT 0, 1"
-				), MYSQL_ASSOC); // Fetch all the alternate names for the topic in the format 
-	
-	if (!isset($names))
-		$names = array("ERROR: No names pulled from database");
-	
-	$tagName = ($standalone ? "DIV" : "LI");
-	global $fandom;
-	$imgPath = "http://$fandom.herdmind.net/beta/_img/uploaded/topics/" . $topicIndex . ".png";
-	/* Doesn't work:
-	if (!file_exists($imgPath))
-		$imgPath = "http://pony.herdmind.net/Images/headshots/" . $topicIndex . ".jpg";
-	if (!file_exists($imgPath))
-		$imgPath = "http://placehold.it/256&text=No%20Image";*/
-	$ret = "
-		<" . $tagName . ">
-			<A HREF=\"http://$fandom.herdmind.net/topic?t=" . $topicIndex . "\" CLASS=\"topic\">
-				<FIGURE>
-					<IMG CLASS=\"thumb\" SRC=\"" . $imgPath . "\"/>
-					<FIGCAPTION>
-						<UL>";
-		// TODO: Make a foreach loop to add each alternate name
-		$ret .= "
-							<LI>" . $names['Title'] . "</LI>";
-		$ret .= "
-							<LI CLASS='devalert'>Alternate names will go here</LI>";
-	$ret .= "
-						</UL>
-					</FIGCAPTION>
-				</FIGURE>
-			</A>
-		</" . $tagName . ">";
-	
-	return $ret;
-}
 
 /**
  * Builds a list of links to Herdmind fanfact topics, given an xml object of topics.
@@ -561,7 +493,7 @@ function buildTopicLinkFromXML($topic, $standalone = true)
 {	
 	$tagName = ($standalone ? "DIV" : "LI");
 	global $fandom;
-	$imgPath = "http://$fandom.herdmind.net/" . $topic->picture;
+	$imgPath = "http://herdmind.net/" . $topic->picture;
 	/* Doesn't work:
 	if (!file_exists($imgPath))
 		$imgPath = "http://pony.herdmind.net/Images/headshots/" . $topicIndex . ".jpg";
@@ -569,7 +501,7 @@ function buildTopicLinkFromXML($topic, $standalone = true)
 		$imgPath = "http://placehold.it/256&text=No%20Image";*/
 	$ret = "
 		<" . $tagName . ">
-			<A HREF=\"http://$fandom.herdmind.net/topic?t=" . $topic->pageid . "\" CLASS=\"topic\">
+			<A HREF=\"http://herdmind.net/topic?t=" . $topic->pageid . "\" CLASS=\"topic\">
 				<FIGURE>
 					<IMG CLASS=\"thumb\" SRC=\"" . $imgPath . "\"/>
 					<FIGCAPTION>
@@ -1156,7 +1088,7 @@ function OldPageCodePicker()
 				<br/>
 				<sub>
 				[p".$results[0]."]
-				<a href='../topic.php?pageid=".$results[0]."' target='_blank' id='nonbutton'>View Page</a>
+				<a href='../topic.php?fandom=".$fandom[0]."&pageid=".$results[0]."' target='_blank' id='nonbutton'>View Page</a>
 				</sub></span></div>";
 
 		$divcol2++;
@@ -1340,7 +1272,7 @@ function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 			$pageEchoes .= "
 				<LI>
 					<FIGURE CLASS=\"avatar\">
-						<A HREF=\"/profile/?fandom=$fandom&id=".$comment->memberid.'">
+						<A HREF=\"/profile/?fandom=".$fandom[0]."&id=".$comment->memberid.'">
 							<IMG SRC="../_img/uploaded/user/'.$comment->memberid.'/avatar64.png" />
 							<FIGCAPTION CLASS="username">'. $comment->membername .'</FIGCAPTION>
 						</A>
@@ -1358,8 +1290,8 @@ function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 			
 			$pageEchoes .= '
 							<UL CLASS="comment-controls">
-								<LI><A CLASS="comment-flag"><I CLASS="icon-flag"></I></A></LI>
-								<LI><A CLASS="comment-reply"><I CLASS="icon-reply"></I></A></LI>
+								<LI><A CLASS="comment-flag"><I CLASS="fa fa-flag"></I></A></LI>
+								<LI><A CLASS="comment-reply"><I CLASS="fa fa-reply"></I></A></LI>
 							</UL>
 						</HEADER>';
 								
@@ -1372,7 +1304,7 @@ function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 			$pageEchoes .= '
 						<DIV CLASS="comment-text">	
 							'.$comment->postbody."<br/>
-							<a href=\"/$linkedpage?fandom=$fandom&id=".$comment->topicid.'">'.$comment->timeposted.'</a>
+							<a href=\"/$linkedpage?fandom=".$fandom[0]."&id=".$comment->topicid.'">'.$comment->timeposted.'</a>
 						</DIV>
 					</DIV>
 				</LI>';

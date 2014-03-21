@@ -26,6 +26,30 @@
 
 
 /**
+ * Returns fanworks to populate a gallery.
+ *
+ * @param $QueryResults 		The results of a search - this is index sensitive
+ * 
+ * @author Ryan Young
+ * @since May 31 2013
+ * @version 1.0.0
+**/
+function GetGallery()
+{
+global $db_connection;
+global $userid;
+
+$ReturnString = "";
+$query = "SELECT distinct SupportID, Type, LinkSrc, Title 
+from (((SupportRef join SupportingWorks on SupportingWorks.ID = SupportRef.SupportID) join SubmissionData as s on SupportID = s.SubmissionID)
+left join FanworkTags as FT on FT.FanworkID = SupportRef.SupportID) left join Tags as tag on FT.TagID = tag.TagID
+where s.SubmissionType like 'Fanwork%' and s.SubmissionType != 'Fanwork - Connection' and s.IsPublic='1' and s.IsMature='0' and s.IsRemoved='0' $tagFilter 
+order by s.TimeSubmitted desc limit $startat, $count;";
+
+
+}
+
+/**
  * Returns an XML string of fanfacts in the result set.
  *
  * @param $QueryResults 		The results of a search - this is index sensitive
@@ -239,6 +263,7 @@ function GetCommentsFeed($type)
 {
 global $db_connection;
 global $userid;
+global $fandom;
 
 $Thread = array();
 $ThreadCount = 0;
@@ -247,8 +272,11 @@ $ThreadCount = 0;
 					subject, poster_name, poster_email, poster_ip, 
 					smileys_enabled, modified_time, modified_name,
 					body, icon, approved, id_topic, id_topic_type
-			FROM CommunityPosts WHERE
-		 approved='1' order by poster_time desc limit 0, 30";
+					FROM CommunityPosts 
+					WHERE approved='1' 
+					AND fandom = '$fandom[0]'
+					order by poster_time desc limit 0, 30";
+		
 echo $query;
 	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
 
