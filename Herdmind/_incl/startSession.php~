@@ -14,8 +14,11 @@ global $ipid; //for guests
 global $userid;
 global $userName;
 global $db_connection;
-global $fandom = "";
-global $parsedfandom = "";
+global $fandom;
+global $parsedfandom;
+
+ $fandom = "";
+ $parsedfandom = "";
 
 try{
 $fandom = htmlentities($_GET['fandom']);
@@ -30,7 +33,7 @@ $fandom = mysqli_fetch_array(
 
 	//Fetch the returned values, if any.
 	echo"
-	Fetching array:";
+	Fetching global array \$fandom:";
 	var_dump($fandom);
 	echo $fandom[0];
 

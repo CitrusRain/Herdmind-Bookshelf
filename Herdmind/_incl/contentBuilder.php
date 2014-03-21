@@ -625,9 +625,7 @@ function buildFactsXML($FactQueryResult, $HowMany = 1)
 }
 
 function buildFactListXML($FactListInXML, $HowMany = 1)
-{
-	echo "Ontheway";
-	
+{	
 	$ret = '
 		<UL CLASS="fanfacts">';
 	foreach($FactListInXML->myxml->fanfact as $listitem)
@@ -664,6 +662,7 @@ function buildFactListXML($FactListInXML, $HowMany = 1)
 function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 {
 	global $userid;
+	global $fandom;
 	//	TODO: Insert more of the result list here, and make it work for more queries.
 	return
 			'
@@ -719,7 +718,8 @@ function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 function buildFactXml($fact, $standalone = true, $moreData = true, $classes = null, $shortlink = false)
 {
 	global $userid;
-	echo "okay";
+	global $fandom;	
+	
 	//	TODO: Insert more of the result list here, and make it work for more queries.
 	$factstring =
 			'
@@ -801,6 +801,7 @@ return XMLTitleFiller($string, $xml);
 **/
 function XMLTitleFiller($string, $xml)
 {
+global $fandom;
 $betafolder = "beta/";
 $betafolder = "";
 $strlist = '';

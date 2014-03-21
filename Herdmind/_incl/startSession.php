@@ -33,7 +33,7 @@ $fandom = mysqli_fetch_array(
 
 	//Fetch the returned values, if any.
 	echo"
-	Fetching array:";
+	Fetching global array \$fandom: ";
 	var_dump($fandom);
 	echo $fandom[0];
 

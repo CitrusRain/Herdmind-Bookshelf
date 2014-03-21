@@ -277,6 +277,7 @@ $ThreadCount = 0;
 					AND fandom = '$fandom[0]'
 					order by poster_time desc limit 0, 30";
 		
+echo $query;
 	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
 
 	while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {

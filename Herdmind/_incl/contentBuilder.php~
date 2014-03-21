@@ -501,7 +501,7 @@ function buildTopicLinkFromXML($topic, $standalone = true)
 		$imgPath = "http://placehold.it/256&text=No%20Image";*/
 	$ret = "
 		<" . $tagName . ">
-			<A HREF=\"http://herdmind.net/topic?t=" . $topic->pageid . "\" CLASS=\"topic\">
+			<A HREF=\"http://herdmind.net/topic?fandom=".$fandom[0]."&t=" . $topic->pageid . "\" CLASS=\"topic\">
 				<FIGURE>
 					<IMG CLASS=\"thumb\" SRC=\"" . $imgPath . "\"/>
 					<FIGCAPTION>
@@ -664,6 +664,7 @@ function buildFactListXML($FactListInXML, $HowMany = 1)
 function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 {
 	global $userid;
+	global $fandom;
 	//	TODO: Insert more of the result list here, and make it work for more queries.
 	return
 			'
@@ -690,7 +691,7 @@ function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 				 <DIV CLASS=\"meta\">
 					<SPAN CLASS=\"factNum\">$fact[0]</SPAN>
 					" . ($userid ? '<I CLASS="fa fa-star' . ($fact[6] ? '' : '-o') . ($standalone ? ' fa-2x' : '') . '" DATA-FAVORITE="$userName" '."onclick='starClick(\"".$fact[0]."\")'".'></I>' : '') . 
-					($moreData ? "<A HREF=\"/fanfact?id=$fact[0]\" CLASS=\"callToAction\">More data</A>" : "") . "
+					($moreData ? "<A HREF=\"/fanfact?fandom=".$fandom[0]."&id=$fact[0]\" CLASS=\"callToAction\">More data</A>" : "") . "
 					<!-- This number must be sent to an ajax call to star or unstar: $fact[5] -->
 				 </DIV>
 			</" . ($standalone ? "DIV" : "LI") . ">";
@@ -719,7 +720,8 @@ function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 function buildFactXml($fact, $standalone = true, $moreData = true, $classes = null, $shortlink = false)
 {
 	global $userid;
-	echo "okay";
+	global $fandom;	
+	
 	//	TODO: Insert more of the result list here, and make it work for more queries.
 	$factstring =
 			'
@@ -746,7 +748,7 @@ function buildFactXml($fact, $standalone = true, $moreData = true, $classes = nu
 				 <DIV CLASS=\"meta\">
 					<SPAN CLASS=\"factNum" . ($shortlink ? ' shortlink' : '') . "\">$fact->factid</SPAN>$fact->isstarred
 					" . ($userid ? '<I CLASS="fa fa-star' . ($fact->isstarred ? '' : '-o') . ($standalone ? ' fa-2x' : '') . "\" DATA-FAVORITE='$userName' onclick='starClick(\"".$fact->factid."\")'></I>" : '') .
-					($moreData ? "<A HREF=\"/fanfact?id=$fact->factid\" CLASS=\"callToAction\">More data</A>" : '') . "
+					($moreData ? "<A HREF=\"/fanfact?fandom=".$fandom[0]."&id=$fact->factid\" CLASS=\"callToAction\">More data</A>" : '') . "
 					<!-- This number must be sent to an ajax call to star or unstar: $fact->submissionid
 					<br/><sub>Edit buildFactXML() in _incl/contentBuilder.php</sub> -->
 				</DIV>
@@ -801,6 +803,7 @@ return XMLTitleFiller($string, $xml);
 **/
 function XMLTitleFiller($string, $xml)
 {
+global $fandom;
 $betafolder = "beta/";
 $betafolder = "";
 $strlist = '';
@@ -821,7 +824,7 @@ foreach($xml->children() as $child)
 //$Title = htmlentities($rs[0],ENT_QUOTES);
 		
 		$string = str_replace("[p" . $child->pageid . "]","<div class=\"popname\">
-			<a href=\"/topic?t=" . $child->pageid . "\" class=\"apagetitle\">" . $child->pagename . "</a><!-- These comments are here because there must be NO whitespace before, within, or after this fanfact, or else things like punctuation marks will not properly be placed flush with the fact
+			<a href=\"/topic?fandom=".$fandom[0]."&t=" . $child->pageid . "\" class=\"apagetitle\">" . $child->pagename . "</a><!-- These comments are here because there must be NO whitespace before, within, or after this fanfact, or else things like punctuation marks will not properly be placed flush with the fact
 			--><div class=\"informinglink\"><!--
 				--><img src=\"http://herdmind.net/".$betafolder . str_replace("../", "", $child->picture) . "\" ALT=\"A picture of " . $child->pagename . "\"/><!--
 					--><DL><!--
