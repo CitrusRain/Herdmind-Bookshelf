@@ -223,7 +223,7 @@ function buildBodyTagWithAttributes()
 **/
 function buildHeader($mod = false)
 {
-   global $fandom; echo "<!-- fandom is ".$fandom[3]." -->";
+   global $fandom; echo "<!-- fandom is ".$fandom[2]." -->";
 	global $userName;
 	global $userid;
 	if (!$userName)
@@ -235,7 +235,7 @@ function buildHeader($mod = false)
 	<H1>
 		<A HREF=\"/\">
 			Herdmind
-			<SMALL CLASS=\"slogan\">The ".$fandom[3]." Headcanon Database</SMALL>
+			<SMALL CLASS=\"slogan\">The ".$fandom[2]." Headcanon Database</SMALL>
 		</A>
 	</H1>
 	<DIV CLASS=\"warning alert hideIfMediaQuery\">Your browser is unsupported!</DIV>
