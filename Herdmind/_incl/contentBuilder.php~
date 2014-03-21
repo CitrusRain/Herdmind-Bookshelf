@@ -435,7 +435,7 @@ function buildTopicLinkListFromXML($topics, $listClass = "")
 {		
 
 $xmltopics = new SimpleXMLElement(XMLWrapping($topics));
-
+echo var_dump($xmltopics);
 	$ret = "
 	<UL CLASS=\"topics " . $listClass . "\">";
 	foreach($xmltopics->children() as $onetopic)
@@ -466,7 +466,7 @@ function buildTopicLinkFromXML($topic, $standalone = true)
 	$tagName = ($standalone ? "DIV" : "LI");
 	global $fandom;
 	$imgPath = "http://herdmind.net/" . $topic->picture;
-echo var_dump($topic);
+
 	/* Doesn't work:
 	if (!file_exists($imgPath))
 		$imgPath = "http://pony.herdmind.net/Images/headshots/" . $topicIndex . ".jpg";

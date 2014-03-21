@@ -435,7 +435,7 @@ function buildTopicLinkListFromXML($topics, $listClass = "")
 {		
 
 $xmltopics = new SimpleXMLElement(XMLWrapping($topics));
-echo var_dump($xmltopics);
+//echo var_dump($xmltopics);
 	$ret = "
 	<UL CLASS=\"topics " . $listClass . "\">";
 	foreach($xmltopics->children() as $onetopic)
