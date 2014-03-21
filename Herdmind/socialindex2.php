@@ -309,12 +309,12 @@ buildHeader($mod); // Allows for testing of different layouts
 						foreach ($line as $col_value) {
 						
 							$cnt[$pos] = "$col_value";
-							echo $col_value."<br/>";
+							//echo $col_value."<br/>";
 							$pos++;
 						}	
 					} 
 					
-					$Fanfacts = GetFanfactsByIDList($cnt);
+				$Fanfacts = new SimpleXMLElement(GetFanfactsByIDList($cnt));
 					
 	
 	/*

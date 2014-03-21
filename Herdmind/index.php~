@@ -7,6 +7,7 @@ This mockup is copyright Herdmind.net ©2013
 -->
 <?php
 include $_SERVER['DOCUMENT_ROOT']."/_incl/contentBuilder.php";      // Also includes config.php (must be done first) and styleSwitch.php
+include $_SERVER['DOCUMENT_ROOT']."/_incl/contentBuilderIndex.php"; // Builds body content for index
 include $_SERVER['DOCUMENT_ROOT']."/_incl/startSession.php";        // Start session and determine subdomain
 include $_SERVER['DOCUMENT_ROOT']."/_incl/classes2.php";   			// A bunch of classes used for data
 include $_SERVER['DOCUMENT_ROOT']."/_incl/RetreiveData.php";   		// Any function that returns XML
@@ -71,12 +72,12 @@ buildHeader($mod); // Allows for testing of different layouts
 		
 		$fandomPortals = // TODO: Change to database retrieval
 			array(
-				  new PortalItem( $tardis->getTitle(),
-				                 "?fandom=tardis", //  "//tardis.herdmind.net"                 USE THIS IN FINAL IMPLEMENTATION
+				  new PortalItem( $tardis->title,
+				                 "?fandom=9", //  "//tardis.herdmind.net"                 USE THIS IN FINAL IMPLEMENTATION
 				                 "//beta.herdmind.net/_incl/resizedImage.php?w=512&i=/_img/fandom-logos/Who_4k.png")
 				                 //$tardis->getLogo())                 USE THIS IN FINAL IMPLEMENTATION
 				, new PortalItem("My Little Pony: Friendship is Magic",
-				                 "?fandom=pony", // "//pony.herdmind.net"                     USE THIS IN FINAL IMPLEMENTATION
+				                 "?fandom=1", // "//pony.herdmind.net"                     USE THIS IN FINAL IMPLEMENTATION
 				                 "//beta.herdmind.net/_incl/resizedImage.php?w=512&i=/_img/fandom-logos/MLP_4k.png") //////////////////////////// TODO: CHANGE BEFORE GOING LIVE
                                  //"//herdmind.net/CSS/herdmind/SubsiteButtons/button_pony.png")
 				, new PortalItem("Powerpuff Girls",
@@ -244,33 +245,10 @@ buildHeader($mod); // Allows for testing of different layouts
 					}	
 				} 
 				
-				$Fanfacts = GetFanfactsByIDList($cnt);
-				
+				$Fanfacts = new SimpleXMLElement(GetFanfactsByIDList($cnt));
 
+				echo TitleFiller(buildFactListXML($Fanfacts),sizeof($cnt));
 
-echo '<section id="RAW_XML_TEST" style="border:thin dashed lightgray;">
-	<BUTTON ONCLICK="document.getElementById(\'RAW_XML_TEST\').remove()">Hide raw XML output</BUTTON><br/>';
-
-echo $Fanfacts->getName() . "<br/>";
-
-//Loop through each xml element and print it.
-  $stack = array();
-foreach($Fanfacts->children() as $child)
-  {
-  echo "-".$child->getName() . ": " . $child . "<br/>";
-	
-		foreach($child->children() as $child2)
-		  {
-		  echo "--".$child2->getName() . ": " . $child2 . "<br/>";
-		}
-  }
-  
-echo '</section>';	
-
-
-				echo TitleFiller(buildFactListXML($Fanfacts),5);
-			//	echo "<b>".$Fanfacts."</b>";
-			//	echo TitleFiller(buildFactsXML(GetFactXML(mysqli_query($db_connection, $query)), 5),$db_connection);
 		?>
 	</SECTION>
 	<?php

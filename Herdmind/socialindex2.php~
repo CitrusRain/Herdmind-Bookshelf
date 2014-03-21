@@ -314,13 +314,13 @@ buildHeader($mod); // Allows for testing of different layouts
 						}	
 					} 
 					
-					$Fanfacts = GetFanfactsByIDList($cnt);
+				$Fanfacts = new SimpleXMLElement(GetFanfactsByIDList($cnt));
 					
 	
-	
+	/*
 	echo '<section id="RAW_XML_TEST" style="border:thin dashed lightgray;">
 		<BUTTON ONCLICK="document.getElementById(\'RAW_XML_TEST\').remove()">Hide raw XML output</BUTTON><br/>';
-	/*
+	
 	echo $Fanfacts->getName() . "<br/>";
 	
 	//Loop through each xml element and print it.
@@ -334,9 +334,9 @@ buildHeader($mod); // Allows for testing of different layouts
 			  echo "--".$child2->getName() . ": " . $child2 . "<br/>";
 			}
 	  }
-	  */
 	echo '</section>';	
 
+	  */
 
 				echo TitleFiller(buildFactListXML($Fanfacts),5);
 			//	echo "<b>".$Fanfacts."</b>";

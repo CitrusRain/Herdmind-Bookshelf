@@ -628,9 +628,8 @@ function buildFactListXML($FactListInXML, $HowMany = 1)
 {	
 	$ret = '
 		<UL CLASS="fanfacts">';
-	foreach($FactListInXML->myxml->fanfact as $listitem)
+	foreach($FactListInXML->children() as $listitem)
 	{
-		echo "In";
 		$ret .= buildFactXML($listitem, false);
 	}
 	

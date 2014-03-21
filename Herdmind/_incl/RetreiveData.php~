@@ -109,23 +109,20 @@ if(isset($opt[0]) && $opt[0] != "")
 }
 
 //get post count
-$postscount = "SELECT count(id_topic), id_topic
+$postscount = "SELECT count(id_topic) as 'count', id_topic
 FROM `CommunityPosts`
 WHERE approved =1
 AND id_topic = '$facts[0]'
 AND id_topic_type = 'fanfact'
 GROUP BY id_topic";
 $postcount = mysqli_query($db_connection, $postscount) or die('Query failed: ' . mysqli_error($db_connection));
-$count = array();
-while ($line = mysqli_fetch_array($postcount, MYSQL_ASSOC)) {
-    $count = array();
-    $pos = 0;
-    foreach ($line as $col_value) {
-    
-        $count[$pos] = "$col_value";
-        $pos++;
-    }	
-}    
+$count = 0;
+$line = mysqli_fetch_array($postcount, MYSQL_ASSOC);
+
+		if(!is_null($line))
+		{
+			$count = $line['count'];			
+			}        
 
 
 $sc = 0 + $cnt[0];
@@ -151,7 +148,7 @@ $ReturnString = $ReturnString.'
 		<dateposted>'.$facts[2].'</dateposted>
 		<submissionid>'.$facts[3].'</submissionid>
 		<isstarred>'.$starbool.'</isstarred>
-		<commentcount>'.$count[0].'</commentcount>
+		<commentcount>'.$count.'</commentcount>
 	</fanfact>';
 
 $num = 1;
@@ -277,7 +274,6 @@ $ThreadCount = 0;
 					AND fandom = '$fandom[0]'
 					order by poster_time desc limit 0, 30";
 		
-echo $query;
 	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
 
 	while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
