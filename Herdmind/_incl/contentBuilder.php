@@ -69,6 +69,9 @@ function buildDefaultHeadContent($tabText = null, $longDescription = null, $keyw
 <SCRIPT TYPE=\"text/javascript\" SRC=\"//code.jquery.com/jquery.min.js\">/* jQuery */</SCRIPT>
 <SCRIPT TYPE=\"text/javascript\" SRC=\"/_js/general.js\">/* General Herdmind Javascript */</SCRIPT>
 <SCRIPT TYPE=\"text/javascript\" SRC=\"/_js/ajax.js\">/* Herdmind Javascript for AJAX calls */</SCRIPT>
+
+<LINK REL=\"stylesheet\" TYPE=\"text/css\" HREF=\"//prog.BHStudios.org/Husk/_css/Husk.css\" /> <!-- layout assistant -->
+<LINK REL=\"stylesheet\" TYPE=\"text/css\" HREF=\"//prog.BHStudios.org/Husk/_css/Flex.css\" /> <!-- layout assistant -->
 ";
 	
 	buildStyleSwitcherHeadContent("/_css/visual_Dynamo.css");
@@ -78,7 +81,7 @@ function buildDefaultHeadContent($tabText = null, $longDescription = null, $keyw
 
 
 
-/**
+/** WILL BE DELETED. ONLY USE FOR TESTING PURPOSES
  * Builds the default content to go in test pages' <HEAD> tags.
  * 
  * @param $tabText         [OPTIONAL] the text to go in the browser tab. If given, tab text will be "$tabText - Herdmind". Else,
