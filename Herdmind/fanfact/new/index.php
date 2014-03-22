@@ -30,15 +30,21 @@ buildDefaultHeadContent(
 );
 ?>
 <STYLE TYPE="text/css">
+*|* {
+    box-sizing: border-box;
+}
+BODY {
+	margin: 0;
+}
+BODY>MAIN {
+	margin: 1em;
+}
 #PAGECODES > header {
     text-align: right;
     margin: 0 -1em;
 }
 #NEW_FACT textarea {
     width: 100%;
-}
-*|* {
-    box-sizing: border-box;
 }
 #RECENT_PAGES figure, #FANWORKS_LIST figure {
     border: thin solid rgba(0,0,0, .25);
