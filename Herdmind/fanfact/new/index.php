@@ -29,6 +29,60 @@ buildDefaultHeadContent(
 	)
 );
 ?>
+<STYLE TYPE="text/css">
+#PAGECODES > header {
+    text-align: right;
+    margin: 0 -1em;
+}
+#NEW_FACT textarea {
+    width: 100%;
+}
+*|* {
+    box-sizing: border-box;
+}
+#RECENT_PAGES figure, #FANWORKS_LIST figure {
+    border: thin solid rgba(0,0,0, .25);
+    margin: .5em;
+    padding: 0 1em 1em;
+    /* background: #FFF; */
+    border-radius: .2em;
+}
+#RECENT_PAGES ol {
+    list-style-type: none;
+    margin: 0 -.5em;
+}
+#RECENT_PAGES figure > figcaption,
+#FANWORKS_LIST figure > figcaption {
+    font-size: 1.5em;
+    border-bottom: thin solid rgba(0,0,0, .5);
+    padding: .5em 0;
+    margin: 0 0 .5em;
+}
+#NEW_FACT output .fanfact {
+    margin: 0;
+    margin: .5em 0 1em;
+}
+#PAGECODES {
+    /* background: #FFF; */
+    border: thin solid rgba(0,0,0, .25);
+    border-radius: .2em;
+    margin: .5em 0;
+    padding: 0 1em 1em;
+}
+#FANWORKS_LIST li {
+    width: 12em;
+    
+}
+#FANWORKS_LIST figure {
+    /* margin: 0; */
+    padding: 1em 1em 0;
+}
+#FANWORKS_LIST figure > figcaption {
+    border-bottom: none;
+    border-top: thin solid rgba(0,0,0, .2);
+    margin: .5em 0 0;
+}
+</STYLE>
 </HEAD>
 
 
@@ -122,55 +176,55 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 		
 		
 		<SECTION ID="FANWORKS">
-			<UL ID="FANWORKS_LIST">
+			<UL ID="FANWORKS_LIST" CLASS="flex-row flex-horiz-right flex-wrap">
 				<LI>
 					<FIGURE>
 						Added fanwork 1
-						<FIGURE>
+						<FIGCAPTION>
 							Fanwork title
-						</FIGURE>
+						</FIGCAPTION>
 					</FIGURE>
 				</LI>
 				
 				<LI>
 					<FIGURE>
 						Added fanwork 2
-						<FIGURE>
+						<FIGCAPTION>
 							Fanwork title
-						</FIGURE>
+						</FIGCAPTION>
 					</FIGURE>
 				</LI>
 				
 				<LI>
 					<FIGURE>
 						Added fanwork 3
-						<FIGURE>
+						<FIGCAPTION>
 							Fanwork title
-						</FIGURE>
+						</FIGCAPTION>
 					</FIGURE>
 				</LI>
 				
 				<LI>
 					<FIGURE>
 						Added fanwork 4
-						<FIGURE>
+						<FIGCAPTION>
 							Fanwork title
-						</FIGURE>
+						</FIGCAPTION>
 					</FIGURE>
 				</LI>
 				
 				<LI>
 					<FIGURE>
 						Added fanwork 5
-						<FIGURE>
+						<FIGCAPTION>
 							Fanwork title
-						</FIGURE>
+						</FIGCAPTION>
 					</FIGURE>
 				</LI>
 			</UL>
 		</SECTION>
 		
-		<SECTION ID="CONTROLS">
+		<SECTION ID="CONTROLS" CLASS="text-right">
 			<INPUT TYPE="button" ID="ATTACH_FANWORK" VALUE="Attach Fanwork" />
 			<INPUT TYPE="submit" ID="SUBMIT_FANFACT" VALUE="Submit Fanfact" />
 		</SECTION>
