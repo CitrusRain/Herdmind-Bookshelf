@@ -4,20 +4,20 @@
 
 This page is copyright Herdmind.net ©2013
 -->
-<?PHP
-include $_SERVER['DOCUMENT_ROOT'].'/_incl/startSession.php';        // Start session and determine subdomain - do this first to ensure contentBuilder knows the fandom
+<?php
 include $_SERVER['DOCUMENT_ROOT'].'/_incl/contentBuilder.php';      // Also includes config.php and styleSwitch.php
 include $_SERVER['DOCUMENT_ROOT'].'/_incl/contentBuilderIndex.php'; // Builds body content for index
+include $_SERVER['DOCUMENT_ROOT'].'/_incl/startSession.php';        // Start session and determine subdomain - do this first to ensure contentBuilder knows the fandom
 include $_SERVER['DOCUMENT_ROOT'].'/_incl/classes2.php';   			// A bunch of classes used for data
 include $_SERVER['DOCUMENT_ROOT'].'/_incl/RetreiveData.php';   		// Any function that returns XML
 include $_SERVER['DOCUMENT_ROOT'].'/_incl/convenience.php';
 ?>
 <HTML>
 <HEAD>
-<?PHP
+<?php
 buildDefaultHeadContent(
 	'Creating a new fanfact&hellip;',
-	'Create yor own fan fact for Herdmind!',
+	'Create your own fan fact for Herdmind!',
 	array(
 		'Fanfact',
 		'Fan',
@@ -33,7 +33,7 @@ buildDefaultHeadContent(
 
 
 
-<?PHP
+<?php
 buildBodyTagWithAttributes(); // <BODY ...>
 buildHeader(); // Don't pass variables to this; it will automatically detect login cookies
 ?>
@@ -108,8 +108,8 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 					</DIV>
 				</DIV>
 			</OUTPUT>
-			
-			<TEXTAREA NAME="contents" REQUIRED PLACEHOLDER="Type your fanfact here&hellip;"><!-- name is the same as in the old site --></TEXTAREA>
+			<!-- name is the same as in the old site -->
+			<TEXTAREA NAME="contents" REQUIRED PLACEHOLDER="Type your fanfact here&hellip;"></TEXTAREA>
 		</SECTION>
 		
 		
@@ -179,7 +179,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 
 
 
-<?PHP
+<?php
 buildFooter();
 ?>
 </BODY>
