@@ -167,7 +167,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 		</SECTION>
 		
 		
-		<SECTION ID="PAGECODES">
+		<SECTION ID="PAGECODES" CLASS="themeBack">
 			<HEADER>
 				<INPUT TYPE="search" PLACEHOLDER="Search topics&hellip;" />
 			</HEADER>
