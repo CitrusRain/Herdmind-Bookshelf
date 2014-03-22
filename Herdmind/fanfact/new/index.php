@@ -97,9 +97,9 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 <MAIN>
 	<FORM ID="NEW_FACT_FORM">
 		<SECTION ID="RECENT_PAGES">
-			<OL CLASS="row">
+			<OL CLASS="flush row">
 				<LI class="all-3 small-6 tiny-12">
-					<FIGURE>
+					<FIGURE CLASS="themeBack">
 						<FIGCAPTION>
 							page title
 						</FIGCAPTION>
@@ -108,7 +108,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 				</LI>
 				
 				<LI class="all-3 small-6 tiny-12">
-					<FIGURE>
+					<FIGURE CLASS="themeBack">
 						<FIGCAPTION>
 							page title
 						</FIGCAPTION>
@@ -117,7 +117,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 				</LI>
 				
 				<LI class="all-3 small-6 tiny-12">
-					<FIGURE>
+					<FIGURE CLASS="themeBack">
 						<FIGCAPTION>
 							page title
 						</FIGCAPTION>
@@ -126,7 +126,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 				</LI>
 				
 				<LI class="all-3 small-6 tiny-12">
-					<FIGURE>
+					<FIGURE CLASS="themeBack">
 						<FIGCAPTION>
 							page title
 						</FIGCAPTION>
@@ -176,9 +176,9 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 		
 		
 		<SECTION ID="FANWORKS">
-			<UL ID="FANWORKS_LIST" CLASS="flex-row flex-horiz-right flex-wrap">
+			<UL ID="FANWORKS_LIST" CLASS="plain flex-row flex-horiz-right flex-wrap">
 				<LI>
-					<FIGURE>
+					<FIGURE CLASS="themeBack">
 						Added fanwork 1
 						<FIGCAPTION>
 							Fanwork title
@@ -187,7 +187,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 				</LI>
 				
 				<LI>
-					<FIGURE>
+					<FIGURE CLASS="themeBack">
 						Added fanwork 2
 						<FIGCAPTION>
 							Fanwork title
@@ -196,7 +196,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 				</LI>
 				
 				<LI>
-					<FIGURE>
+					<FIGURE CLASS="themeBack">
 						Added fanwork 3
 						<FIGCAPTION>
 							Fanwork title
@@ -205,7 +205,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 				</LI>
 				
 				<LI>
-					<FIGURE>
+					<FIGURE CLASS="themeBack">
 						Added fanwork 4
 						<FIGCAPTION>
 							Fanwork title
@@ -214,7 +214,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 				</LI>
 				
 				<LI>
-					<FIGURE>
+					<FIGURE CLASS="themeBack">
 						Added fanwork 5
 						<FIGCAPTION>
 							Fanwork title
