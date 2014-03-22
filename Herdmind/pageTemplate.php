@@ -28,9 +28,11 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 
 
 
-<SECTION>
-	[BODY CONTENT HERE]
-</SECTION>
+<MAIN>
+	<SECTION>
+		[BODY CONTENT HERE]
+	</SECTION>
+</MAIN>
 
 
 
