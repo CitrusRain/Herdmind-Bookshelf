@@ -5,9 +5,9 @@
 This page is copyright Herdmind.net ©2013
 -->
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/_incl/contentBuilder.php';      // Also includes config.php and styleSwitch.php
+include $_SERVER['DOCUMENT_ROOT'].'/_incl/contentBuilder.php';	  // Also includes config.php and styleSwitch.php
 include $_SERVER['DOCUMENT_ROOT'].'/_incl/contentBuilderIndex.php'; // Builds body content for index
-include $_SERVER['DOCUMENT_ROOT'].'/_incl/startSession.php';        // Start session and determine subdomain - do this first to ensure contentBuilder knows the fandom
+include $_SERVER['DOCUMENT_ROOT'].'/_incl/startSession.php';		// Start session and determine subdomain - do this first to ensure contentBuilder knows the fandom
 include $_SERVER['DOCUMENT_ROOT'].'/_incl/classes2.php';   			// A bunch of classes used for data
 include $_SERVER['DOCUMENT_ROOT'].'/_incl/RetreiveData.php';   		// Any function that returns XML
 include $_SERVER['DOCUMENT_ROOT'].'/_incl/convenience.php';
@@ -31,7 +31,7 @@ buildDefaultHeadContent(
 ?>
 <STYLE TYPE="text/css">
 *|* {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 BODY {
 	margin: 0;
@@ -40,53 +40,53 @@ BODY>MAIN {
 	margin: 1em;
 }
 #PAGECODES > header {
-    text-align: right;
-    margin: 0 -1em;
+	text-align: right;
+	margin: 0 -1em;
 }
 #NEW_FACT textarea {
-    width: 100%;
+	width: 100%;
 }
 #RECENT_PAGES figure, #FANWORKS_LIST figure {
-    border: thin solid rgba(0,0,0, .25);
-    margin: .5em;
-    padding: 0 1em 1em;
-    /* background: #FFF; */
-    border-radius: .2em;
+	border: thin solid rgba(0,0,0, .25);
+	margin: .5em;
+	padding: 0 1em 1em;
+	/* background: #FFF; */
+	border-radius: .2em;
 }
 #RECENT_PAGES ol {
-    list-style-type: none;
-    margin: 0 -.5em;
+	list-style-type: none;
+	margin: 0 -.5em;
 }
 #RECENT_PAGES figure > figcaption,
 #FANWORKS_LIST figure > figcaption {
-    font-size: 1.5em;
-    border-bottom: thin solid rgba(0,0,0, .5);
-    padding: .5em 0;
-    margin: 0 0 .5em;
+	font-size: 1.5em;
+	border-bottom: thin solid rgba(0,0,0, .5);
+	padding: .5em 0;
+	margin: 0 0 .5em;
 }
 #NEW_FACT output .fanfact {
-    margin: 0;
-    margin: .5em 0 1em;
+	margin: 0;
+	margin: .5em 0 1em;
 }
 #PAGECODES {
-    /* background: #FFF; */
-    border: thin solid rgba(0,0,0, .25);
-    border-radius: .2em;
-    margin: .5em 0;
-    padding: 0 1em 1em;
+	/* background: #FFF; */
+	border: thin solid rgba(0,0,0, .25);
+	border-radius: .2em;
+	margin: .5em 0;
+	padding: 0 1em 1em;
 }
 #FANWORKS_LIST li {
-    width: 12em;
-    
+	width: 12em;
+	
 }
 #FANWORKS_LIST figure {
-    /* margin: 0; */
-    padding: 1em 1em 0;
+	/* margin: 0; */
+	padding: 1em 1em 0;
 }
 #FANWORKS_LIST figure > figcaption {
-    border-bottom: none;
-    border-top: thin solid rgba(0,0,0, .2);
-    margin: .5em 0 0;
+	border-bottom: none;
+	border-top: thin solid rgba(0,0,0, .2);
+	margin: .5em 0 0;
 }
 </STYLE>
 </HEAD>
