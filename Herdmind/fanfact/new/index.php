@@ -75,6 +75,9 @@ BODY>MAIN {
 	margin: .5em 0;
 	padding: 0 1em 1em;
 }
+#FANWORKS_LIST {
+	margin: 0 -.5em;
+}
 #FANWORKS_LIST li {
 	width: 12em;
 	
@@ -87,6 +90,10 @@ BODY>MAIN {
 	border-bottom: none;
 	border-top: thin solid rgba(0,0,0, .2);
 	margin: .5em 0 0;
+}
+#CONTROLS input,
+#CONTROLS button {
+	font-size: 1em;
 }
 </STYLE>
 </HEAD>
@@ -231,7 +238,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 		</SECTION>
 		
 		<SECTION ID="CONTROLS" CLASS="text-right">
-			<INPUT TYPE="button" ID="ATTACH_FANWORK" VALUE="Attach Fanwork" />
+			<BUTTON ID="ATTACH_FANWORK" ><I CLASS="fa fa-plus"></I> Attach Fanwork</BUTTON>
 			<INPUT TYPE="submit" ID="SUBMIT_FANFACT" VALUE="Submit Fanfact" />
 		</SECTION>
 	</FORM>

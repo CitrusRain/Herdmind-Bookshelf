@@ -242,49 +242,49 @@ DIALOG :visited {
 	if (is_array($accentColors))
 	{
 		$len = count($accentColors);
-		for($i = 1; $i <= $len; $i++)
+		for($i = 1, $im1 = 0; $i <= $len; $im1 = $i, $i++)
 		{
-			echo '
-                   .accentBack:nth-of-type(' . $len . 'n+' . $i . '),
-                        SELECT:nth-of-type(' . $len . 'n+' . $i . '),
-                 SELECT OPTION:nth-of-type(' . $len . 'n+' . $i . '),
-                        BUTTON:nth-of-type(' . $len . 'n+' . $i . '),
-          INPUT[type="button"]:nth-of-type(' . $len . 'n+' . $i . '), *:nth-of-type(' . $len . 'n+' . $i . ') INPUT[type="button"],
-          INPUT[type="submit"]:nth-of-type(' . $len . 'n+' . $i . '), *:nth-of-type(' . $len . 'n+' . $i . ') INPUT[type="submit"],
-           INPUT[type="reset"]:nth-of-type(' . $len . 'n+' . $i . '), *:nth-of-type(' . $len . 'n+' . $i . ') INPUT[type="reset"],
-INPUT[type="checkbox"]:checked:nth-of-type(' . $len . 'n+' . $i . '), *:nth-of-type(' . $len . 'n+' . $i . ') INPUT[type="checkbox"]:checked,
-   INPUT[type="radio"]:checked:nth-of-type(' . $len . 'n+' . $i . '), *:nth-of-type(' . $len . 'n+' . $i . ') INPUT[type="radio"]:checked,
-                       .button:nth-of-type(' . $len . 'n+' . $i . '),
-                   #SIDEBAR LI:nth-of-type(' . $len . 'n+' . $i . ')>:link,
-                   #SIDEBAR LI:nth-of-type(' . $len . 'n+' . $i . ')>:visited {';
+			echo "
+                   .accentBack:nth-of-type($len" . "n+$i),
+                        SELECT:nth-of-type($len" . "n+$i),
+                 SELECT OPTION:nth-of-type($len" . "n+$i),
+                        BUTTON:nth-of-type($len" . "n+$i),
+          INPUT[type='button']:nth-of-type($len" . "n+$i), *:nth-of-type($len" . "n+$i) INPUT[type='button'],
+          INPUT[type='submit']:nth-of-type($len" . "n+$i), *:nth-of-type($len" . "n+$i) INPUT[type='submit'],
+           INPUT[type='reset']:nth-of-type($len" . "n+$i), *:nth-of-type($len" . "n+$i) INPUT[type='reset'],
+INPUT[type='checkbox']:checked:nth-of-type($len" . "n+$i), *:nth-of-type($len" . "n+$i) INPUT[type='checkbox']:checked,
+   INPUT[type='radio']:checked:nth-of-type($len" . "n+$i), *:nth-of-type($len" . "n+$i) INPUT[type='radio']:checked,
+                       .button:nth-of-type($len" . "n+$i),
+                   #SIDEBAR LI:nth-of-type($len" . "n+$i)>:link,
+                   #SIDEBAR LI:nth-of-type($len" . "n+$i)>:visited {";
 			 
-			 if ($accentColors[$i-1] instanceof Theme)
+			 if ($accentColors[$im1] instanceof Theme)
 				echo'
-	background-color: ' . $accentColors[$i-1]->bg . ' !important;
-	color: '            . $accentColors[$i-1]->fg . ' !important;
+	background-color: ' . $accentColors[$im1]->bg . ' !important;
+	color: '            . $accentColors[$im1]->fg . ' !important;
 }';
 			 else
 				echo '
-	background-color: ' . $accentColors[$i-1] . ' !important;
+	background-color: ' . $accentColors[$im1] . ' !important;
 	color: inherit !important;
 }';
 		}
 		echo '
 ';
-		for($i = 1; $i <= $len; $i++)
+		for($i = 1, $im1 = 0; $i <= $len; $im1 = $i, $i++)
 		{
-			echo '
-                                                      .accentBorder:nth-of-type(' . $len . 'n+' . $i . '),
-INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]):nth-of-type(' . $len . 'n+' . $i . '),
-*:nth-of-type(' . $len . 'n+' . $i . ') INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]),
-                                            .popname .informinglink:nth-of-type(' . $len . 'n+' . $i . ') {';
-			 if ($accentColors[$i-1] instanceof Theme)
+			echo "
+                                                      .accentBorder:nth-of-type($len" . "n+$i),
+INPUT:not([type='button']):not([type='submit']):not([type='reset']):nth-of-type($len" . "n+$i),
+                                                                  *:nth-of-type($len" . "n+$i) INPUT:not([type='button']):not([type='submit']):not([type='reset']),
+                                            .popname .informinglink:nth-of-type($len" . "n+$i) {";
+			 if ($accentColors[$im1] instanceof Theme)
 				echo '
-	border-color: ' . $accentColors[$i-1]->bg . ';
+	border-color: ' . $accentColors[$im1]->bg . ';
 }';
 			else
 				echo '
-	border-color: ' . $accentColors[$i-1] . ';
+	border-color: ' . $accentColors[$im1] . ';
 }';
 		}
 	}
