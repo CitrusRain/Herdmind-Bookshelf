@@ -121,6 +121,55 @@ $xml = '';
         print('MySQL query failed with error: ' . mysql_error());
     }
 	}
+
+///PIE
+$query = "SELECT FactID, count(value) as score, value FROM FactScoreByTally where FactID='$factNum' group by Value order by Value;";
+
+    $result = mysqli_query($db_connection, $query);
+      if ($result) {
+
+        $dataPos = 0 ;
+        $dataNeg = 0 ;
+      //  $dataSkip = 0 ;
+		
+		$noresults = true;
+        while ($row = mysqli_fetch_assoc($result)) {
+        	$noresults = false;
+        	if($row["value"] == '-1') $dataNeg = $row["score"];
+        //	elseif($row["value"] ==  '0') $dataSkip = $row["score"];
+        	elseif($row["value"] ==  '1') $dataPos = $row["score"];
+        }
+    
+		$dataNegAbs = abs(intval($dataNeg));
+      $dataTot = intval($dataPos) + intval($dataNeg);    
+	
+		if($memberlevel >= 1)
+			{
+/*				$dataPosM = $row["PosScore"];
+				$dataNegM = $row["NegScore"];
+				$dataNegMabs = abs(intval($row["NegScore"]));
+				$dataPosG = $row["GuestPosScore"];
+				$dataNegG = $row["GuestNegScore"];	
+				$dataNegGabs = abs(intval($row["GuestNegScore"]));*/
+				$data4members = " $dataPosM , $dataNegM , $dataNegMabs , $dataPosG , $dataNegG , $dataNegGabs ,";
+			}    
+    	else {
+    		$data4members = "";
+    	}
+ /*
+ Remove to add today to line chart   
+		  if($count != 0)
+		   	$output = $output." , ";
+		   
+        	$output = $output."[ 'Now' , $dataPos , $dataNeg , $dataNegAbs ,
+        			$data4members , 0, $dataTot , 0]";
+*/        			
+        			
+//    $output = $output."[ '$labels' , $dataPos , $dataNeg , $dataNegAbs , "
+ //   		.$data4members." $dataFanworkCount , $dataTot , $dataViews]";
+			
+    
+}
 	
 ?>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -130,7 +179,7 @@ $xml = '';
           google.load('visualization', '1.0', {'packages':['corechart']});
 
           // Set a callback to run when the Google Visualization API is loaded.
-          google.setOnLoadCallback(drawChart);
+          google.setOnLoadCallback(drawLineChart);
 
           // Callback that creates and populates a data table,
           // instantiates the pie chart, passes in the data and
@@ -148,40 +197,56 @@ $xml = '';
 		var ShowArray;
 		var HideArray;
 		
-			
-        function drawChart() {
+  function drawPieChart() {
             // Create the data table.
 			var piechartdata = new google.visualization.DataTable();
-            piechartdata.addColumn('string', 'Topping');    
-            piechartdata.addColumn('number', 'Slices');
+            piechartdata.addColumn('string', 'Answer');    
+            piechartdata.addColumn('number', 'Votes');
             piechartdata.addRows([
-              ['Mushrooms', 3],
-              ['Onions', 1],
-              ['Olives', 1],
-              ['Zucchini', 1]
+              ['Yes', <?php echo $dataPos; ?>],
+              ['No', <?php echo $dataNeg; ?>],
+              ['Potato', 0]
             ]);
             // Set chart options
-            var optionsPieChart = {'title':'How Much Pizza I Ate Last Night',
-                           'width':400,
-                           'height':300};
+            var optionsPieChart = {'title':'Pie Chart',
+                           'height':400};
 
 		  //Make a view for the piechart so we can interact with what is visible.
 			var myPieView = new google.visualization.DataView(piechartdata);
             
 			
 		  // Instantiate and draw our piechart, passing in some options.
-            var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+            var piechart = new google.visualization.PieChart(document.getElementById('chart_div'));
             piechart.draw(myPieView, optionsPieChart);			   
-						   
+}
+///////////////
+//////////Bar chart
+/////////////						   
+		function drawBarChart() {
+		var data = google.visualization.arrayToDataTable([
+          ['Votes', 'Yes', 'No' ],
+          ['', <?php echo $dataPos; ?>,<?php echo $dataNeg; ?>]
+        ]);
+
+        var options = {
+          title: 'Bar Chart',
+          height: 400
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+		  }
 						   
 ////////////////////////////////////////////////////////////////////////////////////////////////////////						   
-						   
-             linechartdata = new google.visualization.DataTable();
-            linechartdata.addColumn('string', 'Date');
+	function drawLineChart() {					   
+         linechartdata = new google.visualization.DataTable();
+         linechartdata.addColumn('string', 'Date');
 			
 			linechartdata.addColumn('number', 'Upvotes');
 			linechartdata.addColumn('number', 'Downvotes');//Negative Numbers
 			linechartdata.addColumn('number', 'Downvotes');//Absolute Values
+			
+			
 			<?php
 			
 			
@@ -229,11 +294,20 @@ $xml = '';
             var optionsLineChart = {
 			'colors':['green','red', 'blue', 'black'],
 						'title':'Line chart',
-                           'width':700,
-                           'height':300,
+                           'height':400,
 						   hAxis: { textPosition: 'none' }
 						   };
-			/*
+			
+			
+		
+		  //Make a view for the linechart so we can interact with what is visible.
+			myLineView = new google.visualization.DataView(linechartdata);
+			
+            // Instantiate and draw our linechart, passing in some options.
+            var linechart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            linechart.draw(myLineView, optionsLineChart);
+            
+            /*
 			Colors:
 			Green, Red, Blue, Black
 			Green = Upvotes
@@ -257,36 +331,38 @@ $xml = '';
 			
 			
             // Instantiate and draw our linechart, passing in some options.
-            var linechart = new google.visualization.LineChart(document.getElementById('linechart_div'));
+            var linechart = new google.visualization.LineChart(document.getElementById('chart_div'));
             linechart.draw(myLineView, optionsLineChart);
-		}	
-		
+		}			
+			
+			
+        
 
 		function showTotals() {
 			
 			myLineView = new google.visualization.DataView(linechartdata);
 				myLineView.setColumns([0,1,2,5]);
-				drawChart();
+				drawLineChart();
 			}
 			
 			function showCounts() {
 			
 			myLineView = new google.visualization.DataView(linechartdata);
 				myLineView.setColumns([0,1,3,4,6]);
-				drawChart();
+				drawLineChart();
 			}
 			
 			function showAll() {
 			
 			myLineView = new google.visualization.DataView(linechartdata);
-				drawChart();
+				drawLineChart();
 			}
 			
 			function Q1() {
 			
 			myLineView = new google.visualization.DataView(linechartdata);
 			<?php echo $CountVotesMemberGuest; ?>
-				drawChart();
+				drawLineChart();
 			}
 			
         </script>
@@ -321,15 +397,22 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 <SECTION>
 	
 	Charts go here. Comments are below.
-	    <div id="linechart_div" ></div>
+	    <div id="chart_div" ></div>
 		When set as guest:<br/>
 		<button type='button' onclick='showTotals()'>Show Totals On Linechart</button>
 		<button type='button' onclick='showCounts()'>Show Counts On Linechart</button>
 		<button type='button' onclick='showAll()'>Show everything</button>
 		<br/>When set as member:<br/>
 		<?php echo $CountVotesMemberGuestButton; ?>
-        <div id="piechart_div" style='height: 400px; width: 400px;'></div>
-	
+			
+<center>
+		<button type='button' onclick='drawPieChart()'>Show Pie Chart</button>
+		<button type='button' onclick='drawBarChart()'>Show Bar Graph</button>
+		<?php
+			if($daysofdata > 1)
+				echo "<button type='button' onclick='drawLineChart()'>Show Score History</button>";
+		?>
+</center>
 	
 </SECTION>
 
