@@ -321,7 +321,10 @@ INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]),
 .popname .informinglink {
 	border-color:' . ($accentColors instanceof Theme ? $accentColors->bg : $accentColors) . ';';
 		echo '
-}
+}';
+	}
+	
+	echo '
 
 
 
@@ -331,89 +334,88 @@ INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]),
 
 ';
 		// bg-accent
-		if (is_array($accentColors))
-		{
-			echo '.bg-accent { background-color: ' . ($accentColors[0] instanceof Theme ? $accentColors[0]->bg : $accentColors[0]) . ' !important; }
+	if (is_array($accentColors))
+	{
+		echo '.bg-accent { background-color: ' . ($accentColors[0] instanceof Theme ? $accentColors[0]->bg : $accentColors[0]) . ' !important; }
 ';
-			$len = count($accentColors);
-			for($i = 1, $im1 = 0; $i <= $len; $im1 = $i, $i++)
-			{
-				echo "	.bg-accent:nth-of-type($len" . "n+$i) { background-color: ";
-				 if ($accentColors[$im1] instanceof Theme)
-					echo $accentColors[$im1]->bg;
-				 else
-					echo $accentColors[$im1];
-				echo ' !important; }
-';
-			}
-		}
-		else
+		$len = count($accentColors);
+		for($i = 1, $im1 = 0; $i <= $len; $im1 = $i, $i++)
 		{
-			echo '.bg-accent { background-color: ';
-			 if ($accentColors instanceof Theme)
-				echo $accentColors->bg;
+			echo "	.bg-accent:nth-of-type($len" . "n+$i) { background-color: ";
+			 if ($accentColors[$im1] instanceof Theme)
+				echo $accentColors[$im1]->bg;
 			 else
-				echo $accentColors;
-			echo ' !important; }';
-		}
-		
-		// border-accent
-		if (is_array($accentColors))
-		{
-			echo '.border-accent { border-color: ' . ($accentColors[0] instanceof Theme ? $accentColors[0]->bg : $accentColors[0]) . ' !important; }
+				echo $accentColors[$im1];
+			echo ' !important; }
 ';
-			$len = count($accentColors);
-			for($i = 1, $im1 = 0; $i <= $len; $im1 = $i, $i++)
-			{
-				echo "	.border-accent:nth-of-type($len" . "n+$i) { border-color: ";
-				 if ($accentColors[$im1] instanceof Theme)
-					echo $accentColors[$im1]->bg;
-				 else
-					echo $accentColors[$im1];
-				echo ' !important; }
-';
-			}
 		}
-		else
-		{
-			echo '.border-accent { border-color: ';
-			 if ($accentColors instanceof Theme)
-				echo $accentColors->bg;
-			 else
-				echo $accentColors;
-			echo ' !important; }';
-		}
-		
-		// text-accent
-		if (is_array($accentColors))
-		{
-			echo '.text-accent { color: ' . ($accentColors[0] instanceof Theme ? $accentColors[0]->bg : $accentColors[0]) . ' !important; }
-';
-			$len = count($accentColors);
-			for($i = 1, $im1 = 0; $i <= $len; $im1 = $i, $i++)
-			{
-				echo "	.text-accent:nth-of-type($len" . "n+$i) { color: ";
-				 if ($accentColors[$im1] instanceof Theme)
-					echo $accentColors[$im1]->bg;
-				 else
-					echo $accentColors[$im1];
-				echo ' !important; }
-';
-			}
-		}
-		else
-		{
-			echo '.text-accent { color: ';
-			 if ($accentColors instanceof Theme)
-				echo $accentColors->bg;
-			 else
-				echo $accentColors;
-			echo ' !important; }';
-		}
-		
-		echo'
-';
 	}
+	else
+	{
+		echo '.bg-accent { background-color: ';
+		 if ($accentColors instanceof Theme)
+			echo $accentColors->bg;
+		 else
+			echo $accentColors;
+		echo ' !important; }';
+	}
+	
+	// border-accent
+	if (is_array($accentColors))
+	{
+		echo '.border-accent { border-color: ' . ($accentColors[0] instanceof Theme ? $accentColors[0]->bg : $accentColors[0]) . ' !important; }
+';
+		$len = count($accentColors);
+		for($i = 1, $im1 = 0; $i <= $len; $im1 = $i, $i++)
+		{
+			echo "	.border-accent:nth-of-type($len" . "n+$i) { border-color: ";
+			 if ($accentColors[$im1] instanceof Theme)
+				echo $accentColors[$im1]->bg;
+			 else
+				echo $accentColors[$im1];
+			echo ' !important; }
+';
+		}
+	}
+	else
+	{
+		echo '.border-accent { border-color: ';
+		 if ($accentColors instanceof Theme)
+			echo $accentColors->bg;
+		 else
+			echo $accentColors;
+		echo ' !important; }';
+	}
+	
+	// text-accent
+	if (is_array($accentColors))
+	{
+		echo '.text-accent { color: ' . ($accentColors[0] instanceof Theme ? $accentColors[0]->bg : $accentColors[0]) . ' !important; }
+';
+		$len = count($accentColors);
+		for($i = 1, $im1 = 0; $i <= $len; $im1 = $i, $i++)
+		{
+			echo "	.text-accent:nth-of-type($len" . "n+$i) { color: ";
+			 if ($accentColors[$im1] instanceof Theme)
+				echo $accentColors[$im1]->bg;
+			 else
+				echo $accentColors[$im1];
+			echo ' !important; }
+';
+		}
+	}
+	else
+	{
+		echo '.text-accent { color: ';
+		 if ($accentColors instanceof Theme)
+			echo $accentColors->bg;
+		 else
+			echo $accentColors;
+		echo ' !important; }';
+	}
+	
+	echo'
+';
 	
 	seal();
 }
