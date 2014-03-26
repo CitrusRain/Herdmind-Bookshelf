@@ -352,7 +352,7 @@ INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]),
 	}
 	else
 	{
-		echo '.bg-accent { background-color: ';
+		echo '.bg-accent     { background-color: ';
 		 if ($accentColors instanceof Theme)
 			echo $accentColors->bg;
 		 else
@@ -380,7 +380,7 @@ INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]),
 	}
 	else
 	{
-		echo '.border-accent { border-color: ';
+		echo '.border-accent { border-color:     ';
 		 if ($accentColors instanceof Theme)
 			echo $accentColors->bg;
 		 else
@@ -392,7 +392,7 @@ INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]),
 	// text-accent
 	if (is_array($accentColors))
 	{
-		echo '.text-accent { color: ' . ($accentColors[0] instanceof Theme ? $accentColors[0]->bg : $accentColors[0]) . ' !important; }
+		echo '.text-accent   { color:        ' . ($accentColors[0] instanceof Theme ? $accentColors[0]->bg : $accentColors[0]) . ' !important; }
 ';
 		$len = count($accentColors);
 		for($i = 1, $im1 = 0; $i <= $len; $im1 = $i, $i++)
