@@ -357,7 +357,8 @@ INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]),
 			echo $accentColors->bg;
 		 else
 			echo $accentColors;
-		echo ' !important; }';
+		echo ' !important; }
+';
 	}
 	
 	// border-accent
@@ -384,7 +385,8 @@ INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]),
 			echo $accentColors->bg;
 		 else
 			echo $accentColors;
-		echo ' !important; }';
+		echo ' !important; }
+';
 	}
 	
 	// text-accent
@@ -411,7 +413,8 @@ INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]),
 			echo $accentColors->bg;
 		 else
 			echo $accentColors;
-		echo ' !important; }';
+		echo ' !important; }
+';
 	}
 	
 	echo'
