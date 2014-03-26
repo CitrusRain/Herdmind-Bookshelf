@@ -156,6 +156,7 @@ BODY>HEADER {
 ';
 	echo '
 .themeBack,
+.bg-theme,
 BODY>HEADER,
 FOOTER,
 .portal LI :link,
@@ -179,6 +180,7 @@ DIALOG:target,
 	color: inherit;';
 	echo '
 }
+
 .popname .informinglink::after { /* special exception where a border makes up the background of an element */
 	border-bottom-color: ' . ($isTheme ? $themeColor->bg : $themeColor) . ' !important;
 }
@@ -202,6 +204,7 @@ DIALOG:target,
 	if ($isTheme && $themeColor->lf)
 		echo '
 .themeBack :link,
+.bg-theme :link,
 FOOTER :link,
 .portal LI :link,
 .topic :link,/**/
@@ -211,6 +214,7 @@ DIALOG :link {
 	color: ' . $themeColor->lf . ';
 }
 .themeBack :visited,
+.bg-theme :visited,
 FOOTER :visited,
 .portal LI :visited,
 .topic :visited,/**/
@@ -221,8 +225,8 @@ DIALOG :visited {
 }
 ';
 	echo '
-.themeBorder/*,
-.fanfact*/,
+.themeBorder,
+.border-theme,
 .popname .informinglink {
 	border-color: ' .
 	($isTheme ?
@@ -317,7 +321,98 @@ INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]),
 .popname .informinglink {
 	border-color:' . ($accentColors instanceof Theme ? $accentColors->bg : $accentColors) . ';';
 		echo '
-}';
+}
+
+
+
+.bg-theme     { background-color: ' . ($themeColor instanceof Theme ? $themeColor->bg : $themeColor) . ' !important; }
+.border-theme { border-color:     ' . ($themeColor instanceof Theme ? $themeColor->bg : $themeColor) . ' !important; }
+.text-theme   { color:            ' . ($themeColor instanceof Theme ? $themeColor->bg : $themeColor) . ' !important; }
+
+';
+		// bg-accent
+		if (is_array($accentColors))
+		{
+			echo '.bg-accent { background-color: ' . ($accentColors[0] instanceof Theme ? $accentColors[0]->bg : $accentColors[0]) . ' !important; }
+';
+			$len = count($accentColors);
+			for($i = 1, $im1 = 0; $i <= $len; $im1 = $i, $i++)
+			{
+				echo "	.bg-accent:nth-of-type($len" . "n+$i) { background-color: ";
+				 if ($accentColors[$im1] instanceof Theme)
+					echo $accentColors[$im1]->bg;
+				 else
+					echo $accentColors[$im1];
+				echo ' !important; }
+';
+			}
+		}
+		else
+		{
+			echo '.bg-accent { background-color: ';
+			 if ($accentColors instanceof Theme)
+				echo $accentColors->bg;
+			 else
+				echo $accentColors;
+			echo ' !important; }';
+		}
+		
+		// border-accent
+		if (is_array($accentColors))
+		{
+			echo '.border-accent { border-color: ' . ($accentColors[0] instanceof Theme ? $accentColors[0]->bg : $accentColors[0]) . ' !important; }
+';
+			$len = count($accentColors);
+			for($i = 1, $im1 = 0; $i <= $len; $im1 = $i, $i++)
+			{
+				echo "	.border-accent:nth-of-type($len" . "n+$i) { border-color: ";
+				 if ($accentColors[$im1] instanceof Theme)
+					echo $accentColors[$im1]->bg;
+				 else
+					echo $accentColors[$im1];
+				echo ' !important; }
+';
+			}
+		}
+		else
+		{
+			echo '.border-accent { border-color: ';
+			 if ($accentColors instanceof Theme)
+				echo $accentColors->bg;
+			 else
+				echo $accentColors;
+			echo ' !important; }';
+		}
+		
+		// text-accent
+		if (is_array($accentColors))
+		{
+			echo '.text-accent { color: ' . ($accentColors[0] instanceof Theme ? $accentColors[0]->bg : $accentColors[0]) . ' !important; }
+';
+			$len = count($accentColors);
+			for($i = 1, $im1 = 0; $i <= $len; $im1 = $i, $i++)
+			{
+				echo "	.text-accent:nth-of-type($len" . "n+$i) { color: ";
+				 if ($accentColors[$im1] instanceof Theme)
+					echo $accentColors[$im1]->bg;
+				 else
+					echo $accentColors[$im1];
+				echo ' !important; }
+';
+			}
+		}
+		else
+		{
+			echo '.text-accent { color: ';
+			 if ($accentColors instanceof Theme)
+				echo $accentColors->bg;
+			 else
+				echo $accentColors;
+			echo ' !important; }';
+		}
+		
+		echo'
+';
 	}
 	
 	seal();
