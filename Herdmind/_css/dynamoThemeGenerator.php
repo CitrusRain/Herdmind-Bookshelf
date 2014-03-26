@@ -408,7 +408,7 @@ INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]),
 	}
 	else
 	{
-		echo '.text-accent   { color:        ';
+		echo '.text-accent   { color:            ';
 		 if ($accentColors instanceof Theme)
 			echo $accentColors->bg;
 		 else
