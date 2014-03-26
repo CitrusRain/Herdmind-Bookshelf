@@ -944,6 +944,43 @@ color: #222 !important;
 /***** END Alt stylesheet indicators *****/
 
 
+
+/***** BEGIN Explicit color classes *****/
+.bg-red,    .bg-bad  { background-color: #B22 !important; }
+.bg-orange           { background-color: #FB7 !important; }
+.bg-yellow, .bg-warn { background-color: #FF7 !important; }
+.bg-green,  .bg-good { background-color: #2B7 !important; }
+.bg-blue,   .bg-info { background-color: #27B !important; }
+.bg-purple, .bg-help { background-color: #72B !important; }
+.bg-black            { background-color: #222 !important; }
+.bg-gray             { background-color: #777 !important; }
+.bg-lt-gray          { background-color: #BBB !important; }
+.bg-white            { background-color: #FFF !important; }
+
+.border-red,    .border-bad  { border-color: #B22 !important; }
+.border-orange               { border-color: #FB7 !important; }
+.border-yellow, .border-warn { border-color: #FF7 !important; }
+.border-green,  .border-good { border-color: #2B7 !important; }
+.border-blue,   .border-info { border-color: #27B !important; }
+.border-purple, .border-help { border-color: #72B !important; }
+.border-black                { border-color: #222 !important; }
+.border-gray                 { border-color: #777 !important; }
+.border-lt-gray              { border-color: #BBB !important; }
+.border-white                { border-color: #FFF !important; }
+
+.text-red,    .text-bad  { color: #B22 !important; }
+.text-orange             { color: #FB7 !important; }
+.text-yellow, .text-warn { color: #FF7 !important; }
+.text-green,  .text-good { color: #2B7 !important; }
+.text-blue,   .text-info { color: #27B !important; }
+.text-purple, .text-help { color: #72B !important; }
+.text-black              { color: #222 !important; }
+.text-gray               { color: #777 !important; }
+.text-lt-gray            { color: #BBB !important; }
+.text-white              { color: #FFF !important; }
+/***** END Explicit color classes *****/
+
+
 /** Popups for TitleFiller code **/
 .informinglink {
 	background: #EEE;

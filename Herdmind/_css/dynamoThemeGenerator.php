@@ -103,7 +103,7 @@ BODY {
 		echo '
 
 INPUT:focus {
-	box-shadow: 0 0 0.4em ' . $aura . ' !important;
+	box-shadow: 0 0 0.4em ' . $aura . ';
 }
 :focus,
 :active {
@@ -171,12 +171,12 @@ DIALOG:target,
 .cssPopupHolder:target .cssPopup {';
 	if ($isTheme = $themeColor instanceof Theme)
 		echo '
-	background-color: ' . $themeColor->bg . ' !important;
-	color: ' . $themeColor->fg . ' !important;';
+	background-color: ' . $themeColor->bg . ';
+	color: ' . $themeColor->fg . ';';
 	else
 		echo '
-	background-color: ' . $themeColor . ' !important;
-	color: inherit !important;';
+	background-color: ' . $themeColor . ';
+	color: inherit;';
 	echo '
 }
 .popname .informinglink::after { /* special exception where a border makes up the background of an element */
@@ -260,13 +260,13 @@ INPUT[type='checkbox']:checked:nth-of-type($len" . "n+$i), *:nth-of-type($len" .
 			 
 			 if ($accentColors[$im1] instanceof Theme)
 				echo'
-	background-color: ' . $accentColors[$im1]->bg . ' !important;
-	color: '            . $accentColors[$im1]->fg . ' !important;
+	background-color: ' . $accentColors[$im1]->bg . ';
+	color: '            . $accentColors[$im1]->fg . ';
 }';
 			 else
 				echo '
-	background-color: ' . $accentColors[$im1] . ' !important;
-	color: inherit !important;
+	background-color: ' . $accentColors[$im1] . ';
+	color: inherit;
 }';
 		}
 		echo '
@@ -303,19 +303,19 @@ INPUT[type="reset"],
 #SIDEBAR LI>:visited {';
 		if ($accentColors instanceof Theme)
 			echo '
-	background-color: ' . $accentColors->bg . ' !important;
-	color: ' . $accentColors->fg . ' !important;';
+	background-color: ' . $accentColors->bg . ';
+	color: ' . $accentColors->fg . ';';
 		else
 			echo '
-	background-color: ' . $accentColors . ' !important;
-	color: inherit !important;';
+	background-color: ' . $accentColors . ';
+	color: inherit;';
 		echo '
 }
 
 .accentBorder,
 INPUT:not([type="button"]):not([type="submit"]):not([type="reset"]),
 .popname .informinglink {
-	border-color:' . ($accentColors instanceof Theme ? $accentColors->bg : $accentColors) . ' !important;';
+	border-color:' . ($accentColors instanceof Theme ? $accentColors->bg : $accentColors) . ';';
 		echo '
 }';
 	}
