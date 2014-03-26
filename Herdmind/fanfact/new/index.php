@@ -239,7 +239,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 		
 		<SECTION ID="CONTROLS" CLASS="text-right">
 			<BUTTON ID="ATTACH_FANWORK" ><I CLASS="fa fa-plus"></I> Attach Fanwork</BUTTON>
-			<INPUT TYPE="submit" ID="SUBMIT_FANFACT" VALUE="Submit Fanfact" />
+			<INPUT TYPE="submit" ID="SUBMIT_FANFACT" VALUE="Submit Fanfact" class="big bg-good" />
 		</SECTION>
 	</FORM>
 </MAIN>
