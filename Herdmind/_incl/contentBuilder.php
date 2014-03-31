@@ -696,6 +696,7 @@ function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 function buildFactXml($fact, $standalone = true, $moreData = true, $classes = null, $shortlink = false)
 {
 	global $userid;
+	global $userName;
 	global $fandom;	
 	
 	//	TODO: Insert more of the result list here, and make it work for more queries.
