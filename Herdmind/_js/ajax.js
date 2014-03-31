@@ -144,10 +144,9 @@ xmlhttp.send("username=Citrus&useremail=email@herdmind.net&comment="+ comment +"
  * Submits the textarea data of #fanfact for approval as a new fanfact
  * 
  */
-function SubmitFanfact()
+function SubmitFanfact(fandom)
 {
-var facttext = document.getElementById("fanfact").value;
-var fandom = document.getElementById("FandomSelection").value;
+var facttext = document.getElementById("MyPost").value;
 var url = "/_incl/actionHandler.php?func=NewFanfact";
 
 var xmlhttp;
@@ -221,5 +220,32 @@ xmlhttp.open("POST",url,true);
 //xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 //xmlhttp.send("title="+ title + "&file="+ file + "&type="+ type + "&series="+ series + "&reality="+ reality + "&summary="+ summary + "");
 xmlhttp.send(formData);
+
+}
+
+function PreviewPost(PostContents)
+{
+var url = "../_incl/actionHandler.php?func=Preview";
+alert("in");
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    alert (innerHTML=xmlhttp.responseText);
+    //document.getElementById(PreviewBox).innerHTML(innerHTML=xmlhttp.responseText);
+    }
+  }
+xmlhttp.open("POST",url,true);
+xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp.send("text="+ PostContents);
 
 }

@@ -96,6 +96,35 @@ BODY>MAIN {
 	font-size: 1em;
 }
 </STYLE>
+
+
+<script type="text/javascript" >
+jQuery(function($){
+
+   function updatePreview(){
+   	var text = $("textarea#MyPost").val();
+	   $("div#PreviewBox").html(text); 
+	   
+			if(text.indexOf("p[")>-1)
+			{	
+					 $("div#PreviewBox").html(text + " ...loading pages "); 	
+			PreviewPost(text);
+				
+		} 
+   } 
+
+
+   var timer;
+
+   $("textarea[name='contents']").bind("keyup", function(){
+      clearTimeout(timer);
+      timer = setTimeout(updatePreview, 1000);
+   });
+
+});
+</script>
+
+
 </HEAD>
 
 
@@ -167,7 +196,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 							</TR>
 						</TBODY>
 					 </TABLE>
-					<DIV CLASS="fact">
+					<DIV CLASS="fact" ID='PreviewBox'>
 						Preview (auto-updates with each keystroke)
 					</DIV>
 					<DIV CLASS="meta">
@@ -176,7 +205,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 				</DIV>
 			</OUTPUT>
 			<!-- name is the same as in the old site -->
-			<TEXTAREA NAME="contents" REQUIRED PLACEHOLDER="Type your fanfact here&hellip;"></TEXTAREA>
+			<TEXTAREA NAME="contents" ID="MyPost" REQUIRED PLACEHOLDER="Type your fanfact here&hellip;"></TEXTAREA>
 		</SECTION>
 		
 		
@@ -239,7 +268,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 		
 		<SECTION ID="CONTROLS" CLASS="text-right">
 			<BUTTON ID="ATTACH_FANWORK" ><I CLASS="fa fa-plus"></I> Attach Fanwork</BUTTON>
-			<INPUT TYPE="submit" ID="SUBMIT_FANFACT" VALUE="Submit Fanfact" class="big bg-good" />
+			<BUTTON ONCLICK='SubmitFanfact("<?php echo $fandom[0]; ?>")' TYPE="button" ID="SUBMIT_FANFACT" class="big bg-good">Submit Fanfact</BUTTON>
 		</SECTION>
 	</FORM>
 </MAIN>

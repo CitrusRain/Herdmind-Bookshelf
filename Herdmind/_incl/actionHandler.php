@@ -46,10 +46,25 @@ elseif($func == "StarClick")
 {
 echo StarClick();
 }
+elseif($func == "Preview")
+{
+echo GeneratePreview();
+}
+/////////////////////
+/////////////////////
+/////////////////////
 
-/////////////////////
-/////////////////////
-/////////////////////
+function GeneratePreview()
+{
+	global $db_connection;
+	global $userid;
+	$text = mysqli_real_escape_string($db_connection, $_POST['text']);
+//	ob_end_clean();
+	echo TitleFiller($text, $db_connection);
+
+}
+
+
 
 function StarClick()
 {
