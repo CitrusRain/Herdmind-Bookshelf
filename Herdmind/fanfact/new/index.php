@@ -124,15 +124,10 @@ jQuery(function($){
 
 });
 
-</script>
-<script type="text/javascript" >
-
-function addPageCode(id)
+function addcode(insertval)
 {
-	alert(yes);
-
-	getElementByID("contents").value = (getElementByID("contents").value + "p["+id+"]"); 
-
+document.getElementById("MyPost").value = document.getElementById("MyPost").value + insertval;
+updatePreview();
 }
 
 </script>
@@ -156,7 +151,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 			
 				<?php 
 				
-				$CookieTray = GetRecentTopics();
+				$CookieTray = GetRecentTopicsReverse();
 				
 				foreach($CookieTray as $cookie)
 				{				
@@ -177,7 +172,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 					
 					echo "
 						<LI class='all-3 small-6 tiny-12'>
-							<FIGURE CLASS='themeBack'  onclick='addPageCode(\"".$topic->topicid."\");'>
+							<FIGURE CLASS='themeBack'  onclick='addcode(\"p[".$topic->topicid."]\");'>
 								<FIGCAPTION>
 									" . $NameToUse . "
 								</FIGCAPTION>

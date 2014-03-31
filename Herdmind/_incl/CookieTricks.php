@@ -19,7 +19,7 @@
 **/
 function SetRecentTopics($TopicID)
 {
-	$BacklogCount = 4;
+	$BacklogCount = 8;
 //	echo "<!-- Creating a cookie that stores your $BacklogCount most recently viewed topics. This will allow you to quickly find the proper page code if you decide to add a fanfact about it. -->";
 
 	//Get cookie and explode it.
@@ -61,5 +61,22 @@ function GetRecentTopics()
 	//Get cookie and explode it.
 	return explode(";", $_COOKIE["RecentTopicListMuffin"]);
 }
+
+
+/**
+ * Retrieves what topic pages were most recently viewed by the user, but in reverse order.
+ * 
+ * @return $array		 	An array of ids representing recently viewed topic pages.
+ * 
+ * @author Ryan Young
+ * @since 2014-03-31
+ * @version 1.0.0 (2014-03-31)
+**/
+function GetRecentTopicsReverse()
+{
+	//Get cookie and explode it.
+	return array_reverse(explode(";", $_COOKIE["RecentTopicListMuffin"]));
+}
+
 
 ?>
