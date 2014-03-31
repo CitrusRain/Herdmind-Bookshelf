@@ -11,6 +11,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/_incl/startSession.php';		// Start session a
 include $_SERVER['DOCUMENT_ROOT'].'/_incl/classes2.php';   			// A bunch of classes used for data
 include $_SERVER['DOCUMENT_ROOT'].'/_incl/RetreiveData.php';   		// Any function that returns XML
 include $_SERVER['DOCUMENT_ROOT'].'/_incl/convenience.php';
+include $_SERVER['DOCUMENT_ROOT'].'/_incl/CookieTricks.php';
 ?>
 <HTML>
 <HEAD>
@@ -140,6 +141,43 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 	<FORM ID="NEW_FACT_FORM">
 		<SECTION ID="RECENT_PAGES">
 			<OL CLASS="flush row">
+			
+				<?php 
+				
+				$CookieTray = GetRecentTopics();
+				
+				foreach($CookieTray as $cookie)
+				{				
+					$aTopic = GetTopicInfo($db_connection, $cookie); 
+						
+					$topic = new SimpleXMLElement($aTopic);
+					
+					$imgPath = "http://herdmind.net/" . $topic->picture;
+				
+					$names = $topic->names;
+					
+					if(($names->selectedname->namecontents) == "")
+						$NameToUse = $names->name[0]->namecontents;		
+					else 
+						$NameToUse = $names->selectedname->namecontents;	
+					
+					
+					
+					echo "
+						<LI class='all-3 small-6 tiny-12'>
+							<FIGURE CLASS='themeBack'>
+								<FIGCAPTION>
+									" . $NameToUse . "
+								</FIGCAPTION>
+								<IMG CLASS=\"thumb\" SRC=\"" . $imgPath . "\"/>
+							</FIGURE>
+						</LI>";
+								
+				}
+				?>			
+			
+			<!--
+			
 				<LI class="all-3 small-6 tiny-12">
 					<FIGURE CLASS="themeBack">
 						<FIGCAPTION>
@@ -175,6 +213,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 						recently viewed page 4
 					</FIGURE>
 				</LI>
+				-->
 			</OL>
 		</SECTION>
 		
