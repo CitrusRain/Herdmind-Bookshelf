@@ -985,6 +985,7 @@ $xmlstring = '
 				<branchname>'.$pageresults[5].'</branchname>
 				<branchid>'.$pageresults[4].'</branchid>
 			</canonwith>
+		<pageid>'.$pageid.'</pageid>
 	</topic>';
 	
 	//echo $xmlstring;
@@ -1350,7 +1351,7 @@ $rt = GetFactXML($result, $userid, $db_connection);
  {
  global $db_connection;
  global $userid;
- $output[0] = false;
+ $output = false;
  
 //echo "type=".$type." & id=".$id."</br>"; 
  
@@ -1368,7 +1369,7 @@ $line = mysqli_fetch_array($result, MYSQL_ASSOC);
 
 		if(!is_null($line))
 		{
-			$count = $line['DateSaved'];			
+			$output = $line['DateSaved'];			
 			}
 
 

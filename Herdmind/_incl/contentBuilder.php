@@ -246,7 +246,7 @@ function buildHeader($mod = false)
 	if ($userName)
 		echo "
 		<UL ID=\"LOGGED_IN_USERNAV\">
-			<LI><A HREF=\"/submit/fanfact/?fandom=".$fandom[0]."\" CLASS=\"button\">New Fanfact</A></LI>
+			<LI><A HREF=\"/fanfact/new/?fandom=".$fandom[0]."\" CLASS=\"button\">New Fanfact</A></LI>
 			<LI><A HREF=\"/profile/?fandom=".$fandom[0]."&id=$userName\" CLASS=\"button\">" . $userName . "</A></LI>
 			<LI><A ONCLICK=\"$('BODY').addClass('withDialog'); return true;\" HREF=\"#LOGGER_HOLDER\">Log Out</A></LI>
 		</UL>";

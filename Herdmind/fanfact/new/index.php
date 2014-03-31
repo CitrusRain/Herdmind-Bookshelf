@@ -123,6 +123,18 @@ jQuery(function($){
    });
 
 });
+
+</script>
+<script type="text/javascript" >
+
+function addPageCode(id)
+{
+	alert(yes);
+
+	getElementByID("contents").value = (getElementByID("contents").value + "p["+id+"]"); 
+
+}
+
 </script>
 
 
@@ -165,7 +177,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 					
 					echo "
 						<LI class='all-3 small-6 tiny-12'>
-							<FIGURE CLASS='themeBack'>
+							<FIGURE CLASS='themeBack'  onclick='addPageCode(\"".$topic->topicid."\");'>
 								<FIGCAPTION>
 									" . $NameToUse . "
 								</FIGCAPTION>
@@ -176,44 +188,6 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 				}
 				?>			
 			
-			<!--
-			
-				<LI class="all-3 small-6 tiny-12">
-					<FIGURE CLASS="themeBack">
-						<FIGCAPTION>
-							page title
-						</FIGCAPTION>
-						recently viewed page 1
-					</FIGURE>
-				</LI>
-				
-				<LI class="all-3 small-6 tiny-12">
-					<FIGURE CLASS="themeBack">
-						<FIGCAPTION>
-							page title
-						</FIGCAPTION>
-						recently viewed page 2
-					</FIGURE>
-				</LI>
-				
-				<LI class="all-3 small-6 tiny-12">
-					<FIGURE CLASS="themeBack">
-						<FIGCAPTION>
-							page title
-						</FIGCAPTION>
-						recently viewed page 3
-					</FIGURE>
-				</LI>
-				
-				<LI class="all-3 small-6 tiny-12">
-					<FIGURE CLASS="themeBack">
-						<FIGCAPTION>
-							page title
-						</FIGCAPTION>
-						recently viewed page 4
-					</FIGURE>
-				</LI>
-				-->
 			</OL>
 		</SECTION>
 		

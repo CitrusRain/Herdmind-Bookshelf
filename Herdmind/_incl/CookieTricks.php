@@ -19,7 +19,7 @@
 **/
 function SetRecentTopics($TopicID)
 {
-	$BacklogCount = 5;
+	$BacklogCount = 4;
 //	echo "<!-- Creating a cookie that stores your $BacklogCount most recently viewed topics. This will allow you to quickly find the proper page code if you decide to add a fanfact about it. -->";
 
 	//Get cookie and explode it.
@@ -27,7 +27,7 @@ function SetRecentTopics($TopicID)
 
 	//Find any previous instance of this page id, and remove it so we don't have duplicates when we re-add it.
 	$pos = array_search($TopicID, $MuffinBox);	// find item
-	unset($MuffinBox[$pos]); 					// remove item
+	if($pos > -1) unset($MuffinBox[$pos]);			// remove item if exists
 	$MuffinBox = array_values($MuffinBox); 		// reindex array
 
 	//Add this topic ID

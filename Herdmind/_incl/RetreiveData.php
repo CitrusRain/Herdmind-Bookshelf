@@ -948,6 +948,7 @@ XML;
  *			<branchname>
  *			<branchid>
  *		</canonwith>
+ *		<topicid>
  *	</topic>
  *	
  * 
@@ -985,6 +986,7 @@ $xmlstring = '
 				<branchname>'.$pageresults[5].'</branchname>
 				<branchid>'.$pageresults[4].'</branchid>
 			</canonwith>
+		<topicid>'.$pageid.'</topicid>
 	</topic>';
 	
 	//echo $xmlstring;
