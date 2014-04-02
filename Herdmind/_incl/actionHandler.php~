@@ -361,7 +361,7 @@ function CreateFanfact()
 
 		if( $contents != "")
 		{
-			$query =  "INSERT INTO Fact(Contents,CreatedBy) values('$contents', '$userid')";
+			$query =  "INSERT INTO Fact(Contents,CreatedBy,Type) values('$contents', '$userid','Fanfact')";
 
 			print($query);
 			$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));

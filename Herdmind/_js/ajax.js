@@ -147,6 +147,7 @@ xmlhttp.send("username=Citrus&useremail=email@herdmind.net&comment="+ comment +"
 function SubmitFanfact(fandom)
 {
 var facttext = document.getElementById("MyPost").value;
+var facttype = document.getElementById("FanfactType").value;
 var url = "/_incl/actionHandler.php?func=NewFanfact";
 
 var xmlhttp;
@@ -167,7 +168,7 @@ xmlhttp.onreadystatechange=function()
   }
 xmlhttp.open("POST",url,true);
 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-xmlhttp.send("facttext="+ facttext + "&fandomid="+ fandom + "");
+xmlhttp.send("facttext="+ facttext + "&facttype="+ facttype +"&fandomid="+ fandom + "");
 
 }
 

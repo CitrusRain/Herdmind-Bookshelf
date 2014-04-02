@@ -214,6 +214,11 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 			</OUTPUT>
 			<!-- name is the same as in the old site -->
 			<TEXTAREA NAME="contents" ID="MyPost" REQUIRED PLACEHOLDER="Type your fanfact here&hellip;"></TEXTAREA>
+			<select id="FanfactType">
+				<option value="Fanfact">Fanfact</option>
+				<option value="Speculation">Speculation</option>
+				<option value="Confirmed">Confirmed</option>			
+			</select>		
 		</SECTION>
 		
 		

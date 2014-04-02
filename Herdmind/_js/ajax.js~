@@ -144,10 +144,9 @@ xmlhttp.send("username=Citrus&useremail=email@herdmind.net&comment="+ comment +"
  * Submits the textarea data of #fanfact for approval as a new fanfact
  * 
  */
-function SubmitFanfact()
+function SubmitFanfact(fandom)
 {
-var facttext = document.getElementById("fanfact").value;
-var fandom = document.getElementById("FandomSelection").value;
+var facttext = document.getElementById("MyPost").value;
 var url = "/_incl/actionHandler.php?func=NewFanfact";
 
 var xmlhttp;
