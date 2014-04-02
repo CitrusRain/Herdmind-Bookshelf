@@ -112,7 +112,7 @@ class Topic
 		$size = 0;
 		foreach($factxml->children() as $child)
 		{
-			$listing[$size++] = buildFact(array($child->factid,$child->dateposted,$child->contents,$child->score,$child->uservote), false, true, "cardIn");
+			$listing[$size++] = buildFact(array($child->factid,$child->dateposted,$child->contents,$child->score,$child->uservote,$child->isstarred), false, true, "cardIn");
 		}
 
 		return $listing;
@@ -463,8 +463,8 @@ class Member
 	 	$size = 0;
 		foreach($factxml->children() as $child)
 		{
-			$listing[$size++] = $child;
-			//$listing[$size++] = buildFact(array($child->factid,$child->dateposted,$child->contents,$child->score,$child->uservote), false, true, "cardIn");
+//			$listing[$size++] = $child;
+			$listing[$size++] = buildFact(array($child->factid,$child->dateposted,$child->contents,$child->score,$child->uservote,$child->isstarred), false, true, "cardIn");
 		}
 	
 //$listing = "joe";

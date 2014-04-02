@@ -314,7 +314,8 @@ $offset = $page * $factsPerPage;
 		?>><?php
 			if ($page > 0)
 			{
-				?><A HREF="/topic?t=<?php
+				?><A HREF="/topic?fandom=<?php 
+				echo $fandom[0];?>&t=<?php
 				echo $topic->index;
 				?>&amp;page=<?php
 				echo $page - 1;
@@ -339,7 +340,8 @@ $offset = $page * $factsPerPage;
 				echo "\r\n\t\t";
 				if ($i != $page)
 				{
-					?><A HREF="/topic?t=<?php
+					?><A HREF="/topic?fandom=<?php 
+					echo $fandom[0];?>&t=<?php
 					echo $topic->index;
 					?>&amp;page=<?php
 					echo $i;
@@ -382,7 +384,7 @@ $offset = $page * $factsPerPage;
 		?>><?php
 			if ($page < $pages - 1)
 			{
-				?><A HREF="/topic?t=<?php echo $topic->index; ?>&page=<?php echo $page + 1; if(isset($_GET["limit"])) echo "&limit=" . $_GET["limit"]; ?>#FACTS"><?php
+				?><A HREF="/topic?fandom=<?php echo $fandom[0];?>&t=<?php echo $topic->index; ?>&page=<?php echo $page + 1; if(isset($_GET["limit"])) echo "&limit=" . $_GET["limit"]; ?>#FACTS"><?php
 			}
 			?>Next &raquo;<?php
 			if ($page < $pages - 1)

@@ -427,6 +427,7 @@ $xmlstring = GetTopicPages($db_connection, $branchid, $userid);
 
 			
 
+/*
 //Loop through the xml and get the data.
   $stack = array();
 foreach($xml->children() as $child)
@@ -443,7 +444,6 @@ foreach($xml->children() as $child)
 	}
 }
 
-/*
 echo '<section id="RAW_XML_TEST" style="border:thin dashed lightgray;">
 	<BUTTON ONCLICK="document.getElementById(\'RAW_XML_TEST\').remove()">Hide raw XML output</BUTTON><br/>';
 

@@ -23,7 +23,7 @@ $user = isset($_GET["user"]) && is_numeric($_GET["user"]) ? max($_GET["user"], 0
 <HTML>
 <HEAD>
 <?php
-buildDefaultHeadContent("Topic $topic->index", "Complete data about Herdmind Topic $topic->index", array("Descriptive", "Keywords"));
+buildDefaultHeadContent("A Profile", "", array("Descriptive", "Keywords"));
 ?>
 
 <STYLE>
@@ -258,7 +258,7 @@ $pages = $numFacts / $factsPerPage;
 			<?php
 			if ($numFacts)
 			{
-				?>Fact<?php
+				?>Submitted Fact<?php
 				if($factsPerPage > 1)
 				{
 					?>s<?php
@@ -295,8 +295,9 @@ $pages = $numFacts / $factsPerPage;
 		?>><?php
 			if ($page > 0)
 			{
-				?><A HREF="/topic?t=<?php
-				echo $topic->index;
+				?><A HREF="/profile?fandom=<?php 
+				echo $fandom[0];?>&id=<?php
+				echo $ProfileNum;
 				?>&amp;page=<?php
 				echo $page - 1;
 				if(isset($_GET["limit"]))
@@ -320,8 +321,9 @@ $pages = $numFacts / $factsPerPage;
 				echo "\r\n\t\t";
 				if ($i != $page)
 				{
-					?><A HREF="/topic?t=<?php
-					echo $topic->index;
+					?><A HREF="/profile?fandom=<?php 
+					echo $fandom[0];?>&id=<?php
+					echo $ProfileNum;
 					?>&amp;page=<?php
 					echo $i;
 					if(isset($_GET["limit"]))
@@ -363,7 +365,7 @@ $pages = $numFacts / $factsPerPage;
 		?>><?php
 			if ($page < $pages - 1)
 			{
-				?><A HREF="/topic?t=<?php echo $topic->index; ?>&page=<?php echo $page + 1; if(isset($_GET["limit"])) echo "&limit=" . $_GET["limit"]; ?>#FACTS"><?php
+				?><A HREF="/profile?fandom=<?php echo $fandom[0];?>&id=<?php echo $ProfileNum; ?>&page=<?php echo $page + 1; if(isset($_GET["limit"])) echo "&limit=" . $_GET["limit"]; ?>#FACTS"><?php
 			}
 			?>Next &raquo;<?php
 			if ($page < $pages - 1)

@@ -246,7 +246,7 @@ function buildHeader($mod = false)
 	if ($userName)
 		echo "
 		<UL ID=\"LOGGED_IN_USERNAV\">
-			<LI><A HREF=\"/submit/fanfact/?fandom=".$fandom[0]."\" CLASS=\"button\">New Fanfact</A></LI>
+			<LI><A HREF=\"/fanfact/new/?fandom=".$fandom[0]."\" CLASS=\"button\">New Fanfact</A></LI>
 			<LI><A HREF=\"/profile/?fandom=".$fandom[0]."&id=$userName\" CLASS=\"button\">" . $userName . "</A></LI>
 			<LI><A ONCLICK=\"$('BODY').addClass('withDialog'); return true;\" HREF=\"#LOGGER_HOLDER\">Log Out</A></LI>
 		</UL>";
@@ -666,7 +666,7 @@ function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 				 <DIV CLASS=\"fact\">$fact[2]</DIV>
 				 <DIV CLASS=\"meta\">
 					<SPAN CLASS=\"factNum\">$fact[0]</SPAN>
-					" . ($userid ? '<I CLASS="fa fa-star' . ($fact[6] ? '' : '-o') . ($standalone ? ' fa-2x' : '') . '" DATA-FAVORITE="$userName" '."onclick='starClick(\"".$fact[0]."\")'".'></I>' : '') . 
+					" . ($userid ? '<I CLASS="fa fa-star' . ($fact[5] ? '' : '-o') . ($standalone ? ' fa-2x' : '') . '" DATA-FAVORITE="$userName" '."onclick='starClick(\"".$fact[0]."\")'".'></I>' : '') . 
 					($moreData ? "<A HREF=\"/fanfact?fandom=".$fandom[0]."&id=$fact[0]\" CLASS=\"callToAction\">More data</A>" : "") . "
 					<!-- This number must be sent to an ajax call to star or unstar: $fact[0] -->
 				 </DIV>

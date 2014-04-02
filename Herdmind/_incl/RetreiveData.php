@@ -433,14 +433,16 @@ $selected = "select Value from FactScoreByTally where FactID = '".$facts[0]."' a
 
 	$run = mysqli_query($db_connection, $selected) or die('Query failed: ' . mysqli_error());
 
+$uservote = 0;
+if(isset($opt[0]) && $opt[0] != "")
+{
+	$uservote = $opt[0];
+}
+$ViewerVoted = "";
 while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
-    $opt = array();
-    $pos = 0;
-    foreach ($line as $col_value) {
-    
-        $opt[$pos] = "$col_value";
-        $pos++;
-    }	
+   
+    if(isset($line[0]))
+    	$ViewerVoted = $line[0];
 }     
 
 $selected = "select sum(Value) from FactScoreByTally where FactID = '".$facts[0]."';";
@@ -475,7 +477,7 @@ $sc = 0 + $cnt[0];
 $ReturnString = $ReturnString.'
 	<fanfact>
 		<score>'.$sc.'</score>
-		<uservote>'.$opt[0].'</uservote>
+		<uservote>'.$ViewerVoted.'</uservote>
 		<factid>'.$facts[0].'</factid>
 		<contents>'.$facts[1].'</contents>
 		<dateposted>'.$facts[2].'</dateposted>
@@ -576,7 +578,7 @@ while ($line = mysqli_fetch_array($rfacts, MYSQL_ASSOC)) {
  
 $selected = "select Value from FactScoreByTally where FactID = '".$facts[0]."' and UserPoint = '$userid';";
 $run = mysqli_query($db_connection, $selected) or die('Query failed: ' . mysqli_error());
-$ViewerVoted = 0;
+$ViewerVoted = "";
 while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
     
     if(isset($line[0]))
