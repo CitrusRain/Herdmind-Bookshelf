@@ -571,19 +571,17 @@ while ($line = mysqli_fetch_array($rfacts, MYSQL_ASSOC)) {
         $pos++;
     }	 
     
-    
+
+//See if the person viewing the fanfacts voted for them, and if so, retreive the votes
+ 
 $selected = "select Value from FactScoreByTally where FactID = '".$facts[0]."' and UserPoint = '$userid';";
-
-	$run = mysqli_query($db_connection, $selected) or die('Query failed: ' . mysqli_error());
-
+$run = mysqli_query($db_connection, $selected) or die('Query failed: ' . mysqli_error());
+$ViewerVoted = 0;
 while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
-    $opt = array();
-    $pos = 0;
-    foreach ($line as $col_value) {
     
-        $opt[$pos] = "$col_value";
-        $pos++;
-    }	
+    if(isset($line[0]))
+    	$ViewerVoted = $line[0];
+    
 }     
 
 $selected = "select sum(Value) from FactScoreByTally where FactID = '".$facts[0]."';";
@@ -606,7 +604,7 @@ $sc = 0 + $cnt[0];
 $ReturnString = $ReturnString.'
 	<fanfact>
 		<score>'.$sc.'</score>
-		<uservote>'.$opt[0].'</uservote>
+		<uservote>'.$ViewerVoted.'</uservote>
 		<factid>'.$facts[0].'</factid>
 		<contents>'.$facts[1].'</contents>
 		<dateposted>'.$facts[2].'</dateposted>

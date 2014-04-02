@@ -95,12 +95,12 @@ class Topic
 		global $db_connection;
 		global $userid;
 		if (isset($_GET['page']))
-			$page = mysqli_real_escape_string($db_connection, $_POST['page']);
+			$page = mysqli_real_escape_string($db_connection, $_GET['page']);
 		else 
 			$page = 0;
 			
 		if (isset($_GET['limit']))
-			$factsperpage = mysqli_real_escape_string($db_connection, $_POST['limit']);
+			$factsperpage = mysqli_real_escape_string($db_connection, $_GET['limit']);
 		else 
 			$factsperpage = 0;
 

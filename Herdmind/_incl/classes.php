@@ -455,19 +455,19 @@ class Member
 		global $db_connection;
 
 
-/*		$xmlstring = GetSubmissionListByMemberID($this->id);
-		$factxml = new SimpleXMLElement($xmlstring);
+	 	$xmlstring = GetSubmissionListByMemberID($this->id);
+	 	$factxml = new SimpleXMLElement($xmlstring);
 
 		//Loop through each xml element and print it.
-		$listing = array();  
-		$size = 0;
+	 	$listing = array();  
+	 	$size = 0;
 		foreach($factxml->children() as $child)
 		{
 			$listing[$size++] = $child;
 			//$listing[$size++] = buildFact(array($child->factid,$child->dateposted,$child->contents,$child->score,$child->uservote), false, true, "cardIn");
 		}
-*/
-$listing = "joe";
+	
+//$listing = "joe";
 		return $listing;
 
 	}

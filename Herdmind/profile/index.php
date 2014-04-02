@@ -4,7 +4,7 @@ A user profile page
 
 This page is copyright Herdmind.net ©2013
 -->
-<?PHP
+<?php
 /*
 
 	A NOTE TO ANYONE READING THE PHP: I'm trying a new way of doing it, hoping that putting small PHP calls in the HTML will lead to faster processing than multiple echoes
@@ -22,7 +22,7 @@ $user = isset($_GET["user"]) && is_numeric($_GET["user"]) ? max($_GET["user"], 0
 ?>
 <HTML>
 <HEAD>
-<?PHP
+<?php
 buildDefaultHeadContent("Topic $topic->index", "Complete data about Herdmind Topic $topic->index", array("Descriptive", "Keywords"));
 ?>
 
@@ -97,7 +97,7 @@ FIGURE.topic {
 
 
 
-<?PHP
+<?php
 buildBodyTagWithAttributes(); // <BODY ...>
 buildHeader(); // Don't pass variables to this; it will automatically detect login cookies
 ?>
@@ -106,7 +106,7 @@ Todo:
 <br/>
 >get profile picture, username, and other details
 
-<?PHP
+<?php
 
 
 //Determine what profile to load
@@ -159,7 +159,7 @@ echo '</section>';
 ?>
 
 
-<?PHP
+<?php
 
 //Print personal thread here.
  /*
@@ -231,7 +231,7 @@ echo CommentBox($ProfileNum, "profile");
 
 
 <SECTION ID="FACTS" STYLE="">
-<?PHP
+<?php
 //$xml = GetSubmissionsByMemberID($_GET["id"]);
 
 $userhistory = new Member(
@@ -245,126 +245,132 @@ $userhistory = new Member(
 
 // This is here to ensure it's initialized no matter how facts are arranged
 $facts = $userhistory->getSubmittedFacts();
+$factsPerPage = 10;
+
+$page = (isset($_GET["p"])) ? mysqli_real_escape_string($db_connection, $_GET["p"]) : 0;
 $offset = $page * $factsPerPage;
+$numFacts = count($facts);
+$pages = $numFacts / $factsPerPage;
+
 ?>
 	<NAV CLASS="centered pages">
 		<H3>
-			<?PHP
+			<?php
 			if ($numFacts)
 			{
-				?>Fact<?PHP
+				?>Fact<?php
 				if($factsPerPage > 1)
 				{
-					?>s<?PHP
+					?>s<?php
 				}
-				?> <?PHP
+				?> <?php
 				echo ($offset) + 1;
 				if($factsPerPage > 1)
 				{
-					?>&ndash;<?PHP
+					?>&ndash;<?php
 					echo min(($offset) + $factsPerPage, $numFacts);
 				}
-				?> of <?PHP
+				?> of <?php
 				echo $numFacts;
 			}
 			else
 			{
-				?>There are no facts about <?PHP echo $topic->getPrimaryName();
+				?>There are no facts about <?php echo $topic->getPrimaryName();
 			}
 			?>
-		</H3><?PHP
+		</H3><?php
 		if ($factsPerPage < $numFacts) // BEGIN Build Navigation Controls
 		{
 		?>
 
-		<LABEL <?PHP
+		<LABEL <?php
 			if ($page > 0)
 			{
-				?>FOR="RB_PAGE<?PHP echo $page - 1; ?>"<?PHP
+				?>FOR="RB_PAGE<?php echo $page - 1; ?>"<?php
 			}
 			else
 			{
-				?>DISABLED="disabled"<?PHP
+				?>DISABLED="disabled"<?php
 			}
-		?>><?PHP
+		?>><?php
 			if ($page > 0)
 			{
-				?><A HREF="/topic?t=<?PHP
+				?><A HREF="/topic?t=<?php
 				echo $topic->index;
-				?>&amp;page=<?PHP
+				?>&amp;page=<?php
 				echo $page - 1;
 				if(isset($_GET["limit"]))
 				{
-					?>&amp;limit=<?PHP
+					?>&amp;limit=<?php
 					echo $_GET["limit"];
 				}
-				?>#FACTS"><?PHP
+				?>#FACTS"><?php
 			}
-			?>&laquo; Prev<?PHP
+			?>&laquo; Prev<?php
 			if ($page > 0)
 			{
-				?></A><?PHP
+				?></A><?php
 			}
 		?></LABEL>
 
-		<?PHP
+		<?php
 		
 			for($i=0; $i < $pages; $i++)
 			{
 				echo "\r\n\t\t";
 				if ($i != $page)
 				{
-					?><A HREF="/topic?t=<?PHP
+					?><A HREF="/topic?t=<?php
 					echo $topic->index;
-					?>&amp;page=<?PHP
+					?>&amp;page=<?php
 					echo $i;
 					if(isset($_GET["limit"]))
 					{
-						?>&amp;limit=<?PHP
+						?>&amp;limit=<?php
 						echo $_GET["limit"];
 					}
-					?>#FACTS" CLASS="cursorDefault"><?PHP
+					?>#FACTS" CLASS="cursorDefault"><?php
 				}
 				?><INPUT
 			TYPE="radio"
 			NAME="page"
-			VALUE="<?PHP echo $i; ?>"
-			ID="RB_PAGE<?PHP echo $i; ?>"
-			<?PHP
+			VALUE="<?php echo $i; ?>"
+			ID="RB_PAGE<?php echo $i; ?>"
+			<?php
 				if ($i == $page)
 				{
 					?>CHECKED="checked"
 			DISABLED="disabled"
-			<?PHP
+			<?php
 				}
-			?>/><?PHP
+			?>/><?php
 				if ($i != $page)
 				{
-					?></A><?PHP
+					?></A><?php
 				}
 			}
 		?>
 
-		<LABEL <?PHP
+		<LABEL <?php
 				if ($page < $pages - 1)
 				{
-					?>FOR="RB_PAGE<?PHP echo $page + 1; ?>"<?PHP
+					?>FOR="RB_PAGE<?php echo $page + 1; ?>"<?php
 				}
 				else
 				{
-					?>DISABLED="disabled"<?PHP
+					?>DISABLED="disabled"<?php
 				}
-		?>><?PHP
+		?>><?php
 			if ($page < $pages - 1)
 			{
-				?><A HREF="/topic?t=<?PHP echo $topic->index; ?>&page=<?PHP echo $page + 1; if(isset($_GET["limit"])) echo "&limit=" . $_GET["limit"]; ?>#FACTS"><?PHP
+				?><A HREF="/topic?t=<?php echo $topic->index; ?>&page=<?php echo $page + 1; if(isset($_GET["limit"])) echo "&limit=" . $_GET["limit"]; ?>#FACTS"><?php
 			}
-			?>Next &raquo;<?PHP
+			?>Next &raquo;<?php
 			if ($page < $pages - 1)
 			{
-				?></A><?PHP
+				?></A><?php
 			}
-		?></LABEL><?PHP
+		?></LABEL><?php
 		} // END Build Navigation Controls
 		?>
 
@@ -373,7 +379,8 @@ $offset = $page * $factsPerPage;
 	
 	
 	<UL CLASS="fanfacts">
-	<?PHP
+	<?php
+	echo $facts[0];
 		for($i = 0, $limit = min(count($facts) - $offset, $factsPerPage); $i < $limit; $i++)
 			echo TitleFiller($facts[$i + $offset], $db_connection);
 	?>
@@ -384,7 +391,7 @@ $offset = $page * $factsPerPage;
 
 
 
-<?PHP
+<?php
 buildFooter();
 ?>
 </BODY>
