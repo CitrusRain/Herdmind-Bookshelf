@@ -351,6 +351,7 @@ function CreateFanfact()
 	if($userid != "")
 	{
 		$contents = mysqli_real_escape_string($db_connection, htmlentities($_POST['facttext']));
+		$facttype = mysqli_real_escape_string($db_connection, htmlentities($_POST['facttype']));
 		$fandomid = mysqli_real_escape_string($db_connection, htmlentities($_POST['fandomid']));
 		//print($contents);
 		$contents = str_replace('"',"&#34;",$contents);
@@ -361,7 +362,7 @@ function CreateFanfact()
 
 		if( $contents != "")
 		{
-			$query =  "INSERT INTO Fact(Contents,CreatedBy,Type) values('$contents', '$userid','Fanfact')";
+			$query =  "INSERT INTO Fact(Contents,CreatedBy,Type) values('$contents', '$userid','$facttype')";
 
 			print($query);
 			$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));

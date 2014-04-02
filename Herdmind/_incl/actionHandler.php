@@ -370,7 +370,7 @@ function CreateFanfact()
 			if($result == 1)
 			{
 				$factid = mysqli_insert_id($db_connection);
-				$queryraffle = "insert into SubmissionData (SubmissionID, SubmissionType, UserID, BonusReason) values ('".$factid."','Fact','$userid','NoBonus') ";
+				$queryraffle = "insert into SubmissionData (SubmissionID, SubmissionType, UserID, BonusReason, IsPublic) values ('".$factid."','Fact','$userid','NoBonus', '1') ";
 				$ret = mysqli_query($db_connection, $queryraffle) or die('Query failed: ' . mysqli_error($db_connection));
 				
 				$query =  "INSERT INTO FactBranch (FactID, BranchID) VALUES ('".$factid."', '".$fandomid."');";
