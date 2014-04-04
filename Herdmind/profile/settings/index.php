@@ -95,16 +95,10 @@ FIGURE.topic {
 </STYLE>
 </HEAD>
 
-
-
 <?php
 buildBodyTagWithAttributes(); // <BODY ...>
 buildHeader(); // Don't pass variables to this; it will automatically detect login cookies
 ?>
-
-Todo:
-<br/>
->get profile picture, username, and other details
 
 <?php
 
@@ -128,41 +122,55 @@ if(isset($ProfileNum) && !(isset($_GET["id"])))
 	echo "Not logged in, but trying to view own profile.";
 }
 
-$xmlstring = GetProfile($db_connection
-					, $ProfileNum
-					, $userid);
-
-$profilexml = new SimpleXMLElement($xmlstring);
-
-
-
-echo '<section id="RAW_XML_TEST" style="border:thin dashed lightgray;">
-	<BUTTON ONCLICK="document.getElementById(\'RAW_XML_TEST\').remove()">Hide raw XML output</BUTTON><br/>';
-
-echo $profilexml->getName() . "<br/>";
-
-//Loop through each xml element and print it.
-  $stack = array();
-foreach($profilexml->children() as $child)
-  {
-  echo "-".$child->getName() . ": " . $child . "<br/>";
-	
-		foreach($child->children() as $child2)
-		  {
-		  echo "--".$child2->getName() . ": " . $child2 . "<br/>";
-		}
-  }
-  
-echo '</section>';
-
-
 ?>
 
 
 
-<SECTION id='settings'>
-<h3>Your settings</h3>
+<SECTION id='accountsettings'>
+<h3>Account settings</h3>
+<div>Privacy
+	<ul>
+		<li>Allow other users to see what you submitted</li>
+		<li>Allow other users to see what you voted on</li>
+	</ul>
+</div>
+<div>Emails
+	<ul>
+		<li>Recieve emails when... -Notifications -General stuff -etc</li>
+		<li>Set email address</li>
+	</ul>
+</div>
+<div>Reset/Delete account?
+	<ul>
+		<li>Blanks out everything. User can decide if their posts remain or get 
+				their profile information removed from the space next to it.</li>
+		<li>Submitted fanfacts will however stay.</li>
+		<li>The difference between reset and delete is that reset just lets 
+				them start over from scratch without signing up again. 
+				(Allowing premium memberships to carry over.)</li>			
+	</ul>		 
+</div>
+</section>
 
+<SECTION id='profilesettings'>
+<h3>Profile settings</h3>
+<div>Avatar 
+	<ul>
+		<li>upload image to /_img/uploaded/user/<b>(user id)</b>/avatar64.png</li>
+	</ul>
+</div>
+<div>Premium
+	<ul>
+		<li>upload image to /_img/uploaded/user/<b>(user id)</b>/premium-header.png</li>
+		<li>Set align/repeat</li>
+	</ul>
+</div>
+<div>Spoilers
+	<ul>
+		<li>Hide all predictions?</li>
+		<li>Hide/unhide by episode/comic/novel/movie release</li>
+	</ul>
+</div>
 </SECTION>
 
 
