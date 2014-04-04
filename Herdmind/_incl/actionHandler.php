@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL);
 include $_SERVER['DOCUMENT_ROOT']."/_incl/config.php";				// Get database connection
+include $_SERVER['DOCUMENT_ROOT']."/_incl/classes.php";				// Get classes ready
 include $_SERVER['DOCUMENT_ROOT']."/_incl/startSession.php";        // Start session and determine subdomain
 
 

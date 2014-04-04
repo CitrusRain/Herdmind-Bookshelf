@@ -26,37 +26,6 @@ buildDefaultHeadContent($fandom ? $fandom->fandomname : null);
 
 </HEAD>
 
-<style>
-
-.wrappingColumns2 {
-	/*margin-left: auto;
-	margin-right: auto;*/
-	text-align: center;
-}
-	.wrappingColumns2>* {
-		text-align: left;
-		text-align: initial;
-	}
-@media all and (min-width: 40em) {
-	.wrappingColumns2 {
-		columns: 2;
-		-o-columns: 2;
-		-ms-columns: 2;
-		-moz-columns: 2;
-		-webkit-columns: 2;
-	}
-}
-@media all and (min-width: 60em) {
-	.wrappingColumns2 {
-		columns: 2;
-		-o-columns: 2;
-		-ms-columns: 2;
-		-moz-columns: 2;
-		-webkit-columns: 2;
-	}
-}
-
-</style>
 
 
 <?php
@@ -72,13 +41,13 @@ buildHeader($mod); // Allows for testing of different layouts
 	<H1>";
 		if (is_null($fandom)) // If this is not a homepage for a registered fandom
 		{
-			if ($parsedfandom) // $parsedFandom is set to null only if we are on the main portal page (no domain)
+			if ($fandom->fandomname) // $parsedFandom is set to null only if we are on the main portal page (no domain)
 				echo "Sorry!</H1><P>The Community you are looking for does not exist.</P>";
 			else
 				echo "Welcome!</H1>";
 		}
 		else
-			echo $parsedfandom . "</H1>";
+			echo $fandom->fandomname . "</H1>";
 
 
 	if(!$fandom->fandomid or $fandom->fandomid == '')
@@ -87,18 +56,15 @@ buildHeader($mod); // Allows for testing of different layouts
 <P CLASS=\"focus\">Herdmind is a non-profit, fan-made database of non-canon <Q>fanfacts</Q>, which can be submitted and voted upon by any user.</P>
 <SECTION>";
 
+		
 		$PortalList = getCommunities('top');
       //  echo "<!--";		
 		echo "<br/><hr/>".(string)$PortalList."<hr/>";
      //   echo "-->";
 		
-		
-		
-		
-		/*
 		$fandomPortals = // TODO: Change to database retrieval
 			array(
-				  new PortalItem( $tardis->title,
+				  new PortalItem( "Doctor Who",
 				                 "?fandom=9", //  "//tardis.herdmind.net"                 USE THIS IN FINAL IMPLEMENTATION
 				                 "//beta.herdmind.net/_incl/resizedImage.php?w=512&i=/_img/fandom-logos/Who_4k.png")
 				                 //$tardis->getLogo())                 USE THIS IN FINAL IMPLEMENTATION
@@ -112,7 +78,7 @@ buildHeader($mod); // Allows for testing of different layouts
 				                 //"http://beta.herdmind.net/_img/Herdmind-logo_PPG.png")//"http://herdmind.net/CSS/herdmind/SubsiteButtons/button_ppg.png")
 			);
 		buildPortalList($fandomPortals);
-	*/	
+		
 	}
 
 
@@ -124,92 +90,130 @@ buildHeader($mod); // Allows for testing of different layouts
 	else // BEGIN Create Fandom Homepage
 	{
 		?>
-		
-	<SECTION>
-	<?php
-		$path = getCommunityPath();	
-		 
-		echo "<br/><hr/>".(string)$path."<hr/>";
-	 
-	 //  echo "<!--";	
-		$PortalList = getCommunities('bottom');
-      		
-		if($PortalList->listsize > 1)
-			echo "<br/><hr/>".(string)$PortalList."<hr/>";
-     //   echo "-->";
-    ?>	
-	</SECTION>
-	
-	<SECTION CLASS="wrappingColumns2 news">
-
-	<SECTION CLASS="orange cardIn">
-		<H2>Posts</H2>
-		
-		<?php
-		/*
-		
-		Make a place to make a thread with
-		
-		*/
-		echo "
-		<form method='POST'>
-				<textarea id='commentbox'></textarea>
-				<button type='button' onclick='PostNew(\"".$fandom->fandomid."\")'>Submit a Shitpost</button>
-			</form>
-		";
-		
-		/*
-		
-		Get and Print the comments
-		
-		*/
-		
-		$comments = GetCommentsFeed("primary");
-		echo buildComments($comments);
-		
-		
-		
-		?>
-		
-		
-	</SECTION>
-	
+<SECTION CLASS="wrappingColumns news">
 	<SECTION CLASS="blue cardIn">
 		<H2>News</H2>
 		<P>Our new site is up! We hope you enjoy using it as much as we enjoyed writing it! 8D</P>
 		<DIV CLASS="signature">Herdmind Staff</DIV>
 	</SECTION>
-		
-	<SECTION CLASS="wrappingColumns2 news">
-		<SECTION CLASS="orange cardIn">
-			<H2>Oatmeal Muffin</H2>
-			<A HREF="/oatmeal/">
-				<IMG SRC="http://pony.herdmind.net/Images/featured/datamuffin.png" ALT="Oatmeal Muffin" CLASS="centered" STYLE="display:block;width:50%"/>
-			</A>
-		</SECTION>
-	
-		<SECTION CLASS="magenta cardIn">
-			<H2>AD</H2>
-		</SECTION>
-	</section>
-	
-	<SECTION CLASS="wrappingColumns2 news">
-		<SECTION CLASS="green cardIn">
-			<H2>Trending Fanfacts</H2>
-			<?php
-				$maturefilter = 0;
-				//$subdomfilter = " b.subdomain = '".$cookie_params['path']."' and ";
-	
-	
-				//Random
-				//$query =  "SELECT Distinct Page.PageID, Page.Name, Page.Picture, Page.PrimaryColor from (Page join SubmissionData on Page.PageID = SubmissionData.SubmissionID) join Branch as b on Page.Branch = b.BranchID where " . $subdomfilter . " SubmissionData.isPublic = '1'  and SubmissionData.isRemoved = '0' and ( SubmissionData.IsMature = '0' OR SubmissionData.IsMature = '" . $maturefilter . "') order by RAND() LIMIT  5";
-	
-				//Popular
-				//FactID - DatePosted - Contents - sum(tal.Value)
-				$query = "
+
+	<SECTION CLASS="magenta cardIn">
+		<H2>Random Topics</H2>
+		<?php echo buildTopicLinkListFromXML(GrabRandomTopics(5, $db_connection)); ?>
+		<SPAN CLASS="devalert">[needs to be fandom sensitive]</SPAN>
+	</SECTION>
+
+	<SECTION CLASS="orange cardIn">
+		<H2>Oatmeal Muffin</H2>
+		<A HREF="/oatmeal/">
+			<IMG SRC="http://pony.herdmind.net/Images/featured/datamuffin.png" ALT="Oatmeal Muffin" CLASS="centered" STYLE="display:block;width:50%"/>
+		</A>
+	</SECTION>
+
+	<SECTION CLASS="green cardIn">
+		<H2>Trending Fanfacts</H2>
+		<?php
+			$maturefilter = 0;
+			//$subdomfilter = " b.subdomain = '".$cookie_params['path']."' and ";
+
+
+			//Random
+			//$query =  "SELECT Distinct Page.PageID, Page.Name, Page.Picture, Page.PrimaryColor from (Page join SubmissionData on Page.PageID = SubmissionData.SubmissionID) join Branch as b on Page.Branch = b.BranchID where " . $subdomfilter . " SubmissionData.isPublic = '1'  and SubmissionData.isRemoved = '0' and ( SubmissionData.IsMature = '0' OR SubmissionData.IsMature = '" . $maturefilter . "') order by RAND() LIMIT  5";
+
+			//Popular
+			//FactID - DatePosted - Contents - sum(tal.Value)
+			$query = "
+						 
+SELECT * FROM
+
+			(
+				SELECT DISTINCT Fact.FactID, Fact.DatePosted, Fact.Contents, sum(tal.Value) as RecentSum FROM
+				(
+					(
+						(
+							(
+								Fact LEFT JOIN SubmissionData AS s ON FactID = s.SubmissionID
+							)
+							LEFT JOIN FactScoreByTally AS tal ON Fact.FactID = tal.FactID
+						)
+						JOIN FactBranch AS fb ON Fact.FactID = fb.FactID
+					)
+					JOIN Branch AS b ON fb.BranchID = b.BranchID
+				) 
+ join (
+  Select FSBT.FactID, FSBT.DatePointScored from (
+FactScoreByTally as FSBT JOIN FactBranch AS fb ON FSBT.FactID = fb.FactID
+					)
+					JOIN Branch AS b ON fb.BranchID = b.BranchID
+WHERE b.branchid = '$fandom->fandomid'
+order by DatePointScored desc limit 25                              
+                                
+                                ) as mtvs on mtvs.FactID = Fact.FactID
+
+				WHERE b.branchid = '$fandom->fandomid'
+				AND s.IsPublic='1'
+				AND s.IsMature='$maturefilter'
+				AND s.IsRemoved='0'
+				GROUP BY Fact.FactID
+				ORDER BY sum(tal.Value)
+				DESC LIMIT 10
+			)
+			AS PopularFacts left join (
+			SELECT DISTINCT Fact.FactID, sum(tal.Value) as TotalSum FROM
+				(
+					(
+						(
+							(
+								Fact LEFT JOIN SubmissionData AS s ON FactID = s.SubmissionID
+							)
+							LEFT JOIN FactScoreByTally AS tal ON Fact.FactID = tal.FactID
+						)
+						JOIN FactBranch AS fb ON Fact.FactID = fb.FactID
+					)
+					JOIN Branch AS b ON fb.BranchID = b.BranchID
+				)
+				WHERE b.branchid = '$fandom->fandomid'
+				AND s.IsPublic='1'
+				AND s.IsMature='$maturefilter'
+				AND s.IsRemoved='0'
+				GROUP BY Fact.FactID
+			) as AllTimePopularFacts on PopularFacts.FactID = AllTimePopularFacts.FactID 			
+			 order by PopularFacts.FactID desc 	";		 
+			 
+			 
+			 
+			echo "<!--The reason for this being wrong is the 2 week filter. It is only counting votes made in the past 2 weeks.-->";
+			try
+			{
+				$mysqliQuery = mysqli_query($db_connection, $query);
+				$builtFacts = buildTrendingFacts($mysqliQuery, 5);
+				$filledTitles = TitleFiller($builtFacts,$db_connection);
+				echo $filledTitles;
+			}
+			catch (Exception $e)
+			{
+				?><DIV CLASS="devalert">
+					An error ocurred during creation of the trending fanfacts:<BR/>
+					<CODE>
+						<?php echo $e->getMessage(); ?>
+					</CODE>
+				</DIV><?php
+			}
+
+		?>
+	</SECTION>
+
+	<SECTION CLASS="purple cardIn">
+		<H2>New Fanfacts</H2>
+		<?php
+
+				$maturefilter = 0;//Use this when we allow the user to show mature fanfacts
+
+				//FactID - Contents - DatePosted - SubmissionID - sum(tal.Value)
+				$query =  "
 				SELECT * FROM
 				(
-					SELECT DISTINCT Fact.FactID, Fact.DatePosted, Fact.Contents, sum(tal.Value) as RecentSum FROM
+					SELECT DISTINCT Fact.FactID FROM
 					(
 						(
 							(
@@ -223,135 +227,34 @@ buildHeader($mod); // Allows for testing of different layouts
 						JOIN Branch AS b ON fb.BranchID = b.BranchID
 					)
 					WHERE b.branchid = '$fandom->fandomid'
-					AND tal.DatePointScored > DATE_SUB(curdate(), INTERVAL 2 WEEK)
 					AND s.IsPublic='1'
 					AND s.IsMature='$maturefilter'
 					AND s.IsRemoved='0'
 					GROUP BY Fact.FactID
-					ORDER BY sum(tal.Value)
+					ORDER BY Fact.DatePosted
 					DESC LIMIT 10
 				)
-				AS PopularFacts left join (
-				SELECT DISTINCT Fact.FactID, sum(tal.Value) as TotalSum FROM
-					(
-						(
-							(
-								(
-									Fact LEFT JOIN SubmissionData AS s ON FactID = s.SubmissionID
-								)
-								LEFT JOIN FactScoreByTally AS tal ON Fact.FactID = tal.FactID
-							)
-							JOIN FactBranch AS fb ON Fact.FactID = fb.FactID
-						)
-						JOIN Branch AS b ON fb.BranchID = b.BranchID
-					)
-					WHERE b.branchid = '$fandom->fandomid'
-					AND s.IsPublic='1'
-					AND s.IsMature='$maturefilter'
-					AND s.IsRemoved='0'
-					GROUP BY Fact.FactID
-				) as AllTimePopularFacts on PopularFacts.FactID = AllTimePopularFacts.FactID			
-				 order by Rand()";
-				// echo $query;
-				echo "<!--The reason for this being wrong is the 2 week filter. It is only counting votes made in the past 2 weeks.-->";
-				try
-				{
-					$mysqliQuery = mysqli_query($db_connection, $query);
-					$builtFacts = buildTrendingFacts($mysqliQuery, 5);
-					$filledTitles = TitleFiller($builtFacts,$db_connection);
-					echo $filledTitles;
-				}
-				catch (Exception $e)
-				{
-					?><DIV CLASS="devalert">
-						An error ocurred during creation of the trending fanfacts:<BR/>
-						<CODE>
-							<?php echo $e->getMessage(); ?>
-						</CODE>
-					</DIV><?php
-				}
-	
-			?>
-		</SECTION>
-	
-		<SECTION CLASS="purple cardIn">
-			<H2>New Fanfacts</H2>
-			<?php
-	
-					$maturefilter = 0;//Use this when we allow the user to show mature fanfacts
-	
-					//FactID - Contents - DatePosted - SubmissionID - sum(tal.Value)
-					$query =  "
-					SELECT * FROM
-					(
-						SELECT DISTINCT Fact.FactID FROM
-						(
-							(
-								(
-									(
-										Fact LEFT JOIN SubmissionData AS s ON FactID = s.SubmissionID
-									)
-									LEFT JOIN FactScoreByTally AS tal ON Fact.FactID = tal.FactID
-								)
-								JOIN FactBranch AS fb ON Fact.FactID = fb.FactID
-							)
-							JOIN Branch AS b ON fb.BranchID = b.BranchID
-						)
-						WHERE b.branchid = '$fandom->fandomid'
-						AND s.IsPublic='1'
-						AND s.IsMature='$maturefilter'
-						AND s.IsRemoved='0'
-						GROUP BY Fact.FactID
-						ORDER BY Fact.DatePosted
-						DESC LIMIT 10
-					)
-					AS RecentFacts order by Rand()"; // TODO: Fix, fetches improper vote count, does not report current user's vote
+				AS RecentFacts order by Rand()"; // TODO: Fix, fetches improper vote count, does not report current user's vote
+				
+				$run = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error());
+
+					$cnt = array();
+					$pos = 0;
+				while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
 					
-					$run = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error());
-	
-						$cnt = array();
-						$pos = 0;
-					while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
-						
-						foreach ($line as $col_value) {
-						
-							$cnt[$pos] = "$col_value";
-							//echo $col_value."<br/>";
-							$pos++;
-						}	
-					} 
+					foreach ($line as $col_value) {
 					
+						$cnt[$pos] = "$col_value";
+					//	echo $col_value."<br/>";
+						$pos++;
+					}	
+				} 
+				
 				$Fanfacts = new SimpleXMLElement(GetFanfactsByIDList($cnt));
-					
-	
-	/*
-	echo '<section id="RAW_XML_TEST" style="border:thin dashed lightgray;">
-		<BUTTON ONCLICK="document.getElementById(\'RAW_XML_TEST\').remove()">Hide raw XML output</BUTTON><br/>';
-	
-	echo $Fanfacts->getName() . "<br/>";
-	
-	//Loop through each xml element and print it.
-	  $stack = array();
-	foreach($Fanfacts->children() as $child)
-	  {
-	  echo "-".$child->getName() . ": " . $child . "<br/>";
-		
-			foreach($child->children() as $child2)
-			  {
-			  echo "--".$child2->getName() . ": " . $child2 . "<br/>";
-			}
-	  }
-	echo '</section>';	
 
-	  */
+				echo TitleFiller(buildFactListXML($Fanfacts),sizeof($cnt));
 
-				echo TitleFiller(buildFactListXML($Fanfacts),5);
-			//	echo "<b>".$Fanfacts."</b>";
-			//	echo TitleFiller(buildFactsXML(GetFactXML(mysqli_query($db_connection, $query)), 5),$db_connection);
-		?>	
-
-	
-	</SECTION>
+		?>
 	</SECTION>
 	<?php
 	} // END Create Fandom Homepage

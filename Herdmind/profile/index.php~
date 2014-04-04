@@ -159,55 +159,44 @@ echo '</section>';
 ?>
 
 
+<SECTION id='comments'>
+<h3>Your Starred Items</h3>
 <?php
 
-//Print personal thread here.
- /*
-$PersonalThread = GetThread($db_connection
-					, $profilexml->personalthreadid
-					, $userid);
+$query = "SELECT st.UserID, st.DateSaved, st.LastViewed, st.SubmissionID, 
+				st.CommunityPostID, st.IsSubcribed, st.IsStarred, sd.SubmissionType, 
+				sd.SubmissionID as 'FactID'
+				FROM StarList AS st
+				JOIN SubmissionData AS sd ON st.SubmissionID = sd.ID
+				WHERE st.UserID = '$ProfileNum' and st.IsStarred = '1'
+				and sd.SubmissionType = 'Fact'";
+				
+$QueryResults = mysqli_query($db_connection, $query);
+$count = 0;
+$factidlist = array();
+while ($line = mysqli_fetch_array($QueryResults, MYSQL_ASSOC)) {
 
-
-echo '<section id="ForumThread" style="border:thin solid lightgray;">';
-
-$pageEchoes = "";
-
-foreach ($PersonalThread as $posts)
-{
-$pageEchoes = $pageEchoes."<b>".$posts->getPostSubject()."</b><br/>";
-$pageEchoes = $pageEchoes.$posts->getPostBody();
-$pageEchoes = $pageEchoes."<hr/>";
+$factidlist[$count] = $line['FactID'];
+$count++;	
+	
 }
 
-$pageEchoes = formatReference($pageEchoes,$user, $db_connection);
-//echo TitleFiller($pageEchoes, $db_connection);
-echo TitleFiller($pageEchoes, $db_connection);
+var_dump($factidlist);
 
-*/
+	 	$factxml = new SimpleXMLElement(GetFanfactsByIDList($factidlist));
 
-/*
-echo $xml->getName() . "<br/>";
-
-//Loop through each xml element and print it.
-  $stack = array();
-foreach($xml->children() as $child)
-  {
-  echo "-".$child->getName() . ": " . $child . "<br/>";
-	
-		foreach($child->children() as $child2)
-		  {
-		  echo "--".$child2->getName() . ": " . $child2 . "<br/>";
+		//Loop through each xml element and print it.
+	 	$listing = array();  
+	 	$size = 0;
+		foreach($factxml->children() as $child)
+		{
+			$listing[$size++] = buildFact(array($child->factid,$child->dateposted,$child->contents,$child->score,$child->uservote,$child->isstarred), false, true, "cardIn");
 		}
-		echo"<hr/>";
-  }
-*/  
-  
-  
-//echo '</section>';
-
-
+	
+		for($i = 0, $limit = count($listing); $i < $limit; $i++)
+			echo TitleFiller($listing[$i], $db_connection);
 ?>
-
+</SECTION>
 
 
 <SECTION id='comments'>
@@ -382,7 +371,7 @@ $pages = $numFacts / $factsPerPage;
 	
 	<UL CLASS="fanfacts">
 	<?php
-	echo $facts[0];
+	
 		for($i = 0, $limit = min(count($facts) - $offset, $factsPerPage); $i < $limit; $i++)
 			echo TitleFiller($facts[$i + $offset], $db_connection);
 	?>
