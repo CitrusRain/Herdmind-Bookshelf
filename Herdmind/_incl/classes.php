@@ -506,7 +506,9 @@ class FandomListing
 		elseif(($fandom->level == 1 && $this->mode == "top")
 				|| ($fandom->level == 2 && $this->mode == "bottom")) //then add it to it's bucket 
 		{
-			$this->listing["id".$fandom->parentid]->addFandom($fandom);	
+			if(isset($this->listing["id".$fandom->parentid]))
+			{	$this->listing["id".$fandom->parentid]->addSubFandom($fandom);
+			$this->listsize++; }	
 		}
 	}
 
@@ -540,7 +542,7 @@ class Fandom
 		$this->sublistsize = 0;
 	}
 	
-	function addFandom($fandom)
+	function addSubFandom($fandom)
 	{	
 		$this->subfandoms["id".$fandom->fandomid] = $fandom;
 		$this->sublistsize++;		
@@ -554,9 +556,13 @@ class Fandom
 		{
 			foreach ($this->subfandoms as $value)
 			{
+				$out = $out." - ".((string)$value);
+			}
+		/*	foreach ($this->subfandoms as $value)
+			{
 				$out = $out." - ".$value->level . ". ".$value->fandomname. 
 				"<a href='?fandom=".$value->fandomid."'>[link]</a><br/>";
-			}
+			}*/
 		}
 		return $out;
 	}

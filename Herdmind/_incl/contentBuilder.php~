@@ -226,7 +226,7 @@ function buildBodyTagWithAttributes()
 **/
 function buildHeader($mod = false)
 {
-   global $fandom; echo "<!-- fandom is ".$fandom[2]." -->";
+   global $fandom; echo "<!-- fandom is ".$fandom->fandomname." -->";
 	global $userName;
 	global $userid;
 	if (!$userName)
@@ -238,7 +238,7 @@ function buildHeader($mod = false)
 	<H1>
 		<A HREF=\"/\">
 			Herdmind
-			<SMALL CLASS=\"slogan\">The ".$fandom[2]." Headcanon Database</SMALL>
+			<SMALL CLASS=\"slogan\">The ".$fandom->fandomname." Headcanon Database</SMALL>
 		</A>
 	</H1>
 	<DIV CLASS=\"warning alert hideIfMediaQuery\">Your browser is unsupported!</DIV>
@@ -246,8 +246,8 @@ function buildHeader($mod = false)
 	if ($userName)
 		echo "
 		<UL ID=\"LOGGED_IN_USERNAV\">
-			<LI><A HREF=\"/fanfact/new/?fandom=".$fandom[0]."\" CLASS=\"button\">New Fanfact</A></LI>
-			<LI><A HREF=\"/profile/?fandom=".$fandom[0]."&id=$userName\" CLASS=\"button\">" . $userName . "</A></LI>
+			<LI><A HREF=\"/fanfact/new/?fandom=".$fandom->fandomid."\" CLASS=\"button\">New Fanfact</A></LI>
+			<LI><A HREF=\"/profile/?fandom=".$fandom->fandomid."&id=$userid\" CLASS=\"button\">" . $userName . "</A></LI>
 			<LI><A ONCLICK=\"$('BODY').addClass('withDialog'); return true;\" HREF=\"#LOGGER_HOLDER\">Log Out</A></LI>
 		</UL>";
 	else
@@ -329,12 +329,12 @@ function buildSidebar($userNameVar = false, $mod = false)
 	echo "
 		<LI CLASS=\"expandable\"><A HREF=\"/browse/\">Browse</A>
 			<UL>
-				<LI><A HREF=\"/browse/index.php?fandom=".$fandom[0]."&type=Character\"> Characters </A></LI>
-				<LI><A HREF=\"/browse/index.php?fandom=".$fandom[0]."&type=Species\">   Species    </A></LI>
-				<LI><A HREF=\"/browse/index.php?fandom=".$fandom[0]."&type=Place\">     Places     </A></LI>
-				<LI><A HREF=\"/browse/index.php?fandom=".$fandom[0]."&type=Event\">     Events     </A></LI>
-				<LI><A HREF=\"/browse/index.php?fandom=".$fandom[0]."&type=Object\">    Objects    </A></LI>
-				<LI><A HREF=\"/browse/index.php?fandom=".$fandom[0]."&type=Other\">     Other      </A></LI>
+				<LI><A HREF=\"/browse/index.php?fandom=".$fandom->fandomname."&type=Character\"> Characters </A></LI>
+				<LI><A HREF=\"/browse/index.php?fandom=".$fandom->fandomname."&type=Species\">   Species    </A></LI>
+				<LI><A HREF=\"/browse/index.php?fandom=".$fandom->fandomname."&type=Place\">     Places     </A></LI>
+				<LI><A HREF=\"/browse/index.php?fandom=".$fandom->fandomname."&type=Event\">     Events     </A></LI>
+				<LI><A HREF=\"/browse/index.php?fandom=".$fandom->fandomname."&type=Object\">    Objects    </A></LI>
+				<LI><A HREF=\"/browse/index.php?fandom=".$fandom->fandomname."&type=Other\">     Other      </A></LI>
 			</UL>
 		</LI>
 		<LI><A HREF=\"/forum/\">Forums</A></LI>
@@ -480,7 +480,7 @@ function buildTopicLinkFromXML($topic, $standalone = true)
 		$imgPath = "http://placehold.it/256&text=No%20Image";*/
 	$ret = "
 		<" . $tagName . ">
-			<A HREF=\"http://herdmind.net/topic?fandom=".$fandom[0]."&t=" . $topic->pageid . "\" CLASS=\"topic\">
+			<A HREF=\"http://herdmind.net/topic?fandom=".$fandom->fandomname."&t=" . $topic->pageid . "\" CLASS=\"topic\">
 				<FIGURE>
 					<IMG CLASS=\"thumb\" SRC=\"" . $imgPath . "\"/>
 					<FIGCAPTION>
@@ -667,7 +667,7 @@ function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 				 <DIV CLASS=\"meta\">
 					<SPAN CLASS=\"factNum\">$fact[0]</SPAN>
 					" . ($userid ? '<I CLASS="fa fa-star' . ($fact[5] ? '' : '-o') . ($standalone ? ' fa-2x' : '') . '" DATA-FAVORITE="$userName" '."onclick='starClick(\"".$fact[0]."\")'".'></I>' : '') . 
-					($moreData ? "<A HREF=\"/fanfact?fandom=".$fandom[0]."&id=$fact[0]\" CLASS=\"callToAction\">More data</A>" : "") . "
+					($moreData ? "<A HREF=\"/fanfact?fandom=".$fandom->fandomname."&id=$fact[0]\" CLASS=\"callToAction\">More data</A>" : "") . "
 					<!-- This number must be sent to an ajax call to star or unstar: $fact[0] -->
 				 </DIV>
 			</" . ($standalone ? "DIV" : "LI") . ">";
@@ -725,7 +725,7 @@ function buildFactXml($fact, $standalone = true, $moreData = true, $classes = nu
 				 <DIV CLASS=\"meta\">
 					<SPAN CLASS=\"factNum" . ($shortlink ? ' shortlink' : '') . "\">$fact->factid</SPAN>$fact->isstarred
 					" . ($userid ? '<I CLASS="fa fa-star' . ($fact->isstarred ? '' : '-o') . ($standalone ? ' fa-2x' : '') . "\" DATA-FAVORITE='$userName' onclick='starClick(\"".$fact->factid."\")'></I>" : '') .
-					($moreData ? "<A HREF=\"/fanfact?fandom=".$fandom[0]."&id=$fact->factid\" CLASS=\"callToAction\">More data</A>" : '') . "
+					($moreData ? "<A HREF=\"/fanfact?fandom=".$fandom->fandomname."&id=$fact->factid\" CLASS=\"callToAction\">More data</A>" : '') . "
 					<!-- This number must be sent to an ajax call to star or unstar: $fact->submissionid
 					<br/><sub>Edit buildFactXML() in _incl/contentBuilder.php</sub> -->
 				</DIV>
@@ -801,7 +801,7 @@ foreach($xml->children() as $child)
 //$Title = htmlentities($rs[0],ENT_QUOTES);
 		
 		$string = str_replace("[p" . $child->pageid . "]","<div class=\"popname\">
-			<a href=\"/topic?fandom=".$fandom[0]."&t=" . $child->pageid . "\" class=\"apagetitle\">" . $child->pagename . "</a><!-- These comments are here because there must be NO whitespace before, within, or after this fanfact, or else things like punctuation marks will not properly be placed flush with the fact
+			<a href=\"/topic?fandom=".$fandom->fandomname."&t=" . $child->pageid . "\" class=\"apagetitle\">" . $child->pagename . "</a><!-- These comments are here because there must be NO whitespace before, within, or after this fanfact, or else things like punctuation marks will not properly be placed flush with the fact
 			--><div class=\"informinglink\"><!--
 				--><img src=\"http://herdmind.net/".$betafolder . str_replace("../", "", $child->picture) . "\" ALT=\"A picture of " . $child->pagename . "\"/><!--
 					--><DL><!--
@@ -1068,7 +1068,7 @@ function OldPageCodePicker()
 				<br/>
 				<sub>
 				[p".$results[0]."]
-				<a href='../topic.php?fandom=".$fandom[0]."&pageid=".$results[0]."' target='_blank' id='nonbutton'>View Page</a>
+				<a href='../topic.php?fandom=".$fandom->fandomname."&pageid=".$results[0]."' target='_blank' id='nonbutton'>View Page</a>
 				</sub></span></div>";
 
 		$divcol2++;
@@ -1252,7 +1252,7 @@ function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 			$pageEchoes .= "
 				<LI>
 					<FIGURE CLASS=\"avatar\">
-						<A HREF=\"/profile/?fandom=".$fandom[0]."&id=".$comment->memberid.'">
+						<A HREF=\"/profile/?fandom=".$fandom->fandomname."&id=".$comment->memberid.'">
 							<IMG SRC="../_img/uploaded/user/'.$comment->memberid.'/avatar64.png" />
 							<FIGCAPTION CLASS="username">'. $comment->membername .'</FIGCAPTION>
 						</A>
@@ -1284,7 +1284,7 @@ function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 			$pageEchoes .= '
 						<DIV CLASS="comment-text">	
 							'.$comment->postbody."<br/>
-							<a href=\"/$linkedpage?fandom=".$fandom[0]."&id=".$comment->topicid.'">'.$comment->timeposted.'</a>
+							<a href=\"/$linkedpage?fandom=".$fandom->fandomname."&id=".$comment->topicid.'">'.$comment->timeposted.'</a>
 						</DIV>
 					</DIV>
 				</LI>';

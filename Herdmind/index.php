@@ -13,7 +13,7 @@ include $_SERVER['DOCUMENT_ROOT']."/_incl/classes2.php";   			// A bunch of clas
 include $_SERVER['DOCUMENT_ROOT']."/_incl/RetreiveData.php";   		// Any function that returns XML
 include $_SERVER['DOCUMENT_ROOT']."/_incl/convenience.php";
 
-buildDefaultHeadContent($fandom ? $parsedFandom : null);
+buildDefaultHeadContent($fandom ? $fandom->fandomname : null);
 
 //Testing smf connectivity. Will be stored in different file after it works.
 
@@ -41,16 +41,16 @@ buildHeader($mod); // Allows for testing of different layouts
 	<H1>";
 		if (is_null($fandom)) // If this is not a homepage for a registered fandom
 		{
-			if ($parsedfandom) // $parsedFandom is set to null only if we are on the main portal page (no domain)
+			if ($fandom->fandomname) // $parsedFandom is set to null only if we are on the main portal page (no domain)
 				echo "Sorry!</H1><P>The Community you are looking for does not exist.</P>";
 			else
 				echo "Welcome!</H1>";
 		}
 		else
-			echo $parsedfandom . "</H1>";
+			echo $fandom->fandomname . "</H1>";
 
 
-	if(!$fandom or $fandom == '')
+	if(!$fandom->fandomid or $fandom->fandomid == '')
 	{
 		echo "
 <P CLASS=\"focus\">Herdmind is a non-profit, fan-made database of non-canon <Q>fanfacts</Q>, which can be submitted and voted upon by any user.</P>
@@ -145,12 +145,12 @@ SELECT * FROM
 FactScoreByTally as FSBT JOIN FactBranch AS fb ON FSBT.FactID = fb.FactID
 					)
 					JOIN Branch AS b ON fb.BranchID = b.BranchID
-WHERE b.branchid = '$fandom[0]'
+WHERE b.branchid = '$fandom->fandomid'
 order by DatePointScored desc limit 25                              
                                 
                                 ) as mtvs on mtvs.FactID = Fact.FactID
 
-				WHERE b.branchid = '$fandom[0]'
+				WHERE b.branchid = '$fandom->fandomid'
 				AND s.IsPublic='1'
 				AND s.IsMature='$maturefilter'
 				AND s.IsRemoved='0'
@@ -172,7 +172,7 @@ order by DatePointScored desc limit 25
 					)
 					JOIN Branch AS b ON fb.BranchID = b.BranchID
 				)
-				WHERE b.branchid = '$fandom[0]'
+				WHERE b.branchid = '$fandom->fandomid'
 				AND s.IsPublic='1'
 				AND s.IsMature='$maturefilter'
 				AND s.IsRemoved='0'
@@ -226,7 +226,7 @@ order by DatePointScored desc limit 25
 						)
 						JOIN Branch AS b ON fb.BranchID = b.BranchID
 					)
-					WHERE b.branchid = '$fandom[0]'
+					WHERE b.branchid = '$fandom->fandomid'
 					AND s.IsPublic='1'
 					AND s.IsMature='$maturefilter'
 					AND s.IsRemoved='0'

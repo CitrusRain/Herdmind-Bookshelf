@@ -28,16 +28,15 @@ try{
 
 $fandom = mysqli_fetch_array(
 			mysqli_query($db_connection,
-				"SELECT `BranchID`, `ParentBranchID`, `BranchName` 
+				"SELECT `BranchID`, `ParentBranchID`, `BranchName`, `Level`
 					FROM `Branch` WHERE BranchID='".
 					mysqli_real_escape_string($db_connection, $fandom)
 					."'") );
-
+$fandom = new Fandom($fandom[0],$fandom[1],$fandom[2],$fandom[3]);
 	//Fetch the returned values, if any.
 //	echo" Fetching global array \$fandom: "; var_dump($fandom);
 //	echo $fandom[0];
 
-$parsedFandom = $fandom[2];
 
 } catch(Exception $e)
 {

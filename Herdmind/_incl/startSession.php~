@@ -23,12 +23,12 @@ global $parsedfandom;
 try{
 
 		if (isset($_GET['fandom']))
-$fandom = htmlentities($_GET['fandom']);
+			$fandom = htmlentities($_GET['fandom']);
 
 
 $fandom = mysqli_fetch_array(
 			mysqli_query($db_connection,
-				"SELECT `BranchID`, `ParentBranchID`, `BranchName` 
+				"SELECT `BranchID`, `ParentBranchID`, `BranchName`, `Level`
 					FROM `Branch` WHERE BranchID='".
 					mysqli_real_escape_string($db_connection, $fandom)
 					."'") );

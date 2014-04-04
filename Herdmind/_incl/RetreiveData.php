@@ -44,7 +44,7 @@ $list = new FandomListing($TopBottom);
 if($TopBottom == "bottom")
 {
 	$level = " level >= '1' ";
-	$relate = " and (branchid = '".$fandom[0]."' || parentbranchid = '".$fandom[0]."') ";
+	$relate = " and (branchid = '".$fandom->fandomid."' || parentbranchid = '".$fandom->fandomid."') ";
 }
 else {
 	$level = " level <= '1' ";
@@ -57,7 +57,7 @@ $query = "Select branchid, parentbranchid, branchname, level
 $QueryResults = mysqli_query($db_connection, $query);
 
 while ($line = mysqli_fetch_array($QueryResults, MYSQL_ASSOC)) {
-		
+	
 	$list->addFandom(new Fandom($line['branchid'],$line['parentbranchid'],$line['branchname'],$line['level']));	
 }
 
@@ -79,7 +79,7 @@ global $fandom;
 
 //get current
 $query = "Select branchid, parentbranchid, branchname, level 
-			from Branch where branchid = '".$fandom[0]."';";
+			from Branch where branchid = '".$fandom->fandomid."';";
 
 $QueryResults = mysqli_query($db_connection, $query);
 
@@ -109,7 +109,7 @@ global $db_connection;
 
 //get current
 $query = "Select branchid, parentbranchid, branchname, level 
-			from Branch where parentbranchid = '".$child->parentid ."';";
+			from Branch where branchid = '".$child->parentid ."';";
 
 $QueryResults = mysqli_query($db_connection, $query);
 
@@ -117,12 +117,11 @@ $line = mysqli_fetch_array($QueryResults, MYSQL_ASSOC);
 
 $current = new Fandom($line['branchid'],$line['parentbranchid'],$line['branchname'],$line['level']);	
 
-$current->addFandom($child);
+$current->addSubFandom($child);
 
 if($current->parentid != 0)
 {
-	echo "Call recursive method";
-//	$current = getCommunityPathParent($current);
+	$current = getCommunityPathParent($current);
 }
 
 return $current;	
@@ -376,7 +375,7 @@ $ThreadCount = 0;
 					body, icon, approved, id_topic, id_topic_type
 					FROM CommunityPosts 
 					WHERE approved='1' 
-					AND fandom = '$fandom[0]'
+					AND fandom = '$fandom->fandomid'
 					order by poster_time desc limit 0, 30";
 		
 	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));

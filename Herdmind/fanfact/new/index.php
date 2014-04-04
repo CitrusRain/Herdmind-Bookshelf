@@ -281,7 +281,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 		
 		<SECTION ID="CONTROLS" CLASS="text-right">
 			<BUTTON ID="ATTACH_FANWORK" ><I CLASS="fa fa-plus"></I> Attach Fanwork</BUTTON>
-			<BUTTON ONCLICK='SubmitFanfact("<?php echo $fandom[0]; ?>")' TYPE="button" ID="SUBMIT_FANFACT" class="big bg-good">Submit Fanfact</BUTTON>
+			<BUTTON ONCLICK='SubmitFanfact("<?php echo $fandom->fandomid; ?>")' TYPE="button" ID="SUBMIT_FANFACT" class="big bg-good">Submit Fanfact</BUTTON>
 		</SECTION>
 	</FORM>
 </MAIN>

@@ -13,7 +13,7 @@ include $_SERVER['DOCUMENT_ROOT']."/_incl/classes2.php";   			// A bunch of clas
 include $_SERVER['DOCUMENT_ROOT']."/_incl/RetreiveData.php";   		// Any function that returns XML
 include $_SERVER['DOCUMENT_ROOT']."/_incl/convenience.php";
 
-buildDefaultHeadContent($fandom ? $parsedFandom : null);
+buildDefaultHeadContent($fandom ? $fandom->fandomname : null);
 
 //Testing smf connectivity. Will be stored in different file after it works.
 
@@ -81,7 +81,7 @@ buildHeader($mod); // Allows for testing of different layouts
 			echo $parsedfandom . "</H1>";
 
 
-	if(!$fandom or $fandom == '')
+	if(!$fandom->fandomid or $fandom->fandomid == '')
 	{
 		echo "
 <P CLASS=\"focus\">Herdmind is a non-profit, fan-made database of non-canon <Q>fanfacts</Q>, which can be submitted and voted upon by any user.</P>
@@ -125,12 +125,17 @@ buildHeader($mod); // Allows for testing of different layouts
 	{
 		?>
 		
-	
 	<SECTION>
-	<?php 
+	<?php
+		$path = getCommunityPath();	
+		 
+		echo "<br/><hr/>".(string)$path."<hr/>";
+	 
+	 //  echo "<!--";	
 		$PortalList = getCommunities('bottom');
-      //  echo "<!--";		
-		echo "<br/><hr/>".(string)$PortalList."<hr/>";
+      		
+		if($PortalList->listsize > 1)
+			echo "<br/><hr/>".(string)$PortalList."<hr/>";
      //   echo "-->";
     ?>	
 	</SECTION>
@@ -149,7 +154,7 @@ buildHeader($mod); // Allows for testing of different layouts
 		echo "
 		<form method='POST'>
 				<textarea id='commentbox'></textarea>
-				<button type='button' onclick='PostNew(\"".$fandom[0]."\")'>Submit a Shitpost</button>
+				<button type='button' onclick='PostNew(\"".$fandom->fandomid."\")'>Submit a Shitpost</button>
 			</form>
 		";
 		
@@ -184,9 +189,7 @@ buildHeader($mod); // Allows for testing of different layouts
 		</SECTION>
 	
 		<SECTION CLASS="magenta cardIn">
-			<H2>Random Topics</H2>
-			<?php echo buildTopicLinkListFromXML(GrabRandomTopics(5, $db_connection)); ?>
-			<SPAN CLASS="devalert">[needs to be fandom sensitive]</SPAN>
+			AD
 		</SECTION>
 	</section>
 	
@@ -219,7 +222,7 @@ buildHeader($mod); // Allows for testing of different layouts
 						)
 						JOIN Branch AS b ON fb.BranchID = b.BranchID
 					)
-					WHERE b.branchid = '$fandom[0]'
+					WHERE b.branchid = '$fandom->fandomid'
 					AND tal.DatePointScored > DATE_SUB(curdate(), INTERVAL 2 WEEK)
 					AND s.IsPublic='1'
 					AND s.IsMature='$maturefilter'
@@ -242,7 +245,7 @@ buildHeader($mod); // Allows for testing of different layouts
 						)
 						JOIN Branch AS b ON fb.BranchID = b.BranchID
 					)
-					WHERE b.branchid = '$fandom[0]'
+					WHERE b.branchid = '$fandom->fandomid'
 					AND s.IsPublic='1'
 					AND s.IsMature='$maturefilter'
 					AND s.IsRemoved='0'
@@ -294,7 +297,7 @@ buildHeader($mod); // Allows for testing of different layouts
 							)
 							JOIN Branch AS b ON fb.BranchID = b.BranchID
 						)
-						WHERE b.branchid = '$fandom[0]'
+						WHERE b.branchid = '$fandom->fandomid'
 						AND s.IsPublic='1'
 						AND s.IsMature='$maturefilter'
 						AND s.IsRemoved='0'
