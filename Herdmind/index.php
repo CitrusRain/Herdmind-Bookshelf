@@ -56,23 +56,15 @@ buildHeader($mod); // Allows for testing of different layouts
 <P CLASS=\"focus\">Herdmind is a non-profit, fan-made database of non-canon <Q>fanfacts</Q>, which can be submitted and voted upon by any user.</P>
 <SECTION>";
 
-		$PortalList = GetFandoms($db_connection);
 		
-		$portals = $PortalList->toArray();
-        echo "<!--";
-		var_dump( $portals);
-		
-		foreach ($portals as $value)
-			{
-				var_dump( $value);
-			}
-        echo "-->";
-		
-		$tardis = $portals[0]; //portals[0] will really be the first top level fandom in aphabetical order
+		$PortalList = getCommunities('top');
+      //  echo "<!--";		
+		echo "<br/><hr/>".(string)$PortalList."<hr/>";
+     //   echo "-->";
 		
 		$fandomPortals = // TODO: Change to database retrieval
 			array(
-				  new PortalItem( $tardis->title,
+				  new PortalItem( "Doctor Who",
 				                 "?fandom=9", //  "//tardis.herdmind.net"                 USE THIS IN FINAL IMPLEMENTATION
 				                 "//beta.herdmind.net/_incl/resizedImage.php?w=512&i=/_img/fandom-logos/Who_4k.png")
 				                 //$tardis->getLogo())                 USE THIS IN FINAL IMPLEMENTATION

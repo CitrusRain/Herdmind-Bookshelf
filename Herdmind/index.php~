@@ -186,7 +186,7 @@ order by DatePointScored desc limit 25
 				AND s.IsRemoved='0'
 				GROUP BY Fact.FactID
 			) as AllTimePopularFacts on PopularFacts.FactID = AllTimePopularFacts.FactID 			
-			 order by desc 	";		 
+			 order by PopularFacts.FactID desc 	";		 
 			 
 			 
 			 

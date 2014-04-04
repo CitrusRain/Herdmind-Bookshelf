@@ -474,6 +474,95 @@ class Member
 }
 
 
+//Array with keys
+//keys are fandom id
+/**
+ * Represents Herdmind communities and subcommunities 
+ * 
+ * @author Ryan
+ * @since 2014-04-04
+ */
+class FandomListing
+{
+	/*
+		$mode = 
+			top - includes the primary communities and their canon communities
+			bottom - includes 1 canon community and it's fanon spinoffs.
+	*/
+	function __construct($mode)
+	{
+		$this->mode = $mode;
+		$this->listing = array(); //Bucketsorted
+		$this->listsize = 0;
+	}
+
+	function addFandom($fandom)
+	{
+		if(($fandom->level == 0) || ($fandom->level == 1 && $this->mode == "bottom"))//Make a bucket
+		{	
+			$this->listing["id".$fandom->fandomid] = $fandom;
+			$this->listsize++;
+		}
+		elseif(($fandom->level == 1 && $this->mode == "top")
+				|| ($fandom->level == 2 && $this->mode == "bottom")) //then add it to it's bucket 
+		{
+			$this->listing["id".$fandom->parentid]->addFandom($fandom);	
+		}
+	}
+
+
+	function __toString()
+	{
+		$out = "";
+		if(!empty($this->listing))
+		{
+			foreach ($this->listing as $value)
+			{
+				$out = $out." - ".((string)$value). "<br/>";
+			}
+		}
+		return $out;
+	}
+
+}
+
+//This holds a fandom as well as it's own subfandoms.
+class Fandom
+{
+	
+	function __construct($fandomid, $parentid, $fandomname, $level)
+	{
+		$this->fandomid = $fandomid;
+		$this->parentid = $parentid;
+		$this->fandomname = $fandomname;
+		$this->level = $level;
+		$this->subfandoms = array();
+		$this->sublistsize = 0;
+	}
+	
+	function addFandom($fandom)
+	{	
+		$this->subfandoms["id".$fandom->fandomid] = $fandom;
+		$this->sublistsize++;		
+	}
+
+	function __toString()
+	{
+		$out = $this->level . ". ". $this->fandomname . 
+		"<a href='?fandom=".$value->fandomid."'>[link]</a><br/>";
+		if(!empty($this->subfandoms))
+		{
+			foreach ($this->subfandoms as $value)
+			{
+				$out = $out." - ".$value->level . ". ".$value->fandomname. 
+				"<a href='?fandom=".$value->fandomid."'>[link]</a><br/>";
+			}
+		}
+		return $out;
+	}
+
+}
+
 
 
 ?>

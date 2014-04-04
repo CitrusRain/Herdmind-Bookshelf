@@ -26,6 +26,45 @@
 
 
 /**
+ * Returns a list of fandoms as a class
+ *
+ * @param $TopBottom - 'top' gets the upper communities, 'bottom' gets the middle communities and it's fanon spinoffs 
+ * 
+ * @author Ryan Young
+ * @since 2014/04/04
+ * @version 1.0.0
+**/
+function getCommunities($TopBottom)
+{
+global $db_connection;
+
+$list = new FandomListing($TopBottom);
+//$level = "";
+if($TopBottom == "bottom")
+{
+	$level = " level => '1' ";
+}
+else {
+	$level = " level <= '1' ";
+}
+
+$query = "Select branchid, parentbranchid, branchname, level 
+			from Branch where $level order by level, branchname;";
+
+$QueryResults = mysqli_query($db_connection, $query);
+
+while ($line = mysqli_fetch_array($QueryResults, MYSQL_ASSOC)) {
+		
+	$list->addFandom(new Fandom($line['branchid'],$line['parentbranchid'],$line['branchname'],$line['level']));	
+}
+
+return $list;	
+
+}
+
+
+
+/**
  * Returns fanworks to populate a gallery.
  *
  * @param $QueryResults 		The results of a search - this is index sensitive
@@ -1280,6 +1319,7 @@ $xmlnames = GetTopicNames($dbc, $topiclist[0], $userid);
 /**
  * Get Fandoms
  *
+ * Depreciated
  */
 function GetFandoms($db_connection)
  {	
