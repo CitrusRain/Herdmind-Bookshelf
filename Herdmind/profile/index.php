@@ -211,7 +211,7 @@ foreach($xml->children() as $child)
 
 
 <SECTION id='comments'>
-(revised backend to match other areas rather than being as forum based)
+<h3>Personal Thread</h3>
 <?php
 /*
 
