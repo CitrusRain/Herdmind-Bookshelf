@@ -88,10 +88,8 @@ buildHeader($mod); // Allows for testing of different layouts
 <SECTION>";
 
 		$PortalList = getCommunities('top');
-      //  echo "<!--";
-	//	var_dump( $PortalList);
-		
-		echo "<br/><hr/>".(string)$PortalList;
+      //  echo "<!--";		
+		echo "<br/><hr/>".(string)$PortalList."<hr/>";
      //   echo "-->";
 		
 		
@@ -127,6 +125,15 @@ buildHeader($mod); // Allows for testing of different layouts
 	{
 		?>
 		
+	
+	<SECTION>
+	<?php 
+		$PortalList = getCommunities('bottom');
+      //  echo "<!--";		
+		echo "<br/><hr/>".(string)$PortalList."<hr/>";
+     //   echo "-->";
+    ?>	
+	</SECTION>
 	
 	<SECTION CLASS="wrappingColumns2 news">
 

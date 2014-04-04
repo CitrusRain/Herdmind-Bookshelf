@@ -37,11 +37,22 @@
 function getCommunities($TopBottom)
 {
 global $db_connection;
+global $fandom;
 
-$list = new FandomListing('top');
+$list = new FandomListing($TopBottom);
+//$level = "";
+if($TopBottom == "bottom")
+{
+	$level = " level >= '1' ";
+	$relate = " and (branchid = '".$fandom[0]."' || parentbranchid = '".$fandom[0]."') ";
+}
+else {
+	$level = " level <= '1' ";
+	$relate = "";
+}
 
 $query = "Select branchid, parentbranchid, branchname, level 
-			from Branch where level <= '1' order by level, branchname;";
+			from Branch where $level $relate order by level, branchname;";
 
 $QueryResults = mysqli_query($db_connection, $query);
 
@@ -54,6 +65,66 @@ return $list;
 
 }
 
+/**
+ * Returns the fandoms above the one the user is viewing
+ * 
+ * @author Ryan Young
+ * @since 2014/04/04
+ * @version 1.0.0
+**/
+function getCommunityPath()
+{
+global $db_connection;
+global $fandom;
+
+//get current
+$query = "Select branchid, parentbranchid, branchname, level 
+			from Branch where branchid = '".$fandom[0]."';";
+
+$QueryResults = mysqli_query($db_connection, $query);
+
+$line = mysqli_fetch_array($QueryResults, MYSQL_ASSOC);
+		
+$current = new Fandom($line['branchid'],$line['parentbranchid'],$line['branchname'],$line['level']);	
+
+if($current->parentid != 0)
+{
+	$current = getCommunityPathParent($current);
+}
+
+return $current;	
+
+}
+
+/**
+ * Returns the fandoms above the one the user is viewing
+ * 
+ * @author Ryan Young
+ * @since 2014/04/04
+ * @version 1.0.0
+**/
+function getCommunityPathParent($child)
+{
+global $db_connection;
+
+//get current
+$query = "Select branchid, parentbranchid, branchname, level 
+			from Branch where parentbranchid = '".$child->parentid ."';";
+
+$QueryResults = mysqli_query($db_connection, $query);
+
+$current = new Fandom($line['branchid'],$line['parentbranchid'],$line['branchname'],$line['level']);	
+
+$current->addFandom($child);
+
+if($current->parentid != 0)
+{
+	$current = getCommunityPathParent($current);
+}
+
+return $current;	
+
+}
 
 
 /**

@@ -125,6 +125,19 @@ buildHeader($mod); // Allows for testing of different layouts
 	{
 		?>
 		
+	<SECTION>
+	<?php
+		$path = getCommunityPath();	
+		 
+		echo "<br/><hr/>".(string)$path."<hr/>";
+	 
+	 
+		$PortalList = getCommunities('bottom');
+      //  echo "<!--";		
+		echo "<br/><hr/>".(string)$PortalList."<hr/>";
+     //   echo "-->";
+    ?>	
+	</SECTION>
 	
 	<SECTION CLASS="wrappingColumns2 news">
 
