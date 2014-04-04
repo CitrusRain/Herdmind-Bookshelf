@@ -121,7 +121,7 @@ $current->addFandom($child);
 
 if($current->parentid != 0)
 {
-	$current = getCommunityPathParent($current);
+//	$current = getCommunityPathParent($current);
 }
 
 return $current;	

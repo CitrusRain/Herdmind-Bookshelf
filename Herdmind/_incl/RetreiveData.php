@@ -89,7 +89,7 @@ $current = new Fandom($line['branchid'],$line['parentbranchid'],$line['branchnam
 
 if($current->parentid != 0)
 {
-//	$current = getCommunityPathParent($current);
+	$current = getCommunityPathParent($current);
 }
 
 return $current;	
@@ -121,7 +121,8 @@ $current->addFandom($child);
 
 if($current->parentid != 0)
 {
-	//$current = getCommunityPathParent($current);
+	echo "Call recursive method";
+//	$current = getCommunityPathParent($current);
 }
 
 return $current;	
