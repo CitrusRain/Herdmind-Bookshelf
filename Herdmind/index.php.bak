@@ -87,16 +87,9 @@ buildHeader($mod); // Allows for testing of different layouts
 
 		$PortalList = getCommunities('top');
       //  echo "<!--";		
-		// echo "<br/><hr/>".(string)$PortalList."<hr/>";
+		echo "<br/><hr/>".(string)$PortalList."<hr/>";
      //   echo "-->";
 		
-		if(!empty($PortalList->listing))
-		{
-			foreach ($PortalList->listing as $listing)
-			{
-				echo $listing->toString();
-			}
-		}
 		
 		
 		
@@ -144,13 +137,13 @@ buildHeader($mod); // Allows for testing of different layouts
      //   echo "-->";
 	 
 	 
-		if(!empty($PortalList->listing))
+	if(!empty($PortalList->listing))
+	{
+		foreach ($PortalList->listing as $listing)
 		{
-			foreach ($PortalList->listing as $listing)
-			{
-				echo $listing->toString();
-			}
+			echo $listing->toString();
 		}
+	}
     ?>	
 	</SECTION>
 	
