@@ -1,6 +1,10 @@
 ﻿<!DOCTYPE HTML>
 <HTML>
 <HEAD>
+<!--
+This is a mockup of the Herdmind front page as envisioned by Kyli Rouge|Supuhstar|Digit Shine
+This mockup is copyright Herdmind.net ©2013
+-->
 <?php
 include $_SERVER['DOCUMENT_ROOT']."/_incl/contentBuilder.php";      // Also includes config.php (must be done first) and styleSwitch.php
 include $_SERVER['DOCUMENT_ROOT']."/_incl/contentBuilderIndex.php"; // Builds body content for index
