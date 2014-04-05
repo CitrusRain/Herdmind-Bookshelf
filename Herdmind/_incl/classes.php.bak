@@ -481,8 +481,6 @@ class Member
  * 
  * @author Ryan
  * @since 2014-04-04
- * @version 1.0.1
- * 		- 2014-04-05 (1.0.1) - Kyli changed $out = $out . "..." to $out .= "..."
  */
 class FandomListing
 {
@@ -522,7 +520,7 @@ class FandomListing
 		{
 			foreach ($this->listing as $value)
 			{
-				$out .= " - ".((string)$value). "<br/>";
+				$out = $out." - ".((string)$value). "<br/>";
 			}
 		}
 		return $out;

@@ -71,8 +71,7 @@ function getCommunities($TopBottom)
  * 
  * @author Ryan Young
  * @since 2014/04/04
- * @version 1.0.1
- * 		- 2014-04-05 (1.0.1) - Kyli formatted whitespace
+ * @version 1.0.0
 **/
 function getCommunityPath()
 {
