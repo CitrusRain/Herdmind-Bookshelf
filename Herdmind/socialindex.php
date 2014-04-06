@@ -179,7 +179,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
      <div class="g-signin"
       data-callback="loginFinishedCallback"
       data-approvalprompt="force"
-      data-clientid="841077041629.apps.googleusercontent.com"
+      data-clientid="116168242556-5g0o7gc07o8a5clbekbntpgvscqtt41a.apps.googleusercontent.com"
       data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read"
       data-height="short"
       data-cookiepolicy="single_host_origin"
