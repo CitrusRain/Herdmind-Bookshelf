@@ -43,7 +43,7 @@ function starClick(factID)
 //alert("You have clicked a star.");
 
 var url = "../_incl/actionHandler.php?func=StarClick";
-
+document.getElementById("star"+factID).className = "fa";  
 var xmlhttp;
 if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari

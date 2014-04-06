@@ -43,7 +43,7 @@ function starClick(factID)
 //alert("You have clicked a star.");
 
 var url = "../_incl/actionHandler.php?func=StarClick";
-document.getElementById("star"+factID).className = "fa";  
+document.getElementById("star-"+factID).className = "fa";  
 var xmlhttp;
 if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -59,9 +59,9 @@ xmlhttp.onreadystatechange=function()
     {
   //  alert(innerHTML=xmlhttp.responseText);
 	if(innerHTML=xmlhttp.responseText == "add")
-		document.getElementById("star"+factID).className = "fa fa-star";    
+		document.getElementById("star-"+factID).className = "fa fa-star";    
 	else if(innerHTML=xmlhttp.responseText == "remove")
-		document.getElementById("star"+factID).className = "fa fa-star-o";    
+		document.getElementById("star-"+factID).className = "fa fa-star-o";    
     
     }
   }
