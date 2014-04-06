@@ -94,7 +94,7 @@ buildHeader($mod); // Allows for testing of different layouts
 		{
 			foreach ($PortalList->listing as $listing)
 			{
-				echo $listing->toString();
+				echo (string)$listing;
 			}
 		}
 		
