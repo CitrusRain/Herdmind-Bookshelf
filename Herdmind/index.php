@@ -246,7 +246,7 @@ buildHeader($mod); // Allows for testing of different layouts
 					DESC LIMIT 10
 				)
 				AS PopularFacts left join (
-				SELECT DISTINCT Fact.FactID, sum(tal.Value) as TotalSum FROM
+				SELECT DISTINCT Fact.FactID, sum(tal.Value) as TotalSum, s.ID FROM
 					(
 						(
 							(

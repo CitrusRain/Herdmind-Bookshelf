@@ -58,6 +58,9 @@ xmlhttp.onreadystatechange=function()
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
     alert(innerHTML=xmlhttp.responseText);
+	if(innerHTML=xmlhttp.responseText == "add")
+		document.getElementById("MyElement").className += " MyClass";    
+    
     }
   }
 xmlhttp.open("POST",url,true);

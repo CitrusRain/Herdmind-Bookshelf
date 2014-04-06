@@ -666,10 +666,10 @@ function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 				 <DIV CLASS=\"fact\">$fact[2]</DIV>
 				 <DIV CLASS=\"meta\">
 					<SPAN CLASS=\"factNum\">$fact[0]</SPAN>
-					" . ($userid ? '<I CLASS="fa fa-star' . ($fact[5] ? '' : '-o') . ($standalone ? ' fa-2x' : '') . '" DATA-FAVORITE="$userName" '."onclick='starClick(\"".$fact[0]."\")'".'></I>' : '') . 
+					" . ($userid ? '<I id="star'.$fact[6].'" CLASS="fa fa-star' . ($fact[6] != 0 ? '' : '-o') . ($standalone ? ' fa-2x' : '') . '" DATA-FAVORITE="$userName" '."onclick='starClick(\"".$fact[6]."\")'".'></I>' : '') . 
 					($moreData ? "<A HREF=\"/fanfact?fandom=".$fandom->fandomid."&id=$fact[0]\" CLASS=\"callToAction\">More data</A>" : "") . "
 					<!-- This number must be sent to an ajax call to star or unstar: $fact[0] -->
-				 </DIV>
+			<sub>$fact[5]</sub>	 </DIV>
 			</" . ($standalone ? "DIV" : "LI") . ">";
 			var_dump($fact);
 					
@@ -724,7 +724,7 @@ function buildFactXml($fact, $standalone = true, $moreData = true, $classes = nu
 				 <DIV CLASS=\"fact\">$fact->contents</DIV>
 				 <DIV CLASS=\"meta\">
 					<SPAN CLASS=\"factNum" . ($shortlink ? ' shortlink' : '') . "\">$fact->factid</SPAN>$fact->isstarred
-					" . ($userid ? '<I CLASS="fa fa-star' . ($fact->isstarred ? '' : '-o') . ($standalone ? ' fa-2x' : '') . "\" DATA-FAVORITE='$userName' onclick='starClick(\"".$fact->factid."\")'></I>" : '') .
+					" . ($userid ? '<I id="star'.$fact->submissionid.'" CLASS="fa fa-star' . ($fact->isstarred != 0 ? '' : '-o') . ($standalone ? ' fa-2x' : '') . "\" DATA-FAVORITE='$userName' onclick='starClick(\"".$fact->submissionid."\")'></I>" : '') .
 					($moreData ? "<A HREF=\"/fanfact?fandom=".$fandom->fandomid."&id=$fact->factid\" CLASS=\"callToAction\">More data</A>" : '') . "
 					<!-- This number must be sent to an ajax call to star or unstar: $fact->submissionid
 					<br/><sub>Edit buildFactXML() in _incl/contentBuilder.php</sub> -->

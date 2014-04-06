@@ -75,16 +75,38 @@ function StarClick()
 	
 	//Todo: if SubmissionID is 0 then it should check if a thread was faved and use that instead.
 
+	ob_end_clean();		
+
 	if($userid != 0 && $id !=0)
 	{
-		try{
+		$findit = "select UserID, SubmissionID, IsStarred, IsSubscribed from StarList where UserID='$userid' and SubmissionID = '$id'";		
+		$found = mysqli_query($db_connection, $findit);	
+		$line = mysqli_fetch_array($found, MYSQL_ASSOC);
+				
+		//ob_end_clean();
+		
+		if($line['IsStarred'] == '0')
+		{
+			$query = "Update table StarList set IsStarred='1', IsSubscribed='1' where UserID='$userid' and SubmissionID='$id';";
+			$result = mysqli_query($db_connection, $query);
+			echo "add";
+		}		  		
+		elseif($line['IsStarred'] == '1') 
+		{
+			$query = "Update table StarList set IsStarred='0' where UserID='$userid' and SubmissionID='$id';";
+			$result = mysqli_query($db_connection, $query);
+			
+			echo "remove";
+	  	}
+		else 
+		{
 			$query = "INSERT INTO StarList (`UserID`, `SubmissionID`) VALUES ('$userid', '$id')";
 			$result = mysqli_query($db_connection, $query);
-		}
-		catch (Exception $e) {
-			$query = "DELETE FROM StarList where UserID='$userid' and SubmissionID='$id'";
-			$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));	
-		}
+			echo "add";
+		}		
+	}
+	else {
+		echo "error: userid=$userid and submissionid=$id";	
 	}
 
 }

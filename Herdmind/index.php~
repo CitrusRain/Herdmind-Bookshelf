@@ -94,7 +94,7 @@ buildHeader($mod); // Allows for testing of different layouts
 		{
 			foreach ($PortalList->listing as $listing)
 			{
-				echo $listing->toString();
+				echo (string)$listing;
 			}
 		}
 		
@@ -246,7 +246,7 @@ buildHeader($mod); // Allows for testing of different layouts
 					DESC LIMIT 10
 				)
 				AS PopularFacts left join (
-				SELECT DISTINCT Fact.FactID, sum(tal.Value) as TotalSum FROM
+				SELECT DISTINCT Fact.FactID, sum(tal.Value) as TotalSum, s.ID FROM
 					(
 						(
 							(
@@ -266,7 +266,7 @@ buildHeader($mod); // Allows for testing of different layouts
 					GROUP BY Fact.FactID
 				) as AllTimePopularFacts on PopularFacts.FactID = AllTimePopularFacts.FactID			
 				 order by Rand()";
-				// echo $query;
+				 echo $query;
 				echo "<!--The reason for this being wrong is the 2 week filter. It is only counting votes made in the past 2 weeks.-->";
 				try
 				{
