@@ -1462,7 +1462,7 @@ $rt = GetFactXML($result, $userid, $db_connection);
  
 //echo "type=".$type." & id=".$id."</br>"; 
  
-$query = "Select DateSaved, LastViewed from StarList where UserID = '$userid' and ";
+$query = "Select DateSaved, LastViewed from StarList where UserID = '$userid' and isStarred='1' and ";
 
 if ($type == "submissionID")
 	$query = $query." SubmissionID = '$id';";

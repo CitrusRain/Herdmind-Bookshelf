@@ -666,7 +666,7 @@ function buildFact($fact, $standalone = true, $moreData = true, $classes = null)
 				 <DIV CLASS=\"fact\">$fact[2]</DIV>
 				 <DIV CLASS=\"meta\">
 					<SPAN CLASS=\"factNum\">$fact[0]</SPAN>
-					" . ($userid ? '<I id="star'.$fact[6].'" CLASS="fa fa-star' . ($fact[6] != 0 ? '' : '-o') . ($standalone ? ' fa-2x' : '') . '" DATA-FAVORITE="$userName" '."onclick='starClick(\"".$fact[6]."\")'".'></I>' : '') . 
+					" . ($userid ? '<I id="star'.$fact[5].'" CLASS="fa fa-star' . ($fact[6] != 0 ? '' : '-o') . ($standalone ? ' fa-2x' : '') . '" DATA-FAVORITE="$userName" '."onclick='starClick(\"".$fact[5]."\")'".'></I>' : '') . 
 					($moreData ? "<A HREF=\"/fanfact?fandom=".$fandom->fandomid."&id=$fact[0]\" CLASS=\"callToAction\">More data</A>" : "") . "
 					<!-- This number must be sent to an ajax call to star or unstar: $fact[0] -->
 			<sub>$fact[5]</sub>	 </DIV>

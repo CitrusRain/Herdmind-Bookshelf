@@ -40,10 +40,10 @@ xmlhttp.send("factID="+ factID + "&usersVote="+ usersVote +"&fandom="+"pony");
 
 function starClick(factID)
 {
-alert("You have clicked a star.");
+//alert("You have clicked a star.");
 
 var url = "../_incl/actionHandler.php?func=StarClick";
-
+document.getElementById("star"+factID).className = "fa";  
 var xmlhttp;
 if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -57,9 +57,11 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    alert(innerHTML=xmlhttp.responseText);
+  //  alert(innerHTML=xmlhttp.responseText);
 	if(innerHTML=xmlhttp.responseText == "add")
-		document.getElementById("MyElement").className += " MyClass";    
+		document.getElementById("star"+factID).className = "fa fa-star";    
+	else if(innerHTML=xmlhttp.responseText == "remove")
+		document.getElementById("star"+factID).className = "fa fa-star-o";    
     
     }
   }

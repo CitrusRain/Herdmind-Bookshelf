@@ -11,6 +11,90 @@ class Stylesheet
 	}
 }
 
+
+/*
+	<fanfact>
+				<score>'.$sc.'</score>
+ *				<uservote>'.$opt[0].'</uservote>
+ *				<factid>'.$facts[0].'</factid>
+ *				<contents>'.$facts[1].'</contents>
+ *				<dateposted>'.$facts[2].'</dateposted>
+ *				<submissionid>'.$facts[3].'</submissionid>
+ *				<isstarred>0</isstarred>
+ *				<ispublic></ispublic>
+ *				<ismature></ismature>
+ *				<isremoved></isremoved>
+ 				<commentcount>'.$count.'</commentcount>
+	
+ *  </fanfact>
+ */
+/**
+ * Represents a fanfact
+ * 
+ * @author Ryan
+ * @since 2014-04-06
+ */
+ class Fanfact
+ {	
+ 		function __construct($factid = 0, $submissionid = 0, $dateposted = 0,
+ 						$contents = 0, $score = 0, $isstarred = 0, $issubscribed = 0,
+ 						$uservote = 0, $commentcount = 0, 
+ 						$isMature = 0, $isRemoved = 0, $isPublic = 1)
+ 		{
+ 			$this->factID = $factid;
+ 			$this->submissionID = $submissionid;
+ 			$this->datePosted = $dateposted;
+ 			$this->contents =	$contents;
+ 			$this->score = $score;
+ 			$this->isStarred = $isstarred;
+ 			$this->isSubscribed = $issubscribed;
+ 			$this->userVote = $uservote;
+ 			$this->commentCount = $commentcount;
+ 			$this->isMature = $isMature;
+ 			$this->isRemoved = $isRemoved;
+ 			$this->isPublic = $isPublic;
+ 		}
+ 
+		function __toString()
+		{
+			$out = "";
+			$out = $out.'
+			<DIV
+				 CLASS="' . ($this->uservote ? ($this->uservote < 0 ? "down" : "up") . "voted " : "") . "fanfact" . ($classes ? " " . $classes : "") . "\" TABINDEX=\"-1\">
+				 ".($shortlink ? "" :"<TABLE CLASS=\"vote\">
+					<TBODY>
+						<TR>
+							<TD ROWSPAN=\"2\">
+								<VAR CLASS=\"counter devalert\">$this->score</VAR>
+							</TD>
+							<TD>
+								<INPUT TYPE=\"button\" CLASS=\"upvote\" VALUE=\"&#x25B2;\" onClick='".'takeVote("'.$this->factid.'","+1")'."'/>
+							</TD>
+						</TR>
+						<TR>
+							<TD>
+								<INPUT TYPE=\"button\" CLASS=\"downvote\" VALUE=\"&#x25BC;\" onClick='".'takeVote("'.$this->factid.'","-1")'."'/>
+							</TD>
+						</TR>
+					</TBODY>
+				 </TABLE>")."
+				 <DIV CLASS=\"fact\">$this->contents</DIV>
+				 <DIV CLASS=\"meta\">
+					<SPAN CLASS=\"factNum" . ($shortlink ? ' shortlink' : '') . "\">$this->factid</SPAN>$this->isstarred
+					" . ($userid ? '<I id="star'.$this->submissionid.'" CLASS="fa fa-star' . ($this->isstarred != 0 ? '' : '-o') . ($standalone ? ' fa-2x' : '') . "\" DATA-FAVORITE='$userName' onclick='starClick(\"".$this->submissionid."\")'></I>" : '') .
+					($moreData ? "<A HREF=\"/fanfact?fandom=".$fandom->fandomid."&id=$this->factid\" CLASS=\"callToAction\">More data</A>" : '') . "
+					<!-- This number must be sent to an ajax call to star or unstar: $this->submissionid
+					<br/><sub>Edit buildFactXML() in _incl/contentBuilder.php</sub> -->
+				</DIV>
+			</DIV>";			
+			
+			return $out;
+		}
+ 
+ }
+ 
+ 
+
 /**
  * Represents a Herdmind topic
  * 
@@ -112,7 +196,8 @@ class Topic
 		$size = 0;
 		foreach($factxml->children() as $child)
 		{
-			$listing[$size++] = buildFact(array($child->factid,$child->dateposted,$child->contents,$child->score,$child->uservote,$child->isstarred), false, true, "cardIn");
+		//	$listing[$size++] = buildFact(array($child->factid,$child->dateposted,$child->contents,$child->score,$child->uservote,$child->isstarred), false, true, "cardIn");
+			$listing[$size++] = buildFactXML($child, false, true, "cardIn");
 		}
 
 		return $listing;
@@ -464,7 +549,8 @@ class Member
 		foreach($factxml->children() as $child)
 		{
 //			$listing[$size++] = $child;
-			$listing[$size++] = buildFact(array($child->factid,$child->dateposted,$child->contents,$child->score,$child->uservote,$child->isstarred), false, true, "cardIn");
+//			$listing[$size++] = buildFact(array($child->factid,$child->dateposted,$child->contents,$child->score,$child->uservote,$child->isstarred), false, true, "cardIn");
+			$listing[$size++] = buildFactXML($child, false, true, "cardIn");		
 		}
 	
 //$listing = "joe";

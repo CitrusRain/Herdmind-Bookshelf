@@ -32,37 +32,38 @@
  * 
  * @author Ryan Young
  * @since 2014/04/04
- * @version 1.0.0
+ * @version 1.0.1
+ * 		- 2014-04-05 (1.0.1) - Kyli formatted whitespace
 **/
 function getCommunities($TopBottom)
 {
-global $db_connection;
-global $fandom;
+	global $db_connection;
+	global $fandom;
 
-$list = new FandomListing($TopBottom);
-//$level = "";
-if($TopBottom == "bottom")
-{
-	$level = " level >= '1' ";
-	$relate = " and (branchid = '".$fandom->fandom."' || parentbranchid = '".$fandom->fandom."') ";
-}
-else {
-	$level = " level <= '1' ";
-	$relate = "";
-}
+	$list = new FandomListing($TopBottom);
+	//$level = "";
+	if($TopBottom == "bottom")
+	{
+		$level = " level >= '1' ";
+		$relate = " and (branchid = '".$fandom->fandomid."' || parentbranchid = '".$fandom->fandomid."') ";
+	}
+	else
+	{
+		$level = " level <= '1' ";
+		$relate = "";
+	}
 
-$query = "Select branchid, parentbranchid, branchname, level 
-			from Branch where $level $relate order by level, branchname;";
+	$query = "Select branchid, parentbranchid, branchname, level 
+				from Branch where $level $relate order by level, branchname;";
 
-$QueryResults = mysqli_query($db_connection, $query);
+	$QueryResults = mysqli_query($db_connection, $query);
 
-while ($line = mysqli_fetch_array($QueryResults, MYSQL_ASSOC)) {
+	while ($line = mysqli_fetch_array($QueryResults, MYSQL_ASSOC))
+	{	
+		$list->addFandom(new Fandom($line['branchid'],$line['parentbranchid'],$line['branchname'],$line['level']));	
+	}
 	
-	$list->addFandom(new Fandom($line['branchid'],$line['parentbranchid'],$line['branchname'],$line['level']));	
-}
-
-return $list;	
-
+	return $list;	
 }
 
 /**
@@ -70,30 +71,30 @@ return $list;
  * 
  * @author Ryan Young
  * @since 2014/04/04
- * @version 1.0.0
+ * @version 1.0.1
+ * 		- 2014-04-05 (1.0.1) - Kyli formatted whitespace
 **/
 function getCommunityPath()
 {
-global $db_connection;
-global $fandom;
+	global $db_connection;
+	global $fandom;
 
-//get current
-$query = "Select branchid, parentbranchid, branchname, level 
-			from Branch where branchid = '".$fandom->fandomid."';";
+	//get current
+	$query = "Select branchid, parentbranchid, branchname, level 
+				from Branch where branchid = '".$fandom->fandomid."';";
 
-$QueryResults = mysqli_query($db_connection, $query);
+	$QueryResults = mysqli_query($db_connection, $query);
 
-$line = mysqli_fetch_array($QueryResults, MYSQL_ASSOC);
-		
-$current = new Fandom($line['branchid'],$line['parentbranchid'],$line['branchname'],$line['level']);	
+	$line = mysqli_fetch_array($QueryResults, MYSQL_ASSOC);
+			
+	$current = new Fandom($line['branchid'],$line['parentbranchid'],$line['branchname'],$line['level']);	
 
-if($current->parentid != 0)
-{
-	$current = getCommunityPathParent($current);
-}
+	if($current->parentid != 0)
+	{
+		$current = getCommunityPathParent($current);
+	}
 
-return $current;	
-
+	return $current;	
 }
 
 /**

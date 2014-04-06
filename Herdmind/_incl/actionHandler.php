@@ -84,19 +84,20 @@ function StarClick()
 		$line = mysqli_fetch_array($found, MYSQL_ASSOC);
 				
 		//ob_end_clean();
-		
-		if($line['IsStarred'] == '0')
+		if(isset($line['IsStarred']))
 		{
-			$query = "Update table StarList set IsStarred='1', IsSubscribed='1' where UserID='$userid' and SubmissionID='$id';";
-			$result = mysqli_query($db_connection, $query);
-			echo "add";
-		}		  		
-		elseif($line['IsStarred'] == '1') 
-		{
-			$query = "Update table StarList set IsStarred='0' where UserID='$userid' and SubmissionID='$id';";
-			$result = mysqli_query($db_connection, $query);
-			
-			echo "remove";
+			if($line['IsStarred'] == 0)
+			{
+				$query = "Update StarList set IsStarred='1', IsSubscribed='1' where UserID='$userid' and SubmissionID='$id';";
+				$result = mysqli_query($db_connection, $query);
+				echo "add";
+			}		  		
+			elseif($line['IsStarred'] == 1) 
+			{
+				$query = "Update StarList set IsStarred='0' where UserID='$userid' and SubmissionID='$id';";
+				$result = mysqli_query($db_connection, $query);
+				echo "remove";
+		  	}
 	  	}
 		else 
 		{

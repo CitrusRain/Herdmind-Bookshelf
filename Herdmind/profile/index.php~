@@ -164,7 +164,7 @@ echo '</section>';
 <?php
 
 $query = "SELECT st.UserID, st.DateSaved, st.LastViewed, st.SubmissionID, 
-				st.CommunityPostID, st.IsSubcribed, st.IsStarred, sd.SubmissionType, 
+				st.CommunityPostID, st.IsSubscribed, st.IsStarred, sd.SubmissionType, 
 				sd.SubmissionID as 'FactID'
 				FROM StarList AS st
 				JOIN SubmissionData AS sd ON st.SubmissionID = sd.ID
@@ -181,8 +181,6 @@ $count++;
 	
 }
 
-var_dump($factidlist);
-
 	 	$factxml = new SimpleXMLElement(GetFanfactsByIDList($factidlist));
 
 		//Loop through each xml element and print it.
@@ -190,7 +188,7 @@ var_dump($factidlist);
 	 	$size = 0;
 		foreach($factxml->children() as $child)
 		{
-			$listing[$size++] = buildFact(array($child->factid,$child->dateposted,$child->contents,$child->score,$child->uservote,$child->isstarred), false, true, "cardIn");
+			$listing[$size++] = buildFactXML($child, false, true, "cardIn");
 		}
 	
 		for($i = 0, $limit = count($listing); $i < $limit; $i++)
