@@ -4,14 +4,22 @@ Step 1 for the registration process for new users
 
 This page is copyright Herdmind.net ©2013
 -->
-<?PHP
+<?php
 include $_SERVER['DOCUMENT_ROOT']."/_incl/contentBuilder.php"; // Also includes config.php and styleSwitch.php
 include $_SERVER['DOCUMENT_ROOT']."/_incl/startSession.php";   // Start session and determine subdomain - do this second
 
-$email = $_SESSION['email']; if(!$email) $email = $_POST["email"];
-$user  = $_POST["user"];
-$pass  = $_POST["pass"];
-$pass2 =  htmlentities($_POST["pass2"], ENT_QUOTES | ENT_HTML5);
+$email = $user = $pass = $pass2 = "";
+
+if(isset($_SESSION['email']))
+	$email = $_SESSION['email'];
+if(!$email && isset($_POST['email']))
+	$email = $_POST["email"];
+if(isset($_POST['user']))
+	$user  = $_POST["user"];
+if(isset($_POST['pass']))
+	$pass  = $_POST["pass"];
+if(isset($_POST['pass2']))
+	$pass2 =  htmlentities($_POST["pass2"], ENT_QUOTES | ENT_HTML5);
 $status = $_POST["status"];
 ?>
 <HTML>

@@ -120,11 +120,15 @@ echo '
 <!--';
 if (isset($_POST['user']) && !$login)
 {
+	
 	echo "
 	Attempting login...";
 	$loginname = htmlentities($_POST['user'], ENT_QUOTES);
 	// echo "
 	// " . $loginname . " is trying to log in with the password ";
+
+	$salt = mysqli_fetch_array(
+			mysqli_query($db_connection, "select Salt from User where Username = '$loginname'" ) )[0];
 
 	//Same here, but with "password".
 	$password = $_POST['password'];
@@ -132,11 +136,19 @@ if (isset($_POST['user']) && !$login)
 
 	//Hash the password such that it's symmetrical with SMF's hashing method.
 	$hash = sha1($password . strtolower($loginname));
+	
+	
+	$options = [
+    'cost' => 11,
+    'salt' => $salt,
+	];
+	$hash = password_hash("$password", PASSWORD_BCRYPT, $options)."\n";
 	// echo "
 	// password now hashed as " . $hash;
 	
 	//Query the database and select the password based on the supplied loginname.
-	$qstring = 'SELECT passwd, id_member, member_name FROM ' . $forumprefix . '_members WHERE member_name=\'' . $loginname . '\'';
+	$qstring = 'SELECT Password, UserID, UserName
+				FROM User WHERE UserName=\'' . $loginname . '\'';
 	$query = mysqli_query($db_connection, $qstring);
 	
 	echo "
@@ -157,16 +169,16 @@ if (isset($_POST['user']) && !$login)
 		echo "
 		Attempt " . ++$attemptCount;
 		echo "
-		checking " . $hash . " against " . $entry['passwd'] . "...";
-		if ($entry['passwd'] == $hash)
+		checking " . $hash . " against " . $entry['Password'] . "...";
+		if ($entry['Password'] == $hash)
 		{
 			// echo '
 			// Login successful!';
 			$login = true;
 			
 			// store session data
-			$_SESSION['userid']= $entry['id_member'];
-			$_SESSION['username']= $entry['member_name'];
+			$_SESSION['userid']= $entry['UserID'];
+			$_SESSION['username']= $entry['UserName'];
 
 			break;
 		}
