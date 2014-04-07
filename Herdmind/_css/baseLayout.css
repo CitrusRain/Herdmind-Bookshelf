@@ -22,6 +22,9 @@ Media queries:
 	- Normal or Large windows:
 		@media all and (max-width: 40em)
 
+Box model:
+	- Using border boxes
+
  */
 
 
@@ -37,28 +40,32 @@ Media queries:
 	
 	/**** BEGIN Unifying Animation Set ****/ 
 	/* The purpose of this is so that when basic CSS animations/transitions occur, they appear in-sync */
-	        animation-timing-function: ease-in-out;
-	     -o-animation-timing-function: ease-in-out;
-	    -ms-animation-timing-function: ease-in-out;
-	   -moz-animation-timing-function: ease-in-out;
 	-webkit-animation-timing-function: ease-in-out;
+	   -moz-animation-timing-function: ease-in-out;
+	    -ms-animation-timing-function: ease-in-out;
+	     -o-animation-timing-function: ease-in-out;
+	        animation-timing-function: ease-in-out;
 	
-	        transition-property: none;
-	     -o-transition-property: none;
-	    -ms-transition-property: none;
-	   -moz-transition-property: none;
 	-webkit-transition-property: none;
-	        transition-duration: 0.5s;
-	     -o-transition-duration: 0.5s;
-	    -ms-transition-duration: 0.5s;
-	   -moz-transition-duration: 0.5s;
+	   -moz-transition-property: none;
+	    -ms-transition-property: none;
+	     -o-transition-property: none;
+	        transition-property: none;
 	-webkit-transition-duration: 0.5s;
-	        transition-timing-function: ease-in-out;
-	     -o-transition-timing-function: ease-in-out;
-	    -ms-transition-timing-function: ease-in-out;
-	   -moz-transition-timing-function: ease-in-out;
+	   -moz-transition-duration: 0.5s;
+	    -ms-transition-duration: 0.5s;
+	     -o-transition-duration: 0.5s;
+	        transition-duration: 0.5s;
 	-webkit-transition-timing-function: ease-in-out;
+	   -moz-transition-timing-function: ease-in-out;
+	    -ms-transition-timing-function: ease-in-out;
+	     -o-transition-timing-function: ease-in-out;
+	        transition-timing-function: ease-in-out;
 	/**** END Unifying Animation Set ****/
+	
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 
 /**** BEGIN Convenience classes ****/
@@ -67,11 +74,11 @@ Media queries:
 	background-color: #F00 !important;
 	font-style: oblique !important;
 	font-weight: bold !important;
-	transform: scale(1.1) !important;
-	-o-transform: scale(1.1) !important;
-	-ms-transform: scale(1.1) !important;
-	-moz-transform: scale(1.1) !important;
 	-webkit-transform: scale(1.1) !important;
+	   -moz-transform: scale(1.1) !important;
+	    -ms-transform: scale(1.1) !important;
+	     -o-transform: scale(1.1) !important;
+	        transform: scale(1.1) !important;
 }
 	.devalert::before,
 	.devalert::after {
@@ -97,11 +104,11 @@ BODY {
 	margin: 0 1em;
 	padding: 8em 0 0 2em; /* 6em == maximum header height + first sitenav, 2em == sidebar2 width */
 	
-	transition-property: padding-left; /* For Sidebar2 */
-	-o-transition-property: padding-left;
-	-ms-transition-property: padding-left;
-	-moz-transition-property: padding-left;
 	-webkit-transition-property: padding-left;
+	   -moz-transition-property: padding-left;
+	    -ms-transition-property: padding-left;
+	     -o-transition-property: padding-left;
+	        transition-property: padding-left; /* For Sidebar */
 }
 @media handheld, screen and (max-device-width: 40em), all and (max-width: 40em) {
 	BODY {
@@ -420,111 +427,6 @@ BODY>HEADER {
 					display: block;
 					line-height: 1.5em;
 				}
-
-	/*** BEGIN Old Site Navbar *** Old code, archived for reference 2013-03-18
-	BODY>HEADER>NAV#SITENAV>UL {
-		bottom: -2em;
-		height: 2em !important;
-		left: 1em;
-		line-height: 2em;
-		margin: 0 -1em; /* Body left and right margins are 1em *
-		position: absolute;
-		text-align: center;
-		width: 100%;
-		z-index: 0;
-		
-		transition-property: bottom, height, line-height, opacity;
-		-o-transition-property: bottom, height, line-height, opacity;
-		-ms-transition-property: bottom, height, line-height, opacity;
-		-moz-transition-property: bottom, height, line-height, opacity;
-		-webkit-transition-property: bottom, height, line-height, opacity;
-		
-		transition-duration: 0.25s;
-		-o-transition-duration: 0.25s;
-		-ms-transition-duration: 0.25s;
-		-moz-transition-duration: 0.25s;
-		-webkit-transition-duration: 0.25s;
-	}
-	
-		@media screen and (min-device-width: 4in) {
-			/*BODY>HEADER:not(:hover):not(:focus)>NAV#SITENAV>UL { /* Before it's shown, and after the user lets off 
-				bottom: 0;
-				height: 0 !important;
-				line-height: 0;
-				opacity: 0;
-				
-				transition-delay: 0.5s;
-				-o-transition-delay: 0.5s;
-				-ms-transition-delay: 0.5s;
-				-moz-transition-delay: 0.5s;
-				-webkit-transition-delay: 0.5s;
-			}*
-		}
-				BODY>HEADER>NAV#SITENAV>UL>LI {
-					vertical-align: top;
-				}
-				BODY>HEADER>NAV#SITENAV>UL LI {
-					z-index: 0;
-				}
-					BODY>HEADER>NAV#SITENAV>UL LI :link,
-					BODY>HEADER>NAV#SITENAV>UL LI :visited {
-						padding: 0;
-					}
-					BODY>HEADER>NAV#SITENAV>UL>LI UL {
-						bottom: -2em;
-						height: 2em;
-						left: 1em;
-						margin: 0 -1em;
-						overflow: hidden;
-						padding: 0;
-						position: absolute;
-						width: 100%;
-						z-index: 0;
-		
-						transition-property: bottom, height, line-height, opacity;
-						-o-transition-property: bottom, height, line-height, opacity;
-						-ms-transition-property: bottom, height, line-height, opacity;
-						-moz-transition-property: bottom, height, line-height, opacity;
-						-webkit-transition-property: bottom, height, line-height, opacity;
-						
-						transition-duration: 0.25s;
-						-o-transition-duration: 0.25s;
-						-ms-transition-duration: 0.25s;
-						-moz-transition-duration: 0.25s;
-						-webkit-transition-duration: 0.25s;
-					}
-	
-					/*@media screen and (min-device-width: 4in) {*
-						BODY>HEADER>NAV#SITENAV>UL>LI:not(:hover):not(:focus) UL {
-							bottom: 0;
-							height: 0;
-							line-height: 0;
-							opacity: 0;
-							
-							transition-delay: 0.25s;
-							-o-transition-delay: 0.25s;
-							-ms-transition-delay: 0.25s;
-							-moz-transition-delay: 0.25s;
-							-webkit-transition-delay: 0.25s;
-						}
-					/*}*
-						BODY>HEADER>NAV#SITENAV>UL>LI UL>LI {
-							display: inline-block;
-							line-height: 2em;
-						}
-	BODY>HEADER>NAV#SITENAV FORM#SEARCH_FORM INPUT {
-		width: 10em;
-		
-		transition-property: width;
-		-o-transition-property: width;
-		-ms-transition-property: width;
-		-moz-transition-property: width;
-		-webkit-transition-property: width;
-	}
-		BODY>HEADER>NAV#SITENAV FORM#SEARCH_FORM INPUT:not(:focus) {
-			width: 5em;
-		}
-	/*** END Old Site Navbar ***/
 /**** END Header Layout ****/
 
 
