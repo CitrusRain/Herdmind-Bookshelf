@@ -139,10 +139,10 @@ if (isset($_POST['user']) && !$login)
 	$hash = sha1($password . strtolower($loginname));
 	
 	
-	$options = [
+	$options = array(
     'cost' => 11,
     'salt' => $salt
-	];
+	);
 	$hash = password_hash("$password", PASSWORD_BCRYPT, $options)."\n";
 	// echo "
 	// password now hashed as " . $hash;
