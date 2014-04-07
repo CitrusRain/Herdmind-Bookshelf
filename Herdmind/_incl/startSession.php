@@ -127,10 +127,9 @@ if (isset($_POST['user']) && !$login)
 	// echo "
 	// " . $loginname . " is trying to log in with the password ";
 
-	$saltarr = mysqli_fetch_array(
-			mysqli_query($db_connection, "select Salt from User where Username = '$loginname'" ) );
-	$salt = $saltarr[0];	
-	
+	$salt = mysqli_fetch_array(
+			mysqli_query($db_connection, "select Salt from User where Username = '$loginname'" ) )[0];
+
 	//Same here, but with "password".
 	$password = $_POST['password'];
 	// echo $password;
@@ -141,7 +140,7 @@ if (isset($_POST['user']) && !$login)
 	
 	$options = [
     'cost' => 11,
-    'salt' => $salt,
+    'salt' => $salt
 	];
 	$hash = password_hash("$password", PASSWORD_BCRYPT, $options)."\n";
 	// echo "
