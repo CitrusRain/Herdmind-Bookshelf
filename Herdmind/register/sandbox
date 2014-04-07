@@ -1,0 +1,80 @@
+<form id="register" method="POST" action="step2.php" seamless="seamless" border="0" class="centered flush row">
+  <div class="tiny-12 small-8 medium-5 large-4 huge-3">
+  <div class="row">
+    <label for="email" class="all-4">eMail</label>
+    <input type="email" id="email" name="email" placeholder="email@example.com" class="all-8">
+    <div class="needs">
+      <label id="email_needs_valid" for="email" class="need">
+        Must be a valid email address
+        <div class="expanding explanation">
+          We use your email to confirm your identity, help reset your password, and more. We will never send you promotions, advertisements, or other such annoying things.
+        </div>
+      </label>
+    </div>
+  </div>
+  
+  
+  <div class="row">
+    <label for="user" class="all-4">Username</label>
+    <input type="text" id="user" name="user" placeholder="Username" class="all-8">
+    <div class="needs">
+      <label id="user_needs_length" for="user" class="need">
+        Must be 1 to 16 characters long
+        <div class="expanding explanation">
+          You will use your username to log in, and our database can only hold usernames that are up to 16 characters long.
+        </div>
+      </label>
+      <label id="user_needs_spaceless" for="user" class="need">
+        Must not contain spaces
+        <div class="expanding explanation">
+          Usernames will be used in URLs and other places which don't support spaces. Putting spaces in usernames will create confusion and, in some cases, severe bugs.
+        </div>
+      </label>
+    </div>
+  </div>
+  
+  
+  <div class="row">
+    <label for="pass" class="all-4">Password</label>
+    <input type="password" id="pass" name="pass" placeholder="Password" class="all-8">
+    <div class="needs bottom">
+      <div class="need" id="pass_needs_strength" style="z-index: 1;">
+        <meter id="pass_meter_strength" min="0" max="100" low="25" high="50" optimum="100"></meter>
+        <label for="pass_meter_strength" id="pass_label_strength"></label>
+        <div class="expanding tips">
+          <ul style="padding:0 0 0 1em;margin:0;font-size:0.8em;">
+            <li>Don't make it generic or easy to guess (<q>password</q>, <q>123456</q>, …)</li>
+            <li>Don't use part of your username or email</li>
+            <li>Don't use the same character twice</li>
+            <li>Use unusual characters like spaces</li>
+            <li>Mix in numbers and capital letters</li>
+          </ul>
+        </div>
+      </div>
+      <label id="pass_needs_length" for="pass" class="need">
+        Must be at least 6 characters.
+        <div class="expanding explanation">
+          Do you like spam? We don't. To help us ensure your account doesn't get hacked, we ask that your password be strong, and the first step is to make it at least 6 characters.
+        </div>
+      </label>
+    </div>
+  </div>
+  
+  <div class="row">
+    <label for="pass2" class="all-4">Verify</label>
+    
+    <input type="password" id="pass2" name="pass2" placeholder="Password Repeated" class="all-8">
+    <div class="needs bottom">
+      <label id="pass2_needs_equal" for="pass2" class="need">
+        Must be identical to your password.
+        <div class="expanding explanation">
+          This helps guarantee that you can remember your password. We don't want you losing it, after all!
+        </div>
+      </label>
+    </div>
+  </div>
+  
+  
+  <div style="text-align:center"><input type="submit" id="submit" value="Continue to step 2 »" disabled=""></div>
+</div>
+</form>
