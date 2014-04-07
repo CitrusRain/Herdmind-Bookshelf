@@ -40,7 +40,7 @@ function buildDefaultHeadContent($tabText = null, $longDescription = null, $keyw
 
 <!-- BEGIN Meta data -->
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=utf-8" />
-<META NAME="viewport"    CONTENT="' /*target-densitydpi=device-dpi, */ . 'initial-scale=1.0' /*, user-scalable=no*/ . '" /> <!-- If user is on mobile, suggest to not allow pinch-zoom -->
+<META NAME="viewport"    CONTENT="' /*target-densitydpi=device-dpi, */ . 'width=device-width, initial-scale=1.0' /*, user-scalable=no*/ . '" /> <!-- If user is on mobile, suggest to not allow pinch-zoom -->
 <META NAME="description" CONTENT="';
 	if ($longDescription)
 		echo $longDescription;
