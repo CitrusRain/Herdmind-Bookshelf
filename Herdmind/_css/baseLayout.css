@@ -510,7 +510,7 @@ BODY>HEADER {
 			height: 1em;
 			margin: 0;
 			opacity: 1 !important;
-			padding-top: 3em 0 1em;
+			padding: 3em 0 1em;
 			
 			-webkit-transform: rotate(90deg) translate(2.5em, -4.5em);
 			   -moz-transform: rotate(90deg) translate(2.5em, -4.5em);
