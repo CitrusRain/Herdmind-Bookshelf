@@ -510,13 +510,13 @@ BODY>HEADER {
 			height: 1em;
 			margin: 0;
 			opacity: 1 !important;
-			padding: 3em 0 0;
+			padding: 3em 0 1em;
 			
-			-webkit-transform: rotate(90deg) translate(2.5em, -4.5em);
-			   -moz-transform: rotate(90deg) translate(2.5em, -4.5em);
-			    -ms-transform: rotate(90deg) translate(2.5em, -4.5em);
-			     -o-transform: rotate(90deg) translate(2.5em, -4.5em);
-			        transform: rotate(90deg) translate(2.5em, -4.5em);
+			-webkit-transform: rotate(90deg) translate(2em, -4em);
+			   -moz-transform: rotate(90deg) translate(2em, -4em);
+			    -ms-transform: rotate(90deg) translate(2em, -4em);
+			     -o-transform: rotate(90deg) translate(2em, -4em);
+			        transform: rotate(90deg) translate(2em, -4em);
 			-webkit-transform-origin: 50% 50%;
 			   -moz-transform-origin: 50% 50%;
 			    -ms-transform-origin: 50% 50%;
