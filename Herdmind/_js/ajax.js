@@ -178,7 +178,7 @@ xmlhttp.onreadystatechange=function()
   }
 xmlhttp.open("POST",url,true);
 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-xmlhttp.send("id="+ factNum + "&topictype="+ TopicType + "&username=Citrus&useremail=email@herdmind.net&comment="+ comment +"");
+xmlhttp.send("id="+ factNum + "&topictype="+ TopicType + "&comment="+ comment +"");
 
 }
 
@@ -192,7 +192,7 @@ xmlhttp.send("id="+ factNum + "&topictype="+ TopicType + "&username=Citrus&usere
  */
 function PostNew(fandomid)
 {
-	alert("Good");
+//	alert("Good");
 var comment = document.getElementById("commentbox").value;
 var url = "../_incl/actionHandler.php?func=NewThread";
 
@@ -210,12 +210,12 @@ xmlhttp.onreadystatechange=function()
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
     alert(innerHTML=xmlhttp.responseText);
-    alert("Refresh");
+    alert("Please Refresh");
     }
   }
 xmlhttp.open("POST",url,true);
 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-xmlhttp.send("username=Citrus&useremail=email@herdmind.net&comment="+ comment +"&fandomid="+fandomid);
+xmlhttp.send("comment="+ comment +"&fandomid="+fandomid);
 
 }
 

@@ -1260,7 +1260,7 @@ function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 					<DIV CLASS="comment-body">';
 			
 			//Check for special banner user
-			if($comment->memberid == "1")
+			if($comment->bannersetting != NULL)
 				$pageEchoes .= '
 						<HEADER CLASS="premium-header">
 							<DIV CLASS="premium-image bg-pos-right bg-size-original bg-repeat-off" STYLE="background-image:url(../_img/uploaded/user/'.$comment->memberid.'/premium-header.png)">Admin</DIV><!-- In HTML5.1, this should be changed to a <DECORATOR> element -->';

@@ -12,22 +12,168 @@ class Stylesheet
 }
 
 
-/*
-	<fanfact>
-				<score>'.$sc.'</score>
- *				<uservote>'.$opt[0].'</uservote>
- *				<factid>'.$facts[0].'</factid>
- *				<contents>'.$facts[1].'</contents>
- *				<dateposted>'.$facts[2].'</dateposted>
- *				<submissionid>'.$facts[3].'</submissionid>
- *				<isstarred>0</isstarred>
- *				<ispublic></ispublic>
- *				<ismature></ismature>
- *				<isremoved></isremoved>
- 				<commentcount>'.$count.'</commentcount>
-	
- *  </fanfact>
+
+/**
+ * Contains convenience methods and constants for encoding and decoding backgrounds into the Herdmind database
+ * 
+ * @author Kyli Rouge
+ * @since 2014-04-07
+ * @version 1.0.0
  */
+class BG
+{
+	const REPEAT_MASK = 1;   // 0000_0001
+	const POSITION_MASK = 6; // 0000_0110
+		const POSITION_LEFT = 0;   // 0000_0000
+		const POSITION_CENTER = 2; // 0000_0010
+		const POSITION_RIGHT = 4;  // 0000_0100
+	const SIZE_MASK = 24;    // 0001_1000
+		const SIZE_ORIGINAL = 0;   // 0000_0000
+		const SIZE_COVER = 8;      // 0000_1000
+		const SIZE_CONTAIN = 16;   // 0001_0000
+		const SIZE_STRETCH = 24;   // 0001_1000
+	
+	/**
+	 * Returns the repeat bit contained in the given encoded background state
+	 * @return 1 (repeat) or 0 (do not repeat)
+	 * @author Kyli Rouge
+	 * @since 2014-04-07
+	 * @version 1.0.0
+	 */
+	public static function repeats($bgState)
+	{
+		return $bgState & BG::REPEAT_MASK;
+	}
+	
+	/**
+	 * Returns the position bits contained in the given encoded background state
+	 * @return one of the following:
+	 * 		BG::POSITION_LEFT   (0) 
+	 * 		BG::POSITION_CENTER (2)
+	 * 		BG::POSITION_RIGHT  (4)
+	 * @author Kyli Rouge
+	 * @since 2014-04-07
+	 * @version 1.0.0
+	 */
+	public static function getPosition($bgState)
+	{
+		return $bgState & BG::POSITION_MASK;
+	}
+	
+	/**
+	 * Returns the size bits contained in the given encoded background state
+	 * @return one of the following:
+	 * 		BG::SIZE_ORIGINAL (0)
+	 * 		BG::SIZE_COVER    (8)
+	 * 		BG::SIZE_CONTAIN  (16)
+	 * 		BG::SIZE_STRETCH  (24)
+	 * @author Kyli Rouge
+	 * @since 2014-04-07
+	 * @version 1.0.0
+	 */
+	public static function getSize($bgState)
+	{
+		return $bgState & BG::SIZE_MASK;
+	}
+	
+	/**
+	 * Returns the HTML classes for the given byte representation of a background's modifiers
+	 * 
+	 * @param $bgState   the background state, as a byte.
+	 * 		Bit map:
+	 * 			0: repeat?       (BG::REPEAT_MASK)
+	 * 				0: no
+	 * 				1: yes
+	 * 			1-2: position    (BG::POSITION_MASK)
+	 * 				00: left     (BG::POSITION_LEFT)
+	 * 				01: center   (BG::POSITION_CENTER)
+	 * 				10: right    (BG::POSITION_RIGHT)
+	 * 				11: [unused]
+	 * 			3-4: size        (BG::SIZE_MASK)
+	 * 				00: original (BG::SIZE_ORIGINAl)
+	 * 				01: cover    (BG::SIZE_COVER)
+	 * 				10: contain  (BG::SIZE_CONTAIN)
+	 * 				11: stretch  (BG::SIZE_STRETCH)
+	 * 			5-7: [unused]
+	 * @return a string containing all the classes to put in an HTML CLASS attribute to position the background
+	 * @author Kyli Rouge
+	 * @since 2014-04-07
+	 * @version 1.0.0
+	 */
+	public static function decode($bgState)
+	{
+		$output =
+			BG::repeats($bgState)
+				? 'bg-repeat-yes'
+				: 'bg-repeat-no '
+		;
+
+		switch (BG::getPosition($bgState))
+		{
+			case BG::POSITION_LEFT:
+				$output .= ' bg-pos-left  ';
+				break;
+			case BG::POSITION_CENTER:
+				$output .= ' bg-pos-center';
+				break;
+			case BG::POSITION_RIGHT:
+				$output .= ' bg-pos-right ';
+				break;
+			default:
+				$output .= '              ';
+				break;
+		}
+
+		switch (BG::getSize($bgState))
+		{
+			case BG::SIZE_ORIGINAL:
+				$output .= ' bg-size-original';
+				break;
+			case BG::SIZE_COVER:
+				$output .= ' bg-size-cover   ';
+				break;
+			case BG::SIZE_CONTAIN:
+				$output .= ' bg-size-contain ';
+				break;
+			case BG::SIZE_STRETCH:
+				$output .= ' bg-size-stretch ';
+				break;
+			default:
+				$output .= '                 ';
+				break;
+		}
+
+		return $output;
+	}
+	
+	/**
+	 * Returns the byte for the given background modifiers
+	 * 
+	 * @param $repeats
+	 * 		0: repeat
+	 * 		1: do not repeat
+	 * @param $position
+	 * 		0: left     (BG::POSITION_LEFT)
+	 * 		2: center   (BG::POSITION_CENTER)
+	 * 		4: right    (BG::POSITION_RIGHT)
+	 * @param $size
+	 * 		0: original  (BG::SIZE_ORIGINAl)
+	 * 		8: cover     (BG::SIZE_COVER)
+	 * 		16: contain  (BG::SIZE_CONTAIN)
+	 * 		24: stretch  (BG::SIZE_STRETCH)
+	 * @return a byte containing bitwise data about the background
+	 * @author Kyli Rouge
+	 * @since 2014-04-07
+	 * @version 1.0.0
+	 */
+	public static function encode($repeats, $position, $size)
+	{
+		return $repeats | $position | $size;
+	}
+}
+
+
+
 /**
  * Represents a fanfact
  * 

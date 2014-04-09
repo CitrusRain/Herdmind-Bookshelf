@@ -147,7 +147,7 @@ function uploadBanner()
 	global $db_connection;
 	global $userid;	
 	
-$path = $_SERVER['DOCUMENT_ROOT']."/_img/uploaded/user/".$userid."/";
+$path = "../_img/uploaded/user/".$userid."/";
 
 if ((($_FILES["file"]["type"] == "image/png")
 || ($_FILES["file"]["type"] == "image/jpeg"))
@@ -616,6 +616,7 @@ function CreateThread()
 
 global $db_connection;
 global $userid;
+global $userName;
 global $ipid;
 
 echo "Getting information...";
@@ -659,7 +660,7 @@ $CommentingQuery = "INSERT INTO `CommunityPosts` (
 `fandom`
 )
 VALUES (
- NOW(), 'Thread', '".$userid."', '0', '', 'Name', 'Email', '".$ip."', '1', '0', '', '".$comment."', 'xx', '1', '$fandomid'
+ NOW(), 'Thread', '".$userid."', '0', '', '".$userName."', 'Email', '".$ip."', '1', '0', '', '".$comment."', 'xx', '1', '$fandomid'
 );";
 echo $CommentingQuery;
 	
@@ -687,6 +688,7 @@ function saveComment()
 {
 global $db_connection;
 global $userid;
+global $userName;
 global $ipid;
 
 echo "Getting information...";
@@ -748,7 +750,7 @@ $CommentingQuery = "INSERT INTO `CommunityPosts` (
 `fandom`
 )
 VALUES (
-'".$msgOptions[1]."', '".$msgOptions[2]."', NOW(), '".$userid."', '0', '', 'Name', 'Email', '".$ip."', '1', '0', '', '".$msgOptions[0]."', 'xx', '1', '$fandomid'
+'".$msgOptions[1]."', '".$msgOptions[2]."', NOW(), '".$userid."', '0', '', '".$userName."', 'Email', '".$ip."', '1', '0', '', '".$msgOptions[0]."', 'xx', '1', '$fandomid'
 );";
 echo $CommentingQuery;
 	
