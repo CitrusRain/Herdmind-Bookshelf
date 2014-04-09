@@ -155,11 +155,17 @@ if(isset($ProfileNum) && !(isset($_GET["id"])))
 <SECTION id='profilesettings'>
 <h3>Profile settings</h3>
 <div>Avatar 
+<?php echo '<img src="../_img/uploaded/user/'.$userid.'/avatar64.png" alt="" >'; ?>
+<input type="file" name="avatar" id="avatar" />
+<button type='button' onclick='UploadAvatar()'>Upload</button>
 	<ul>
 		<li>upload image to /_img/uploaded/user/<b>(user id)</b>/avatar64.png</li>
 	</ul>
 </div>
 <div>Premium
+<?php echo '<img src="'.$_SERVER['DOCUMENT_ROOT'].'/_img/uploaded/user/'.$userid.'/premium-banner.png" alt="" >'; ?>
+<input type="file" name="banner" id="banner" />
+<button type='button' onclick='UploadBanner()'>Upload</button>
 	<ul>
 		<li>upload image to /_img/uploaded/user/<b>(user id)</b>/premium-header.png</li>
 		<li>Set align/repeat</li>

@@ -38,6 +38,83 @@ xmlhttp.send("factID="+ factID + "&usersVote="+ usersVote +"&fandom="+"pony");
 }
 
 
+
+/* 
+ * UploadAvatar
+ * 
+ * Submits the various data fields for approval as a new Topic
+ * 
+ */
+function UploadAvatar()
+{
+var formData = new FormData();
+
+formData.append("file", document.getElementById("avatar").files[0]);
+
+var url = "/_incl/actionHandler.php?func=UploadAvatar";
+
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    alert(innerHTML=xmlhttp.responseText);
+    }
+  }
+xmlhttp.open("POST",url,true);
+//xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+//xmlhttp.send("file="+ file + "");
+xmlhttp.send(formData);
+
+}
+
+
+
+/* 
+ * UploadBanner
+ * 
+ * Uploads the user's new premium banner
+ * 
+ */
+function UploadBanner()
+{
+var formData = new FormData();
+
+formData.append("file", document.getElementById("banner").files[0]);
+
+var url = "/_incl/actionHandler.php?func=UploadBanner";
+
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    alert(innerHTML=xmlhttp.responseText);
+    }
+  }
+xmlhttp.open("POST",url,true);
+//xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+//xmlhttp.send("file="+ file + "");
+xmlhttp.send(formData);
+
+}
+
 function starClick(factID)
 {
 //alert("You have clicked a star.");

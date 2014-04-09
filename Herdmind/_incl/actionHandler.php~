@@ -51,6 +51,10 @@ elseif($func == "Preview")
 {
 echo GeneratePreview();
 }
+elseif($func == "UploadAvatar")
+{
+echo uploadAvatar();
+}
 /////////////////////
 /////////////////////
 /////////////////////
@@ -65,6 +69,73 @@ function GeneratePreview()
 
 }
 
+
+function uploadAvatar()
+{
+	global $db_connection;
+	global $userid;	
+	
+$path = $_SERVER['DOCUMENT_ROOT']."/_img/uploaded/user/".$userid."/";
+
+if ((($_FILES["file"]["type"] == "image/png")
+|| ($_FILES["file"]["type"] == "image/jpeg"))
+&& ($_FILES["file"]["size"] < 5242880))
+  {
+  if ($_FILES["file"]["error"] > 0)
+    {
+    echo "There was a problem with the image provided. Contact a global mod if the exact image is important.<br/>";// . $_FILES["file"]["error"] . "<br />";
+    }
+  else
+    {
+ //   echo "Upload: " . $_FILES["file"]["name"] . "<br />";
+   // echo "Type: " . $_FILES["file"]["type"] . "<br />";
+  //  echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
+    //echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
+echo $_FILES["file"]["name"];
+    if (file_exists($path . $_FILES["file"]["name"]))
+      {
+   //   echo $_FILES["file"]["name"] . " already exists. ";
+      }
+    else
+      {
+
+	$filename = $_FILES["file"]["type"];
+$pos = strpos($filename, "/");
+
+// Note our use of ===.  Simply == would not work as expected
+// because the position of 'a' was the 0th (first) character.
+if ($pos === false) {
+ //   echo "The /  was not found in the string '$filename'";
+	$imagesrc = $path."noimg.png";
+} else {
+ //   echo "The / was found in the string '$filename'";
+   // echo " and exists at position $pos";
+	
+	$filename = "avatar64.png";
+
+      move_uploaded_file($_FILES["file"]["tmp_name"],
+      $path . $filename);
+      $imagesrc = $path . $filename;
+  //    echo "Stored in: " . $filename;
+
+	 //Resizing the picture
+    include "../phpfunctions/imageResizer.php";
+
+smart_resize_image($imagesrc, 64,64, true);	
+
+	}
+      }
+    }
+  }
+else
+  {
+  		$imagesrc = $path."/noimg.png";
+
+  echo "There was a problem with the image provided. Contact a global mod if the exact image is important.";
+  }
+
+
+}
 
 
 function StarClick()
@@ -86,13 +157,13 @@ function StarClick()
 		//ob_end_clean();
 		if(isset($line['IsStarred']))
 		{
-			if($line['IsStarred'] == '0')
+			if($line['IsStarred'] == 0)
 			{
 				$query = "Update StarList set IsStarred='1', IsSubscribed='1' where UserID='$userid' and SubmissionID='$id';";
 				$result = mysqli_query($db_connection, $query);
 				echo "add";
 			}		  		
-			elseif($line['IsStarred'] == '1') 
+			elseif($line['IsStarred'] == 1) 
 			{
 				$query = "Update StarList set IsStarred='0' where UserID='$userid' and SubmissionID='$id';";
 				$result = mysqli_query($db_connection, $query);
