@@ -1264,7 +1264,7 @@ function GetComments($threadid, $TopicType)
 			';*/
 
 		$Comments[$ThreadCount] = new Comments($threadpost[0], $threadpost[1], $threadpost[2], $threadpost[3], $threadpost[4], $threadpost[5], $threadpost[6], $threadpost[7], $threadpost[8] , $threadpost[9] , $threadpost[10]
-		, $threadpost[16], $threadpost[17] );
+		, $threadpost[12], $threadpost[13] );
 		
 	 	$ThreadCount =	$ThreadCount + 1;
 	
@@ -1319,7 +1319,7 @@ function GetThread($dbc, $threadid, $userid = '0')
 			';*/
 
 		$ForumThread[$ThreadCount] = new ForumThread($threadpost[0], $threadpost[1], $threadpost[2], $threadpost[3], $threadpost[4], $threadpost[5], $threadpost[6], $threadpost[7], $threadpost[8]
-				,$threadpost[16], $threadpost[17] );
+				,$threadpost[10], $threadpost[11] );
 		
 	 	$ThreadCount =	$ThreadCount + 1;
 	

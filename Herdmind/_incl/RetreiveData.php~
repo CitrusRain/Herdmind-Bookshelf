@@ -331,7 +331,7 @@ $query ="SELECT id_msg, poster_time, id_member, id_msg_modified,
 $Thread = new Comments($threadpost[0], $threadpost[14], $threadpost[15], 
 							$threadpost[2], $threadpost[5], 
 							$threadpost[1], $threadpost[6], $threadpost[7], 
-							$threadpost[4], $threadpost[11], $threadpost[12], $threadpost[16] );
+							$threadpost[4], $threadpost[11], $threadpost[12], $threadpost[16] , $threadpost[17] );
 
 /*$messageid, $topicid, $topictype,
  $memberid, $membername, $timeposted,

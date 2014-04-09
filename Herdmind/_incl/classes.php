@@ -624,14 +624,14 @@ class Thread
  */
 class Member
 {
-	function __construct($memberid, $username, $type, $bio, $avatar, $banner)
+	function __construct($memberid, $username, $type, $bio, $banner, $bannertext = "")
 	{
 		$this->id = $memberid;
 		$this->username = $username;
 		$this->type = $type;
 		$this->biography = $bio;
-		$this->avatar = $avatar;
 		$this->banner = $banner;
+		$this->bannertext = $bannertext;
 	//	$this->submissions = $submissions;
 	}
 	
