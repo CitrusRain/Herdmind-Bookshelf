@@ -464,7 +464,7 @@ class ForumThread
 
 class Comments
 {
-	function __construct($messageid, $topicid, $topictype, $memberid, $membername, $timeposted, $memberemail, $memberip, $postsubject, $postbody, $posticon, $bannersetting)
+	function __construct($messageid, $topicid, $topictype, $memberid, $membername, $timeposted, $memberemail, $memberip, $postsubject, $postbody, $posticon, $bannersetting, $bannertext = "")
 	{
 		$this->messageid = $messageid;
 		$this->topicid = $topicid;
@@ -478,6 +478,7 @@ class Comments
 		$this->postbody = $postbody;
 		$this->posticon = $posticon;
 		$this->bannersetting = $bannersetting;
+		$this->bannertext = $bannertext;
 	}
 
 	function getMessageID()

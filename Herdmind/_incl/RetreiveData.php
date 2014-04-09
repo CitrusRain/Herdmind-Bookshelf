@@ -314,7 +314,7 @@ $Thread;
 $query ="SELECT id_msg, poster_time, id_member, id_msg_modified, 
 					subject, poster_name, poster_email, poster_ip, 
 					smileys_enabled, modified_time, modified_name,
-					body, icon, approved, id_topic, id_topic_type, PremiumHeaderSettings 
+					body, icon, approved, id_topic, id_topic_type, PremiumHeaderSettings, BannerText 
 			FROM CommunityPosts join User on CommunityPosts.id_member = User.UserID WHERE
 		 id_msg = '$threadid' and id_topic_type='Thread' and approved='1' limit 0, 1";
 
@@ -331,7 +331,7 @@ $query ="SELECT id_msg, poster_time, id_member, id_msg_modified,
 $Thread = new Comments($threadpost[0], $threadpost[14], $threadpost[15], 
 							$threadpost[2], $threadpost[5], 
 							$threadpost[1], $threadpost[6], $threadpost[7], 
-							$threadpost[4], $threadpost[11], $threadpost[12], $threadpost[16] );
+							$threadpost[4], $threadpost[11], $threadpost[12], $threadpost[16] , $threadpost[17] );
 
 /*$messageid, $topicid, $topictype,
  $memberid, $membername, $timeposted,
@@ -372,7 +372,7 @@ $ThreadCount = 0;
 	$query ="SELECT id_msg, poster_time, id_member, id_msg_modified, 
 					subject, poster_name, poster_email, poster_ip, 
 					smileys_enabled, modified_time, modified_name,
-					body, icon, approved, id_topic, id_topic_type, PremiumHeaderSettings
+					body, icon, approved, id_topic, id_topic_type, PremiumHeaderSettings, BannerText
 					FROM CommunityPosts join User on CommunityPosts.id_member = User.UserID
 					WHERE approved='1' 
 					AND fandom = '$fandom->fandomid'
@@ -391,7 +391,7 @@ $ThreadCount = 0;
 $Thread[$ThreadCount] = new Comments($threadpost[0], $threadpost[14], $threadpost[15],
 												 $threadpost[2], $threadpost[5], $threadpost[1], 
 												 $threadpost[6], $threadpost[7],	$threadpost[4],
-												 $threadpost[11], $threadpost[12], $threadpost[16] );
+												 $threadpost[11], $threadpost[12], $threadpost[16], $threadpost[17] );
 		$ThreadCount++;
 	}
 
@@ -1189,7 +1189,7 @@ function GetProfile($dbc, $viewuserid, $userid = '0')
 id_member,	member_name, 	date_registered,
 posts, 		id_group, 		last_login, 
 gender, 		birthdate, 		location, 
-signature, 	avatar
+signature
  		 FROM ".$forumprefix."_members as members
 					where id_member = '$viewuserid'";
 
@@ -1206,7 +1206,6 @@ signature, 	avatar
 		$xmlprofile = $xmlprofile.'
 	 			<memberid>'.$profiledata[0].'</memberid>
 	 			<memberalias>'.$profiledata[1].'</memberalias>
-	 			<avatar>'.$profiledata[10].'</avatar>
 	 			<note>There are more fields I can insert here.</note>
 			';
 	}
@@ -1236,7 +1235,8 @@ function GetComments($threadid, $TopicType)
  	$Comments = NULL;
  	
  	$query =  "SELECT id_msg, id_topic, id_topic_type, id_member, poster_name, poster_time, poster_email,
- 					poster_ip, subject, body, icon, approved FROM CommunityPosts as posts
+ 					poster_ip, subject, body, icon, approved, PremiumHeaderSettings, BannerText FROM CommunityPosts as posts
+ 							join User on posts.id_member = User.UserID
 					where id_topic = '$threadid' and id_topic_type = '$TopicType' and approved = '1'";
 
 	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
@@ -1263,7 +1263,8 @@ function GetComments($threadid, $TopicType)
 			</userpost>
 			';*/
 
-		$Comments[$ThreadCount] = new Comments($threadpost[0], $threadpost[1], $threadpost[2], $threadpost[3], $threadpost[4], $threadpost[5], $threadpost[6], $threadpost[7], $threadpost[8] , $threadpost[9] , $threadpost[10] );
+		$Comments[$ThreadCount] = new Comments($threadpost[0], $threadpost[1], $threadpost[2], $threadpost[3], $threadpost[4], $threadpost[5], $threadpost[6], $threadpost[7], $threadpost[8] , $threadpost[9] , $threadpost[10]
+		, $threadpost[16], $threadpost[17] );
 		
 	 	$ThreadCount =	$ThreadCount + 1;
 	
@@ -1289,7 +1290,8 @@ function GetThread($dbc, $threadid, $userid = '0')
  	$xmlthread = '<thread>';
  	
  	$query =  "SELECT id_topic, id_member, poster_name, poster_time, poster_email,
- 					poster_ip, subject, body, icon, approved FROM ".$forumprefix."_messages as posts
+ 					poster_ip, subject, body, icon, approved, PremiumHeaderSettings, BannerText  FROM ".$forumprefix."_messages as posts
+ 					join User on posts.id_member = User.UserID
 					where id_topic = '$threadid' and approved = '1'";
 
 	$result = mysqli_query($dbc, $query) or die('Query failed: ' . mysqli_error($dbc));
@@ -1316,7 +1318,8 @@ function GetThread($dbc, $threadid, $userid = '0')
 			</userpost>
 			';*/
 
-		$ForumThread[$ThreadCount] = new ForumThread($threadpost[0], $threadpost[1], $threadpost[2], $threadpost[3], $threadpost[4], $threadpost[5], $threadpost[6], $threadpost[7], $threadpost[8] );
+		$ForumThread[$ThreadCount] = new ForumThread($threadpost[0], $threadpost[1], $threadpost[2], $threadpost[3], $threadpost[4], $threadpost[5], $threadpost[6], $threadpost[7], $threadpost[8]
+				,$threadpost[16], $threadpost[17] );
 		
 	 	$ThreadCount =	$ThreadCount + 1;
 	

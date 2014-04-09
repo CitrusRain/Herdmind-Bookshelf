@@ -191,8 +191,11 @@ $count++;
 			$listing[$size++] = buildFactXML($child, false, true, "cardIn");
 		}
 	
+		$output = "";
 		for($i = 0, $limit = count($listing); $i < $limit; $i++)
-			echo TitleFiller($listing[$i], $db_connection);
+			$output = $output.$listing[$i];		
+
+	echo TitleFiller($output, $db_connection);
 ?>
 </SECTION>
 
