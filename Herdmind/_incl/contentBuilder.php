@@ -1102,6 +1102,8 @@ since Mar 19 2004
 function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 {
 	global $user;
+	global $userid;
+	global $userName;
 	global $db_connection;
 	global $fandom;
 
@@ -1217,8 +1219,8 @@ function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 		$pageEchoes .= '
 				<LI CLASS="comment-input">
 					<FIGURE CLASS="avatar">
-						<IMG SRC="../_img/uploaded/user/0/avatar64.png" />
-						<FIGCAPTION CLASS="username">Username</FIGCAPTION>
+						<IMG SRC="../_img/uploaded/user/'.$userid.'/avatar64.png" />
+						<FIGCAPTION CLASS="username">'.$userName.'</FIGCAPTION>
 					</FIGURE>
 					<DIV CLASS="comment-body">
 						<FORM METHOD="post">
