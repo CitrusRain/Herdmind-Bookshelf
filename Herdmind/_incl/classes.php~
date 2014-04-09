@@ -196,7 +196,8 @@ class Topic
 		$size = 0;
 		foreach($factxml->children() as $child)
 		{
-			$listing[$size++] = buildFact(array($child->factid,$child->dateposted,$child->contents,$child->score,$child->uservote,$child->isstarred), false, true, "cardIn");
+		//	$listing[$size++] = buildFact(array($child->factid,$child->dateposted,$child->contents,$child->score,$child->uservote,$child->isstarred), false, true, "cardIn");
+			$listing[$size++] = buildFactXML($child, false, true, "cardIn");
 		}
 
 		return $listing;
