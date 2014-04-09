@@ -55,6 +55,10 @@ elseif($func == "UploadAvatar")
 {
 echo uploadAvatar();
 }
+elseif($func == "UploadBanner")
+{
+echo uploadBanner();
+}
 /////////////////////
 /////////////////////
 /////////////////////
@@ -75,7 +79,7 @@ function uploadAvatar()
 	global $db_connection;
 	global $userid;	
 	
-$path = $_SERVER['DOCUMENT_ROOT']."/_img/uploaded/user/".$userid."/";
+$path = "../_img/uploaded/user/".$userid."/";
 
 if ((($_FILES["file"]["type"] == "image/png")
 || ($_FILES["file"]["type"] == "image/jpeg"))
@@ -119,9 +123,71 @@ if ($pos === false) {
   //    echo "Stored in: " . $filename;
 
 	 //Resizing the picture
-    include "../phpfunctions/imageResizer.php";
+//    include "../phpfunctions/imageResizer.php";
 
-smart_resize_image($imagesrc, 64,64, true);	
+//smart_resize_image($imagesrc, 64,64, true);	
+
+	}
+      }
+    }
+  }
+else
+  {
+  		$imagesrc = $path."/noimg.png";
+
+  echo "There was a problem with the image provided. Contact a global mod if the exact image is important.";
+  }
+
+
+}
+
+
+function uploadBanner()
+{
+	global $db_connection;
+	global $userid;	
+	
+$path = $_SERVER['DOCUMENT_ROOT']."/_img/uploaded/user/".$userid."/";
+
+if ((($_FILES["file"]["type"] == "image/png")
+|| ($_FILES["file"]["type"] == "image/jpeg"))
+&& ($_FILES["file"]["size"] < 5242880))
+  {
+  if ($_FILES["file"]["error"] > 0)
+    {
+    echo "There was a problem with the image provided. Contact a global mod if the exact image is important.<br/>";// . $_FILES["file"]["error"] . "<br />";
+    }
+  else
+    {
+ //   echo "Upload: " . $_FILES["file"]["name"] . "<br />";
+   // echo "Type: " . $_FILES["file"]["type"] . "<br />";
+  //  echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
+    //echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
+echo $_FILES["file"]["name"];
+    if (file_exists($path . $_FILES["file"]["name"]))
+      {
+   //   echo $_FILES["file"]["name"] . " already exists. ";
+      }
+    else
+      {
+
+	$filename = $_FILES["file"]["type"];
+$pos = strpos($filename, "/");
+
+// Note our use of ===.  Simply == would not work as expected
+// because the position of 'a' was the 0th (first) character.
+if ($pos === false) {
+ //   echo "The /  was not found in the string '$filename'";
+	$imagesrc = $path."noimg.png";
+} else {
+ //   echo "The / was found in the string '$filename'";
+   // echo " and exists at position $pos";
+	
+	$filename = "premium-header.png";
+
+      move_uploaded_file($_FILES["file"]["tmp_name"],
+      $path . $filename);
+      $imagesrc = $path . $filename;
 
 	}
       }

@@ -79,7 +79,7 @@ function uploadAvatar()
 	global $db_connection;
 	global $userid;	
 	
-$path = $_SERVER['DOCUMENT_ROOT']."/_img/uploaded/user/".$userid."/";
+$path = "../_img/uploaded/user/".$userid."/";
 
 if ((($_FILES["file"]["type"] == "image/png")
 || ($_FILES["file"]["type"] == "image/jpeg"))
@@ -123,9 +123,9 @@ if ($pos === false) {
   //    echo "Stored in: " . $filename;
 
 	 //Resizing the picture
-    include "../phpfunctions/imageResizer.php";
+//    include "../phpfunctions/imageResizer.php";
 
-smart_resize_image($imagesrc, 64,64, true);	
+//smart_resize_image($imagesrc, 64,64, true);	
 
 	}
       }
@@ -147,7 +147,7 @@ function uploadBanner()
 	global $db_connection;
 	global $userid;	
 	
-$path = $_SERVER['DOCUMENT_ROOT']."/_img/uploaded/user/".$userid."/";
+$path = "../_img/uploaded/user/".$userid."/";
 
 if ((($_FILES["file"]["type"] == "image/png")
 || ($_FILES["file"]["type"] == "image/jpeg"))

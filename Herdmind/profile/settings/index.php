@@ -14,8 +14,8 @@ This page is copyright Herdmind.net ©2013
 
 
 include $_SERVER['DOCUMENT_ROOT']."/_incl/contentBuilder.php"; // Also includes config.php and styleSwitch.php
-include $_SERVER['DOCUMENT_ROOT']."/_incl/RetreiveData.php";   // File that returns data in XML format
 include $_SERVER['DOCUMENT_ROOT']."/_incl/startSession.php";   // Start session and determine subdomain - do this second
+include $_SERVER['DOCUMENT_ROOT']."/_incl/RetreiveData.php";   // File that returns data in XML format
 
 $user = isset($_GET["user"]) && is_numeric($_GET["user"]) ? max($_GET["user"], 0) : 0;
 
@@ -155,7 +155,7 @@ if(isset($ProfileNum) && !(isset($_GET["id"])))
 <SECTION id='profilesettings'>
 <h3>Profile settings</h3>
 <div>Avatar 
-<?php echo '<img src="../_img/uploaded/user/'.$userid.'/avatar64.png" alt="" >'; ?>
+<?php echo '<img src="../_img/uploaded/user/$userid/avatar64.png" alt="" >'; ?>
 <input type="file" name="avatar" id="avatar" />
 <button type='button' onclick='UploadAvatar()'>Upload</button>
 	<ul>
