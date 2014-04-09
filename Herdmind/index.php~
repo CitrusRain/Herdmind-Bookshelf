@@ -3,8 +3,9 @@
 <HEAD>
 <?php
 include $_SERVER['DOCUMENT_ROOT']."/_incl/contentBuilder.php";      // Also includes config.php (must be done first) and styleSwitch.php
-include $_SERVER['DOCUMENT_ROOT']."/_incl/contentBuilderIndex.php"; // Builds body content for index
 include $_SERVER['DOCUMENT_ROOT']."/_incl/startSession.php";        // Start session and determine subdomain
+include $_SERVER['DOCUMENT_ROOT']."/_incl/contentBuilderIndex.php"; // Builds body content for index
+//include $_SERVER['DOCUMENT_ROOT']."/_incl/startSession.php";        // Start session and determine subdomain
 include $_SERVER['DOCUMENT_ROOT']."/_incl/classes2.php";   			// A bunch of classes used for data
 include $_SERVER['DOCUMENT_ROOT']."/_incl/RetreiveData.php";   		// Any function that returns XML
 include $_SERVER['DOCUMENT_ROOT']."/_incl/convenience.php";
@@ -266,7 +267,7 @@ buildHeader($mod); // Allows for testing of different layouts
 					GROUP BY Fact.FactID
 				) as AllTimePopularFacts on PopularFacts.FactID = AllTimePopularFacts.FactID			
 				 order by Rand()";
-				 echo $query;
+				// echo $query;
 				echo "<!--The reason for this being wrong is the 2 week filter. It is only counting votes made in the past 2 weeks.-->";
 				try
 				{
