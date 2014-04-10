@@ -5,6 +5,7 @@
 This page is copyright Herdmind.net ©2013
 -->
 <?php
+include $_SERVER['DOCUMENT_ROOT']."/_incl/contentBuilder.php"; // Also includes config.php and styleSwitch.php
 include $_SERVER['DOCUMENT_ROOT']."/_incl/startSession.php";   // Start session and determine subdomain - do this second
 
 

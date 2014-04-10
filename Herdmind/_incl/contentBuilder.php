@@ -398,11 +398,8 @@ function buildSidebar($userNameVar = false, $mod = false)
 		echo "
 		<LI CLASS=\"expandable\"><A HREF=\"/forum/index.php?action=profile\">$userName</A>
 			<UL>
-				<LI><A HREF=\"/forum/index.php?action=profile\">       Profile           </A></LI>
-				<LI><A HREF=\"/forum/index.php?action=unreadreplies\"> Unread Messages   </A></LI>
-				<LI><A HREF=\"/forum/index.php?action=unreadreplies\"> New Replies       </A></LI>
-				<LI><A HREF=\"/recentvotes.php\">                      Your Recent Votes </A></LI>
-				<LI><A HREF=\"/login.php?logout=yesplease\">           Log Out           </A></LI>
+				<LI><A HREF=\"/profile/?fandom=".$fandom->fandomid."&id=".$userid."\">       Profile           </A></LI>
+				<LI><A HREF=\"/profile/settings/?fandom=".$fandom->fandomid."\">       Profile Settings           </A></LI>
 			</UL>
 		</LI>";
 /*	echo "

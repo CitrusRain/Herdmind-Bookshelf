@@ -87,7 +87,7 @@ buildHeader($mod); // Allows for testing of different layouts
 		echo "
 <P CLASS=\"focus\">Herdmind is a non-profit, fan-made database of non-canon <Q>fanfacts</Q>, which can be submitted and voted upon by any user.</P>
 <SECTION>";
-/*
+
 		$PortalList = getCommunities('top');
       //  echo "<!--";		
 		// echo "<br/><hr/>".(string)$PortalList."<hr/>";
@@ -99,7 +99,7 @@ buildHeader($mod); // Allows for testing of different layouts
 			{
 				echo (string)$listing;
 			}
-		}*/
+		}
 		
 		
 		
