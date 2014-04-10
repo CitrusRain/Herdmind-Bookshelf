@@ -128,6 +128,7 @@ if ($pos === false) {
 //imagecopyresized($path.$filename, $_FILES["file"]["tmp_name"], 0, 0, 0, 0, 64, 64, $width, $height);
 
 // Content type
+ob_end_clean();
 header('Content-Type: image/jpeg');
 
 // Get new sizes
