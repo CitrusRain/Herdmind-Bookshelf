@@ -102,80 +102,64 @@ echo $_FILES["file"]["name"];
       }
     else
       {
-
-	$filename = $_FILES["file"]["type"];
-$pos = strpos($filename, "/");
-
-// Note our use of ===.  Simply == would not work as expected
-// because the position of 'a' was the 0th (first) character.
-if ($pos === false) {
- //   echo "The /  was not found in the string '$filename'";
-	$imagesrc = $path."noimg.png";
-} else {
- //   echo "The / was found in the string '$filename'";
-   // echo " and exists at position $pos";
-	
-	$filename = "avatar64.png";
-
-	if(file_exists($path . $filename)) {
-	    chmod($path . $filename,0755); //Change the file permissions if allowed
-	    unlink($path . $filename); //remove the file
-	}
-
-
-
-
-//imagecopyresized($path.$filename, $_FILES["file"]["tmp_name"], 0, 0, 0, 0, 64, 64, $width, $height);
-
-// Content type
-//ob_end_clean();
-//header('Content-Type: image/jpeg');
-
-// Get new sizes
-list($width, $height) = getimagesize($_FILES["file"]["tmp_name"]);
-$newwidth = 64;
-$newheight = 64;
-
-// Load
-$thumb = imagecreatetruecolor($newwidth, $newheight);
-
-// Set alphablending to on
-imagealphablending($thumb, true);
-$black = imagecolorallocate($thumb, 0, 0, 0);
-
-// Make the background transparent
-imagecolortransparent($thumb, $black);
-
-$source = NULL;
-	if($_FILES["file"]["type"] == "image/jpeg")
-		$source = imagecreatefromjpeg($_FILES["file"]["tmp_name"]);
-	else if($_FILES["file"]["type"] == "image/png")
-		$source = imagecreatefrompng($_FILES["file"]["tmp_name"]);
-
-
-if(isset($source))
-{
-// Resize
-imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-// Output
-imagepng($thumb,$path . $filename);
-}
-
-
-
-//      move_uploaded_file($_FILES["file"]["tmp_name"], $path . $filename);
-
-  //    echo "Stored in: " . $filename;
-
-	 //Resizing the picture
-//    include "../phpfunctions/imageResizer.php";
-
-//smart_resize_image($imagesrc, 64,64, true);	
-
-//ob_end_clean();
-//header("Location: ../_incl/resizedImage.php?i=".$path.$filename."&w=64&h=64");
-
-	}
+			$filename = $_FILES["file"]["type"];
+			$pos = strpos($filename, "/");
+			
+			// Note our use of ===.  Simply == would not work as expected
+			// because the position of 'a' was the 0th (first) character.
+			if ($pos === false) {
+			 //   echo "The /  was not found in the string '$filename'";
+				$imagesrc = $path."noimg.png";
+			} 
+			else {
+			 //   echo "The / was found in the string '$filename'";
+			   // echo " and exists at position $pos";
+					
+				$filename = "avatar64.png";
+			
+				if(file_exists($path . $filename)) {
+				    chmod($path . $filename,0755); //Change the file permissions if allowed
+				    unlink($path . $filename); //remove the file
+				}
+				
+				// Get sizes
+				list($width, $height) = getimagesize($_FILES["file"]["tmp_name"]);
+				
+				if($width == 64 && $height == 64)
+				{
+					move_uploaded_file($_FILES["file"]["tmp_name"], $path . $filename);
+				}
+				else {	//We must resize!
+				
+					$newwidth = 64;
+					$newheight = 64;
+					
+					// Load
+					$thumb = imagecreatetruecolor($newwidth, $newheight);
+					
+					// Set alphablending to on
+					imagealphablending($thumb, true);
+					$black = imagecolorallocate($thumb, 0, 0, 0);
+					
+					// Make the background transparent
+					imagecolortransparent($thumb, $black);
+					
+					$source = NULL;
+					if($_FILES["file"]["type"] == "image/jpeg")
+						$source = imagecreatefromjpeg($_FILES["file"]["tmp_name"]);
+					else if($_FILES["file"]["type"] == "image/png")
+						$source = imagecreatefrompng($_FILES["file"]["tmp_name"]);
+					
+					
+					if(isset($source))
+					{
+					// Resize
+					imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+					// Output
+					imagepng($thumb,$path . $filename);
+					}
+				}
+			}
       }
     }
   }
