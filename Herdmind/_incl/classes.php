@@ -12,7 +12,6 @@ class Stylesheet
 }
 
 
-
 /**
  * Contains convenience methods and constants for encoding and decoding backgrounds into the Herdmind database
  * 
@@ -171,8 +170,6 @@ class BG
 		return $repeats | $position | $size;
 	}
 }
-
-
 
 /**
  * Represents a fanfact

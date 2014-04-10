@@ -631,7 +631,7 @@ class Member
 		$this->type = $type;
 		$this->biography = $bio;
 		$this->banner = $banner;
-		$this->banner = $bannertext;
+		$this->bannertext = $bannertext;
 	//	$this->submissions = $submissions;
 	}
 	
