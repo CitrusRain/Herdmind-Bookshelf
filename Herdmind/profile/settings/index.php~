@@ -155,7 +155,7 @@ if(isset($ProfileNum) && !(isset($_GET["id"])))
 <SECTION id='profilesettings'>
 <h3>Profile settings</h3>
 <div>Avatar 
-<?php echo '<img src="../_img/uploaded/user/'.$userid.'/avatar64.png" >'; ?>
+<?php echo '<img src="/_img/uploaded/user/'.$userid.'/avatar64.png" >'; ?>
 <input type="file" name="avatar" id="avatar" />
 <button type='button' onclick='UploadAvatar()'>Upload</button>
 	<ul>
