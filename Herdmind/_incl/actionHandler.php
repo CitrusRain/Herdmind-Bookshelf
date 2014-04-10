@@ -128,8 +128,8 @@ if ($pos === false) {
 //imagecopyresized($path.$filename, $_FILES["file"]["tmp_name"], 0, 0, 0, 0, 64, 64, $width, $height);
 
 // Content type
-ob_end_clean();
-header('Content-Type: image/jpeg');
+//ob_end_clean();
+//header('Content-Type: image/jpeg');
 
 // Get new sizes
 list($width, $height) = getimagesize($_FILES["file"]["tmp_name"]);
@@ -138,7 +138,7 @@ $newheight = 64;
 
 // Load
 $thumb = imagecreatetruecolor($newwidth, $newheight);
-$source = imagecreatefrompng($filename);
+$source = imagecreatefrompng($_FILES["file"]["tmp_name"]);
 
 // Resize
 imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
