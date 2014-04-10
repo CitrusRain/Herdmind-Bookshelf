@@ -143,7 +143,7 @@ $thumb = imagecreatetruecolor($newwidth, $newheight);
 imagealphablending($thumb, true);
 
 // Draw a square
-imagefilledrectangle($thumb, 0, 0, $newwidth, $newheight, imagecolorallocate($thumb, 255, 0, 0));
+imagefilledrectangle($thumb, 0, 0, $newwidth, $newheight, imagecolorallocate($thumb, 0, 0, 0));
 
 
 $source = NULL;
