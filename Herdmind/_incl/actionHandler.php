@@ -141,10 +141,10 @@ $thumb = imagecreatetruecolor($newwidth, $newheight);
 
 // Set alphablending to on
 imagealphablending($thumb, true);
+$black = imagecolorallocate($thumb, 0, 0, 0);
 
-// Draw a square
-imagefilledrectangle($thumb, 0, 0, $newwidth, $newheight, imagecolorallocate($thumb, 0, 0, 0));
-
+// Make the background transparent
+imagecolortransparent($thumb, $black);
 
 $source = NULL;
 	if($_FILES["file"]["type"] == "image/jpeg")
