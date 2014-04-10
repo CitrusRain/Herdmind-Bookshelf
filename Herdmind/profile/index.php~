@@ -229,7 +229,6 @@ $userhistory = new Member(
 	, "username"
 	, "xml->type"
 	, "xml->bio"
-	, "xml->avatar"
 	, "xml->banner"
 );
 

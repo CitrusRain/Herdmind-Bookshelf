@@ -33,7 +33,7 @@ $xml = '';
 			{
 				//Store this for the head content, then print it.
 				$factText = $fact->contents;
-				buildDefaultHeadContent("Fanfact $factNum", "$factText", array("$fandom[0]","fanfact","headcanon","opinion"));
+				buildDefaultHeadContent("Fanfact $factNum", "$factText", array("$fandom->fandomid","fanfact","headcanon","opinion"));
 
 				//Get XML containing the page titles
 				$rawxml = TitleFinder($fact->contents, $db_connection);
