@@ -137,6 +137,7 @@ buildHeader($mod); // Allows for testing of different layouts
 		echo "<br/><hr/>".(string)$path."<hr/>";
 	 
 	 //  echo "<!--";	
+	 /*
 		$PortalList = getCommunities('bottom');
       		
 		//if($PortalList->listsize > 1)
@@ -151,6 +152,7 @@ buildHeader($mod); // Allows for testing of different layouts
 				echo (string)$listing;
 			}
 		}
+	*/
     ?>	
 	</SECTION>
 	

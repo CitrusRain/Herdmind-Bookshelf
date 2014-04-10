@@ -296,8 +296,9 @@ function buildSidebar($userNameVar = false, $mod = false)
 				<INPUT ID=\"SEARCH_BAR\" NAME=\"search\" TYPE=\"search\" AUTOCOMPLETE=\"on\" PLACEHOLDER=\"Search\"/>
 				<!--INPUT TYPE=\"submit\" VALUE=\"Search!\"/-->
 			</FORM>
-		</LI>
-		<LI CLASS=\"expandable\"><A HREF=\"/\">Home</A>
+		</LI>";
+		/*
+	echo  "<LI CLASS=\"expandable\"><A HREF=\"/\">Home</A>
 			<UL>";
 	if ($mod)
 		echo "
@@ -315,6 +316,84 @@ function buildSidebar($userNameVar = false, $mod = false)
 				<LI><A HREF=\"//herdmind.net\">Site Portal</A></LI>
 			</UL>
 		</LI>";
+		*/
+		
+		$PortalList = getCommunities('top');
+	 
+		if(!empty($PortalList->listing))
+		{
+			foreach ($PortalList->listing as $listing)
+			{
+				echo 
+				"<LI CLASS=\"expandable\"><A HREF=\"../?fandom=$listing->fandomid\">$listing->fandomname</A>
+					<UL>";
+					foreach ($listing->subfandoms as $sub)
+					{
+						if(!(!$fandom->fandomid or $fandom->fandomid == '')) // Then a fandom is already selected
+						{
+							if($sub->fandomid == $fandom->fandomid)
+							{
+
+								
+								$SmallList = getCommunities('bottom');
+								
+								if(!empty($SmallList->listing))
+								{
+									echo 
+								"<LI CLASS=\"expandable\"><A HREF=\"../?fandom=$sub->fandomid\">$sub->fandomname</A>
+									<UL>";
+								
+									foreach ($SmallList->listing as $SmallListing)
+									{	
+									//echo (string)$SmallListing;
+										echo '<LI><A HREF="../?fandom='.$SmallListing->fandomid.'">'.$SmallListing->fandomname.'</A></LI>';
+									}			
+									echo
+									"</UL>
+								</LI>";						
+								}
+								else {
+									echo '<LI><A HREF="../?fandom='.$sub->fandomid.'">'.$sub->fandomname.'</A></LI>';
+								}												
+							
+							}
+							else {
+								echo '<LI><A HREF="../?fandom='.$sub->fandomid.'">'.$sub->fandomname.'</A></LI>';
+							}
+						}
+						else {
+							echo '<LI><A HREF="../?fandom='.$sub->fandomid.'">'.$sub->fandomname.'</A></LI>';
+						}			
+					
+					}
+				
+				echo "</UL>
+					</LI>";
+			}
+		}		
+		
+	/*	
+	echo "<LI CLASS=\"expandable\"><A HREF=\"/\">Home</A>
+			<UL>";
+	if ($mod)
+		echo "
+				<LI><A HREF=\"/ApproveSubmission.php\">Approve Submissions</A></LI>
+				<LI><A HREF=\"/Moderation.php\">Moderation</A></LI>
+				<LI><A HREF=\"/ManageFlagged.php\">Manage Flagged</A></LI>
+				<LI><A HREF=\"/private/Branch.php\">Fix branches</A></LI>
+				<LI><A HREF=\"//beta.herdmind.net\">Beta portal</A></LI>";
+	else
+		echo "
+				<LI><A HREF=\"//tardis.herdmind.net\">Doctor Who</A></LI>
+				<LI><A HREF=\"//pony.herdmind.net\">Friendship is Magic</A></LI>
+				<LI><A HREF=\"//ppg.herdmind.net\">Powerpuff Girls</A></LI>";
+	echo "
+				<LI><A HREF=\"//herdmind.net\">Site Portal</A></LI>
+			</UL>
+		</LI>";		
+		
+		*/
+		
 	if ($userName)
 		echo "
 		<LI CLASS=\"expandable\"><A HREF=\"/forum/index.php?action=profile\">$userName</A>
@@ -326,7 +405,7 @@ function buildSidebar($userNameVar = false, $mod = false)
 				<LI><A HREF=\"/login.php?logout=yesplease\">           Log Out           </A></LI>
 			</UL>
 		</LI>";
-	echo "
+/*	echo "
 		<LI CLASS=\"expandable\"><A HREF=\"/browse/\">Browse</A>
 			<UL>
 				<LI><A HREF=\"/browse/index.php?fandom=".$fandom->fandomid."&type=Character\"> Characters </A></LI>
@@ -338,6 +417,8 @@ function buildSidebar($userNameVar = false, $mod = false)
 			</UL>
 		</LI>
 		<LI><A HREF=\"/forum/\">Forums</A></LI>
+		"; */
+		echo "
 		<LI>
 			";
 		buildStyleSwitcherGUI(array(
