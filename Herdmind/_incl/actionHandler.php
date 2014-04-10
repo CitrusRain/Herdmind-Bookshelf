@@ -103,12 +103,12 @@ echo $_FILES["file"]["name"];
 		// Note our use of ===.  Simply == would not work as expected
 		// because the position of 'a' was the 0th (first) character.
 		if ($pos === false) {
-		 //   echo "The /  was not found in the string '$filename'";
+		    echo "The /  was not found in the string '$filename'";
 			$imagesrc = $path."noimg.png";
 		} 
 		else {
-		 //   echo "The / was found in the string '$filename'";
-		   // echo " and exists at position $pos";
+		    echo "The / was found in the string '$filename'";
+		    echo " and exists at position $pos";
 				
 			$filename = "avatar64.png";
 		
@@ -199,7 +199,7 @@ $pos = strpos($filename, "/");
 // Note our use of ===.  Simply == would not work as expected
 // because the position of 'a' was the 0th (first) character.
 if ($pos === false) {
- //   echo "The /  was not found in the string '$filename'";
+    echo "The /  was not found in the string '$filename'";
 	$imagesrc = $path."noimg.png";
 } else {
  //   echo "The / was found in the string '$filename'";
