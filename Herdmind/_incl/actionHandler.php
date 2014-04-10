@@ -138,7 +138,7 @@ $newheight = 64;
 
 // Load
 $thumb = imagecreatetruecolor($newwidth, $newheight);
-
+$source = "";
 $file_parts = pathinfo($_FILES["file"]["tmp_name"]);
 switch($file_parts['extension'])
 {
@@ -160,13 +160,13 @@ switch($file_parts['extension'])
 }
 
 
-
+if(isset($source))
+{
 // Resize
 imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-
 // Output
 imagepng($thumb,$path . $filename);
-
+}
 
 
 
