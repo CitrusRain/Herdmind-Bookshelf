@@ -193,7 +193,7 @@ xmlhttp.send("id="+ factNum + "&topictype="+ TopicType + "&comment="+ comment +"
 function PostNew(fandomid)
 {
 //	alert("Good");
-var comment = document.getElementById("commentbox").value;
+var comment = document.getElementById("MyPost").value;
 var url = "../_incl/actionHandler.php?func=NewThread";
 
 var xmlhttp;
@@ -226,10 +226,10 @@ xmlhttp.send("comment="+ comment +"&fandomid="+fandomid);
  * Submits the textarea data of #fanfact for approval as a new fanfact
  * 
  */
-function SubmitFanfact(fandom)
+function SubmitFanfact(fandom, facttype)
 {
 var facttext = document.getElementById("MyPost").value;
-var facttype = document.getElementById("FanfactType").value;
+//var facttype = document.getElementById("FanfactType").value;
 var url = "/_incl/actionHandler.php?func=NewFanfact";
 
 var xmlhttp;

@@ -171,12 +171,26 @@ buildHeader($mod); // Allows for testing of different layouts
 		
 		*/
 		echo "
-		<form method='POST'>
-				<textarea id='commentbox'></textarea>
-				<button type='button' onclick='PostNew(\"".$fandom->fandomid."\")'>Submit a Shitpost</button>
-			</form>
-		";
+		<form id='NEW_FACT_FORM' method='POST'>
+			<section id='NEW_FACT'>
+				<output>
+					<div class='fanfact' tabindex='-1'></div>
+				</output>
+				<textarea id='MyPost' placeholder='Type your fanfact here&hellip' required='' name='contents'></textarea>
+<!--<textarea id='commentbox'></textarea>
+<button type='button' onclick='PostNew(\"".$fandom->fandomid."\")'>Submit a Shitpost</button>
+-->
+			</section>
+			<section id='CONTROLS' class='text-right'>
+				<button id='SUBMIT_FANFACT' class='big bg-good' type='button' onclick='SubmitFanfact(\"<?php echo $fandom->fandomid; ?>\",\"Fanfact\")'>Submit Fanfact</button>
+				<button id='SUBMIT_FANFACT' class='big bg-good' type='button' onclick='SubmitFanfact(\"<?php echo $fandom->fandomid; ?>\",\"Speculation\")'>Submit Speculation</button>
+				<button id='SUBMIT_FANFACT' class='big bg-good' type='button' onclick='SubmitFanfact(\"<?php echo $fandom->fandomid; ?>\",\"Confirmed\")'>Submit Confirmed</button>
+				<button id='SUBMIT_THREAD' class='big bg-good' type='button' onclick='PostNew(\"".$fandom->fandomid."\")'>Submit Thread</button>
+			</section>		
+		</form>
 		
+		";
+
 		/*
 		
 		Get and Print the comments
