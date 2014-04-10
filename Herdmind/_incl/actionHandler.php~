@@ -131,7 +131,8 @@ if ($pos === false) {
 //    include "../phpfunctions/imageResizer.php";
 
 //smart_resize_image($imagesrc, 64,64, true);	
-include "../_incl/resizedImage.php?i=".$path.$filename."&w=64&h=64";
+ob_end_clean();
+header("Location: ../_incl/resizedImage.php?i=".$path.$filename."&w=64&h=64");
 	}
       }
     }
