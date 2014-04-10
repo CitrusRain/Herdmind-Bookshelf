@@ -96,70 +96,65 @@ if ((($_FILES["file"]["type"] == "image/png")
   //  echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
     //echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
 echo $_FILES["file"]["name"];
-    if (file_exists($path . $_FILES["file"]["name"]))
-      {
-   //   echo $_FILES["file"]["name"] . " already exists. ";
-      }
-    else
-      {
-			$filename = $_FILES["file"]["type"];
-			$pos = strpos($filename, "/");
-			
-			// Note our use of ===.  Simply == would not work as expected
-			// because the position of 'a' was the 0th (first) character.
-			if ($pos === false) {
-			 //   echo "The /  was not found in the string '$filename'";
-				$imagesrc = $path."noimg.png";
-			} 
-			else {
-			 //   echo "The / was found in the string '$filename'";
-			   // echo " and exists at position $pos";
-					
-				$filename = "avatar64.png";
-			
-				if(file_exists($path . $filename)) {
-				    chmod($path . $filename,0755); //Change the file permissions if allowed
-				    unlink($path . $filename); //remove the file
-				}
+    
+		$filename = $_FILES["file"]["type"];
+		$pos = strpos($filename, "/");
+		
+		// Note our use of ===.  Simply == would not work as expected
+		// because the position of 'a' was the 0th (first) character.
+		if ($pos === false) {
+		 //   echo "The /  was not found in the string '$filename'";
+			$imagesrc = $path."noimg.png";
+		} 
+		else {
+		 //   echo "The / was found in the string '$filename'";
+		   // echo " and exists at position $pos";
 				
-				// Get sizes
-				list($width, $height) = getimagesize($_FILES["file"]["tmp_name"]);
+			$filename = "avatar64.png";
+		
+			if(file_exists($path . $filename)) {
+			    chmod($path . $filename,0755); //Change the file permissions if allowed
+			    unlink($path . $filename); //remove the file
+			}
+			
+			// Get sizes
+			list($width, $height) = getimagesize($_FILES["file"]["tmp_name"]);
+			
+			if($width == 64 && $height == 64)
+			{
+				move_uploaded_file($_FILES["file"]["tmp_name"], $path . $filename);
+			}
+			else {	//We must resize!
+			
+				$newwidth = 64;
+				$newheight = 64;
 				
-				if($width == 64 && $height == 64)
+				// Load
+				$thumb = imagecreatetruecolor($newwidth, $newheight);
+				
+				// Set alphablending to on
+				imagealphablending($thumb, true);
+				$black = imagecolorallocate($thumb, 0, 0, 0);
+				
+				// Make the background transparent
+				imagecolortransparent($thumb, $black);
+				
+				$source = NULL;
+				if($_FILES["file"]["type"] == "image/jpeg")
+					$source = imagecreatefromjpeg($_FILES["file"]["tmp_name"]);
+				else if($_FILES["file"]["type"] == "image/png")
+					$source = imagecreatefrompng($_FILES["file"]["tmp_name"]);
+				
+				
+				if(isset($source))
 				{
-					move_uploaded_file($_FILES["file"]["tmp_name"], $path . $filename);
-				}
-				else {	//We must resize!
-				
-					$newwidth = 64;
-					$newheight = 64;
-					
-					// Load
-					$thumb = imagecreatetruecolor($newwidth, $newheight);
-					
-					// Set alphablending to on
-					imagealphablending($thumb, true);
-					$black = imagecolorallocate($thumb, 0, 0, 0);
-					
-					// Make the background transparent
-					imagecolortransparent($thumb, $black);
-					
-					$source = NULL;
-					if($_FILES["file"]["type"] == "image/jpeg")
-						$source = imagecreatefromjpeg($_FILES["file"]["tmp_name"]);
-					else if($_FILES["file"]["type"] == "image/png")
-						$source = imagecreatefrompng($_FILES["file"]["tmp_name"]);
-					
-					
-					if(isset($source))
-					{
-					// Resize
-					imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-					// Output
-					imagepng($thumb,$path . $filename);
-					}
+				// Resize
+				imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+				// Output
+				imagepng($thumb,$path . $filename);
 				}
 			}
+			
       }
     }
   }
@@ -196,12 +191,7 @@ if ((($_FILES["file"]["type"] == "image/png")
   //  echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
     //echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
 echo $_FILES["file"]["name"];
-    if (file_exists($path . $_FILES["file"]["name"]))
-      {
-   //   echo $_FILES["file"]["name"] . " already exists. ";
-      }
-    else
-      {
+    
 
 	$filename = $_FILES["file"]["type"];
 $pos = strpos($filename, "/");
@@ -228,7 +218,7 @@ if ($pos === false) {
       $imagesrc = $path . $filename;
 
 	}
-      }
+      
     }
   }
 else
