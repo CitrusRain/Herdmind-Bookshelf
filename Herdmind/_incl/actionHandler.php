@@ -122,10 +122,30 @@ if ($pos === false) {
 	    unlink($path . $filename); //remove the file
 	}
 
-list($width, $height) = getimagesize($_FILES["file"]["tmp_name"]);
 
-imagecopyresized($path.$filename, $_FILES["file"]["tmp_name"], 0, 0, 0, 0,
-			 64, 64, $width, $height);
+
+
+//imagecopyresized($path.$filename, $_FILES["file"]["tmp_name"], 0, 0, 0, 0, 64, 64, $width, $height);
+
+// Content type
+header('Content-Type: image/jpeg');
+
+// Get new sizes
+list($width, $height) = getimagesize($_FILES["file"]["tmp_name"]);
+$newwidth = 64;
+$newheight = 64;
+
+// Load
+$thumb = imagecreatetruecolor($newwidth, $newheight);
+$source = imagecreatefrompng($filename);
+
+// Resize
+imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+// Output
+imagepng($thumb,$path . $filename);
+
+
 
 
 //      move_uploaded_file($_FILES["file"]["tmp_name"], $path . $filename);

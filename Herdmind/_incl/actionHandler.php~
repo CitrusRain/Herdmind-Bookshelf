@@ -122,17 +122,24 @@ if ($pos === false) {
 	    unlink($path . $filename); //remove the file
 	}
 
-      move_uploaded_file($_FILES["file"]["tmp_name"],
-      $path . $filename);
-      $imagesrc = $path . $filename;
+list($width, $height) = getimagesize($_FILES["file"]["tmp_name"]);
+
+imagecopyresized($path.$filename, $_FILES["file"]["tmp_name"], 0, 0, 0, 0,
+			 64, 64, $width, $height);
+
+
+//      move_uploaded_file($_FILES["file"]["tmp_name"], $path . $filename);
+
   //    echo "Stored in: " . $filename;
 
 	 //Resizing the picture
 //    include "../phpfunctions/imageResizer.php";
 
 //smart_resize_image($imagesrc, 64,64, true);	
-ob_end_clean();
-header("Location: ../_incl/resizedImage.php?i=".$path.$filename."&w=64&h=64");
+
+//ob_end_clean();
+//header("Location: ../_incl/resizedImage.php?i=".$path.$filename."&w=64&h=64");
+
 	}
       }
     }
