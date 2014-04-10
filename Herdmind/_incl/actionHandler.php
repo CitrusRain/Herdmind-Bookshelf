@@ -138,12 +138,20 @@ $newheight = 64;
 
 // Load
 $thumb = imagecreatetruecolor($newwidth, $newheight);
+
+// Set alphablending to on
+imagealphablending($thumb, true);
+
+// Draw a square
+imagefilledrectangle($thumb, 0, 0, $newwidth, $newheight, imagecolorallocate($thumb, 255, 0, 0));
+
+
 $source = NULL;
 	if($_FILES["file"]["type"] == "image/jpeg")
 		$source = imagecreatefromjpeg($_FILES["file"]["tmp_name"]);
 	else if($_FILES["file"]["type"] == "image/png")
 		$source = imagecreatefrompng($_FILES["file"]["tmp_name"]);
-    
+
 
 if(isset($source))
 {
