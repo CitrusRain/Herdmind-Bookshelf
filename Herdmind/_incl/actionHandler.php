@@ -131,7 +131,7 @@ if ($pos === false) {
 //    include "../phpfunctions/imageResizer.php";
 
 //smart_resize_image($imagesrc, 64,64, true);	
-
+include "../_incl/resizedImage.php?i=".$path.$filename."&w=64&h=64";
 	}
       }
     }
@@ -189,6 +189,12 @@ if ($pos === false) {
    // echo " and exists at position $pos";
 	
 	$filename = "premium-header.png";
+
+
+	if(file_exists($path . $filename)) {
+	    chmod($path . $filename,0755); //Change the file permissions if allowed
+	    unlink($path . $filename); //remove the file
+	}
 
       move_uploaded_file($_FILES["file"]["tmp_name"],
       $path . $filename);
