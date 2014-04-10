@@ -117,6 +117,11 @@ if ($pos === false) {
 	
 	$filename = "avatar64.png";
 
+	if(file_exists($path . $filename)) {
+	    chmod($path . $filename,0755); //Change the file permissions if allowed
+	    unlink($path . $filename); //remove the file
+	}
+
       move_uploaded_file($_FILES["file"]["tmp_name"],
       $path . $filename);
       $imagesrc = $path . $filename;

@@ -79,7 +79,7 @@ function uploadAvatar()
 	global $db_connection;
 	global $userid;	
 	
-$path = "../_img/uploaded/user/".$userid."/";
+$path = "/_img/uploaded/user/".$userid."/";
 
 if ((($_FILES["file"]["type"] == "image/png")
 || ($_FILES["file"]["type"] == "image/jpeg"))
@@ -116,6 +116,11 @@ if ($pos === false) {
    // echo " and exists at position $pos";
 	
 	$filename = "avatar64.png";
+
+	if(file_exists($path . $filename)) {
+	    chmod($path . $filename,0755); //Change the file permissions if allowed
+	    unlink($path . $filename); //remove the file
+	}
 
       move_uploaded_file($_FILES["file"]["tmp_name"],
       $path . $filename);
@@ -660,7 +665,7 @@ $CommentingQuery = "INSERT INTO `CommunityPosts` (
 `fandom`
 )
 VALUES (
- NOW(), 'Thread', '".$userid."', '0', '', '".$userName."', 'Email', '".$ip."', '1', '0', '', '".$comment."', 'xx', '1', '$fandomid'
+ NOW(), 'Thread', '".$userid."', '0', '', '".$userName."', '', '".$ip."', '1', '0', '', '".$comment."', 'xx', '1', '$fandomid'
 );";
 echo $CommentingQuery;
 	
@@ -750,7 +755,7 @@ $CommentingQuery = "INSERT INTO `CommunityPosts` (
 `fandom`
 )
 VALUES (
-'".$msgOptions[1]."', '".$msgOptions[2]."', NOW(), '".$userid."', '0', '', '".$userName."', 'Email', '".$ip."', '1', '0', '', '".$msgOptions[0]."', 'xx', '1', '$fandomid'
+'".$msgOptions[1]."', '".$msgOptions[2]."', NOW(), '".$userid."', '0', '', '".$userName."', '', '".$ip."', '1', '0', '', '".$msgOptions[0]."', 'xx', '1', '$fandomid'
 );";
 echo $CommentingQuery;
 	
