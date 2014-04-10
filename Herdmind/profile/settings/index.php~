@@ -163,7 +163,7 @@ if(isset($ProfileNum) && !(isset($_GET["id"])))
 	</ul>
 </div>
 <div>Premium
-<?php echo '<img src="/_img/uploaded/user/'.$userid.'/premium-banner.png" alt="Banner Image Preview" >'; ?>
+<?php echo '<img src="/_img/uploaded/user/'.$userid.'/premium-header.png" alt="Banner Image Preview" >'; ?>
 <input type="file" name="banner" id="banner" />
 <button type='button' onclick='UploadBanner()'>Upload</button>
 	<ul>

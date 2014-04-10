@@ -374,7 +374,7 @@ $ThreadCount = 0;
 					smileys_enabled, modified_time, modified_name,
 					body, icon, approved, id_topic, id_topic_type, PremiumHeaderSettings, BannerText
 					FROM CommunityPosts join User on CommunityPosts.id_member = User.UserID
-					WHERE approved='1' 
+					WHERE approved='1' and id_msg = id_topic
 					AND fandom = '$fandom->fandomid'
 					order by poster_time desc limit 0, 30";
 		
