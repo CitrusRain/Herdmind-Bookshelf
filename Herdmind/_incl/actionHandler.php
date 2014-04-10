@@ -138,27 +138,12 @@ $newheight = 64;
 
 // Load
 $thumb = imagecreatetruecolor($newwidth, $newheight);
-$source = "";
-$file_parts = pathinfo($_FILES["file"]["tmp_name"]);
-switch($file_parts['extension'])
-{
-    case "jpg":
-	 $source = imagecreatefromjpeg($_FILES["file"]["tmp_name"]);
-    break;
-
-	 case "jpeg":
-	 $source = imagecreatefromjpeg($_FILES["file"]["tmp_name"]);
-    break;
-
-    case "png":
-    $source = imagecreatefrompng($_FILES["file"]["tmp_name"]);
-    break;
-
-    case "": // Handle file extension for files ending in '.'
-    case NULL: // Handle no file extension
-    break;
-}
-
+$source = NULL;
+	if($_FILES["file"]["type"] == "image/jpeg")
+		$source = imagecreatefromjpeg($_FILES["file"]["tmp_name"]);
+	else if($_FILES["file"]["type"] == "image/png")
+		$source = imagecreatefrompng($_FILES["file"]["tmp_name"]);
+    
 
 if(isset($source))
 {

@@ -137,9 +137,9 @@ $newwidth = 64;
 $newheight = 64;
 
 // Load
-$thumb = imagecreatetruecolor($newwidth, $newheight);
-
+$source = NULL;
 $file_parts = pathinfo($_FILES["file"]["tmp_name"]);
+var_dump($file_parts);
 switch($file_parts['extension'])
 {
     case "jpg":
@@ -158,15 +158,15 @@ switch($file_parts['extension'])
     case NULL: // Handle no file extension
     break;
 }
+$thumb = imagecreatetruecolor($newwidth, $newheight);
 
-
-
+if(isset($source))
+{
 // Resize
 imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-
 // Output
 imagepng($thumb,$path . $filename);
-
+}
 
 
 
