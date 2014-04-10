@@ -228,6 +228,7 @@ xmlhttp.send("comment="+ comment +"&fandomid="+fandomid);
  */
 function SubmitFanfact(fandom, facttype)
 {
+	alert("Submitting...");
 var facttext = document.getElementById("MyPost").value;
 //var facttype = document.getElementById("FanfactType").value;
 var url = "/_incl/actionHandler.php?func=NewFanfact";

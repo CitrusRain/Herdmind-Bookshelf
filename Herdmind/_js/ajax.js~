@@ -226,10 +226,10 @@ xmlhttp.send("comment="+ comment +"&fandomid="+fandomid);
  * Submits the textarea data of #fanfact for approval as a new fanfact
  * 
  */
-function SubmitFanfact(fandom)
+function SubmitFanfact(fandom, facttype)
 {
 var facttext = document.getElementById("MyPost").value;
-var facttype = document.getElementById("FanfactType").value;
+//var facttype = document.getElementById("FanfactType").value;
 var url = "/_incl/actionHandler.php?func=NewFanfact";
 
 var xmlhttp;
