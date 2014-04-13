@@ -176,15 +176,12 @@ buildHeader($mod); // Allows for testing of different layouts
 				<output>
 					<div class='fanfact' tabindex='-1'></div>
 				</output>
-				<textarea id='MyPost' placeholder='Type your fanfact here&hellip' required='' name='contents'></textarea>
-<!--<textarea id='commentbox'></textarea>
-<button type='button' onclick='PostNew(\"".$fandom->fandomid."\")'>Submit a Shitpost</button>
--->
+				<textarea id='MyPost' required placeholder='Type your fanfact here&hellip;' name='contents'></textarea>
 			</section>
 			<section id='CONTROLS' class='text-right'>
-				<button id='SUBMIT_FANFACT' class='big bg-good' type='button' onclick='SubmitFanfact(\"<?php echo $fandom->fandomid; ?>\",\"Fanfact\")'>Submit Fanfact</button>
-				<button id='SUBMIT_FANFACT' class='big bg-good' type='button' onclick='SubmitFanfact(\"<?php echo $fandom->fandomid; ?>\",\"Speculation\")'>Submit Speculation</button>
-				<button id='SUBMIT_FANFACT' class='big bg-good' type='button' onclick='SubmitFanfact(\"<?php echo $fandom->fandomid; ?>\",\"Confirmed\")'>Submit Confirmed</button>
+				<button id='SUBMIT_FANFACT' class='big bg-good' type='button' onclick='SubmitFanfact(\"$fandom->fandomid\",\"Fanfact\")'>Submit Fanfact</button>
+				<button id='SUBMIT_FANFACT' class='big bg-good' type='button' onclick='SubmitFanfact(\"$fandom->fandomid\",\"Speculation\")'>Submit Speculation</button>
+				<button id='SUBMIT_FANFACT' class='big bg-good' type='button' onclick='SubmitFanfact(\"$fandom->fandomid\",\"Confirmed\")'>Submit Confirmed</button>
 				<button id='SUBMIT_THREAD' class='big bg-good' type='button' onclick='PostNew(\"".$fandom->fandomid."\")'>Submit Thread</button>
 			</section>		
 		</form>

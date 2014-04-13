@@ -264,7 +264,7 @@ xmlhttp.onreadystatechange=function()
 xmlhttp.open("POST",url,true);
 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 xmlhttp.send("facttext="+ facttext + "&facttype="+ facttype +"&fandomid="+ fandom + "");
-
+//alert("facttext="+ facttext + "&facttype="+ facttype +"&fandomid="+ fandom + "");
 }
 
 

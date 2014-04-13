@@ -533,7 +533,7 @@ function smart_resize_image( $file, $width = 0, $height = 0, $proportional = fal
 **/
 function CreateFanfact()
 {
-
+	
 	global $db_connection;
 	global $userid;
 	
@@ -553,7 +553,7 @@ function CreateFanfact()
 		{
 			$query =  "INSERT INTO Fact(Contents,CreatedBy,Type) values('$contents', '$userid','$facttype')";
 
-			print($query);
+			//print($query);
 			$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
 
 			if($result == 1)

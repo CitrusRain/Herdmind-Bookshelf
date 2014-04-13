@@ -182,7 +182,7 @@ xmlhttp.onreadystatechange=function()
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
     alert(innerHTML=xmlhttp.responseText);
-	    if(TopicType == "Fanfact")
+	    if(TopicType == "fanfact")
 	    {
 			AskToSubmit();	    
 	    }
@@ -263,8 +263,8 @@ xmlhttp.onreadystatechange=function()
   }
 xmlhttp.open("POST",url,true);
 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-xmlhttp.send("facttext="+ facttext + "&facttype="+ facttype +"&fandomid="+ fandom + "");
-
+//xmlhttp.send("facttext="+ facttext + "&facttype="+ facttype +"&fandomid="+ fandom + "");
+alert("facttext="+ facttext + "&facttype="+ facttype +"&fandomid="+ fandom + "");
 }
 
 

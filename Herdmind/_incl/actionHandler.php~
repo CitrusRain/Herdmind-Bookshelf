@@ -103,12 +103,12 @@ echo $_FILES["file"]["name"];
 		// Note our use of ===.  Simply == would not work as expected
 		// because the position of 'a' was the 0th (first) character.
 		if ($pos === false) {
-		 //   echo "The /  was not found in the string '$filename'";
+		    echo "The /  was not found in the string '$filename'";
 			$imagesrc = $path."noimg.png";
 		} 
 		else {
-		 //   echo "The / was found in the string '$filename'";
-		   // echo " and exists at position $pos";
+		    echo "The / was found in the string '$filename'";
+		    echo " and exists at position $pos";
 				
 			$filename = "avatar64.png";
 		
@@ -199,7 +199,7 @@ $pos = strpos($filename, "/");
 // Note our use of ===.  Simply == would not work as expected
 // because the position of 'a' was the 0th (first) character.
 if ($pos === false) {
- //   echo "The /  was not found in the string '$filename'";
+    echo "The /  was not found in the string '$filename'";
 	$imagesrc = $path."noimg.png";
 } else {
  //   echo "The / was found in the string '$filename'";
@@ -533,7 +533,7 @@ function smart_resize_image( $file, $width = 0, $height = 0, $proportional = fal
 **/
 function CreateFanfact()
 {
-
+ob_end_clean();	
 	global $db_connection;
 	global $userid;
 	
@@ -553,7 +553,7 @@ function CreateFanfact()
 		{
 			$query =  "INSERT INTO Fact(Contents,CreatedBy,Type) values('$contents', '$userid','$facttype')";
 
-			print($query);
+			//print($query);
 			$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
 
 			if($result == 1)
