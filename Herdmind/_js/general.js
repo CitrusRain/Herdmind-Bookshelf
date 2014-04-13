@@ -58,42 +58,38 @@ function getCookie(name)
     }
     return null;
 }
-
-$(document).ready(function(){
 	
-	function checkForLinks()
-	{
-	    var output = "";
-	    var match;
-	    var v = $("#commentbox").val();
-	    if (match = v.match(/((https?:)?\/\/)?(((www\.)?youtube.com\/watch\?\W*?v=)|(youtu.be\/))[a-z0-9\-]+/gi))
-	        output += match.length + " YouTube link(s) detected: \r\n\t{" + match + "} \r\n";
-	    
-	    if (match = v.match(/((https?:)?\/\/)?(www\.)?vimeo.com\/\d+/gi))
-	        output += match.length + " Vimeo link(s) detected: \r\n\t{" + match + "} \r\n";
-	    
-	    if (match = v.match(/((https?:)?\/\/)?(www\.)?[a-z0-9_-]+.([a-z]){2,}\/post\/show\/\d+\/[a-z0-9_-]+/gi))
-	        output += match.length + " e621-based booru link(s) detected: \r\n\t{" + match + "} \r\n";
-	    if (match = v.match(/((https?:)?\/\/)?(www\.)?derpibooru.org\/\d+((\?|&)\w+?=[a-z0-9_-]*)*/gi))
-	        output += match.length + " Derpibooru link(s) detected: \r\n\t{" + match + "} \r\n";
-	    if (match = v.match(/((https?:)?\/\/)?(www\.)?bronibooru.com\/posts\/\d+((\?|&)\w+?=[a-z0-9_-]*)*/gi))
-	        output += match.length + " Bronibooru link(s) detected: \r\n\t{" + match + "} \r\n";
-	    
-	    if (match = v.match(/((https?:)?\/\/)?((([a-z0-9\-]+\.)?deviantart.com\/art\/[a-z0-9\-]*?-\d+?)|(fav.me\/\w+))/gi)) // username has only letters, numbers and hyphens
-	        output += match.length + " deviantART link(s) detected: \r\n\t{" + match + "} \r\n";
-	    
-	    if (match = v.match(/((https?:)?\/\/)?((www|i)\.)?imgur.com\/(gallery\/)?[a-z0-9]+(\.[a-z]{2,})?/gi))
-	        output += match.length + " Imgur link(s) detected: \r\n\t{" + match + "} \r\n";
-	    
-	    if (match = v.match(/((https?:)?\/\/)?(www\.)?fanfiction.net\/s\/\d+\/\d+(\/[a-z0-9_-]*)?/gi))
-	        output += match.length + " Fanfiction link(s) detected: \r\n\t{" + match + "} \r\n";
-	    if (match = v.match(/((https?:)?\/\/)?(www\.)?fimfiction.net\/story\/\d+(\/\d+)?(\/[a-z0-9_-]*){0,2}/gi))
-	        output += match.length + " FiMFiction link(s) detected: \r\n\t{" + match + "} \r\n";
-	    
-	    $("output").text(output);
-	}
-
-});
+function checkForLinks()
+{
+    var output = "";
+    var match;
+    var v = $("#commentbox").val();
+    if (match = v.match(/((https?:)?\/\/)?(((www\.)?youtube.com\/watch\?\W*?v=)|(youtu.be\/))[a-z0-9\-]+/gi))
+        output += match.length + " YouTube link(s) detected: \r\n\t{" + match + "} \r\n";
+    
+    if (match = v.match(/((https?:)?\/\/)?(www\.)?vimeo.com\/\d+/gi))
+        output += match.length + " Vimeo link(s) detected: \r\n\t{" + match + "} \r\n";
+    
+    if (match = v.match(/((https?:)?\/\/)?(www\.)?[a-z0-9_-]+.([a-z]){2,}\/post\/show\/\d+\/[a-z0-9_-]+/gi))
+        output += match.length + " e621-based booru link(s) detected: \r\n\t{" + match + "} \r\n";
+    if (match = v.match(/((https?:)?\/\/)?(www\.)?derpibooru.org\/\d+((\?|&)\w+?=[a-z0-9_-]*)*/gi))
+        output += match.length + " Derpibooru link(s) detected: \r\n\t{" + match + "} \r\n";
+    if (match = v.match(/((https?:)?\/\/)?(www\.)?bronibooru.com\/posts\/\d+((\?|&)\w+?=[a-z0-9_-]*)*/gi))
+        output += match.length + " Bronibooru link(s) detected: \r\n\t{" + match + "} \r\n";
+    
+    if (match = v.match(/((https?:)?\/\/)?((([a-z0-9\-]+\.)?deviantart.com\/art\/[a-z0-9\-]*?-\d+?)|(fav.me\/\w+))/gi)) // username has only letters, numbers and hyphens
+        output += match.length + " deviantART link(s) detected: \r\n\t{" + match + "} \r\n";
+    
+    if (match = v.match(/((https?:)?\/\/)?((www|i)\.)?imgur.com\/(gallery\/)?[a-z0-9]+(\.[a-z]{2,})?/gi))
+        output += match.length + " Imgur link(s) detected: \r\n\t{" + match + "} \r\n";
+    
+    if (match = v.match(/((https?:)?\/\/)?(www\.)?fanfiction.net\/s\/\d+\/\d+(\/[a-z0-9_-]*)?/gi))
+        output += match.length + " Fanfiction link(s) detected: \r\n\t{" + match + "} \r\n";
+    if (match = v.match(/((https?:)?\/\/)?(www\.)?fimfiction.net\/story\/\d+(\/\d+)?(\/[a-z0-9_-]*){0,2}/gi))
+        output += match.length + " FiMFiction link(s) detected: \r\n\t{" + match + "} \r\n";
+    
+    return output;
+}
 
 if(window.attachEvent)
     window.attachEvent('onload', loadingOperations);

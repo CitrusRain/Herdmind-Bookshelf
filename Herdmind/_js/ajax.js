@@ -8,6 +8,14 @@
  * @since 2013-12-04
  */
  
+function AskToSubmit() { 
+/*Todo: bring up a message 
+	to prompt for any links found to be submitted
+	as fanworks for a comment on a fanfact 
+ */
+ alert("AskToSubmit has been called to check for links that could be submitted as fanfacts.");
+ alert(checkForLinks());
+ }
  
 function takeVote(factID, usersVote)
 {
@@ -174,6 +182,10 @@ xmlhttp.onreadystatechange=function()
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
     alert(innerHTML=xmlhttp.responseText);
+	    if(TopicType == "fanfact")
+	    {
+			AskToSubmit();	    
+	    }
     }
   }
 xmlhttp.open("POST",url,true);

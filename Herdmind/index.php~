@@ -180,15 +180,18 @@ buildHeader($mod); // Allows for testing of different layouts
 <!--<textarea id='commentbox'></textarea>
 <button type='button' onclick='PostNew(\"".$fandom->fandomid."\")'>Submit a Shitpost</button>
 -->
+<button type='button' onclick='checkForLinks()'>Check for links</button>
 			</section>
 			<section id='CONTROLS' class='text-right'>
-				<button id='SUBMIT_FANFACT' class='big bg-good' type='button' onclick='SubmitFanfact(\"<?php echo $fandom->fandomid; ?>\")'>Submit Fanfact</button>
+				<button id='SUBMIT_FANFACT' class='big bg-good' type='button' onclick='SubmitFanfact(\"<?php echo $fandom->fandomid; ?>\",\"Fanfact\")'>Submit Fanfact</button>
+				<button id='SUBMIT_FANFACT' class='big bg-good' type='button' onclick='SubmitFanfact(\"<?php echo $fandom->fandomid; ?>\",\"Speculation\")'>Submit Speculation</button>
+				<button id='SUBMIT_FANFACT' class='big bg-good' type='button' onclick='SubmitFanfact(\"<?php echo $fandom->fandomid; ?>\",\"Confirmed\")'>Submit Confirmed</button>
 				<button id='SUBMIT_THREAD' class='big bg-good' type='button' onclick='PostNew(\"".$fandom->fandomid."\")'>Submit Thread</button>
 			</section>		
 		</form>
 		
 		";
-		
+
 		/*
 		
 		Get and Print the comments
