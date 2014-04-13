@@ -13,10 +13,10 @@ class Stylesheet
 
 class Stream
 {
-	function __construct()
+	function __construct($ThreadArray, $FanfactArray)
 	{
-		$this->fanfacts = array();
-		$this->commentthreads = array();
+		$this->commentthreads = $ThreadArray;
+		$this->fanfacts = $FanfactArray;
 	}
 }
 
@@ -192,7 +192,7 @@ class BG
  						$uservote = 0, $commentcount = 0, 
  						$isMature = 0, $isRemoved = 0, $isPublic = 1)
  		{
- 			$this->factID = $factid;
+ 			$this->factid = $factid;
  			$this->submissionID = $submissionid;
  			$this->datePosted = $dateposted;
  			$this->contents =	$contents;

@@ -1177,13 +1177,25 @@ $type is to make sure not to post to the wrong thread type
 since Mar 19 2004
 
 */
-function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
+function buildComments($Items, $threadIDnum = "-1", $type = "NotAReply")
 {
 	global $user;
 	global $userid;
 	global $userName;
 	global $db_connection;
 	global $fandom;
+	
+	if(is_array($Items))
+	{
+		$comments = $Items;
+	}
+	elseif(get_class($Items) == "Stream")
+	{
+		$comments = $Items->commentthreads;
+		$fanfacts = $Items->fanfacts;
+	}
+
+	//var_dump($comments);
 
 	$pageEchoes = '
 		<style type="text/css">
@@ -1311,8 +1323,23 @@ function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 
 	if(isset($comments))
 	{
+		
+		$counter = 0; //For mixing fanfacts with threads.
+		$position = 0;//For mixing fanfacts with threads.
+		
 		foreach($comments as &$comment)
 		{
+			//Mix fanfacts with threads here.
+			if(isset($fanfacts) && $counter % 3 == 0) {
+				//Print fanfact
+				$pageEchoes .= "
+					<LI>".
+						buildFactXml($fanfacts[$position])
+					."</LI>";
+				$position++;			
+			}
+			$counter++;
+			
 			/*
 			$pageEchoes .=
 				"Message ID:<br/>"            . $comment->getMessageID() .
@@ -1326,8 +1353,7 @@ function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 				"<br/><br/>Post Body:<br/>"   . $comment->getPostBody() .
 				"<hr/>";
 				*/
-			if($comment->topictype == "Thread")
-				$pageEchoes .= 'Thread';
+			
 			
 			$pageEchoes .= "
 				<LI>
@@ -1366,8 +1392,10 @@ function buildComments($comments, $threadIDnum = "-1", $type = "NotAReply")
 							'.$comment->postbody."<br/>
 							<a href=\"/$linkedpage?fandom=".$fandom->fandomid."&id=".$comment->topicid.'">'.$comment->timeposted.'</a>
 						</DIV>
-					</DIV>
-				</LI>';
+					</DIV>';
+			if($comment->topictype == "Thread")
+				$pageEchoes .= '<DIV><sub>Thread - please grab comments and place them here.</sub></DIV>';
+			$pageEchoes .=	'</LI>';
 		}
 	}
 	

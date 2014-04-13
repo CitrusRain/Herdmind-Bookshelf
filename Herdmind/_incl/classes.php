@@ -192,18 +192,18 @@ class BG
  						$uservote = 0, $commentcount = 0, 
  						$isMature = 0, $isRemoved = 0, $isPublic = 1)
  		{
- 			$this->factID = $factid;
- 			$this->submissionID = $submissionid;
- 			$this->datePosted = $dateposted;
+ 			$this->factid = $factid;
+ 			$this->submissionid = $submissionid;
+ 			$this->dateposted = $dateposted;
  			$this->contents =	$contents;
  			$this->score = $score;
- 			$this->isStarred = $isstarred;
- 			$this->isSubscribed = $issubscribed;
- 			$this->userVote = $uservote;
- 			$this->commentCount = $commentcount;
- 			$this->isMature = $isMature;
- 			$this->isRemoved = $isRemoved;
- 			$this->isPublic = $isPublic;
+ 			$this->isstarred = $isstarred;
+ 			$this->issubscribed = $issubscribed;
+ 			$this->uservote = $uservote;
+ 			$this->commentcount = $commentcount;
+ 			$this->ismature = $isMature;
+ 			$this->isremoved = $isRemoved;
+ 			$this->ispublic = $isPublic;
  		}
  
 		function __toString()

@@ -372,7 +372,8 @@ $ThreadCount = 0;
 $FanfactCount = 0;
 
 $maturefilter = 0;
-if($HideFanfacts)
+$ShowFanfacts = true;
+if($ShowFanfacts)
 	{
 /*		$query ="select f.FactID, f.Contents, f.DatePosted, s.ID, s.SubmissionType, s.TimeSubmitted, s.IsPublic  
 from ((Fact as f join SubmissionData as s on f.FactID = s.SubmissionID) join FactBranch as fb on fb.FactID = f.FactID )join Branch as b on fb.BranchID = b.BranchID 
@@ -390,7 +391,7 @@ where ".$subdomfilter." f.FactID = '$factid' and s.IsPublic = '1' and s.Submissi
 									)
 									LEFT JOIN FactScoreByTally AS tal ON f.FactID = tal.FactID
 								)
-								JOIN FactBranch AS fb ON Fact.FactID = fb.FactID
+								JOIN FactBranch AS fb ON f.FactID = fb.FactID
 							)
 							JOIN Branch AS b ON fb.BranchID = b.BranchID
 						)
@@ -403,21 +404,23 @@ where ".$subdomfilter." f.FactID = '$factid' and s.IsPublic = '1' and s.Submissi
 						DESC LIMIT 10
 					)
 					AS RecentFacts order by Rand()";	
+					
 		$run = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error());
 	
 						$cnt = array();
 						$pos = 0;
 					while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
 						
-		//f.FactID, f.Contents, f.DatePosted, s.ID, s.SubmissionType, s.TimeSubmitted, s.IsPublic				
-		$Fanfacts[$FanfactCount] = new Fanfact($line[0], $line[3], $line[2],
- 						$line[1], 0, 0, 0,
+		//f.FactID, f.Contents, f.DatePosted, s.ID, s.SubmissionType, s.TimeSubmitted, s.IsPublic	
+		//var_dump($line);			
+		$Fanfacts[$FanfactCount] = new Fanfact($line['FactID'], $line['ID'], $line['DatePosted'],
+ 						$line['Contents'], 0, 0, 0,
  						0, 0, 
- 						0, 0, $line[6]);
- 	/*	$Fanfacts[$FanfactCount] = new Fanfact($line[0], $line[3], $line[2],
- 						$line[1], $score = 0, $isstarred = 0, $issubscribed = 0,
+ 						0, 0, $line['IsPublic']);
+ 	/*	function __construct($factid = 0, $submissionid = 0, $dateposted = 0,
+ 						$contents = 0, $score = 0, $isstarred = 0, $issubscribed = 0,
  						$uservote = 0, $commentcount = 0, 
- 						$isMature = 0, $isRemoved = 0, $line[6])				
+ 						$isMature = 0, $isRemoved = 0, $isPublic = 1)				
 */
 		$FanfactCount++;
 						
@@ -457,7 +460,7 @@ $Thread[$ThreadCount] = new Comments($threadpost[0], $threadpost[14], $threadpos
 	}
 
 $Stream = new Stream($Thread,$Fanfacts);
-
+//var_dump($Stream);
 return $Stream;
 	
 
