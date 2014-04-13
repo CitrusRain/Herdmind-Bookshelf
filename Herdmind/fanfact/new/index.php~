@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE HTML>
 <!--
 [PAGE SOURCE DESCRIPTION HERE]
@@ -213,12 +216,7 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 				</DIV>
 			</OUTPUT>
 			<!-- name is the same as in the old site -->
-			<TEXTAREA NAME="contents" ID="MyPost" REQUIRED PLACEHOLDER="Type your fanfact here&hellip;"></TEXTAREA>
-			<select id="FanfactType">
-				<option value="Fanfact">Fanfact</option>
-				<option value="Speculation">Speculation</option>
-				<option value="Confirmed">Confirmed</option>			
-			</select>		
+			<TEXTAREA NAME="contents" ID="MyPost" REQUIRED PLACEHOLDER="Type your fanfact here&hellip;"></TEXTAREA>	
 		</SECTION>
 		
 		
@@ -281,7 +279,10 @@ buildHeader(); // Don't pass variables to this; it will automatically detect log
 		
 		<SECTION ID="CONTROLS" CLASS="text-right">
 			<BUTTON ID="ATTACH_FANWORK" ><I CLASS="fa fa-plus"></I> Attach Fanwork</BUTTON>
-			<BUTTON ONCLICK='SubmitFanfact("<?php echo $fandom->fandomid; ?>")' TYPE="button" ID="SUBMIT_FANFACT" class="big bg-good">Submit Fanfact</BUTTON>
+			<BUTTON ONCLICK='SubmitFanfact("")' TYPE="button" ID="SUBMIT_FANFACT" class="big bg-good">Submit Fanfact</BUTTON>
+				<button id='SUBMIT_FANFACT' class='big bg-good' type='button' onclick='SubmitFanfact("<?php echo $fandom->fandomid; ?>",\"Fanfact\")'>Submit Fanfact</button>
+				<button id='SUBMIT_FANFACT' class='big bg-good' type='button' onclick='SubmitFanfact("<?php echo $fandom->fandomid; ?>",\"Speculation\")'>Submit Speculation</button>
+				<button id='SUBMIT_FANFACT' class='big bg-good' type='button' onclick='SubmitFanfact("<?php echo $fandom->fandomid; ?>",\"Confirmed\")'>Submit Confirmed</button>
 		</SECTION>
 	</FORM>
 </MAIN>
