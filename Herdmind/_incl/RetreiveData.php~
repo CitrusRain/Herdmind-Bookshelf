@@ -367,16 +367,77 @@ global $userid;
 global $fandom;
 
 $Thread = array();
+$Fanfacts = array();
 $ThreadCount = 0;
+$FanfactCount = 0;
 
-	$query ="SELECT id_msg, poster_time, id_member, id_msg_modified, 
-					subject, poster_name, poster_email, poster_ip, 
-					smileys_enabled, modified_time, modified_name,
-					body, icon, approved, id_topic, id_topic_type, PremiumHeaderSettings, BannerText
+$maturefilter = 0;
+if($HideFanfacts)
+	{
+/*		$query ="select f.FactID, f.Contents, f.DatePosted, s.ID, s.SubmissionType, s.TimeSubmitted, s.IsPublic  
+from ((Fact as f join SubmissionData as s on f.FactID = s.SubmissionID) join FactBranch as fb on fb.FactID = f.FactID )join Branch as b on fb.BranchID = b.BranchID 
+where ".$subdomfilter." f.FactID = '$factid' and s.IsPublic = '1' and s.SubmissionType = 'Fact' order by s.TimeSubmitted desc limit 0, 1";
+*/
+	$query =  "
+					SELECT * FROM
+					(
+						SELECT DISTINCT f.FactID, f.Contents, f.DatePosted, s.ID, s.SubmissionType, s.TimeSubmitted, s.IsPublic FROM
+						(
+							(
+								(
+									(
+										Fact as f LEFT JOIN SubmissionData AS s ON f.FactID = s.SubmissionID
+									)
+									LEFT JOIN FactScoreByTally AS tal ON f.FactID = tal.FactID
+								)
+								JOIN FactBranch AS fb ON Fact.FactID = fb.FactID
+							)
+							JOIN Branch AS b ON fb.BranchID = b.BranchID
+						)
+						WHERE b.branchid = '$fandom->fandomid'
+						AND s.IsPublic='1'
+						AND s.IsMature='$maturefilter'
+						AND s.IsRemoved='0'
+						GROUP BY f.FactID
+						ORDER BY f.DatePosted
+						DESC LIMIT 10
+					)
+					AS RecentFacts order by Rand()";	
+		$run = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error());
+	
+						$cnt = array();
+						$pos = 0;
+					while ($line = mysqli_fetch_array($run, MYSQL_ASSOC)) {
+						
+		//f.FactID, f.Contents, f.DatePosted, s.ID, s.SubmissionType, s.TimeSubmitted, s.IsPublic				
+		$Fanfacts[$FanfactCount] = new Fanfact($line[0], $line[3], $line[2],
+ 						$line[1], 0, 0, 0,
+ 						0, 0, 
+ 						0, 0, $line[6]);
+ 	/*	$Fanfacts[$FanfactCount] = new Fanfact($line[0], $line[3], $line[2],
+ 						$line[1], $score = 0, $isstarred = 0, $issubscribed = 0,
+ 						$uservote = 0, $commentcount = 0, 
+ 						$isMature = 0, $isRemoved = 0, $line[6])				
+*/
+		$FanfactCount++;
+						
+	
+					} 
+	}		
+
+	$query ="SELECT 
+					id_msg, 				poster_time, 				id_member, 		id_msg_modified, 
+					subject, 			poster_name, 				poster_email,	poster_ip, 
+					smileys_enabled, 	modified_time, 			modified_name,
+					body, 				icon, 						approved, 		id_topic,
+					id_topic_type, 	PremiumHeaderSettings, 	BannerText
+					
 					FROM CommunityPosts join User on CommunityPosts.id_member = User.UserID
-					WHERE approved='1' 
+					WHERE approved='1' and id_msg = id_topic
 					AND fandom = '$fandom->fandomid'
 					order by poster_time desc limit 0, 30";
+	
+	
 		
 	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
 
@@ -395,7 +456,9 @@ $Thread[$ThreadCount] = new Comments($threadpost[0], $threadpost[14], $threadpos
 		$ThreadCount++;
 	}
 
-return $Thread;
+$Stream = new Stream($Thread,$Fanfacts)
+
+return $Stream;
 	
 
 }

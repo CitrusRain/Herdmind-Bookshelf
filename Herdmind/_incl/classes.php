@@ -11,6 +11,14 @@ class Stylesheet
 	}
 }
 
+class Stream
+{
+	function __construct($ThreadArray, $FanfactArray)
+	{
+		$this->commentthreads = $ThreadArray;
+		$this->fanfacts = $FanfactArray;
+	}
+}
 
 /**
  * Contains convenience methods and constants for encoding and decoding backgrounds into the Herdmind database
