@@ -13,9 +13,6 @@
  * @version 1.0.0
  */
  //bool imagecopyresampled ( resource $dst_image , resource $src_image , int $dst_x , int $dst_y , int $src_x , int $src_y , int $dst_w , int $dst_h , int $src_w , int $src_h )
-
-header('Content-Type: image/png'); // specify that this is a PNG
-
 $debug = isset($_GET["debug"]); $start = 0;
 if ($debug)
 {
@@ -36,6 +33,7 @@ if (!isset($_GET['i']))
     $font = imagettftext($image_p, $textSize, 0, ($width / 2) - (($textSize / 4) * strlen($text)), $height / 2, $textColor, '../_css/fonts/Inconsolata-Regular.ttf', $text);
     //imagestring($image_p, 1, 5, 5,  'parameter “i” is required', $textColor);
 
+    header ('Content-Type: image/png');
     ob_clean(); // ensure a completely clean, headerless file
     flush(); // Write any bits waiting to be written
     imagepng($image_p/*, "http://placehold.it/1024x512&text=parameter%20%E2%80%9Ci%E2%80%9D%20is%20required"*/);
@@ -118,6 +116,7 @@ if ($debug)
 flush(); // Write any bits waiting to be written
 #if($debug)echo "\r\n\r\nPNG CODE:\r\n\r\n";
 ob_clean(); // ensure a completely clean, headerless file. This also has the benefit of removing the debug echoes and var_dumps
+header('Content-Type: image/png'); // specify that this is a PNG
 imagepng($image_p); // Write the image and all its headers
 imagedestroy($image_p); // Remove the image from memory
 exit; // Stop executing code in this file
