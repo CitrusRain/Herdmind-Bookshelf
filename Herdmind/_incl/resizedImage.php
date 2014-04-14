@@ -75,7 +75,7 @@ else
 		$new_height = $height;
 	}
 }
-#if($debug)
+if($debug)
     echo "\r\n\tspecified height: " . $_GET['h'] .
          "\r\n\tspecified width: " . $_GET['w'] .
          "\r\n\toriginal height: " . $height .
