@@ -40,5 +40,6 @@ SELECT * FROM
   AND s.IsMature='<% bMature %>'
   AND s.IsRemoved='0'
   GROUP BY Fact.FactID
+  LIMIT 10
 ) AS AllTimePopularFacts ON PopularFacts.FactID = AllTimePopularFacts.FactID
-ORDER BY Rand()
+ORDER BY Rand() LIMIT 10
