@@ -10,12 +10,12 @@
     });
 
     if($(".header-image").length) {
-      $(".header-image").animate({
+      $(".header-image").stop(true, true).animate({
         opacity: 0
       }, 300, "linear", function() {
         this.parentElement.removeChild(this);
       });
-      $(".scroll-container .top-bar").animate({
+      $(".scroll-container .top-bar").stop(true, true).animate({
         "background-color": color
       }, 300, "linear");
     } else {
@@ -23,8 +23,7 @@
         "background-color": color
       });
     }
-    var ch = $(".header-canvas")[0];
-    ch.insertBefore($himg[0], ch.children[0]);
+    $(".header-canvas").append($himg);
   }
 
   var headerI = 0;
@@ -54,7 +53,7 @@
       if(parseInt(blubUl.style.marginLeft) < 0) {
         var idx = Math.abs(parseInt(blubUl.style.marginLeft) + 300) / 300;
         var height = Math.max(Math.max($(blubUl.children[idx]).height(), $(blubUl.children[idx + 1]).height()), $(blubUl.children[idx + 1]).height());
-        $blubUl.animate({
+        $blubUl.stop(true, true).animate({
           "margin-left": 0 - idx * 300 + "px",
           "height": height
         }, 100, "linear");
@@ -65,7 +64,7 @@
       if(parseInt(blubUl.style.marginLeft) > 0 - blubWidth + 900) {
         var idx = Math.abs(parseInt(blubUl.style.marginLeft) - 300) / 300;
         var height = Math.max(Math.max($(blubUl.children[idx]).height(), $(blubUl.children[idx + 1]).height()), $(blubUl.children[idx + 1]).height());
-        $blubUl.animate({
+        $blubUl.stop(true, true).animate({
           "margin-left": 0 - idx * 300 + "px",
           "height": height
         }, 100, "linear");

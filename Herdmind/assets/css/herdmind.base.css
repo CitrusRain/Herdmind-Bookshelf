@@ -189,6 +189,7 @@ nav li.blub .blub-inner > ul > li li a {
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 10;
 }
 
 .header .header-chevron {
@@ -210,6 +211,7 @@ nav li.blub .blub-inner > ul > li li a {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  z-index: 100;
 }
 
 .header .header-canvas:hover .header-chevron {
@@ -236,7 +238,7 @@ nav li.blub .blub-inner > ul > li li a {
   background: linear-gradient(to right,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%);
 }
 
-.header .header-chevron:last-child {
+.header .header-chevron:nth-child(2) {
   right: 0;
   padding-left: 100px;
   background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
