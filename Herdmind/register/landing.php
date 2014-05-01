@@ -30,12 +30,15 @@ $options = [
     'salt' => base64_encode(mcrypt_create_iv(22, MCRYPT_DEV_URANDOM)),
 ];
 $passhash = password_hash("$pass", PASSWORD_BCRYPT, $options)."\n";
-
+$db_connection->set_charset("utf8");
+$user = mysql_real_escape_string($user);
+$email = mysql_real_escape_string($email);
+$passhash = mysql_real_escape_string($passhash);
 $newuserquery = "INSERT INTO User (UserName, Email, Password, Salt)
 						VALUES ('$user', '$email', '$passhash', '".$options['salt']."');";
 	//echo $newuserquery;
 mysqli_query($db_connection, $newuserquery);// or die mysqli_error($db_connection);
-	
+
 
 
 
