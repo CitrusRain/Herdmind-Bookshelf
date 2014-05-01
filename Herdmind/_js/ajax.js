@@ -258,8 +258,8 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    alert(innerHTML=xmlhttp.responseText);
-    alert("Please Refresh");
+ //   alert(innerHTML=xmlhttp.responseText);
+    ShowNewPost(comment);
     }
   }
 xmlhttp.open("POST",url,true);
