@@ -10,7 +10,9 @@
     });
 
     if($(".header-image").length) {
-      $(".header-image").stop(true, true).animate({
+      var tgt = $(".header-image");
+      $himg.insertBefore(tgt);
+      tgt.stop(true, true).animate({
         opacity: 0
       }, 300, "linear", function() {
         this.parentElement.removeChild(this);
@@ -19,11 +21,11 @@
         "background-color": color
       }, 300, "linear");
     } else {
+      $(".header-canvas").append($himg);
       $(".scroll-container .top-bar").css({
         "background-color": color
       });
     }
-    $(".header-canvas").append($himg);
   }
 
   var headerI = 0;
