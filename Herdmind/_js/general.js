@@ -59,6 +59,21 @@ function getCookie(name)
     return null;
 }
 	
+	
+//Add a textarea to edit a comment with
+function EditComment(commentID) {	
+	
+var post = $("#"+commentID).text();
+var div =  $("#"+commentID); 
+var textArea = $('<textarea />');
+div.empty(); 
+textArea.text(post);
+div.append(textArea);
+div.dialog({modal: true, width:850, height:500, title:"Editing post"});
+
+}
+
+
 function checkForLinks()
 {
     var output = "";

@@ -1388,14 +1388,24 @@ function buildComments($Items, $threadIDnum = "-1", $type = "NotAReply")
 				$linkedpage = $comment->topictype;      
 							   
 			$pageEchoes .= '
-						<DIV CLASS="comment-text">	
-							'.$comment->postbody."<br/>
-							<a href=\"/$linkedpage?fandom=".$fandom->fandomid."&id=".$comment->topicid.'">'.$comment->timeposted.'</a>
-						</DIV>
+						<DIV CLASS="comment-text" id="comment'.$comment->messageid.'">'
+							.$comment->postbody.
+						"</DIV>
+						<a href=\"/$linkedpage?fandom=".$fandom->fandomid."&id=".$comment->topicid.'">'.$comment->timeposted.'</a>
+						<br/>';
+			if($userid == $comment->memberid)
+			{
+				$pageEchoes .= "
+						<button type='button' onclick='EditComment(\"comment".$comment->messageid."\")'>Edit</button>						
+						";	
+			}					
+						
+			$pageEchoes .=	'
 					</DIV>';
-			if($comment->topictype == "Thread")
+	/*		if($comment->topictype == "Thread")
 				$pageEchoes .= '<DIV><sub>Thread - please grab comments and place them here.</sub></DIV>';
 			$pageEchoes .=	'</LI>';
+			*/
 		}
 	}
 	
