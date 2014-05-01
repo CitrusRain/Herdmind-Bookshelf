@@ -194,6 +194,43 @@ xmlhttp.send("id="+ factNum + "&topictype="+ TopicType + "&comment="+ comment +"
 
 }
 
+
+/* 
+ * EditComment
+ * 
+ * Submits the edit comment box data of #EditComment[number] as a comment on a particular page
+ * 
+ * since 2014-05-01
+ */
+function UpdateEditedMessage(CommentID)
+{
+var comment = document.getElementById("EditBox"+CommentID).value;
+var url = "../_incl/actionHandler.php?func=EditPost";
+
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    	alert(innerHTML=xmlhttp.responseText);
+	   StopEditingComment(CommentID, comment, "<br/><sub>Edit Saved Successfully!</sub>");
+    }
+  }
+xmlhttp.open("POST",url,true);
+xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp.send("id="+ CommentID + "&comment="+ comment +"");
+
+}
+
+
 /* 
  * PostNew
  * 

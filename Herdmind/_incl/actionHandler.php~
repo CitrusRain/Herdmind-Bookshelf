@@ -533,7 +533,7 @@ function smart_resize_image( $file, $width = 0, $height = 0, $proportional = fal
 **/
 function CreateFanfact()
 {
-ob_end_clean();	
+	
 	global $db_connection;
 	global $userid;
 	

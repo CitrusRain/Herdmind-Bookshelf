@@ -59,6 +59,11 @@ elseif($func == "UploadBanner")
 {
 echo uploadBanner();
 }
+elseif($func == "EditPost")
+{
+echo EditComment();
+}
+
 /////////////////////
 /////////////////////
 /////////////////////
@@ -780,6 +785,75 @@ $CommentingQuery = "INSERT INTO `CommunityPosts` (
 VALUES (
 '".$msgOptions[1]."', '".$msgOptions[2]."', NOW(), '".$userid."', '0', '', '".$userName."', '', '".$ip."', '1', '0', '', '".$msgOptions[0]."', 'xx', '1', '$fandomid'
 );";
+echo $CommentingQuery;
+	
+	$result = mysqli_query($db_connection, $CommentingQuery) or die('Query failed: ' . mysqli_error($db_connection));
+
+
+
+echo " ...DONE<br/>";
+
+echo (isset($result) ? "Success!" : "Failed.");
+}
+
+
+
+/**
+ * Records a user's edit to a comment
+ * 
+ * @author Ryan Young
+ * @since 2014-05-01
+ * @version 1.0
+**/
+function EditComment()
+{
+global $db_connection;
+global $userid;
+global $userName;
+global $ipid;
+
+echo "Getting information...";
+$fandomid = mysqli_real_escape_string($db_connection, $_POST['fandomid']);
+
+
+$comment = mysqli_real_escape_string($db_connection, htmlentities($_POST['comment']));
+
+$id = mysqli_real_escape_string($db_connection, $_POST['id']);
+
+
+echo " ...DONE<br/>";
+
+echo "Filling arrays...";
+
+$msgOptions = array(); 
+$msgOptions[0] = $comment;
+$msgOptions[1] = $id;
+
+$ip = mysqli_real_escape_string($db_connection, htmlentities($_SERVER['REMOTE_ADDR']));
+//$ip = str_replace("'","&#39;",str_replace('"',"&#34;",$id));
+
+/*
+Array Elements of $msgOptions
+Key 				Optional 	Expected type 		Description
+body 				no 			Escaped String 		The message itself
+id	 				no 								the id of what's being commented on
+pagetype 				no 						 		fanfact, fanwork, profile - what kind of page the comment appears on
+*/
+
+echo " ...DONE<br/>";
+
+echo " Posting...";
+
+
+$CommentingQuery = "
+		Update `CommunityPosts` 
+		set
+			 	id_msg_modified = '1', 
+				modified_time = Now(),
+				body = '".$msgOptions[0]."'
+		where 
+				id_msg = '".$msgOptions[1]."';";
+
 echo $CommentingQuery;
 	
 	$result = mysqli_query($db_connection, $CommentingQuery) or die('Query failed: ' . mysqli_error($db_connection));

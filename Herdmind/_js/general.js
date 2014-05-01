@@ -61,16 +61,29 @@ function getCookie(name)
 	
 	
 //Add a textarea to edit a comment with
-function EditComment(commentID) {	
-	
-var post = $("#"+commentID).text();
-var div =  $("#"+commentID); 
-var textArea = $('<textarea />');
+function EditComment(DivID, RawID) {	
+$('#Edit'+RawID).hide();
+var post = $("#"+DivID).text();
+var div =  $("#"+DivID); 
+var textArea = $('<textarea id="EditBox'+RawID+'" />');
+var cancelButton = $("<button name='cancelbutton' type='button' onclick='StopEditingComment(\""+RawID+"\", \""+post+"\" )' id='Cancel"+RawID+"'>Cancel</button>");
+var submitButton = $("<button name='editsubmitbutton' type='button' onclick='UpdateEditedMessage(\""+RawID+"\")' id='Post"+RawID+"'>Save</button>");
 div.empty(); 
 textArea.text(post);
 div.append(textArea);
+div.parent().append(cancelButton);
+div.parent().append(submitButton);
 div.dialog({modal: true, width:850, height:500, title:"Editing post"});
-
+}
+function StopEditingComment(RawID, post, message = "") {	
+var DivID = "comment" + RawID;
+var div =  $("#"+DivID); 
+div.empty(); 
+div.append(post);
+$('#Cancel'+RawID).remove();
+$('#Post'+RawID).remove();
+div.parent().append(message);
+$('#Edit'+RawID).show();
 }
 
 

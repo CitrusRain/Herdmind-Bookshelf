@@ -1396,7 +1396,7 @@ function buildComments($Items, $threadIDnum = "-1", $type = "NotAReply")
 			if($userid == $comment->memberid)
 			{
 				$pageEchoes .= "
-						<button type='button' onclick='EditComment(\"comment".$comment->messageid."\")'>Edit</button>						
+						<button type='button' id='Edit".$comment->messageid."' onclick='EditComment(\"comment".$comment->messageid."\", \"".$comment->messageid."\")'>Edit</button>						
 						";	
 			}					
 						
