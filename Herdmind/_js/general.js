@@ -90,6 +90,30 @@ function ShowNewPost(postdata)
 	var placeholder = '<li><FIGURE CLASS="avatar"><A HREF="/profile/?fandom=1&id=1"><IMG SRC="../_img/uploaded/user/1/avatar64.png" /><FIGCAPTION CLASS="username">Citrus Rain</FIGCAPTION></A></FIGURE><DIV CLASS="comment-body"><HEADER CLASS="premium-header"><DIV CLASS="premium-image bg-pos-right bg-size-original bg-repeat-off" STYLE="background-image:url(../_img/uploaded/user/1/premium-header.png)">Site Owner</DIV><UL CLASS="comment-controls"><LI><A CLASS="comment-flag"><I CLASS="fa fa-flag"></I></A></LI><LI><A CLASS="comment-reply"><I CLASS="fa fa-reply"></I></A></LI></UL></HEADER><DIV CLASS="comment-text">'+postdata+'</DIV><a href="/thread?fandom=1&id=">Moments Ago</a></DIV></li>';
 	$('#comments li:eq(0)').before(placeholder);
 }
+function DisplayNewFact(facttext, facttype, factnum, fandom)
+{
+	var FACT = $('<DIV CLASS="fanfact" TABINDEX="-1"></DIV>');
+
+	var votetable = $('<TABLE CLASS="vote"><TBODY><TR><TD ROWSPAN="2"><VAR CLASS="counter devalert">0</VAR></TD><TD><INPUT TYPE="button" CLASS="upvote" VALUE="&#x25B2;" onClick=\'takeVote("'+factnum+'","+1")\'/></TD></TR><TR><TD><INPUT TYPE="button" CLASS="downvote" VALUE="&#x25BC;" onClick=\'takeVote("'+factnum+'","-1")\'/></TD></TR></TBODY></TABLE>');
+
+	FACT.append(votetable);	
+	
+	var facttext = $('<DIV CLASS="fact">'+facttext+'</DIV>');
+	
+	FACT.append(facttext);
+	
+	var metastuff = $('<DIV CLASS="meta"><SPAN CLASS="factNum">'+factnum+'</SPAN><I id="star-'+factnum+'" CLASS="fa fa-star-o fa-2x" DATA-FAVORITE="" onclick=\'starClick("'+factnum+'")\'></I><A HREF="/fanfact?fandom='+fandom+'&id='+factnum+'" CLASS="callToAction">More data</A></DIV>');
+	
+	FACT.append(metastuff);
+	
+	var wrapper = $('<li></li>');
+
+	wrapper.append(FACT);
+
+//	$('#comments-list').prepend(wrapper);
+	$('#comments li:eq(0)').before(FACT);
+}
+
 
 function checkForLinks()
 {

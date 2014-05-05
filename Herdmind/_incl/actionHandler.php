@@ -570,7 +570,8 @@ function CreateFanfact()
 				$query =  "INSERT INTO FactBranch (FactID, BranchID) VALUES ('".$factid."', '".$fandomid."');";
 				$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
 			}
-		
+			ob_end_clean();
+			echo $factid;
 		}
 	}
 }

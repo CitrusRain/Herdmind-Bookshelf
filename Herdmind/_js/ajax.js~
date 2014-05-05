@@ -241,7 +241,7 @@ xmlhttp.send("id="+ CommentID + "&comment="+ comment +"");
  */
 function PostNew(fandomid)
 {
-	alert("Good");
+//	alert("Good");
 var comment = document.getElementById("MyPost").value;
 var url = "../_incl/actionHandler.php?func=NewThread";
 
@@ -258,7 +258,7 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    alert(innerHTML=xmlhttp.responseText);
+ //   alert(innerHTML=xmlhttp.responseText);
     ShowNewPost(comment);
     }
   }
@@ -295,7 +295,8 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    alert(innerHTML=xmlhttp.responseText);
+    var num = xmlhttp.responseText;
+    DisplayNewFact(facttext, facttype, num);
     }
   }
 xmlhttp.open("POST",url,true);
