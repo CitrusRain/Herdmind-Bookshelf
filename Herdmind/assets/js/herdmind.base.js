@@ -1,11 +1,8 @@
 (function(window, $, undefined) {
-  //TODO: Really I should do the Colour changes with native DOM.
-
   var HeaderKeys = Object.keys(window.Header);
 
   var applyHeader = function() {
     var color = window.Header[HeaderKeys[headerI]];
-    console.log(color);
 
     $himg = $("<div>").addClass("header-image").css({
       "background-image": "url("+HeaderKeys[headerI]+")"
@@ -31,25 +28,22 @@
   }
 
   var headerI = 0;
-  applyHeader();
 
   var headerCh = $(".header-chevron");
   $(headerCh.get(0)).click(function() {
     headerI -= 1;
     if(headerI < 0) headerI = HeaderKeys.length - 1;
-  applyHeader();
+    applyHeader();
   });
   $(headerCh.get(1)).click(function() {
     headerI += 1;
     if(headerI >= HeaderKeys.length) headerI = 0;
     applyHeader();
   });
+
   //fix blub
   var $blub = $("nav .blub"), blubUl = $blub.find("ul")[0], $blubUl = $(blubUl);
   var blubWidth = 300 * blubUl.children.length;
-  blubUl.style.width = blubWidth + "px";
-  blubUl.style.display = "block";
-  blubUl.style.marginLeft = "0px";
 
   if(blubUl.children.length > 3) {
     var $blubChev = $blub.find(".blub-chevron");
@@ -76,11 +70,18 @@
     });
   }
 
-  $(".postpin").each(function() {
-    var $this = $(this);
-    if($(this).attr("data-color")) {
-      $(this).find("header, article").css("border-color", $(this).attr("data-color"));
-      $(this).find("header").css("background", $(this).attr("data-color"));
-    }
-  });
+  if(window.JQUERY_STEPIN) {
+    applyHeader();
+    blubUl.style.width = blubWidth + "px";
+    blubUl.style.display = "block";
+    blubUl.style.marginLeft = "0px";
+    $(".postpin").each(function() {
+      var $this = $(this);
+      if($(this).attr("data-color")) {
+        $(this).find("header, article").css("border-color", $(this).attr("data-color"));
+        $(this).find("header").css("background", $(this).attr("data-color"));
+      }
+    });
+    delete window.JQUERY_STEPIN;
+  }
 })(window, jQuery);
