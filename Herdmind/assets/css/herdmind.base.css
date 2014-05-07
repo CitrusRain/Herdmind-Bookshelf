@@ -5,7 +5,7 @@ h1, h2, h3, h4, h5, h6, ul, li, article, nav, section, div, form, input, button 
   font-weight: normal;
 }
 
-.scroll-container {
+.container {
   min-width: 700px;
   max-width: 1300px;
   margin: 0 auto;
@@ -18,6 +18,7 @@ nav {
               inset -2px 0   0 rgba(0, 0, 0, 0.2),
               inset 2px  0   0 rgba(0, 0, 0, 0.2);
 }
+
 nav ul {
   font-size: 0;
 }
@@ -175,7 +176,6 @@ nav li.blub .blub-inner > ul > li li a {
 
 .header .header-canvas {
   max-width: 1300px;
-  min-width: 700px;
   height: 175px;
   position: relative;
   display: none;
@@ -254,4 +254,53 @@ nav li.blub .blub-inner > ul > li li a {
     display: block;
   }
 }
-im
+
+.adv {
+  overflow: hidden;
+  position: relative;
+}
+
+.adv-wrap {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+
+.adv-100 {
+  height: 100px;
+}
+
+.adv .adv-inner {
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  margin-left: -180px;
+}
+
+.row > div {
+  margin-top: 15px;
+}
+
+.row .row > div:first-child {
+  margin-top: 0;
+}
+
+.postpin header, .postpin article {
+  border: 3px solid #333;
+}
+
+.postpin header {
+  background: #333;
+  color: #fff;
+  font-size: 17px;
+  text-align: right;
+  padding-right: 5px;
+  border-bottom: none;
+}
+
+.postpin article {
+  text-align: justify;
+  padding: 2px;
+}

@@ -1,9 +1,11 @@
 (function(window, $, undefined) {
+  //TODO: Really I should do the Colour changes with native DOM.
 
   var HeaderKeys = Object.keys(window.Header);
 
   var applyHeader = function() {
     var color = window.Header[HeaderKeys[headerI]];
+    console.log(color);
 
     $himg = $("<div>").addClass("header-image").css({
       "background-image": "url("+HeaderKeys[headerI]+")"
@@ -17,12 +19,12 @@
       }, 300, "linear", function() {
         this.parentElement.removeChild(this);
       });
-      $(".scroll-container .top-bar").stop(true, true).animate({
+      $(".container .top-bar").stop(true, true).animate({
         "background-color": color
       }, 300, "linear");
     } else {
       $(".header-canvas").append($himg);
-      $(".scroll-container .top-bar").css({
+      $(".container .top-bar").css({
         "background-color": color
       });
     }
@@ -73,4 +75,12 @@
       }
     });
   }
+
+  $(".postpin").each(function() {
+    var $this = $(this);
+    if($(this).attr("data-color")) {
+      $(this).find("header, article").css("border-color", $(this).attr("data-color"));
+      $(this).find("header").css("background", $(this).attr("data-color"));
+    }
+  });
 })(window, jQuery);
