@@ -172,6 +172,7 @@ nav li.blub .blub-inner > ul > li li a {
 .header {
   max-width: 1300px;
   max-height: 219px;
+  background: #333;
 }
 
 .header .header-canvas {
