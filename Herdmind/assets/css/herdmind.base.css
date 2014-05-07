@@ -195,7 +195,7 @@ nav li.blub .blub-inner > ul > li li a {
 
 .header .header-chevron {
   font-size: 45px;
-  padding: 0 15px;
+  padding: 0 20px;
   color: white;
   position: absolute;
   top: 0;
@@ -213,6 +213,8 @@ nav li.blub .blub-inner > ul > li li a {
   -ms-user-select: none;
   user-select: none;
   z-index: 100;
+  background: rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
 
 .header .header-canvas:hover .header-chevron {
@@ -230,24 +232,10 @@ nav li.blub .blub-inner > ul > li li a {
 
 .header .header-chevron:first-child {
   left: 0;
-  padding-right: 100px;
-  background: -moz-linear-gradient(left,  rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.5)), color-stop(100%,rgba(0,0,0,0)));
-  background: -webkit-linear-gradient(left,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%);
-  background: -o-linear-gradient(left,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%);
-  background: -ms-linear-gradient(left,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%);
-  background: linear-gradient(to right,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%);
 }
 
 .header .header-chevron:nth-child(2) {
   right: 0;
-  padding-left: 100px;
-  background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.5)));
-  background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
-  background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
-  background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
-  background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
 }
 
 @media (min-width: 700px) {
