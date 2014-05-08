@@ -403,7 +403,7 @@ where ".$subdomfilter." f.FactID = '$factid' and s.IsPublic = '1' and s.Submissi
 						ORDER BY f.DatePosted
 						DESC LIMIT 10
 					)
-					AS RecentFacts order by Rand()";	
+					AS RecentFacts order by Rand()";
 					
 		$run = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error());
 	
@@ -439,7 +439,7 @@ where ".$subdomfilter." f.FactID = '$factid' and s.IsPublic = '1' and s.Submissi
 					WHERE approved='1' and id_msg = id_topic
 					AND fandom = '$fandom->fandomid'
 					order by poster_time desc limit 0, 30";
-	
+
 	
 		
 	$result = mysqli_query($db_connection, $query) or die('Query failed: ' . mysqli_error($db_connection));
