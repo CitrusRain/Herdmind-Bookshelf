@@ -22,13 +22,13 @@ class SQL {
   }
 
   //This will cause an exception to be raised if the socket is invalid
-  public function alive() {
+  private function alive() {
     if($this->socket == NULL || !is_object($this->socket) || !get_class($this->socket) == "mysqli") {
       throw new Exception("MySQLi socket is closed! ".$this->socket->connect_error);
     }
   }
 
-  public functoin generate($sql, $func, $args) {
+  private function generate($sql, $func, $args) {
     $qry = array();
 
     $class = new ReflectionClass(self);
@@ -41,13 +41,7 @@ class SQL {
     return str_replace($qry, $args, $sql);
   }
 
-  private static $POPULAR_FACTS = file_get_contents(dirname(__FILE__) . "/sql/popular_facts.sql");
-
-  public function getPopularFacts($iId, $bMature) {
-    $this->alive();
-
-    $sql = $this->generate(self::POPULAR_FACTS, "getPopularFacts", func_get_args());
-
+  private function fetchArray($sql) {
     if($result = $this->socket->query($sql)) {
       var $arr = array();
       while(($row = $result->fetch_array(MYSQLI_BOTH)) !== NULL) {
@@ -59,6 +53,16 @@ class SQL {
     } else {
       return array();
     }
+  }
+
+  private static $POPULAR_FACTS = file_get_contents(dirname(__FILE__) . "/sql/popular_facts.sql");
+
+  public function getPopularFacts($iId, $bMature) {
+    $this->alive();
+
+    $sql = $this->generate(self::POPULAR_FACTS, "getPopularFacts", func_get_args());
+    
+    return $this->fetchArray($sql);
   }
 }
 
